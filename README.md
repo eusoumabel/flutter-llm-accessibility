@@ -30,6 +30,29 @@ Este não é um aplicativo Flutter convencional. É um repositório científico 
 - scripts/: automação para validação, exportação e execução dos experimentos
 - docs/: metodologia, critérios de anotação e documentação do processo de pesquisa
 
+## Documentação
+
+### Metodologia e decisões
+
+- [Índice da documentação](docs/README.md)
+- [Metodologia](docs/methodology.md)
+- [Protocolo do dataset](docs/dataset_protocol.md)
+- [Diretrizes de anotação](docs/annotation_guidelines.md)
+- [Protocolo do experimento](docs/experiment_protocol.md)
+- [Protocolo de análise](docs/analysis_protocol.md)
+- [Ameaças à validade](docs/threats_to_validity.md)
+- [Decisões de pesquisa](docs/decisions.md)
+- [Diário de pesquisa](docs/research_log.md)
+
+### Operação do repositório
+
+- [Como adicionar uma nova sample](docs/adding_samples.md)
+- [Documentação do dataset](dataset/README.md)
+- [Documentação dos prompts](prompts/README.md)
+- [Documentação dos experimentos](experiments/README.md)
+- [Documentação dos resultados](results/README.md)
+- [Documentação dos scripts](scripts/README.md)
+
 ## Modelo de reprodutibilidade
 
 A verdade canônica de cada amostra está em `dataset/samples/*/metadata.yaml`. Arquivos derivados como `dataset/ground_truth.jsonl` e `dataset/dataset.csv` são gerados automaticamente e devem ser atualizados pelos scripts em `scripts/`, em vez de editados manualmente.
