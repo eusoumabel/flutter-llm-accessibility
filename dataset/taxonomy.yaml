@@ -1,0 +1,47 @@
+version: "1.0"
+
+categories:
+  semantics:
+    code: SEM
+    violations:
+      missing_accessible_label:
+        code: SEM-01
+        description: >
+          Interactive or meaningful component does not expose sufficient
+          accessible labeling.
+      incorrect_accessible_label:
+        code: SEM-02
+        description: >
+          Accessible label exists but does not correctly communicate the
+          purpose of the component.
+      missing_role:
+        code: SEM-03
+        description: >
+          Custom component does not expose a sufficient semantic role.
+      missing_state:
+        code: SEM-04
+        description: >
+          Relevant component state is not exposed through semantics.
+      inaccessible_custom_control:
+        code: SEM-05
+        description: >
+          Custom interactive component does not provide equivalent semantic
+          information.
+
+  interaction:
+    code: INT
+    violations:
+      insufficient_target_size:
+        code: INT-01
+        description: >
+          Interactive target provides insufficient area for interaction
+          according to the adopted guideline.
+      inaccessible_custom_gesture:
+        code: INT-02
+        description: >
+          Custom gesture interaction does not provide an accessible equivalent.
+      interaction_not_exposed:
+        code: INT-03
+        description: >
+          Interactive behavior is not sufficiently exposed to accessibility
+          mechanisms.

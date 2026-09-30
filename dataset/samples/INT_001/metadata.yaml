@@ -1,0 +1,79 @@
+schema_version: "1.0"
+id: INT_001
+title: "Small tap target behind a custom gesture detector"
+category: interaction
+subcategory: insufficient_target_size
+status: validated
+
+source:
+  type: mutation
+  repository:
+    name: flutter/samples
+    url: null
+  original_file: null
+  commit: null
+  license:
+    name: BSD-3-Clause
+    verified: true
+
+component:
+  framework: flutter
+  language: dart
+  widget_types:
+    - GestureDetector
+    - SizedBox
+    - Icon
+  description: >
+    A submit button implemented with a tiny GestureDetector target that does not
+    meet an accessible interaction size.
+
+files:
+  accessible: accessible.dart
+  violation: violation.dart
+
+ground_truth:
+  accessible:
+    has_violation: false
+    violations: []
+  violation:
+    has_violation: true
+    violations:
+      - id: INT-01
+        type: insufficient_target_size
+        description: >
+          The tap target area is too small for comfortable and reliable
+          interaction.
+        affected_lines:
+          start: 12
+          end: 17
+        confidence: confirmed
+
+references:
+  flutter:
+    - type: documentation
+      reference: "Flutter accessibility semantics"
+  wcag:
+    - criterion: "2.5.5"
+      description: "Target Size"
+
+mutation:
+  applied: true
+  type: reduce_target_size
+  description: >
+    Reduced the interactive target size from a 48x48 button to a 24x24 gesture
+    detector area without providing an alternative accessible interaction.
+
+validation:
+  automated:
+    performed: false
+    tool: null
+    result: null
+  manual:
+    performed: true
+    reviewers:
+      - researcher
+  status: validated
+
+notes: null
+created_at: "2026-09-30"
+updated_at: "2026-09-30"

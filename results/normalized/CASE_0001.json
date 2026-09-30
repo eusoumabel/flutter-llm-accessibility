@@ -1,0 +1,8 @@
+{
+  "case_id": "CASE_0001",
+  "model": "exact-model-id",
+  "prompt": "P0",
+  "run": 1,
+  "predicted_has_violation": false,
+  "predicted_violations": []
+}

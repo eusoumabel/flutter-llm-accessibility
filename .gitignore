@@ -1,0 +1,25 @@
+# OS and editor files
+.DS_Store
+.idea/
+.vscode/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.venv*
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Raw experiment outputs
+results/raw/
+
+# Temporary data
+*.tmp
+*.bak
+
+# Generated outputs are tracked unless intentionally ignored
+# Keep dataset-derived files under version control when using reproducible workflows.

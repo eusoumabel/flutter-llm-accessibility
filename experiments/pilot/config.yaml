@@ -1,0 +1,19 @@
+experiment:
+  id: EXP_PILOT_001
+  dataset_version: "0.1"
+  prompts:
+    - P0
+    - P1
+  repetitions: 1
+
+models:
+  - provider: mock_provider
+    model_id: pilot-model
+    temperature: 0
+
+execution:
+  randomized: true
+  store_raw_response: true
+  store_normalized_response: true
+
+created_at: "2026-09-30"

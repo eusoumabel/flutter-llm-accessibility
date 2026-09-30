@@ -1,0 +1,78 @@
+schema_version: "1.0"
+id: SEM_001
+title: "Favorite button without accessible label"
+category: semantics
+subcategory: missing_accessible_label
+status: validated
+
+source:
+  type: mutation
+  repository:
+    name: flutter/samples
+    url: null
+  original_file: null
+  commit: null
+  license:
+    name: BSD-3-Clause
+    verified: true
+
+component:
+  framework: flutter
+  language: dart
+  widget_types:
+    - IconButton
+    - Semantics
+  description: >
+    A favorite toggle implemented as an icon button with a label added in the
+    accessible layer.
+
+files:
+  accessible: accessible.dart
+  violation: violation.dart
+
+ground_truth:
+  accessible:
+    has_violation: false
+    violations: []
+  violation:
+    has_violation: true
+    violations:
+      - id: SEM-01
+        type: missing_accessible_label
+        description: >
+          The interactive favorite icon does not expose a sufficient accessible
+          description.
+        affected_lines:
+          start: 14
+          end: 19
+        confidence: confirmed
+
+references:
+  flutter:
+    - type: documentation
+      reference: "Flutter accessibility semantics"
+  wcag:
+    - criterion: "4.1.2"
+      description: "Name, Role, Value"
+
+mutation:
+  applied: true
+  type: remove_semantics
+  description: >
+    Removed the Semantics wrapper and accessible label while preserving the
+    visual behavior of the favorite icon.
+
+validation:
+  automated:
+    performed: false
+    tool: null
+    result: null
+  manual:
+    performed: true
+    reviewers:
+      - researcher
+  status: validated
+
+notes: null
+created_at: "2026-09-30"
+updated_at: "2026-09-30"
