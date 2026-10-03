@@ -41,9 +41,18 @@ mkdir -p dataset/samples/SEM_002
 
 O ID usado no nome do diretório deve ser exatamente o mesmo valor informado no campo `id` do `metadata.yaml`.
 
-## 3. Adicionar os arquivos de código
+## 3. Escolher o formato da amostra
 
-Para uma amostra com par acessível/violação, crie:
+O repositório suporta dois formatos. A escolha depende do objetivo da amostra.
+
+### Formato recomendado: par acessível/violação
+
+Use este formato quando for possível representar o mesmo componente em duas versões comparáveis:
+
+- `accessible.dart`: implementação acessível de referência;
+- `violation.dart`: a mesma implementação com uma violação intencional.
+
+Esse é o formato preferido para o benchmark porque permite comparar duas variantes mantendo o comportamento visual e funcional tão próximo quanto possível.
 
 ```text
 dataset/samples/SEM_002/
@@ -52,17 +61,67 @@ dataset/samples/SEM_002/
 └── metadata.yaml
 ```
 
+O `metadata.yaml` correspondente é:
+
+```yaml
+files:
+  accessible: accessible.dart
+  violation: violation.dart
+
+ground_truth:
+  accessible:
+    has_violation: false
+    violations: []
+  violation:
+    has_violation: true
+    violations:
+      - id: SEM-01
+        type: missing_accessible_label
+```
+
+### Formato alternativo: componente único
+
+Use este formato quando não existir uma implementação acessível equivalente, por exemplo, ao catalogar um componente real que só pode ser classificado na forma encontrada:
+
+```text
+dataset/samples/SEM_003/
+├── component.dart
+└── metadata.yaml
+```
+
+O `metadata.yaml` deve apontar para o arquivo único e usar uma chave correspondente no `ground_truth`:
+
+```yaml
+files:
+  component: component.dart
+
+ground_truth:
+  component:
+    has_violation: true
+    violations:
+      - id: SEM-01
+        type: missing_accessible_label
+        description: >
+          Descrição objetiva da violação observável no código.
+        affected_lines:
+          start: 10
+          end: 15
+        confidence: confirmed
+```
+
+O formato único é válido para validação e análise. Ele não oferece, porém, a comparação pareada entre uma implementação acessível e uma implementação com violação.
+
+### Regras comuns aos dois formatos
+
 Regras para os arquivos de código:
 
-- `accessible.dart` deve representar a implementação acessível de referência;
-- `violation.dart` deve conter a violação intencional documentada;
+- os nomes declarados em `files` devem corresponder aos arquivos existentes no diretório;
+- cada chave em `ground_truth` deve corresponder a uma chave de arquivo ou à chave `component`;
 - os arquivos devem ser pequenos e autocontidos sempre que possível;
 - mantenha o contexto necessário para que um modelo consiga analisar o caso;
 - não inclua o ground truth, o código da taxonomia ou rótulos explícitos nos arquivos enviados ao modelo;
-- preserve a mesma funcionalidade visual e de negócio entre as variantes, alterando somente o aspecto relacionado à acessibilidade quando a amostra for uma mutação;
+- no formato pareado, preserve a mesma funcionalidade visual e de negócio entre as variantes, alterando somente o aspecto relacionado à acessibilidade;
 - use linhas estáveis para que `affected_lines` continue apontando para o trecho correto.
-
-Se a amostra não tiver duas variantes, use um arquivo único e registre-o em `files.component`. Nesse caso, o `ground_truth` ainda deve descrever explicitamente a variante analisada.
 
 ## 4. Preencher o `metadata.yaml`
 
@@ -235,9 +294,10 @@ A mutação deve ser mínima: altere o aspecto de acessibilidade necessário sem
 
 Antes de validar, confira:
 
-- o código acessível realmente representa o comportamento esperado;
-- o código com violação contém a falha descrita;
-- a diferença entre as variantes é compreensível;
+- no formato pareado, o código acessível realmente representa o comportamento esperado;
+- no formato pareado, o código com violação contém a falha descrita;
+- no formato único, o componente contém evidência suficiente para sustentar o ground truth;
+- no formato pareado, a diferença entre as variantes é compreensível e limitada à acessibilidade;
 - a categoria e a subcategoria estão corretas;
 - o código da violação está correto;
 - as linhas afetadas estão atualizadas;
