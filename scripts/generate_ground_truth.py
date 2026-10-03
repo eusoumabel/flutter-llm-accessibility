@@ -6,26 +6,21 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-try:
-    import yaml
-except ImportError as exc:  # pragma: no cover
-    raise SystemExit("PyYAML is required. Install it with: pip install pyyaml") from exc
-
 ROOT = Path(__file__).resolve().parent.parent
 DATASET_DIR = ROOT / "dataset"
 SAMPLES_DIR = DATASET_DIR / "samples"
 OUTPUT_PATH = DATASET_DIR / "ground_truth.jsonl"
 
 
-def load_yaml(path: Path):
+def load_json(path: Path):
     with path.open("r", encoding="utf-8") as handle:
-        return yaml.safe_load(handle) or {}
+        return json.load(handle)
 
 
 def main():
     rows = []
-    for metadata_path in sorted(SAMPLES_DIR.glob("*/metadata.yaml")):
-        metadata = load_yaml(metadata_path)
+    for metadata_path in sorted(SAMPLES_DIR.glob("*/metadata.json")):
+        metadata = load_json(metadata_path)
         sample_id = metadata["id"]
         category = metadata["category"]
         for variant_name, variant_data in metadata.get("ground_truth", {}).items():

@@ -25,3 +25,5 @@
 7. Normalizar as predições.
 8. Calcular as métricas de avaliação.
 9. Escrever o relatório de análise.
+
+Os comandos e as dependências entre os scripts estão detalhados no [Guia de execução](execution_guide.md). A configuração do experimento permanece em `experiments/*/config.yaml`; metadata e taxonomia usam JSON.

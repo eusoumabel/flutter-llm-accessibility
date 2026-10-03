@@ -13,7 +13,7 @@ from pathlib import Path
 try:
     import yaml
 except ImportError as exc:  # pragma: no cover
-    raise SystemExit("PyYAML is required. Install it with: pip install pyyaml") from exc
+    raise SystemExit("PyYAML is required for experiment configuration. Install it with: pip install pyyaml") from exc
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -52,6 +52,11 @@ PROMPT_MAP = {
 }
 
 
+def load_json(path: Path):
+    with path.open("r", encoding="utf-8") as handle:
+        return json.load(handle)
+
+
 def load_yaml(path: Path):
     with path.open("r", encoding="utf-8") as handle:
         return yaml.safe_load(handle) or {}
@@ -73,8 +78,8 @@ def ensure_api_key(provider: str) -> str:
 
 def collect_samples():
     sample_rows = []
-    for metadata_path in sorted((DATASET_DIR / "samples").glob("*/metadata.yaml")):
-        metadata = load_yaml(metadata_path)
+    for metadata_path in sorted((DATASET_DIR / "samples").glob("*/metadata.json")):
+        metadata = load_json(metadata_path)
         files = metadata.get("files", {})
         for variant_name, variant_data in metadata.get("ground_truth", {}).items():
             sample_rows.append({

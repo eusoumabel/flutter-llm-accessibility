@@ -5,7 +5,7 @@ Este diretório armazena o dataset de pesquisa e seus metadados de fonte de verd
 ## Fluxo
 
 ```
-metadata.yaml
+metadata.json
      |
      +--> ground_truth.jsonl
      +--> dataset.csv
@@ -25,10 +25,10 @@ O dataset aceita dois formatos de amostra:
 dataset/samples/SEM_002/
 ├── accessible.dart
 ├── violation.dart
-└── metadata.yaml
+└── metadata.json
 ```
 
-`accessible.dart` contém a implementação de referência e `violation.dart` contém a mesma implementação com a falha de acessibilidade documentada. Use esse formato quando quiser medir a diferença entre uma versão correta e uma versão com violação.
+`accessible.dart` contém a implementação de referência e `violation.dart` contém a mesma implementação com a falha de acessibilidade documentada. Use esse formato quando quiser medir a diferença entre uma versão correta e uma versão com violação. O arquivo de metadados é `metadata.json`.
 
 ### Componente único
 
@@ -37,12 +37,14 @@ Também é permitido catalogar uma amostra sem uma versão acessível equivalent
 ```text
 dataset/samples/SEM_003/
 ├── component.dart
-└── metadata.yaml
+└── metadata.json
 ```
 
-Nesse caso, o `metadata.yaml` deve declarar `files.component` e usar `component` como chave em `ground_truth`. O formato é válido, mas não permite a comparação pareada entre versões.
+Nesse caso, o `metadata.json` deve declarar `files.component` e usar `component` como chave em `ground_truth`. O formato é válido, mas não permite a comparação pareada entre versões.
 
 As referências entre `files` e `ground_truth` devem ser consistentes em qualquer formato. Consulte [Como adicionar uma nova sample](../docs/adding_samples.md) para o procedimento completo e os templates.
+
+A taxonomia completa, incluindo as mutações possíveis por subcategoria, está em `dataset/taxonomy.json`. As mutações efetivamente aplicadas a cada sample são registradas no array `mutations` do `metadata.json`.
 
 ## Status atual
 

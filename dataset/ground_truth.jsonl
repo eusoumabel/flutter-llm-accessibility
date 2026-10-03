@@ -1,0 +1,4 @@
+{"sample_id": "INT_001", "variant": "accessible", "category": "interaction", "has_violation": false, "violations": []}
+{"sample_id": "INT_001", "variant": "violation", "category": "interaction", "has_violation": true, "violations": ["insufficient_target_size"]}
+{"sample_id": "SEM_001", "variant": "accessible", "category": "semantics", "has_violation": false, "violations": []}
+{"sample_id": "SEM_001", "variant": "violation", "category": "semantics", "has_violation": true, "violations": ["missing_accessible_label"]}

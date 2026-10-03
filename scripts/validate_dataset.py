@@ -3,36 +3,44 @@
 
 from __future__ import annotations
 
+import json
 import re
 from pathlib import Path
-
-try:
-    import yaml
-except ImportError as exc:  # pragma: no cover
-    raise SystemExit("PyYAML is required. Install it with: pip install pyyaml") from exc
 
 ROOT = Path(__file__).resolve().parent.parent
 DATASET_DIR = ROOT / "dataset"
 SAMPLES_DIR = DATASET_DIR / "samples"
-TAXONOMY_PATH = DATASET_DIR / "taxonomy.yaml"
+TAXONOMY_PATH = DATASET_DIR / "taxonomy.json"
 
 VALID_ID_RE = re.compile(r"^(SEM|INT)_\d{3}$")
 VALID_STATES = {"candidate", "annotated", "review_pending", "validated", "excluded", "frozen"}
 
 
-def load_yaml(path: Path):
+def load_json(path: Path):
     with path.open("r", encoding="utf-8") as handle:
-        return yaml.safe_load(handle) or {}
+        return json.load(handle)
 
 
 def load_taxonomy():
-    taxonomy = load_yaml(TAXONOMY_PATH)
+    taxonomy = load_json(TAXONOMY_PATH)
     categories = taxonomy.get("categories", {})
-    assert categories, "taxonomy.yaml is missing categories"
+    assert categories, "taxonomy.json is missing categories"
     return categories
 
 
-def validate_metadata(metadata: dict, taxonomy: dict):
+def build_taxonomy_indexes(taxonomy: dict):
+    violations_by_code = {}
+    mutation_ids = set()
+    for category_name, category_data in taxonomy.items():
+        for subcategory_name, violation in category_data.get("violations", {}).items():
+            violations_by_code[violation["code"]] = (category_name, subcategory_name)
+            mutation_ids.update(
+                mutation["id"] for mutation in violation.get("possible_mutations", [])
+            )
+    return violations_by_code, mutation_ids
+
+
+def validate_metadata(metadata: dict, taxonomy: dict, violations_by_code: dict, mutation_ids: set):
     required = [
         "schema_version",
         "id",
@@ -45,7 +53,7 @@ def validate_metadata(metadata: dict, taxonomy: dict):
         "files",
         "ground_truth",
         "references",
-        "mutation",
+        "mutations",
         "validation",
         "created_at",
         "updated_at",
@@ -92,6 +100,14 @@ def validate_metadata(metadata: dict, taxonomy: dict):
     if not isinstance(ground_truth, dict) or not ground_truth:
         raise ValueError(f"ground_truth is empty or invalid for {sample_id}")
 
+    file_keys = set(files_block)
+    ground_truth_keys = set(ground_truth)
+    if ground_truth_keys != file_keys:
+        raise ValueError(
+            f"files and ground_truth variants do not match for {sample_id}: "
+            f"files={sorted(file_keys)}, ground_truth={sorted(ground_truth_keys)}"
+        )
+
     for variant_name, variant_data in ground_truth.items():
         if not isinstance(variant_data, dict):
             raise ValueError(f"Invalid variant payload for {sample_id}:{variant_name}")
@@ -104,23 +120,51 @@ def validate_metadata(metadata: dict, taxonomy: dict):
         if not bool(has_violation) and violations:
             raise ValueError(f"Variant {sample_id}:{variant_name} says has_violation=false with violations")
 
+        for violation in violations:
+            violation_id = violation.get("id") if isinstance(violation, dict) else None
+            violation_type = violation.get("type") if isinstance(violation, dict) else None
+            if violation_id not in violations_by_code:
+                raise ValueError(f"Unknown violation code '{violation_id}' for {sample_id}:{variant_name}")
+            _, expected_type = violations_by_code[violation_id]
+            if violation_type != expected_type:
+                raise ValueError(
+                    f"Violation type '{violation_type}' does not match code '{violation_id}' "
+                    f"for {sample_id}:{variant_name}"
+                )
+
+    mutations = metadata["mutations"]
+    if not isinstance(mutations, list):
+        raise ValueError(f"mutations must be a list for {sample_id}")
+    for mutation in mutations:
+        if not isinstance(mutation, dict) or not mutation.get("id"):
+            raise ValueError(f"Invalid mutation entry for {sample_id}")
+        if mutation["id"] not in mutation_ids:
+            raise ValueError(
+                f"Mutation '{mutation['id']}' is not declared as possible in taxonomy.json "
+                f"for {sample_id}"
+            )
+        target_variants = mutation.get("target_variants", [])
+        if not isinstance(target_variants, list) or not set(target_variants).issubset(ground_truth_keys):
+            raise ValueError(f"Invalid target_variants for mutation '{mutation['id']}' in {sample_id}")
+
 
 
 def main():
     taxonomy = load_taxonomy()
+    violations_by_code, mutation_ids = build_taxonomy_indexes(taxonomy)
     seen_ids = set()
-    sample_files = sorted(SAMPLES_DIR.glob("*/metadata.yaml"))
+    sample_files = sorted(SAMPLES_DIR.glob("*/metadata.json"))
 
     if not sample_files:
         raise SystemExit("No sample metadata files were found under dataset/samples/")
 
     for sample_file in sample_files:
-        metadata = load_yaml(sample_file)
+        metadata = load_json(sample_file)
         sample_id = metadata.get("id")
         if sample_id in seen_ids:
             raise ValueError(f"Duplicate sample ID: {sample_id}")
         seen_ids.add(sample_id)
-        validate_metadata(metadata, taxonomy)
+        validate_metadata(metadata, taxonomy, violations_by_code, mutation_ids)
 
     print(f"Validation passed for {len(sample_files)} sample metadata files.")
 

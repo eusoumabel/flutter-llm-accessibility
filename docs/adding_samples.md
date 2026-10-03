@@ -6,10 +6,10 @@ Uma sample é composta por:
 
 - um diretório próprio em `dataset/samples/<ID>/`;
 - um ou mais arquivos de código Flutter/Dart;
-- um arquivo `metadata.yaml` com a fonte de verdade da amostra;
+- um arquivo `metadata.json` com a fonte de verdade da amostra;
 - ground truth explícito para cada variante do código.
 
-O arquivo `metadata.yaml` é a fonte canônica. Os arquivos `dataset/ground_truth.jsonl` e `dataset/dataset.csv` são derivados e devem ser regenerados pelos scripts.
+O arquivo `metadata.json` é a fonte canônica. A taxonomia fica em `dataset/taxonomy.json`. Os arquivos `dataset/ground_truth.jsonl` e `dataset/dataset.csv` são derivados e devem ser regenerados pelos scripts.
 
 ## 1. Antes de criar a sample
 
@@ -39,7 +39,7 @@ Exemplo:
 mkdir -p dataset/samples/SEM_002
 ```
 
-O ID usado no nome do diretório deve ser exatamente o mesmo valor informado no campo `id` do `metadata.yaml`.
+O ID usado no nome do diretório deve ser exatamente o mesmo valor informado no campo `id` do `metadata.json`.
 
 ## 3. Escolher o formato da amostra
 
@@ -58,10 +58,10 @@ Esse é o formato preferido para o benchmark porque permite comparar duas varian
 dataset/samples/SEM_002/
 ├── accessible.dart
 ├── violation.dart
-└── metadata.yaml
+└── metadata.json
 ```
 
-O `metadata.yaml` correspondente é:
+O `metadata.json` correspondente é:
 
 ```yaml
 files:
@@ -86,10 +86,10 @@ Use este formato quando não existir uma implementação acessível equivalente,
 ```text
 dataset/samples/SEM_003/
 ├── component.dart
-└── metadata.yaml
+└── metadata.json
 ```
 
-O `metadata.yaml` deve apontar para o arquivo único e usar uma chave correspondente no `ground_truth`:
+O `metadata.json` deve apontar para o arquivo único e usar uma chave correspondente no `ground_truth`:
 
 ```yaml
 files:
@@ -123,84 +123,99 @@ Regras para os arquivos de código:
 - no formato pareado, preserve a mesma funcionalidade visual e de negócio entre as variantes, alterando somente o aspecto relacionado à acessibilidade;
 - use linhas estáveis para que `affected_lines` continue apontando para o trecho correto.
 
-## 4. Preencher o `metadata.yaml`
+## 4. Preencher o `metadata.json`
 
 Use este modelo como ponto de partida:
 
-```yaml
-schema_version: "1.0"
-id: SEM_002
-title: "Título curto e descritivo"
-category: semantics
-subcategory: missing_accessible_label
-status: candidate
-
-source:
-  type: mutation
-  repository:
-    name: nome-do-repositorio
-    url: https://github.com/organizacao/repositorio
-  original_file: caminho/para/o/arquivo.dart
-  commit: hash-do-commit
-  license:
-    name: BSD-3-Clause
-    verified: true
-
-component:
-  framework: flutter
-  language: dart
-  widget_types:
-    - IconButton
-  description: >
-    Descrição neutra do componente e do contexto necessário para analisá-lo.
-
-files:
-  accessible: accessible.dart
-  violation: violation.dart
-
-ground_truth:
-  accessible:
-    has_violation: false
-    violations: []
-  violation:
-    has_violation: true
-    violations:
-      - id: SEM-01
-        type: missing_accessible_label
-        description: >
-          Descrição objetiva da violação observável no código.
-        affected_lines:
-          start: 10
-          end: 15
-        confidence: confirmed
-
-references:
-  flutter:
-    - type: documentation
-      reference: "Nome ou URL da diretriz/documentação Flutter"
-  wcag:
-    - criterion: "4.1.2"
-      description: "Name, Role, Value"
-
-mutation:
-  applied: true
-  type: remove_semantics
-  description: >
-    Descrição da transformação aplicada para produzir a variante com violação.
-
-validation:
-  automated:
-    performed: false
-    tool: null
-    result: null
-  manual:
-    performed: false
-    reviewers: []
-  status: pending
-
-notes: null
-created_at: "2026-09-30"
-updated_at: "2026-09-30"
+```json
+{
+  "schema_version": "1.0",
+  "id": "SEM_002",
+  "title": "Título curto e descritivo",
+  "category": "semantics",
+  "subcategory": "missing_accessible_label",
+  "status": "candidate",
+  "source": {
+    "type": "mutation",
+    "repository": {
+      "name": "nome-do-repositorio",
+      "url": "https://github.com/organizacao/repositorio"
+    },
+    "original_file": "caminho/para/o/arquivo.dart",
+    "commit": "hash-do-commit",
+    "license": {
+      "name": "BSD-3-Clause",
+      "verified": true
+    }
+  },
+  "component": {
+    "framework": "flutter",
+    "language": "dart",
+    "widget_types": ["IconButton"],
+    "description": "Descrição neutra do componente e do contexto necessário para analisá-lo."
+  },
+  "files": {
+    "accessible": "accessible.dart",
+    "violation": "violation.dart"
+  },
+  "ground_truth": {
+    "accessible": {
+      "has_violation": false,
+      "violations": []
+    },
+    "violation": {
+      "has_violation": true,
+      "violations": [
+        {
+          "id": "SEM-01",
+          "type": "missing_accessible_label",
+          "description": "Descrição objetiva da violação observável no código.",
+          "affected_lines": {
+            "start": 10,
+            "end": 15
+          },
+          "confidence": "confirmed"
+        }
+      ]
+    }
+  },
+  "references": {
+    "flutter": [
+      {
+        "type": "documentation",
+        "reference": "Nome ou URL da diretriz/documentação Flutter"
+      }
+    ],
+    "wcag": [
+      {
+        "criterion": "4.1.2",
+        "description": "Name, Role, Value"
+      }
+    ]
+  },
+  "mutations": [
+    {
+      "id": "remove_semantics",
+      "description": "Descrição da transformação aplicada para produzir a variante com violação.",
+      "target_variants": ["violation"]
+    }
+  ],
+  "validation": {
+    "automated": {
+      "performed": false,
+      "tool": null,
+      "result": null
+    },
+    "manual": {
+      "performed": false,
+      "reviewers": []
+    },
+    "status": "pending"
+  },
+  "notes": null,
+  "created_at": "2026-09-30",
+  "updated_at": "2026-09-30"
+}
 ```
 
 ### Campos obrigatórios
@@ -218,21 +233,21 @@ O validador exige os seguintes campos no nível principal:
 - `files`;
 - `ground_truth`;
 - `references`;
-- `mutation`;
+- `mutations`;
 - `validation`;
 - `created_at`;
 - `updated_at`.
 
 ### Categoria e subcategoria
 
-Os valores de `category` e `subcategory` devem existir em `dataset/taxonomy.yaml`.
+Os valores de `category` e `subcategory` devem existir em `dataset/taxonomy.json`.
 
 A taxonomia atual contém:
 
 - `semantics`: `missing_accessible_label`, `incorrect_accessible_label`, `missing_role`, `missing_state`, `inaccessible_custom_control`;
 - `interaction`: `insufficient_target_size`, `inaccessible_custom_gesture`, `interaction_not_exposed`.
 
-Se a violação for de um tipo ainda inexistente, primeiro altere `dataset/taxonomy.yaml` com:
+Se a violação for de um tipo ainda inexistente, primeiro altere `dataset/taxonomy.json` com:
 
 - o novo nome da subcategoria;
 - o código correspondente, como `SEM-06` ou `INT-04`;
@@ -282,11 +297,13 @@ Para código externo, prefira um hash de commit em vez de uma branch mutável.
 
 ### Mutação
 
-Quando a amostra for criada a partir de uma implementação acessível, registre:
+Quando a amostra for criada a partir de uma implementação acessível, registre cada transformação em `mutations`:
 
-- `applied: true`;
-- o tipo da mutação, como `remove_semantics` ou `reduce_target_size`;
-- uma descrição da mudança e do comportamento que foi preservado.
+- `id`: identificador da mutação, que deve existir em `possible_mutations` na taxonomia;
+- `description`: descrição da mudança e do comportamento que foi preservado;
+- `target_variants`: variantes afetadas, como `["violation"]`.
+
+Uma mesma sample pode conter várias entradas em `mutations`, inclusive mutações de tipos diferentes quando elas forem aplicadas ao mesmo componente. Cada entrada deve representar uma transformação distinta e estar declarada em `possible_mutations` na taxonomia.
 
 A mutação deve ser mínima: altere o aspecto de acessibilidade necessário sem introduzir mudanças não relacionadas.
 
@@ -341,7 +358,7 @@ Esses comandos atualizam:
 - `dataset/ground_truth.jsonl`, usado como ground truth canônico tabular para o pipeline;
 - `dataset/dataset.csv`, usado para inspeção e análise exploratória.
 
-Não edite esses arquivos manualmente. Se houver um erro, corrija o `metadata.yaml` e gere os artefatos novamente.
+Não edite esses arquivos manualmente. Se houver um erro, corrija o `metadata.json` e gere os artefatos novamente.
 
 ## 8. Verificar o impacto experimental
 
@@ -361,8 +378,8 @@ Adicionar uma amostra não exige alterar `config.yaml` quando o experimento já 
 - [ ] ID único e compatível com a categoria.
 - [ ] Diretório criado em `dataset/samples/<ID>/`.
 - [ ] Arquivos de código adicionados e referenciados corretamente.
-- [ ] `metadata.yaml` preenchido com todos os campos obrigatórios.
-- [ ] Categoria, subcategoria e código conferidos em `dataset/taxonomy.yaml`.
+- [ ] `metadata.json` preenchido com todos os campos obrigatórios.
+- [ ] Categoria, subcategoria, código e mutações conferidos em `dataset/taxonomy.json`.
 - [ ] Ground truth revisado e consistente.
 - [ ] Proveniência e licença registradas.
 - [ ] Linhas afetadas atualizadas.

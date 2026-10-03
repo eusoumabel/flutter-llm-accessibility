@@ -4,12 +4,8 @@
 from __future__ import annotations
 
 import csv
+import json
 from pathlib import Path
-
-try:
-    import yaml
-except ImportError as exc:  # pragma: no cover
-    raise SystemExit("PyYAML is required. Install it with: pip install pyyaml") from exc
 
 ROOT = Path(__file__).resolve().parent.parent
 DATASET_DIR = ROOT / "dataset"
@@ -24,25 +20,27 @@ FIELDS = [
     "has_violation",
     "source_type",
     "mutation",
+    "mutation_ids",
     "validation_status",
     "wcag",
     "flutter_guideline",
 ]
 
 
-def load_yaml(path: Path):
+def load_json(path: Path):
     with path.open("r", encoding="utf-8") as handle:
-        return yaml.safe_load(handle) or {}
+        return json.load(handle)
 
 
 def main():
     rows = []
-    for metadata_path in sorted(SAMPLES_DIR.glob("*/metadata.yaml")):
-        metadata = load_yaml(metadata_path)
+    for metadata_path in sorted(SAMPLES_DIR.glob("*/metadata.json")):
+        metadata = load_json(metadata_path)
         sample_id = metadata["id"]
         category = metadata["category"]
         source_type = metadata.get("source", {}).get("type", "")
-        mutation = bool(metadata.get("mutation", {}).get("applied", False))
+        mutations = metadata.get("mutations", [])
+        mutation_ids = ";".join(item.get("id", "") for item in mutations)
         validation_status = metadata.get("status", "")
         for variant_name, variant_data in metadata.get("ground_truth", {}).items():
             rows.append({
@@ -52,7 +50,8 @@ def main():
                 "subcategory": metadata.get("subcategory", ""),
                 "has_violation": str(bool(variant_data.get("has_violation"))).lower(),
                 "source_type": source_type,
-                "mutation": str(mutation).lower(),
+                "mutation": str(bool(mutations)).lower(),
+                "mutation_ids": mutation_ids,
                 "validation_status": validation_status,
                 "wcag": "",
                 "flutter_guideline": "",

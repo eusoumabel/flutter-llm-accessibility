@@ -1,2 +1,5 @@
-sample_id,variant,category,subcategory,has_violation,source_type,mutation,validation_status,wcag,flutter_guideline
-
+sample_id,variant,category,subcategory,has_violation,source_type,mutation,mutation_ids,validation_status,wcag,flutter_guideline
+INT_001,accessible,interaction,insufficient_target_size,false,mutation,true,reduce_target_size,validated,,
+INT_001,violation,interaction,insufficient_target_size,true,mutation,true,reduce_target_size,validated,,
+SEM_001,accessible,semantics,missing_accessible_label,false,mutation,true,remove_semantics,validated,,
+SEM_001,violation,semantics,missing_accessible_label,true,mutation,true,remove_semantics,validated,,

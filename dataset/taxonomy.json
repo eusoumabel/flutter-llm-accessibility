@@ -1,0 +1,103 @@
+{
+    "version": "1.0",
+    "categories": {
+        "semantics": {
+            "code": "SEM",
+            "violations": {
+                "missing_accessible_label": {
+                    "code": "SEM-01",
+                    "description": "Interactive or meaningful component does not expose sufficient accessible labeling.",
+                    "possible_mutations": [
+                        {
+                            "id": "remove_semantics",
+                            "description": "Remove the Semantics wrapper or accessible label from an interactive or meaningful component."
+                        },
+                        {
+                            "id": "replace_accessible_label_with_empty_value",
+                            "description": "Replace a meaningful accessible label with an empty or unavailable value."
+                        }
+                    ]
+                },
+                "incorrect_accessible_label": {
+                    "code": "SEM-02",
+                    "description": "Accessible label exists but does not correctly communicate the purpose of the component.",
+                    "possible_mutations": [
+                        {
+                            "id": "replace_accessible_label",
+                            "description": "Replace a correct accessible label with an inaccurate or misleading label."
+                        }
+                    ]
+                },
+                "missing_role": {
+                    "code": "SEM-03",
+                    "description": "Custom component does not expose a sufficient semantic role.",
+                    "possible_mutations": [
+                        {
+                            "id": "remove_semantic_role",
+                            "description": "Remove the semantic role from a custom interactive component."
+                        }
+                    ]
+                },
+                "missing_state": {
+                    "code": "SEM-04",
+                    "description": "Relevant component state is not exposed through semantics.",
+                    "possible_mutations": [
+                        {
+                            "id": "remove_semantic_state",
+                            "description": "Remove a state value such as selected, checked, expanded, or enabled from semantics."
+                        }
+                    ]
+                },
+                "inaccessible_custom_control": {
+                    "code": "SEM-05",
+                    "description": "Custom interactive component does not provide equivalent semantic information.",
+                    "possible_mutations": [
+                        {
+                            "id": "remove_custom_control_semantics",
+                            "description": "Remove the semantic information required to operate or understand a custom control."
+                        }
+                    ]
+                }
+            }
+        },
+        "interaction": {
+            "code": "INT",
+            "violations": {
+                "insufficient_target_size": {
+                    "code": "INT-01",
+                    "description": "Interactive target provides insufficient area for interaction according to the adopted guideline.",
+                    "possible_mutations": [
+                        {
+                            "id": "reduce_target_size",
+                            "description": "Reduce the interactive hit area below the adopted accessible target size."
+                        },
+                        {
+                            "id": "remove_minimum_target_constraint",
+                            "description": "Remove the layout or constraint that guarantees the minimum interactive target size."
+                        }
+                    ]
+                },
+                "inaccessible_custom_gesture": {
+                    "code": "INT-02",
+                    "description": "Custom gesture interaction does not provide an accessible equivalent.",
+                    "possible_mutations": [
+                        {
+                            "id": "remove_gesture_alternative",
+                            "description": "Remove the accessible alternative for a custom gesture interaction."
+                        }
+                    ]
+                },
+                "interaction_not_exposed": {
+                    "code": "INT-03",
+                    "description": "Interactive behavior is not sufficiently exposed to accessibility mechanisms.",
+                    "possible_mutations": [
+                        {
+                            "id": "remove_interaction_exposure",
+                            "description": "Remove the semantics, callback, or control exposure needed to discover the interaction."
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

@@ -6,7 +6,7 @@
 2. Verificar a proveniência e a licença da fonte.
 3. Registrar a origem, o repositório e os campos de metadados.
 4. Classificar o componente com base na taxonomia e nas orientações de anotação.
-5. Criar o arquivo de metadados em `dataset/samples/<ID>/metadata.yaml`, escolhendo um dos formatos suportados:
+5. Criar o arquivo de metadados em `dataset/samples/<ID>/metadata.json`, escolhendo um dos formatos suportados:
 	- par acessível/violação, recomendado para comparação controlada;
 	- componente único, quando não houver uma versão acessível equivalente.
 6. Validar o metadado e o conjunto de arquivos associados.
@@ -24,9 +24,9 @@ Uma amostra pode ser excluída se:
 
 ## Formatos de amostra
 
-No formato pareado, o diretório contém `accessible.dart`, `violation.dart` e `metadata.yaml`. As duas variantes devem representar o mesmo componente e diferir, idealmente, apenas no aspecto de acessibilidade investigado.
+No formato pareado, o diretório contém `accessible.dart`, `violation.dart` e `metadata.json`. As duas variantes devem representar o mesmo componente e diferir, idealmente, apenas no aspecto de acessibilidade investigado.
 
-No formato de componente único, o diretório contém um arquivo de código, como `component.dart`, e `metadata.yaml`. O arquivo deve ser declarado em `files.component`, e a chave correspondente em `ground_truth` deve ser `component`.
+No formato de componente único, o diretório contém um arquivo de código, como `component.dart`, e `metadata.json`. O arquivo deve ser declarado em `files.component`, e a chave correspondente em `ground_truth` deve ser `component`.
 
 O formato pareado é preferível para experimentos comparativos. O formato único é apropriado para catalogação de componentes reais ou casos em que não seja possível reconstruir uma implementação acessível equivalente.
 

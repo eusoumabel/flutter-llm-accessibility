@@ -43,6 +43,8 @@ Este não é um aplicativo Flutter convencional. É um repositório científico 
 - [Ameaças à validade](docs/threats_to_validity.md)
 - [Decisões de pesquisa](docs/decisions.md)
 - [Diário de pesquisa](docs/research_log.md)
+- [Guia de execução](docs/execution_guide.md)
+- [Dicionário de termos](docs/glossary.md)
 
 ### Operação do repositório
 
@@ -55,7 +57,7 @@ Este não é um aplicativo Flutter convencional. É um repositório científico 
 
 ## Modelo de reprodutibilidade
 
-A verdade canônica de cada amostra está em `dataset/samples/*/metadata.yaml`. Arquivos derivados como `dataset/ground_truth.jsonl` e `dataset/dataset.csv` são gerados automaticamente e devem ser atualizados pelos scripts em `scripts/`, em vez de editados manualmente.
+A verdade canônica de cada amostra está em `dataset/samples/*/metadata.json`, e a taxonomia está em `dataset/taxonomy.json`. Cada subcategoria também registra suas `possible_mutations`, enquanto cada sample registra as mutações aplicadas em `mutations`. Arquivos derivados como `dataset/ground_truth.jsonl` e `dataset/dataset.csv` são gerados automaticamente e devem ser atualizados pelos scripts em `scripts/`, em vez de editados manualmente.
 
 ## Configuração do provedor real
 
