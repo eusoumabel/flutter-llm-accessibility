@@ -1,0 +1,44 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "INT_003_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T02:06:10.941121+00:00",
+  "request": {
+    "sample_id": "INT_003",
+    "variant": "accessible",
+    "category": "interaction",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Interaction and interactive target accessibility",
+        "affected_code": "Container(width: 120, height: 120, alignment: Alignment.center, padding: const EdgeInsets.all(8), decoration: BoxDecoration(color: Colors.grey.shade300, borderRadius: BorderRadius.circular(8)), child: Text(fileName, overflow: TextOverflow.ellipsis))",
+        "explanation": "The main content of the AttachmentThumbnail, which visually represents the attachment and displays its fileName, is not interactive. Typically, a thumbnail is tappable to open or view the full item. This prevents users from interacting with the attachment itself, which might be an expected behavior for a component named \"AttachmentThumbnail\".",
+        "confidence": "high"
+      },
+      {
+        "type": "Semantics and accessible information",
+        "affected_code": "Text(fileName, overflow: TextOverflow.ellipsis)",
+        "explanation": "The fileName text is visually truncated with TextOverflow.ellipsis if it's too long. While screen readers can access the full text, sighted users (especially those with low vision) cannot visually read the complete filename. Without an interactive element (like tapping the thumbnail) to reveal the full name, this information is visually inaccessible when truncated.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 430,
+    "completion_tokens": 250,
+    "thinking_tokens": 4129,
+    "total_tokens": 4809
+  },
+  "latency_ms": 38560
+}

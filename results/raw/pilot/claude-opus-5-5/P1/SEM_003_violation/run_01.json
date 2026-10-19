@@ -1,0 +1,39 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_003_violation",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T01:48:19.284170+00:00",
+  "request": {
+    "sample_id": "SEM_003",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing accessible label / state information",
+        "affected_code": "Icon(\n  delivered ? Icons.check_circle : Icons.schedule,\n  color: delivered ? Colors.green : Colors.orange,\n  semanticLabel: '',\n)",
+        "explanation": "The icon is the only element conveying the order's delivery status (delivered vs. pending), but its semanticLabel is an empty string, so screen readers announce nothing for it. Status is communicated only visually (icon shape and color). Provide a meaningful label such as semanticLabel: delivered ? 'Delivered' : 'Pending', or include the status in the text, e.g. via Semantics/MergeSemantics.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 775,
+    "completion_tokens": 248,
+    "total_tokens": 1023
+  },
+  "latency_ms": 3573,
+  "request_id": "req_011CgAkhSgLt9dhfcxqPqpxs"
+}

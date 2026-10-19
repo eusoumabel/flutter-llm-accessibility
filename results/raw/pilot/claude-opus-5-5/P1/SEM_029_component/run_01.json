@@ -1,0 +1,63 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_029_component",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T01:56:33.564169+00:00",
+  "request": {
+    "sample_id": "SEM_029",
+    "variant": "component",
+    "category": "semantics",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing accessible label",
+        "affected_code": "InkWell(onTap: () async { await Clipboard.setData(...); ... }, child: const Padding(... child: Icon(Icons.content_copy, size: 16)))",
+        "explanation": "The copy button contains only an Icon with no semanticLabel, Tooltip, or Semantics label. Screen readers will announce it as an unlabeled button.",
+        "confidence": "high"
+      },
+      {
+        "type": "Missing accessible label",
+        "affected_code": "InkWell(onTap: onShowQrCode, child: const Padding(... child: Icon(Icons.qr_code, size: 16)))",
+        "explanation": "The QR code button is icon-only with no semanticLabel, Tooltip, or Semantics wrapper, so assistive technologies cannot convey its purpose.",
+        "confidence": "high"
+      },
+      {
+        "type": "Missing accessible label",
+        "affected_code": "InkWell(onTap: onShowZoom, child: const Padding(... child: Icon(Icons.tv, size: 16)))",
+        "explanation": "The zoom/TV button is icon-only with no accessible label. Its purpose ('show zoom') is unclear even visually, and screen readers get no name.",
+        "confidence": "high"
+      },
+      {
+        "type": "Insufficient touch target size",
+        "affected_code": "Padding(padding: EdgeInsets.symmetric(horizontal: 8, vertical: 2), child: Icon(Icons.content_copy, size: 16))",
+        "explanation": "Each InkWell's tappable area is about 32x20 logical pixels (16px icon plus 8px horizontal and 2px vertical padding), well below the recommended 48x48 minimum. This applies to all three icon buttons, which also sit directly adjacent to each other.",
+        "confidence": "high"
+      },
+      {
+        "type": "Custom interactive control instead of standard button",
+        "affected_code": "InkWell(onTap: ..., child: const Padding(... Icon(...)))",
+        "explanation": "Using a raw InkWell with an Icon instead of IconButton means the controls get no built-in tooltip or label support and no enforced minimum tap target size. IconButton with a tooltip would supply both the label and an adequate size.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 1173,
+    "completion_tokens": 730,
+    "total_tokens": 1903
+  },
+  "latency_ms": 7368,
+  "request_id": "req_011CgAmKbk3ZbNF5LT4FiuZS"
+}

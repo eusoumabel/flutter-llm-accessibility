@@ -1,0 +1,44 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_028_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T01:43:00.158580+00:00",
+  "request": {
+    "sample_id": "SEM_028",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Accessibility: Semantics and accessible information",
+        "affected_code": "label: 'Login'",
+        "explanation": "The 'label' property of the Semantics widget is hardcoded to 'Login'. This label is generic and does not dynamically describe the specific content (the 'thumb' image) or the actual action performed by this button instance. An accessible label should accurately convey the purpose or content of the interactive element to screen reader users.",
+        "confidence": "high"
+      },
+      {
+        "type": "Accessibility: Semantics and accessible information",
+        "affected_code": "ExcludeSemantics(child: Image(image: widget.thumb))",
+        "explanation": "The 'Image' widget, which displays the primary visual content of the button, is wrapped in 'ExcludeSemantics'. This prevents the image from contributing its own semantic information (e.g., an inferred label from its asset or an explicit 'semanticLabel' property) to the accessibility tree. Combined with a generic button label, this means screen reader users will not receive any information about what the 'thumb' image represents, making the button's purpose unclear.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 544,
+    "completion_tokens": 274,
+    "thinking_tokens": 836,
+    "total_tokens": 1654
+  },
+  "latency_ms": 6269
+}

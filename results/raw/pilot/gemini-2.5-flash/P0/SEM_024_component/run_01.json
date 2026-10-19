@@ -1,0 +1,44 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_024_component",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T02:06:43.659017+00:00",
+  "request": {
+    "sample_id": "SEM_024",
+    "variant": "component",
+    "category": "semantics",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Keyboard Accessibility",
+        "affected_code": "GestureDetector(onTap: onLogout, child: _buttonText('LOGOUT', logoutTextStyle),)",
+        "explanation": "The GestureDetector widget does not inherently provide keyboard focus or interaction. Users who navigate using a keyboard (e.g., with the Tab key) will not be able to reach or activate this button, making it inaccessible for them. Standard Flutter buttons (like TextButton, ElevatedButton) handle keyboard navigation automatically.",
+        "confidence": "high"
+      },
+      {
+        "type": "Color Contrast",
+        "affected_code": "color: const Color(0xFF442B2D).withValues(alpha: 0.6),",
+        "explanation": "The text color is set with an alpha value of 0.6, making it semi-transparent. Without knowing the background color, there's a risk that the contrast ratio between the text and its background might fall below WCAG guidelines (e.g., 4.5:1 for normal text), making it difficult for users with visual impairments to read.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 342,
+    "completion_tokens": 267,
+    "thinking_tokens": 1508,
+    "total_tokens": 2117
+  },
+  "latency_ms": 17452
+}

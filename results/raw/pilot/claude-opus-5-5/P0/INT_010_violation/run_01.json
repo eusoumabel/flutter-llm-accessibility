@@ -1,0 +1,39 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "INT_010_violation",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T01:44:05.523618+00:00",
+  "request": {
+    "sample_id": "INT_010",
+    "variant": "violation",
+    "category": "interaction",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Insufficient touch target size",
+        "affected_code": "iconSize: 18,\n      padding: EdgeInsets.zero,\n      constraints: const BoxConstraints(),\n      style: const ButtonStyle(\n        tapTargetSize: MaterialTapTargetSize.shrinkWrap,\n      ),",
+        "explanation": "The icon is 18dp, padding is removed, the default 48x48 minimum constraints are replaced with empty BoxConstraints, and tapTargetSize is shrinkWrap. Together these shrink the tappable area to roughly 18x18dp, well below the recommended minimum of 48x48dp (Android/Material) or 44x44pt (iOS). Users with motor impairments will find the button hard to activate.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 730,
+    "completion_tokens": 273,
+    "total_tokens": 1003
+  },
+  "latency_ms": 16246,
+  "request_id": "req_011CgAkMobdQ234gbxSiY9ua"
+}

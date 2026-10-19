@@ -1,0 +1,20 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_012_accessible",
+  "sample_id": "SEM_012",
+  "variant": "accessible",
+  "category": "semantics",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "prompt": "P1",
+  "run": 1,
+  "status": "ok",
+  "valid": true,
+  "predicted_has_violation": true,
+  "predicted_violations": [
+    "Semantics and accessible information"
+  ],
+  "predicted_confidences": [
+    "medium"
+  ]
+}

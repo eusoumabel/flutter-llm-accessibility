@@ -1,0 +1,50 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_013_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T02:09:09.939939+00:00",
+  "request": {
+    "sample_id": "SEM_013",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing Semantic Label",
+        "affected_code": "GestureDetector(",
+        "explanation": "Each interactive star lacks a semantic label. Screen reader users will not know which star they are interacting with (e.g., '1st star', '2nd star') or its current state (selected/unselected). This makes it difficult to understand the rating selection process.",
+        "confidence": "high"
+      },
+      {
+        "type": "Missing Overall Semantic Information",
+        "affected_code": "Row(",
+        "explanation": "The component does not provide a single semantic node that conveys the current overall rating (e.g., '3 out of 5 stars') to assistive technologies, requiring users to infer it by navigating each individual star.",
+        "confidence": "medium"
+      },
+      {
+        "type": "Lack of Keyboard Accessibility",
+        "affected_code": "GestureDetector(",
+        "explanation": "The custom interactive stars rely solely on tap gestures. There is no explicit support for keyboard navigation (e.g., using arrow keys to change the rating or Enter to select) or other alternative input methods, which can hinder users who rely on keyboards or other assistive technologies.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 317,
+    "completion_tokens": 289,
+    "thinking_tokens": 1651,
+    "total_tokens": 2257
+  },
+  "latency_ms": 9761
+}

@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_008_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T02:14:30.767835+00:00",
+  "request": {
+    "sample_id": "SEM_008",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Interaction and interactive target accessibility",
+        "affected_code": "for (final order in orders) ListTile(title: Text(order))",
+        "explanation": "The `ListTile` widgets displaying individual recent orders do not have an `onTap` or `onLongPress` handler. If these orders are intended to be interactive (e.g., to navigate to order details), users relying on touch or other input methods will be unable to interact with them. This also means they lack an accessible gesture alternative and a proper semantic role for interactive elements.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 259,
+    "completion_tokens": 147,
+    "thinking_tokens": 1249,
+    "total_tokens": 1655
+  },
+  "latency_ms": 7439
+}

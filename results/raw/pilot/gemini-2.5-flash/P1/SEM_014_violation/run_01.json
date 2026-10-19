@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_014_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T01:46:54.404368+00:00",
+  "request": {
+    "sample_id": "SEM_014",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Semantics Violation",
+        "affected_code": "GestureDetector(behavior: HitTestBehavior.opaque,onTap: () => onChanged(!accepted),child: SizedBox(width: 48,height: 48,child: Center(child: Container(width: 24,height: 24,decoration: BoxDecoration(color: accepted ? Colors.blue : Colors.transparent,border: Border.all(color: Colors.blue, width: 2),borderRadius: BorderRadius.circular(4),),child: accepted? const Icon(Icons.check, size: 18, color: Colors.white): null,),),),),const Expanded(child: ExcludeSemantics(child: Text('I accept the terms and conditions'),),),",
+        "explanation": "The custom checkbox, implemented using GestureDetector and visual components, lacks proper semantic information. It does not convey its role as a checkbox, its current checked state (accepted), or an accessible label to assistive technologies. Furthermore, the descriptive text \"I accept the terms and conditions\" is wrapped in ExcludeSemantics, preventing screen readers from announcing its purpose. This makes the control unusable for users relying on screen readers.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 403,
+    "completion_tokens": 282,
+    "thinking_tokens": 1392,
+    "total_tokens": 2077
+  },
+  "latency_ms": 7609
+}

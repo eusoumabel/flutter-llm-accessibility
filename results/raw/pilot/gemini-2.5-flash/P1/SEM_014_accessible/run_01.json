@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_014_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T02:20:41.877609+00:00",
+  "request": {
+    "sample_id": "SEM_014",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Semantics and accessible information",
+        "affected_code": "Semantics(checked: accepted, label: 'I accept the terms and conditions', child: GestureDetector(...))",
+        "explanation": "The custom checkbox uses a Semantics widget with 'checked' state and a 'label', but it lacks the 'toggleable: true' property. Without 'toggleable: true', assistive technologies may not correctly identify this element as an interactive toggleable control (like a checkbox), potentially misrepresenting its semantic role and functionality to users.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 430,
+    "completion_tokens": 113,
+    "thinking_tokens": 2422,
+    "total_tokens": 2965
+  },
+  "latency_ms": 12771
+}

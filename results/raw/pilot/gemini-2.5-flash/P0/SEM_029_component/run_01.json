@@ -1,0 +1,50 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_029_component",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T02:17:47.216163+00:00",
+  "request": {
+    "sample_id": "SEM_029",
+    "variant": "component",
+    "category": "semantics",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing Semantic Label",
+        "affected_code": "InkWell(onTap: () async {await Clipboard.setData(ClipboardData(text: url));if (context.mounted) {ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Copied to Clipboard')),);}},child: const Padding(padding: EdgeInsets.symmetric(horizontal: 8, vertical: 2),child: Icon(Icons.content_copy, size: 16),),)",
+        "explanation": "Interactive widgets that only contain icons should provide a semantic label (e.g., via a Tooltip or Semantics widget) to describe their action for screen reader users. Without a label, users relying on screen readers will not understand the purpose of the 'content_copy' icon.",
+        "confidence": "high"
+      },
+      {
+        "type": "Missing Semantic Label",
+        "affected_code": "InkWell(onTap: onShowQrCode,child: const Padding(padding: EdgeInsets.symmetric(horizontal: 8, vertical: 2),child: Icon(Icons.qr_code, size: 16),),)",
+        "explanation": "Interactive widgets that only contain icons should provide a semantic label (e.g., via a Tooltip or Semantics widget) to describe their action for screen reader users. Without a label, users relying on screen readers will not understand the purpose of the 'qr_code' icon.",
+        "confidence": "high"
+      },
+      {
+        "type": "Missing Semantic Label",
+        "affected_code": "InkWell(onTap: onShowZoom,child: const Padding(padding: EdgeInsets.symmetric(horizontal: 8, vertical: 2),child: Icon(Icons.tv, size: 16),),)",
+        "explanation": "Interactive widgets that only contain icons should provide a semantic label (e.g., via a Tooltip or Semantics widget) to describe their action for screen reader users. Without a label, users relying on screen readers will not understand the purpose of the 'tv' icon.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 523,
+    "completion_tokens": 435,
+    "thinking_tokens": 881,
+    "total_tokens": 1839
+  },
+  "latency_ms": 6576
+}

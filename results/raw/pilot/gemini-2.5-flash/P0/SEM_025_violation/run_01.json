@@ -1,0 +1,44 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_025_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T02:13:28.729077+00:00",
+  "request": {
+    "sample_id": "SEM_025",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Semantic information missing",
+        "affected_code": "Semantics(\n      button: true,\n      enabled: true,\n      child: MouseRegion(\n        cursor: SystemMouseCursors.click,\n        child: GestureDetector(\n          onTap: onCategoryTap,\n          child: isSelected\n              ? CustomPaint(\n                  painter: const TriangleCategoryIndicator(\n                    indicatorWidth,\n                    indicatorHeight,\n                  ),\n                  child: _buttonText(categoryName, selectedCategoryTextStyle),\n                )\n              : _buttonText(categoryName, unselectedCategoryTextStyle),\n        ),\n      ),\n    )",
+        "explanation": "The `CategoryMenuItem` visually indicates its selected state using a `CustomPaint` and text style changes. However, the `Semantics` widget does not explicitly set the `selected` property based on the `isSelected` boolean. This means screen readers and other assistive technologies will not be able to programmatically determine if a category is currently selected, making it difficult for users with visual impairments to understand the current state of the navigation.",
+        "confidence": "high"
+      },
+      {
+        "type": "Color contrast",
+        "affected_code": "final unselectedCategoryTextStyle = selectedCategoryTextStyle.copyWith(\n        color: shrineBrown900.withValues(alpha: 0.6));",
+        "explanation": "The `unselectedCategoryTextStyle` uses `shrineBrown900.withValues(alpha: 0.6)` for its color. Assuming a typical light background (e.g., white), the calculated contrast ratio for this text color is approximately 1.86:1. Given that the font size is 19, which is considered large text, the WCAG 2.1 AA standard requires a minimum contrast ratio of 3:1. The current contrast is significantly below this threshold, making the unselected category names difficult to read for users with low vision or color deficiencies.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 847,
+    "completion_tokens": 453,
+    "thinking_tokens": 2186,
+    "total_tokens": 3486
+  },
+  "latency_ms": 12432
+}

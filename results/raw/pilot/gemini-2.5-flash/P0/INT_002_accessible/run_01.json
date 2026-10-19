@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "INT_002_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T02:04:40.887703+00:00",
+  "request": {
+    "sample_id": "INT_002",
+    "variant": "accessible",
+    "category": "interaction",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Visual Accessibility",
+        "affected_code": "IconButton(icon: const Icon(Icons.close), iconSize: 16, tooltip: 'Remove filter $label', onPressed: onRemove,)",
+        "explanation": "The icon size of 16 logical pixels might be too small for users with low vision to easily perceive, even though the interactive tap target provided by `IconButton` is typically larger. While a `tooltip` is provided for screen readers, visual clarity of interactive elements is also important for many users.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 294,
+    "completion_tokens": 119,
+    "thinking_tokens": 2829,
+    "total_tokens": 3242
+  },
+  "latency_ms": 16605
+}

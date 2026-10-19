@@ -1,0 +1,44 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_013_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T02:22:53.150601+00:00",
+  "request": {
+    "sample_id": "SEM_013",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Semantic Label Missing",
+        "affected_code": "GestureDetector(behavior: HitTestBehavior.opaque, onTap: () => onRatingChanged(star), child: SizedBox(width: 48, height: 48, child: Icon(star <= rating ? Icons.star : Icons.star_border, color: Colors.amber, ), ), )",
+        "explanation": "Each interactive star icon lacks an explicit semantic label, making it difficult for screen reader users to understand its purpose (e.g., '1 star', '2 stars', 'Set rating to 3 stars') and the current state (e.g., '3 out of 5 stars selected'). This can be addressed by wrapping each GestureDetector with a Semantics widget and providing a label and value property.",
+        "confidence": "high"
+      },
+      {
+        "type": "Keyboard Accessibility",
+        "affected_code": "GestureDetector(behavior: HitTestBehavior.opaque, onTap: () => onRatingChanged(star), child: SizedBox(width: 48, height: 48, child: Icon(star <= rating ? Icons.star : Icons.star_border, color: Colors.amber, ), ), )",
+        "explanation": "The GestureDetector widgets do not inherently provide keyboard focus management, preventing users who rely on keyboard navigation (e.g., via Tab key or switch access) from interacting with the star rating component. This can be improved by using FocusableActionDetector or InkWell with appropriate focus nodes and callbacks, or by wrapping with Semantics and setting focusable: true.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 304,
+    "completion_tokens": 369,
+    "thinking_tokens": 1411,
+    "total_tokens": 2084
+  },
+  "latency_ms": 8415
+}

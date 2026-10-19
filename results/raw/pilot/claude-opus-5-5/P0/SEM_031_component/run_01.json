@@ -1,0 +1,51 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_031_component",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T01:57:00.603284+00:00",
+  "request": {
+    "sample_id": "SEM_031",
+    "variant": "component",
+    "category": "semantics",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing persistent label",
+        "affected_code": "hintText: widget.hintText,",
+        "explanation": "The field relies only on hintText with no labelText/label. The hint disappears once the user types, leaving no visible label describing the field's purpose, which harms users with cognitive or memory impairments.",
+        "confidence": "medium"
+      },
+      {
+        "type": "Toggle button state not conveyed",
+        "affected_code": "tooltip: 'Show Password',",
+        "explanation": "The tooltip (used as the accessible name) is always 'Show Password' regardless of whether the password is currently visible or hidden. Screen reader users are not informed of the current state or that pressing it will hide the password.",
+        "confidence": "high"
+      },
+      {
+        "type": "Low contrast / invisible field boundary",
+        "affected_code": "borderSide: const BorderSide(color: Colors.transparent, width: 5.0),",
+        "explanation": "The border is transparent, so the field's boundary depends only on the fill color, which may not meet the 3:1 non-text contrast requirement for identifying input components.",
+        "confidence": "low"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 1531,
+    "completion_tokens": 352,
+    "total_tokens": 1883
+  },
+  "latency_ms": 4589,
+  "request_id": "req_011CgAmMoFuad98HzJ1djAfk"
+}

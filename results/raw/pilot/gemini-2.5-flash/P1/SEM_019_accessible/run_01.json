@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_019_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T02:21:54.568909+00:00",
+  "request": {
+    "sample_id": "SEM_019",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Interactive Target Size",
+        "affected_code": "IconButton(",
+        "explanation": "The interactive target size of the IconButton is 56x40 logical pixels (width x height). The height of 40 logical pixels is below the recommended minimum of 48 logical pixels for interactive elements, which can make it difficult for users with motor impairments or those using assistive technologies to accurately tap the button.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 238,
+    "completion_tokens": 89,
+    "thinking_tokens": 772,
+    "total_tokens": 1099
+  },
+  "latency_ms": 4383
+}

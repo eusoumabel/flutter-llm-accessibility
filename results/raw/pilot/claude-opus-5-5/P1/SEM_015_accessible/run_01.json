@@ -1,0 +1,32 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_015_accessible",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T01:57:37.132962+00:00",
+  "request": {
+    "sample_id": "SEM_015",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": []
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 996,
+    "completion_tokens": 10,
+    "total_tokens": 1006
+  },
+  "latency_ms": 1763,
+  "request_id": "req_011CgAmQhYCVmiGGVXtqC3w2"
+}

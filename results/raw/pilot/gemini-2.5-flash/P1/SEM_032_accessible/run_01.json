@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_032_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T02:21:02.918332+00:00",
+  "request": {
+    "sample_id": "SEM_032",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Incomplete Semantic Information",
+        "affected_code": "IconButton(\n            icon: const Icon(Icons.radio_button_unchecked),\n            isSelected:\n                colorSelected.color == ColorSeed.values[i].color &&\n                colorSelectionMethod == ColorSelectionMethod.colorSeed,\n            selectedIcon: const Icon(Icons.circle),\n            color: ColorSeed.values[i].color,\n            onPressed: () {\n              handleColorSelect(i);\n            },\n            tooltip: ColorSeed.values[i].label,\n          )",
+        "explanation": "The `IconButton` widgets are used to represent a selection of colors, visually indicating the selected state using `isSelected` and `selectedIcon`. However, the `isSelected` property of `IconButton` does not automatically convey a semantic 'selected' state to accessibility services. Users of screen readers will hear 'button' but not 'selected button', making it difficult to discern the currently active color choice. To properly convey the selection state, the `IconButton` should be wrapped in a `Semantics` widget with the `selected` property set to match `isSelected`.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 543,
+    "completion_tokens": 274,
+    "thinking_tokens": 1633,
+    "total_tokens": 2450
+  },
+  "latency_ms": 10400
+}

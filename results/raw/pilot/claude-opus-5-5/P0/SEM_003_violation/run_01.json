@@ -1,0 +1,45 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_003_violation",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T01:46:41.774693+00:00",
+  "request": {
+    "sample_id": "SEM_003",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing accessible name for informative icon",
+        "affected_code": "Icon(\n  delivered ? Icons.check_circle : Icons.schedule,\n  color: delivered ? Colors.green : Colors.orange,\n  semanticLabel: '',\n)",
+        "explanation": "The icon is the only element conveying the order's delivery status (delivered vs. pending), but its semanticLabel is an empty string. Screen reader users only hear 'Order #...' and receive no status information. The icon should have a meaningful label such as 'Delivered' or 'Pending', or the status should also be provided as text.",
+        "confidence": "high"
+      },
+      {
+        "type": "Information conveyed by color and icon shape only",
+        "affected_code": "color: delivered ? Colors.green : Colors.orange,",
+        "explanation": "The delivery status is communicated only visually through icon shape and green/orange color, with no accompanying text. Users with color vision deficiencies or cognitive disabilities may not reliably interpret the status. A visible text label would make the status clear.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 733,
+    "completion_tokens": 355,
+    "total_tokens": 1088
+  },
+  "latency_ms": 4471,
+  "request_id": "req_011CgAkaCHxnKE8SsYgzPvwq"
+}

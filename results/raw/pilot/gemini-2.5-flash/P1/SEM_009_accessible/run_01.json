@@ -1,0 +1,44 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_009_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T02:07:16.874146+00:00",
+  "request": {
+    "sample_id": "SEM_009",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Semantics and accessible information",
+        "affected_code": "Semantics(link: true, child: GestureDetector(...))",
+        "explanation": "The `Semantics` widget correctly identifies the element as a link, but it does not explicitly provide an accessible label for the interactive `GestureDetector`. While the visual text 'Read the Terms of Service' is present, it may not be automatically associated as the accessible name for the interactive link by screen readers, potentially leading to an announcement like 'Link' without its descriptive purpose. An explicit `label` property should be added to the `Semantics` widget to ensure the text is correctly conveyed as the link's accessible name.",
+        "confidence": "high"
+      },
+      {
+        "type": "Interaction and interactive target accessibility",
+        "affected_code": "GestureDetector(onTap: onOpenTerms, ...)",
+        "explanation": "The `GestureDetector` widget handles tap interactions but does not inherently provide keyboard focusability or handle keyboard activation (e.g., pressing Enter or Space). This means users who rely on keyboard navigation or assistive technologies that simulate keyboard input will not be able to activate this link. To ensure full accessibility, the interactive element should be made focusable and respond to keyboard events, for example, by using a `TextButton` or wrapping the `GestureDetector` with an `InkWell` or `FocusableActionDetector`.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 289,
+    "completion_tokens": 329,
+    "thinking_tokens": 2631,
+    "total_tokens": 3249
+  },
+  "latency_ms": 15268
+}

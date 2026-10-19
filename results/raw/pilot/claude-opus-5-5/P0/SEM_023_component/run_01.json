@@ -1,0 +1,57 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_023_component",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T01:44:17.486636+00:00",
+  "request": {
+    "sample_id": "SEM_023",
+    "variant": "component",
+    "category": "semantics",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing button role / semantics",
+        "affected_code": "Semantics(\n      hint: 'Add to cart',\n      child: MouseRegion(... GestureDetector(onTap: onAddToCart, ...",
+        "explanation": "The card is interactive via a GestureDetector but the Semantics wrapper does not set button: true (nor is an InkWell/button widget used), so assistive technologies do not announce it as an actionable button. Only a hint is provided, without a role.",
+        "confidence": "high"
+      },
+      {
+        "type": "Not keyboard accessible",
+        "affected_code": "GestureDetector(\n          onTap: onAddToCart,",
+        "explanation": "GestureDetector does not participate in focus traversal and does not respond to Enter/Space keys. On desktop, keyboard users cannot focus or activate the add-to-cart action. No Focus/FocusableActionDetector or button widget is used, and no visible focus indicator exists.",
+        "confidence": "high"
+      },
+      {
+        "type": "Icon without semantic label",
+        "affected_code": "const Padding(\n                padding: EdgeInsets.all(16),\n                child: Icon(Icons.add_shopping_cart),\n              ),",
+        "explanation": "The add-to-cart icon has no semanticLabel. While the action is partly conveyed by the hint, the icon itself provides no accessible description; it should be labeled or explicitly excluded with the action exposed via a proper label.",
+        "confidence": "low"
+      },
+      {
+        "type": "Unmerged / fragmented semantics",
+        "affected_code": "return Semantics(\n      hint: 'Add to cart',\n      child: ...",
+        "explanation": "Semantics lacks a label and does not merge descendants (e.g. container: true / MergeSemantics), so the product name and price may be read as separate nodes, and the tap action may not be clearly associated with the product name.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 1222,
+    "completion_tokens": 616,
+    "total_tokens": 1838
+  },
+  "latency_ms": 6931,
+  "request_id": "req_011CgAkPNzaLodZekFnkFCTc"
+}

@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_006_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T01:45:20.503967+00:00",
+  "request": {
+    "sample_id": "SEM_006",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Accessibility",
+        "affected_code": "IconButton(icon: const Icon(Icons.chevron_right), tooltip: 'Previous image', onPressed: onNext,)",
+        "explanation": "The 'Next' button has an incorrect tooltip. It is labeled 'Previous image' instead of 'Next image', which can confuse screen reader users and hinder navigation.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 268,
+    "completion_tokens": 77,
+    "thinking_tokens": 320,
+    "total_tokens": 665
+  },
+  "latency_ms": 2614
+}

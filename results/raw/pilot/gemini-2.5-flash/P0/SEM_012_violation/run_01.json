@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_012_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T02:09:51.798216+00:00",
+  "request": {
+    "sample_id": "SEM_012",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Semantic information missing",
+        "affected_code": "Semantics(button: true, child: GestureDetector(...))",
+        "explanation": "The `GestureDetector` acts as a button to expand/collapse the FAQ answer. While `button: true` is set, the `Semantics` widget does not explicitly convey the current expanded/collapsed state to assistive technologies. Screen readers will announce it as a button and read the question, but won't inform the user if it's currently expanded or collapsed, which is crucial context for an accordion-like component. Adding `expanded: _expanded` to the `Semantics` widget would resolve this.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 412,
+    "completion_tokens": 145,
+    "thinking_tokens": 1112,
+    "total_tokens": 1669
+  },
+  "latency_ms": 7162
+}

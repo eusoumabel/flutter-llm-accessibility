@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_008_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T01:45:28.373896+00:00",
+  "request": {
+    "sample_id": "SEM_008",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing interactive element functionality",
+        "affected_code": "ListTile(title: Text(order))",
+        "explanation": "Each ListTile representing an order lacks an 'onTap' or 'onLongPress' handler. If these list items are intended to be interactive (e.g., to navigate to order details), users relying on screen readers or keyboard navigation will not be able to activate them, making the content inaccessible for interaction.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 230,
+    "completion_tokens": 94,
+    "thinking_tokens": 1410,
+    "total_tokens": 1734
+  },
+  "latency_ms": 7867
+}

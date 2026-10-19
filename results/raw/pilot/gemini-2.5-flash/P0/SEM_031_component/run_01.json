@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_031_component",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T02:19:43.726245+00:00",
+  "request": {
+    "sample_id": "SEM_031",
+    "variant": "component",
+    "category": "semantics",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Inaccurate semantic label",
+        "affected_code": "IconButton(\n                tooltip: 'Show Password',\n                splashRadius: 10.0,\n                onPressed: () => setState(() {\n                  _obscureText = !_obscureText;\n                }),\n                icon: _obscureText\n                    ? const Icon(Icons.visibility_off, size: 18.0)\n                    : const Icon(Icons.visibility, size: 18.0),\n              )",
+        "explanation": "The tooltip for the password visibility toggle button is static ('Show Password'). When the password is visible (_obscureText is false), the button's action is to hide the password, but the tooltip still incorrectly suggests 'Show Password'. This can confuse screen reader users who rely on the tooltip to understand the button's current function.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 751,
+    "completion_tokens": 215,
+    "thinking_tokens": 2204,
+    "total_tokens": 3170
+  },
+  "latency_ms": 12700
+}

@@ -1,0 +1,50 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_010_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T02:06:26.205531+00:00",
+  "request": {
+    "sample_id": "SEM_010",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Semantic Role and State",
+        "affected_code": "Semantics(button: true, label: 'Dark mode', child: GestureDetector(behavior: HitTestBehavior.opaque, onTap: () => onChanged(!isOn), child: SizedBox(width: 64, height: 48, child: Center(child: AnimatedContainer(duration: const Duration(milliseconds: 200), width: 52, height: 32, padding: const EdgeInsets.all(4), alignment: isOn ? Alignment.centerRight : Alignment.centerLeft, decoration: BoxDecoration(color: isOn ? Colors.indigo : Colors.grey.shade400, borderRadius: BorderRadius.circular(16)), child: Container(width: 24, height: 24, decoration: const BoxDecoration(color: Colors.white, shape: BoxShape.circle))))))))",
+        "explanation": "The Semantics widget is configured as a 'button' with the label 'Dark mode'. However, this component functions as a toggle switch. Assistive technologies will announce it as a button, failing to convey its true role as a switch and its current state (on or off). This can be confusing for users relying on screen readers. A Semantics widget for a switch should typically use 'toggleable: true' and provide a 'value' or 'checked' property, or ideally, use Flutter's built-in Switch widget which handles these semantics automatically.",
+        "confidence": "high"
+      },
+      {
+        "type": "Color Contrast",
+        "affected_code": "color: isOn ? Colors.indigo : Colors.grey.shade400, ... child: Container(width: 24, height: 24, decoration: const BoxDecoration(color: Colors.white, shape: BoxShape.circle))",
+        "explanation": "When the toggle is in the 'off' state (isOn is false), the background color of the track is Colors.grey.shade400 and the color of the thumb is Colors.white. The contrast ratio between these two colors is approximately 2.3:1. This falls below the WCAG 2.1 AA requirement of 3:1 for graphical objects and user interface components, making it difficult for users with low vision to perceive the toggle's state.",
+        "confidence": "high"
+      },
+      {
+        "type": "Keyboard Accessibility",
+        "affected_code": "GestureDetector(behavior: HitTestBehavior.opaque, onTap: () => onChanged(!isOn), child: SizedBox(width: 64, height: 48, ...))",
+        "explanation": "The toggle is implemented using a GestureDetector for tap handling. While Semantics(button: true) suggests it should be interactive, GestureDetector does not inherently provide keyboard focusability. Users who navigate using a keyboard or other input devices that simulate keyboard input will not be able to reach or activate this toggle, hindering their ability to interact with the component.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 407,
+    "completion_tokens": 666,
+    "thinking_tokens": 2462,
+    "total_tokens": 3535
+  },
+  "latency_ms": 15261
+}

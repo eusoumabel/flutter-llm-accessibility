@@ -1,0 +1,44 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_015_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T02:12:31.165497+00:00",
+  "request": {
+    "sample_id": "SEM_015",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing accessibility label",
+        "affected_code": "GestureDetector(behavior: HitTestBehavior.opaque,onTap: () => onSelected(entry.key),child: SizedBox(width: 48,height: 48,child: Center(child: Container(width: 32,height: 32,decoration: BoxDecoration(color: entry.value,shape: BoxShape.circle,border: Border.all(color: entry.key == selectedColor? Colors.black: Colors.transparent,width: 3,))))),)",
+        "explanation": "Each color swatch is a tappable element but lacks an explicit semantic label. Screen readers will not announce the name of the color (e.g., 'Red', 'Blue'), making it difficult for visually impaired users to understand which color they are interacting with or selecting. The 'entry.key' could be used to provide this label via a Semantics widget.",
+        "confidence": "high"
+      },
+      {
+        "type": "Missing accessibility state",
+        "affected_code": "GestureDetector(behavior: HitTestBehavior.opaque,onTap: () => onSelected(entry.key),child: SizedBox(width: 48,height: 48,child: Center(child: Container(width: 32,height: 32,decoration: BoxDecoration(color: entry.value,shape: BoxShape.circle,border: Border.all(color: entry.key == selectedColor? Colors.black: Colors.transparent,width: 3,))))),)",
+        "explanation": "The selected color is indicated visually by a black border. However, this selection state is not conveyed semantically to accessibility services. Screen readers will not announce whether a particular color swatch is currently selected, making it difficult for visually impaired users to understand the current state of the color picker. A Semantics widget with 'isSelected: true' should be used for the selected item.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 377,
+    "completion_tokens": 401,
+    "thinking_tokens": 1049,
+    "total_tokens": 1827
+  },
+  "latency_ms": 7447
+}

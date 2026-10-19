@@ -1,0 +1,57 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_024_component",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T01:57:13.020383+00:00",
+  "request": {
+    "sample_id": "SEM_024",
+    "variant": "component",
+    "category": "semantics",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Custom interactive control missing semantic action",
+        "affected_code": "Semantics(\n      button: true,\n      enabled: true,\n      child: MouseRegion(... GestureDetector(onTap: onLogout, ...)))",
+        "explanation": "The control is built from GestureDetector instead of a standard button. The Semantics wrapper declares button: true but provides no onTap, and the GestureDetector's tap may not be exposed reliably as a semantic tap action merged into the same node. The control is also not focusable or keyboard-activatable, because GestureDetector provides no focus or Enter/Space handling. Use TextButton, or wrap it with FocusableActionDetector or InkWell and add Semantics(onTap: onLogout).",
+        "confidence": "medium"
+      },
+      {
+        "type": "Missing focus/keyboard accessibility",
+        "affected_code": "GestureDetector(\n          onTap: onLogout,\n          child: _buttonText('LOGOUT', logoutTextStyle),\n        )",
+        "explanation": "GestureDetector does not participate in focus traversal. Keyboard and switch-access users cannot reach or activate the logout control, and there is no focus indicator.",
+        "confidence": "high"
+      },
+      {
+        "type": "Accessible label in all caps",
+        "affected_code": "_buttonText('LOGOUT', logoutTextStyle)",
+        "explanation": "The label is hardcoded in uppercase. Some screen readers may spell it out letter by letter or read it awkwardly. Use 'Logout' with a text transform for the visual style, or provide Semantics(label: 'Log out').",
+        "confidence": "low"
+      },
+      {
+        "type": "Interactive target size possibly insufficient",
+        "affected_code": "Padding(\n      padding: const EdgeInsets.symmetric(vertical: 16),\n      child: Text(...))",
+        "explanation": "The tap area covers only the text plus vertical padding, with no horizontal padding or minimum constraints. Since GestureDetector without a HitTestBehavior hits only painted children, the touch target width depends on the text, and the 48x48 minimum is not guaranteed.",
+        "confidence": "low"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 924,
+    "completion_tokens": 706,
+    "total_tokens": 1630
+  },
+  "latency_ms": 7799,
+  "request_id": "req_011CgAmNUfUydzgAYze115Nv"
+}

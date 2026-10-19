@@ -1,0 +1,22 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_030_component",
+  "sample_id": "SEM_030",
+  "variant": "component",
+  "category": "semantics",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "prompt": "P1",
+  "run": 1,
+  "status": "ok",
+  "valid": true,
+  "predicted_has_violation": true,
+  "predicted_violations": [
+    "interactive_target_size",
+    "accessible_label"
+  ],
+  "predicted_confidences": [
+    "low",
+    "medium"
+  ]
+}

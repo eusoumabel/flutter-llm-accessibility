@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_032_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T02:23:18.032170+00:00",
+  "request": {
+    "sample_id": "SEM_032",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Color Contrast",
+        "affected_code": "color: ColorSeed.values[i].color,",
+        "explanation": "The color of the IconButton is set directly to the ColorSeed color. Some of these colors (e.g., yellow, light orange) may have insufficient contrast against the default background of the application, making the icons difficult to perceive for users with low vision. While a tooltip is provided, visual distinction is crucial for interactive elements.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 530,
+    "completion_tokens": 98,
+    "thinking_tokens": 1580,
+    "total_tokens": 2208
+  },
+  "latency_ms": 9303
+}

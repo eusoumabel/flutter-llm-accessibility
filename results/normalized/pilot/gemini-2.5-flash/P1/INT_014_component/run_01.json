@@ -1,0 +1,22 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "INT_014_component",
+  "sample_id": "INT_014",
+  "variant": "component",
+  "category": "interaction",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "prompt": "P1",
+  "run": 1,
+  "status": "ok",
+  "valid": true,
+  "predicted_has_violation": true,
+  "predicted_violations": [
+    "Missing semantic label",
+    "Lack of accessible gesture alternatives"
+  ],
+  "predicted_confidences": [
+    "high",
+    "high"
+  ]
+}

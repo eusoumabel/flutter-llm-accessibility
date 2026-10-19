@@ -1,0 +1,45 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "INT_017_component",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T01:55:46.012904+00:00",
+  "request": {
+    "sample_id": "INT_017",
+    "variant": "component",
+    "category": "interaction",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Insufficient color contrast / hardcoded color",
+        "affected_code": "shape: const CircleBorder(side: BorderSide(width: 1.0, color: Colors.white))",
+        "explanation": "The circled border uses a hardcoded white 1px outline regardless of theme or background, which may be invisible on light backgrounds, reducing the perceivability of the button boundary.",
+        "confidence": "low"
+      },
+      {
+        "type": "Potentially small touch target",
+        "affected_code": "padding: padding ?? const EdgeInsetsDirectional.all(12.0)",
+        "explanation": "Touch target size depends on the child and a customizable padding; if a smaller padding or small child is provided, the tappable area may fall below the 48x48 minimum, as no minimum size constraint is enforced.",
+        "confidence": "low"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 950,
+    "completion_tokens": 271,
+    "total_tokens": 1221
+  },
+  "latency_ms": 4055,
+  "request_id": "req_011CgAmGLb9Sd9HCS6s49dt8"
+}

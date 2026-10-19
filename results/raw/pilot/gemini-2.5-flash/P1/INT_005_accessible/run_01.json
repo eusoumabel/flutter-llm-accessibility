@@ -1,0 +1,50 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "INT_005_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T01:46:37.301194+00:00",
+  "request": {
+    "sample_id": "INT_005",
+    "variant": "accessible",
+    "category": "interaction",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Semantic state",
+        "affected_code": "IconButton(icon: const Icon(Icons.zoom_out), tooltip: 'Zoom out', onPressed: () => _setScale(_scale - 0.5))",
+        "explanation": "The 'Zoom out' button remains enabled even when the floor plan is already at its minimum zoom level (1.0). This can be confusing for users, especially those relying on screen readers, as activating the button will not result in a change, but its state does not reflect its ineffectiveness.",
+        "confidence": "high"
+      },
+      {
+        "type": "Semantic state",
+        "affected_code": "IconButton(icon: const Icon(Icons.zoom_in), tooltip: 'Zoom in', onPressed: () => _setScale(_scale + 0.5))",
+        "explanation": "The 'Zoom in' button remains enabled even when the floor plan is already at its maximum zoom level (4.0). This can be confusing for users, especially those relying on screen readers, as activating the button will not result in a change, but its state does not reflect its ineffectiveness.",
+        "confidence": "high"
+      },
+      {
+        "type": "Accessible gesture alternatives",
+        "affected_code": "InteractiveViewer",
+        "explanation": "The InteractiveViewer allows panning via drag gestures. However, there are no alternative controls (e.g., directional buttons) provided for users who may have difficulty performing drag gestures, which could limit accessibility for some users.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 505,
+    "completion_tokens": 358,
+    "thinking_tokens": 1767,
+    "total_tokens": 2630
+  },
+  "latency_ms": 10735
+}

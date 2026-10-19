@@ -1,0 +1,39 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_002_violation",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T01:56:08.286245+00:00",
+  "request": {
+    "sample_id": "SEM_002",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing accessible label",
+        "affected_code": "IconButton(\n  icon: const Icon(Icons.share),\n  onPressed: onShare,\n)",
+        "explanation": "The IconButton contains only an icon with no tooltip or semanticLabel. Material Icons provide no automatic semantic label, so screen readers will announce it only as 'button' without describing its purpose (share). Add tooltip: 'Share' or a semanticLabel on the Icon.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 761,
+    "completion_tokens": 173,
+    "total_tokens": 934
+  },
+  "latency_ms": 3062,
+  "request_id": "req_011CgAmJ47FinbtKyw5myRCE"
+}

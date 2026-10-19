@@ -1,0 +1,57 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_010_violation",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T01:51:04.745648+00:00",
+  "request": {
+    "sample_id": "SEM_010",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing state semantics",
+        "affected_code": "Semantics(\n      button: true,\n      label: 'Dark mode',",
+        "explanation": "The custom switch is exposed as a button with a label but does not expose its on/off state (e.g., toggled: isOn). Screen reader users cannot determine whether dark mode is currently enabled or disabled, and state changes are not announced.",
+        "confidence": "high"
+      },
+      {
+        "type": "Incorrect role",
+        "affected_code": "button: true",
+        "explanation": "The widget behaves as a toggle switch but is announced as a generic button. Using toggled/checked semantics (or Material Switch) would convey the correct role and state to assistive technologies.",
+        "confidence": "medium"
+      },
+      {
+        "type": "Missing keyboard/focus support",
+        "affected_code": "GestureDetector(\n        behavior: HitTestBehavior.opaque,\n        onTap: () => onChanged(!isOn),",
+        "explanation": "GestureDetector does not participate in focus traversal and does not respond to keyboard activation (Enter/Space), so keyboard and switch-access users cannot operate the toggle. No visible focus indicator is provided either.",
+        "confidence": "high"
+      },
+      {
+        "type": "Color-only state indication / low contrast",
+        "affected_code": "color: isOn ? Colors.indigo : Colors.grey.shade400,",
+        "explanation": "The off state uses a light grey track with a white thumb, which has low contrast (well below 3:1 for non-text UI components), making the thumb and control boundary hard to perceive. State is conveyed mainly by color and thumb position without additional indicators.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 972,
+    "completion_tokens": 539,
+    "total_tokens": 1511
+  },
+  "latency_ms": 5659,
+  "request_id": "req_011CgAkuVAjnTLKxFZHTqM14"
+}

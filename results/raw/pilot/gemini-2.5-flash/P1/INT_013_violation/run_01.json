@@ -1,0 +1,44 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "INT_013_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T02:14:23.325603+00:00",
+  "request": {
+    "sample_id": "INT_013",
+    "variant": "violation",
+    "category": "interaction",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Interaction and interactive target accessibility",
+        "affected_code": "GestureDetector(onDoubleTapDown: _onDoubleTapDown, onDoubleTap: _onDoubleTap, child: InteractiveViewer(...))",
+        "explanation": "The custom double-tap gesture for zooming in and out lacks an accessible alternative. Users unable to perform multi-touch gestures (e.g., those using a keyboard, switch access, or with motor impairments) cannot access this zoom functionality.",
+        "confidence": "high"
+      },
+      {
+        "type": "Semantics and accessible information",
+        "affected_code": "GestureDetector(onDoubleTapDown: _onDoubleTapDown, onDoubleTap: _onDoubleTap, child: InteractiveViewer(...))",
+        "explanation": "The custom double-tap gesture for zooming is not semantically described. Assistive technologies will not announce the availability of this specific zoom functionality or provide instructions on how to use it, making it undiscoverable for users relying on screen readers.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 803,
+    "completion_tokens": 248,
+    "thinking_tokens": 1148,
+    "total_tokens": 2199
+  },
+  "latency_ms": 7372
+}

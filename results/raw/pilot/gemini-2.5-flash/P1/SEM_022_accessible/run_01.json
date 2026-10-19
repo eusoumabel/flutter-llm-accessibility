@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_022_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T02:11:27.832304+00:00",
+  "request": {
+    "sample_id": "SEM_022",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Semantics information missing",
+        "affected_code": "Image(image: asset, width: 64, height: 64, excludeFromSemantics: true,)",
+        "explanation": "The image is explicitly excluded from the semantics tree. If this image conveys unique or non-redundant information crucial for understanding the category, screen reader users will not be able to access this information. Consider providing a semanticLabel or removing excludeFromSemantics: true if the image is informative and not purely decorative or fully redundant with the 'title' text.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 381,
+    "completion_tokens": 126,
+    "thinking_tokens": 3880,
+    "total_tokens": 4387
+  },
+  "latency_ms": 20658
+}

@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_001_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T02:03:53.893037+00:00",
+  "request": {
+    "sample_id": "SEM_001",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing semantic label",
+        "affected_code": "IconButton(icon: Icon(isFavorite ? Icons.favorite : Icons.favorite_border),onPressed: onPressed,)",
+        "explanation": "The IconButton does not have a 'tooltip' property, which is crucial for providing a semantic label to assistive technologies like screen readers. Without a descriptive label that reflects its current state (e.g., 'Mark as favorite' or 'Unmark as favorite'), users relying on screen readers may not understand the button's purpose or its current action.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 202,
+    "completion_tokens": 116,
+    "thinking_tokens": 672,
+    "total_tokens": 990
+  },
+  "latency_ms": 4682
+}

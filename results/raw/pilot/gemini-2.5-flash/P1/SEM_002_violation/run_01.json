@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_002_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T02:16:50.935390+00:00",
+  "request": {
+    "sample_id": "SEM_002",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Accessible Label Missing",
+        "affected_code": "IconButton(icon: const Icon(Icons.share), onPressed: onShare)",
+        "explanation": "The IconButton for sharing does not have an explicit 'tooltip' or 'semanticLabel' property. While the icon visually suggests 'share', screen readers might not announce its purpose clearly, potentially just saying 'button' or attempting to describe the icon, which is not as helpful as an explicit label like 'Share article'.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 257,
+    "completion_tokens": 130,
+    "thinking_tokens": 742,
+    "total_tokens": 1129
+  },
+  "latency_ms": 4979
+}

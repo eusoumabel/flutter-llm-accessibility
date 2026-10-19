@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_003_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T02:05:25.523187+00:00",
+  "request": {
+    "sample_id": "SEM_003",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Semantics and accessible information",
+        "affected_code": "Icon(\n          delivered ? Icons.check_circle : Icons.schedule,\n          color: delivered ? Colors.green : Colors.orange,\n          semanticLabel: '',\n        )",
+        "explanation": "The Icon widget's `semanticLabel` is explicitly set to an empty string. This prevents screen readers from announcing the status conveyed by the icon (delivered or scheduled), making crucial information inaccessible to users who rely on assistive technologies. The `semanticLabel` should describe the icon's meaning, e.g., 'Order delivered' or 'Order scheduled'.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 258,
+    "completion_tokens": 136,
+    "thinking_tokens": 649,
+    "total_tokens": 1043
+  },
+  "latency_ms": 4501
+}

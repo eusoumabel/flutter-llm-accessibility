@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "INT_015_component",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T02:15:28.624828+00:00",
+  "request": {
+    "sample_id": "INT_015",
+    "variant": "component",
+    "category": "interaction",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Low Contrast",
+        "affected_code": "Container(width: 2, color: Colors.white.withValues(alpha: 0.95))",
+        "explanation": "The vertical divider line, which is a non-text UI component, has a very low contrast ratio (approximately 1.17:1) against the background color (Colors.grey.shade200). This fails to meet WCAG 2.1 AA success criterion 1.4.11 Non-text Contrast, which requires a contrast ratio of at least 3:1 for graphical objects and user interface components.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 2098,
+    "completion_tokens": 134,
+    "thinking_tokens": 4034,
+    "total_tokens": 6266
+  },
+  "latency_ms": 20155
+}

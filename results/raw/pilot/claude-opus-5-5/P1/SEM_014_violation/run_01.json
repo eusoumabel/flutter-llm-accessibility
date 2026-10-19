@@ -1,0 +1,51 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_014_violation",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T01:55:38.666193+00:00",
+  "request": {
+    "sample_id": "SEM_014",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing semantic role and state",
+        "affected_code": "GestureDetector(\n  behavior: HitTestBehavior.opaque,\n  onTap: () => onChanged(!accepted),\n  child: SizedBox(... Container(...)))",
+        "explanation": "The custom checkbox is built from a GestureDetector and a decorated Container. It does not expose a checkbox role or a checked/unchecked state to assistive technologies. Screen reader users cannot tell that it is a checkbox or whether it is currently checked. Wrap it in Semantics(checked: accepted, onTap: ...) or use the standard Checkbox/CheckboxListTile widget.",
+        "confidence": "high"
+      },
+      {
+        "type": "Missing accessible label",
+        "affected_code": "const Expanded(\n  child: ExcludeSemantics(\n    child: Text('I accept the terms and conditions'),\n  ),\n)",
+        "explanation": "The visible label text is wrapped in ExcludeSemantics, so it is removed from the semantics tree. Because it is also not associated with the control, the interactive checkbox has no accessible name. Screen reader users will not know what they are agreeing to. Provide the label via Semantics(label: ...) on the control, or merge the text and control, for example with MergeSemantics or CheckboxListTile.",
+        "confidence": "high"
+      },
+      {
+        "type": "Label not part of interactive target",
+        "affected_code": "Row(children: [GestureDetector(...), const Expanded(child: ExcludeSemantics(child: Text(...)))])",
+        "explanation": "Tapping the label text does not toggle the checkbox. Only the 48x48 box is interactive. Users expect the label to activate the control, and the control and label are not grouped as one semantic unit. Use CheckboxListTile, or wrap the whole row in a single tappable, merged semantics node.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 978,
+    "completion_tokens": 624,
+    "total_tokens": 1602
+  },
+  "latency_ms": 6267,
+  "request_id": "req_011CgAmFdkEwoTiT9otnqeeZ"
+}

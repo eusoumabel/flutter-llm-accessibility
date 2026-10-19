@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_019_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T02:19:49.586177+00:00",
+  "request": {
+    "sample_id": "SEM_019",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Semantic Label Mismatch",
+        "affected_code": "tooltip: 'Login'",
+        "explanation": "The `tooltip` for the `IconButton` is set to 'Login', while the class name `OpenProfileButton` and the `Icons.account_circle` icon suggest the button's purpose is to open a user profile. This discrepancy can be confusing for screen reader users, as the announced label ('Login') may not accurately reflect the button's actual action or destination, especially if the user is already logged in. Consider changing the tooltip to 'Open Profile' or 'View Profile' to better match the apparent intent.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 224,
+    "completion_tokens": 135,
+    "thinking_tokens": 1002,
+    "total_tokens": 1361
+  },
+  "latency_ms": 5858
+}

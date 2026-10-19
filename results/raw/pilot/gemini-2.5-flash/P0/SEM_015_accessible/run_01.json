@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_015_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T02:20:29.104453+00:00",
+  "request": {
+    "sample_id": "SEM_015",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Insufficient semantic label",
+        "affected_code": "label: entry.key,",
+        "explanation": "The semantic label for each color swatch is set to only the color name (e.g., 'Red'). While the `button: true` property correctly identifies it as an interactive element, providing a more descriptive label like 'Red color option' or 'Select Red color' would offer better context and clarity for screen reader users, explicitly stating the purpose of the interactive element.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 411,
+    "completion_tokens": 131,
+    "thinking_tokens": 1949,
+    "total_tokens": 2491
+  },
+  "latency_ms": 11002
+}

@@ -1,0 +1,44 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "INT_013_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T02:15:36.509187+00:00",
+  "request": {
+    "sample_id": "INT_013",
+    "variant": "violation",
+    "category": "interaction",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Semantic Information Missing",
+        "affected_code": "GestureDetector(\n      onDoubleTapDown: _onDoubleTapDown,\n      onDoubleTap: _onDoubleTap,\n      child: InteractiveViewer(\n        // ...\n      ),\n    )",
+        "explanation": "The custom double-tap gesture for zooming in/out is not explicitly exposed to accessibility services. Users relying on screen readers or other assistive technologies might not be aware of this functionality or how to trigger it. Wrapping the GestureDetector with a Semantics widget and providing a custom action or hint would improve discoverability.",
+        "confidence": "high"
+      },
+      {
+        "type": "Alternative Input Missing",
+        "affected_code": "void _onDoubleTap() { ... }",
+        "explanation": "The custom double-tap gesture provides a specific zoom-in (2x) and zoom-out (reset) functionality. Users who cannot perform double-tap gestures easily (e.g., due to motor impairments or using certain assistive technologies) may not be able to access this specific functionality. While InteractiveViewer provides pinch-to-zoom, offering alternative controls (e.g., dedicated zoom buttons) for this specific double-tap behavior would improve accessibility.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 790,
+    "completion_tokens": 296,
+    "thinking_tokens": 1092,
+    "total_tokens": 2178
+  },
+  "latency_ms": 7881
+}

@@ -1,0 +1,44 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "INT_004_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T02:18:59.371737+00:00",
+  "request": {
+    "sample_id": "INT_004",
+    "variant": "violation",
+    "category": "interaction",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Interaction and interactive target accessibility",
+        "affected_code": "GestureDetector(onDoubleTap: onToggleLike, child: Image(...))",
+        "explanation": "The `onToggleLike` action is exclusively triggered by a `onDoubleTap` gesture. This makes the functionality inaccessible to users who cannot perform a double-tap, such as those with motor impairments or users relying on assistive technologies that may not easily simulate this gesture. A single-tap alternative or a dedicated interactive control (e.g., an `IconButton`) should be provided to ensure all users can interact with this feature.",
+        "confidence": "high"
+      },
+      {
+        "type": "Semantics and accessible information",
+        "affected_code": "GestureDetector(onDoubleTap: onToggleLike, child: Image(...)) and final bool liked;",
+        "explanation": "The `GestureDetector` implements a \"like\" functionality but lacks proper semantic information for accessibility services. Firstly, it does not convey its interactive role (e.g., \"button\"). Screen reader users will only hear the `semanticLabel` of the `Image` (\"Photo by [author]\") and won't be informed that the image is interactive or what action it performs. Secondly, the `liked` property, which indicates the current like status, is not semantically conveyed, meaning screen reader users will not know if the post is currently liked or not. An explicit accessible label describing the action (e.g., \"Double tap to like/unlike\") and the current state (e.g., \"liked\" or \"not liked\") is missing.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 330,
+    "completion_tokens": 371,
+    "thinking_tokens": 1870,
+    "total_tokens": 2571
+  },
+  "latency_ms": 10424
+}

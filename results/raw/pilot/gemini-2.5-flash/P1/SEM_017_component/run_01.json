@@ -1,0 +1,56 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_017_component",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T02:11:01.482253+00:00",
+  "request": {
+    "sample_id": "SEM_017",
+    "variant": "component",
+    "category": "semantics",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Accessibility: Semantic State",
+        "affected_code": "IconButton(\n            key: const Key('slideshow_slideshowButtonsLeft'),\n            onPressed: () async {\n              if (_currentPage >= 1) {\n                await widget.controller.previousPage(\n                  duration: _pageAnimationDuration,\n                  curve: Curves.easeInOut,\n                );\n              }\n            },\n            icon: _currentPage == 0\n                ? const Icon(Icons.arrow_back, color: Colors.white38)\n                : const Icon(Icons.arrow_back, color: Colors.white),\n          )",
+        "explanation": "The 'Previous' IconButton is visually disabled (grayed out) when `_currentPage` is 0, but its `onPressed` callback is still active, containing a conditional check. For screen readers and other accessibility services to correctly announce the button as disabled, the `onPressed` property should be set to `null` when the button is not interactive. This ensures the semantic state is accurately conveyed.",
+        "confidence": "high"
+      },
+      {
+        "type": "Accessibility: Semantic State",
+        "affected_code": "IconButton(\n            key: const Key('slideshow_slideshowButtonsRight'),\n            onPressed: () async {\n              if (_currentPage < widget.totalPages - 1) {\n                await widget.controller.nextPage(\n                  duration: _pageAnimationDuration,\n                  curve: Curves.easeInOut,\n                );\n              }\n            },\n            icon: _currentPage == widget.totalPages - 1\n                ? const Icon(Icons.arrow_forward, color: Colors.white38)\n                : const Icon(Icons.arrow_forward, color: Colors.white),\n          )",
+        "explanation": "The 'Next' IconButton is visually disabled (grayed out) when `_currentPage` is `totalPages - 1`, but its `onPressed` callback is still active, containing a conditional check. For screen readers and other accessibility services to correctly announce the button as disabled, the `onPressed` property should be set to `null` when the button is not interactive. This ensures the semantic state is accurately conveyed.",
+        "confidence": "high"
+      },
+      {
+        "type": "Accessibility: Accessible Labels",
+        "affected_code": "IconButton(\n            key: const Key('slideshow_slideshowButtonsLeft'),\n            onPressed: () async {\n              if (_currentPage >= 1) {\n                await widget.controller.previousPage(\n                  duration: _pageAnimationDuration,\n                  curve: Curves.easeInOut,\n                );\n              }\n            },\n            icon: _currentPage == 0\n                ? const Icon(Icons.arrow_back, color: Colors.white38)\n                : const Icon(Icons.arrow_back, color: Colors.white),\n          )",
+        "explanation": "The `IconButton` for navigating to the previous page relies on the default semantic label derived from `Icons.arrow_back` (e.g., 'Back button'). While functional, a more explicit label like 'Previous page' or 'Go to previous slide' provided via the `tooltip` property would be more descriptive and helpful for users of screen readers, especially in the context of a slideshow.",
+        "confidence": "medium"
+      },
+      {
+        "type": "Accessibility: Accessible Labels",
+        "affected_code": "IconButton(\n            key: const Key('slideshow_slideshowButtonsRight'),\n            onPressed: () async {\n              if (_currentPage < widget.totalPages - 1) {\n                await widget.controller.nextPage(\n                  duration: _pageAnimationDuration,\n                  curve: Curves.easeInOut,\n                );\n              }\n            },\n            icon: _currentPage == widget.totalPages - 1\n                ? const Icon(Icons.arrow_forward, color: Colors.white38)\n                : const Icon(Icons.arrow_forward, color: Colors.white),\n          )",
+        "explanation": "The `IconButton` for navigating to the next page relies on the default semantic label derived from `Icons.arrow_forward` (e.g., 'Forward button'). While functional, a more explicit label like 'Next page' or 'Go to next slide' provided via the `tooltip` property would be more descriptive and helpful for users of screen readers, especially in the context of a slideshow.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 705,
+    "completion_tokens": 1003,
+    "thinking_tokens": 918,
+    "total_tokens": 2626
+  },
+  "latency_ms": 9381
+}

@@ -1,0 +1,45 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "INT_004_accessible",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T01:47:16.370705+00:00",
+  "request": {
+    "sample_id": "INT_004",
+    "variant": "accessible",
+    "category": "interaction",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "semantic_state",
+        "affected_code": "Semantics(customSemanticsActions: {CustomSemanticsAction(label: liked ? 'Unlike' : 'Like'): onToggleLike}, child: GestureDetector(onDoubleTap: onToggleLike, child: Image(...)))",
+        "explanation": "The custom semantics action provides an accessible alternative to the double-tap gesture, but the current liked state is not exposed as semantic state. The only hint is the action label switching between 'Like' and 'Unlike', which assistive technology users only discover by opening the actions menu. Expose the state explicitly, for example with toggled/selected or a value such as 'Liked'.",
+        "confidence": "medium"
+      },
+      {
+        "type": "interactive_target_accessibility",
+        "affected_code": "GestureDetector(onDoubleTap: onToggleLike, ...)",
+        "explanation": "The like toggle is only available through a double-tap on the photo or a hidden custom action. There is no visible, focusable like button with a button role and an adequate target size. Keyboard, switch-access and many touch users cannot discover or perform this primary interaction.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 967,
+    "completion_tokens": 389,
+    "total_tokens": 1356
+  },
+  "latency_ms": 5193,
+  "request_id": "req_011CgAkcgqVxrCiACMDNePXX"
+}

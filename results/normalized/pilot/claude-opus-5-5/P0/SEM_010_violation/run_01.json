@@ -1,0 +1,26 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_010_violation",
+  "sample_id": "SEM_010",
+  "variant": "violation",
+  "category": "semantics",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "prompt": "P0",
+  "run": 1,
+  "status": "ok",
+  "valid": true,
+  "predicted_has_violation": true,
+  "predicted_violations": [
+    "Missing state semantics",
+    "Incorrect role",
+    "Missing keyboard/focus support",
+    "Color-only state indication / low contrast"
+  ],
+  "predicted_confidences": [
+    "high",
+    "medium",
+    "high",
+    "medium"
+  ]
+}

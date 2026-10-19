@@ -1,0 +1,44 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "INT_006_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T02:06:57.499761+00:00",
+  "request": {
+    "sample_id": "INT_006",
+    "variant": "violation",
+    "category": "interaction",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Interaction Accessibility",
+        "affected_code": "LongPressDraggable<String>",
+        "explanation": "The LongPressDraggable widget is used to move tasks, but it relies solely on a drag-and-drop gesture. Users who cannot perform drag-and-drop (e.g., screen reader users, keyboard-only users, users with motor impairments) will not be able to interact with this component to move tasks. An alternative interaction method, such as a button or a context menu item, should be provided.",
+        "confidence": "high"
+      },
+      {
+        "type": "Interaction Accessibility",
+        "affected_code": "DragTarget<String>",
+        "explanation": "The DragTarget widget serves as the drop zone for tasks. Since the LongPressDraggable lacks an accessible alternative for initiating the move, this DragTarget also becomes inaccessible to users who cannot perform drag-and-drop gestures. An alternative method for accepting tasks should be considered in conjunction with an alternative for the draggable item.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 519,
+    "completion_tokens": 199,
+    "thinking_tokens": 1084,
+    "total_tokens": 1802
+  },
+  "latency_ms": 6478
+}

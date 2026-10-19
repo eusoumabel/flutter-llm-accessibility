@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_013_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T02:18:09.444299+00:00",
+  "request": {
+    "sample_id": "SEM_013",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Semantics and accessible information",
+        "affected_code": "Row(\n      mainAxisSize: MainAxisSize.min,\n      children: [\n        for (var star = 1; star <= 5; star++)\n          Semantics(\n            button: true,\n            selected: star == rating,\n            label: 'Rate $star out of 5',\n            child: GestureDetector(\n              behavior: HitTestBehavior.opaque,\n              onTap: () => onRatingChanged(star),\n              child: SizedBox(\n                width: 48,\n                height: 48,\n                child: Icon(\n                  star <= rating ? Icons.star : Icons.star_border,\n                  color: Colors.amber,\n                ),\n              ),\n            ),\n          ),\n      ],\n    )",
+        "explanation": "The `StarRating` component, as a whole, lacks an overarching semantic label or role. While individual stars are correctly identified as buttons with labels like 'Rate X out of 5', a screen reader user might perceive five independent buttons rather than a single, unified rating input control. This can make it difficult to understand the overall purpose and current state of the rating component without navigating through each individual star.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 353,
+    "completion_tokens": 299,
+    "thinking_tokens": 1827,
+    "total_tokens": 2479
+  },
+  "latency_ms": 10646
+}

@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_010_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T01:43:07.135347+00:00",
+  "request": {
+    "sample_id": "SEM_010",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Semantics and accessible information",
+        "affected_code": "Semantics(button: true, label: 'Dark mode', child: GestureDetector(...))",
+        "explanation": "The `Semantics` widget for the dark mode toggle provides a label 'Dark mode' and identifies itself as a button, but it fails to convey its current state (on or off) to assistive technologies. Users relying on screen readers will hear 'Dark mode, button' but will not know if dark mode is currently enabled or disabled. For a toggle switch, the semantic state should indicate if it is 'on' or 'off' using the `toggled` property.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 420,
+    "completion_tokens": 167,
+    "thinking_tokens": 884,
+    "total_tokens": 1471
+  },
+  "latency_ms": 5429
+}

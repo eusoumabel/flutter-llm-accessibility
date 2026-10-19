@@ -1,0 +1,57 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "INT_004_violation",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T01:46:21.745011+00:00",
+  "request": {
+    "sample_id": "INT_004",
+    "variant": "violation",
+    "category": "interaction",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Gesture-only interaction / no accessible alternative",
+        "affected_code": "GestureDetector(\n  onDoubleTap: onToggleLike,\n  child: Image(...),\n)",
+        "explanation": "Liking a post is only possible via a double-tap gesture on the image. There is no visible like button. Screen reader users (where double-tap activates the focused element), switch access and keyboard users cannot reliably discover or perform this action. The GestureDetector also exposes no semantic action or hint. Provide an explicit IconButton with a tooltip/label, or add Semantics with onTap/customSemanticsActions.",
+        "confidence": "high"
+      },
+      {
+        "type": "Missing state information",
+        "affected_code": "final bool liked; ... Text('$likeCount likes')",
+        "explanation": "The 'liked' state is never conveyed visually or semantically. Assistive technology users cannot tell whether they have already liked the post, or whether their action toggled it. Expose the state, e.g. Semantics(toggled: liked) on a like control.",
+        "confidence": "high"
+      },
+      {
+        "type": "Missing role/label for interactive element",
+        "affected_code": "Image(image: photo, semanticLabel: 'Photo by $author', ...)",
+        "explanation": "The interactive image is announced only as 'Photo by author'. It is not identified as actionable and has no hint describing the like action. Screen reader users are therefore not informed that an interaction is available.",
+        "confidence": "medium"
+      },
+      {
+        "type": "Non-descriptive image alternative text",
+        "affected_code": "semanticLabel: 'Photo by $author'",
+        "explanation": "The label only identifies the author and does not describe the photo's content, which is the primary content of the post. Screen reader users get no information about what the image shows.",
+        "confidence": "low"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 838,
+    "completion_tokens": 580,
+    "total_tokens": 1418
+  },
+  "latency_ms": 7124,
+  "request_id": "req_011CgAkYWxoUfjMkCFNy3E6p"
+}

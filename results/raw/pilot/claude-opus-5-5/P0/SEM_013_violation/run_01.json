@@ -1,0 +1,63 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_013_violation",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T01:50:11.014139+00:00",
+  "request": {
+    "sample_id": "SEM_013",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing accessible name / label",
+        "affected_code": "Icon(\n  star <= rating ? Icons.star : Icons.star_border,\n  color: Colors.amber,\n)",
+        "explanation": "Each star is an icon-only control without a semanticLabel or Semantics label. Screen reader users will not hear what each star represents (e.g. 'Rate 3 of 5 stars'), so the tappable stars have no meaningful accessible name.",
+        "confidence": "high"
+      },
+      {
+        "type": "Missing role / not exposed as button",
+        "affected_code": "GestureDetector(\n  behavior: HitTestBehavior.opaque,\n  onTap: () => onRatingChanged(star),\n  ...\n)",
+        "explanation": "GestureDetector does not add button semantics. The stars are not announced as interactive buttons and are not keyboard-focusable or activatable via keyboard. Using IconButton/InkWell or wrapping the star in Semantics(button: true, ...) with a focusable widget would expose the interaction correctly.",
+        "confidence": "high"
+      },
+      {
+        "type": "State not conveyed to assistive technologies",
+        "affected_code": "star <= rating ? Icons.star : Icons.star_border",
+        "explanation": "The current rating and the selected/unselected state of each star are conveyed only visually through the filled versus outlined icon. No Semantics value, selected flag, or overall label such as 'Rating: 3 of 5' is provided, so screen reader users cannot determine the current rating.",
+        "confidence": "high"
+      },
+      {
+        "type": "Missing group semantics for composite control",
+        "affected_code": "Row(\n  mainAxisSize: MainAxisSize.min,\n  children: [ ... ],\n)",
+        "explanation": "The rating widget is presented as five unrelated elements, with no container semantics. A Semantics or MergeSemantics wrapper with a label, value, or slider-like increase/decrease actions would identify it as a single rating input.",
+        "confidence": "medium"
+      },
+      {
+        "type": "Insufficient color contrast",
+        "affected_code": "color: Colors.amber",
+        "explanation": "Amber icons, especially the thin star_border outline, may have low contrast against light backgrounds (amber on white is roughly 1.6:1). This is below the 3:1 minimum for non-text UI components. The background is not specified in the code, so this cannot be confirmed.",
+        "confidence": "low"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 800,
+    "completion_tokens": 784,
+    "total_tokens": 1584
+  },
+  "latency_ms": 7792,
+  "request_id": "req_011CgAkqNKdAPJPooMRAPG7T"
+}

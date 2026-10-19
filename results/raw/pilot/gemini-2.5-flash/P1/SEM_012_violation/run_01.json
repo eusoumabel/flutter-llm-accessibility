@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_012_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T02:15:56.575050+00:00",
+  "request": {
+    "sample_id": "SEM_012",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Semantics and accessible information",
+        "affected_code": "Semantics(button: true, child: GestureDetector(...))",
+        "explanation": "The interactive FAQ item, while correctly identified as a button, does not semantically convey its expanded or collapsed state to assistive technologies. A screen reader user will hear the question and 'button', but will not know if the answer is currently visible or hidden. This makes it difficult for users to understand the current state of the UI element.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 425,
+    "completion_tokens": 103,
+    "thinking_tokens": 1171,
+    "total_tokens": 1699
+  },
+  "latency_ms": 6552
+}

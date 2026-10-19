@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_015_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T01:44:32.553911+00:00",
+  "request": {
+    "sample_id": "SEM_015",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Semantics and accessible information",
+        "affected_code": "label: entry.key",
+        "explanation": "The `Semantics` label for each color swatch is set directly to `entry.key`. While `entry.key` might sometimes be a descriptive color name (e.g., \"Red\"), it could also be a less descriptive identifier (e.g., \"primary\", \"color1\"). For users relying on screen readers, a label like \"primary, button\" might not clearly convey that they are interacting with a color swatch. It would be more accessible to provide a label that explicitly states it's a color or color swatch, such as \"Red color\" or \"Primary color swatch\", to ensure clarity regardless of the `entry.key`'s content.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 424,
+    "completion_tokens": 167,
+    "thinking_tokens": 1715,
+    "total_tokens": 2306
+  },
+  "latency_ms": 9346
+}

@@ -1,0 +1,57 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_011_accessible",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T01:48:11.474564+00:00",
+  "request": {
+    "sample_id": "SEM_011",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Keyboard accessibility / focus",
+        "affected_code": "GestureDetector(\n  behavior: HitTestBehavior.opaque,\n  onTap: () => onSelected(i),\n  ...)",
+        "explanation": "The tabs use GestureDetector, which is not focusable and does not respond to keyboard activation (Enter/Space). Keyboard and switch-access users cannot navigate to or select a category. An InkWell, TextButton, or Focus/Shortcuts-based widget (or TabBar) should be used instead.",
+        "confidence": "high"
+      },
+      {
+        "type": "Incorrect semantic role",
+        "affected_code": "Semantics(\n  button: true,\n  selected: i == selectedIndex,\n  ...)",
+        "explanation": "The items behave as tabs in a tab group but are exposed as generic buttons. Screen reader users are not told this is a tab list or the position of each tab (e.g. 'tab 2 of 4'). Using TabBar or tab-like semantics would convey the structure better.",
+        "confidence": "medium"
+      },
+      {
+        "type": "Missing focus indicator",
+        "affected_code": "decoration: BoxDecoration(\n  border: Border(\n    bottom: BorderSide(\n      color: i == selectedIndex ? Colors.blue : Colors.transparent,",
+        "explanation": "No visual focus state is provided for the tabs, so even if focus reached them, keyboard users would have no visible indication of which tab is focused.",
+        "confidence": "medium"
+      },
+      {
+        "type": "Reliance on color / low-contrast state indicator",
+        "affected_code": "color: i == selectedIndex ? Colors.blue : Colors.transparent",
+        "explanation": "The selected state is shown visually only by a colored bottom border. There is no other visual cue, such as text weight or color. Whether the blue indicator has enough contrast against the background cannot be confirmed.",
+        "confidence": "low"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 918,
+    "completion_tokens": 629,
+    "total_tokens": 1547
+  },
+  "latency_ms": 6954,
+  "request_id": "req_011CgAkgdF4FRrbieyF1c1kg"
+}

@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_025_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T01:45:10.537090+00:00",
+  "request": {
+    "sample_id": "SEM_025",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Interaction and interactive target accessibility",
+        "affected_code": "GestureDetector(onTap: onCategoryTap, child: ...)",
+        "explanation": "The interactive target for the CategoryMenuItem is determined by the size of its child, which is a Text widget wrapped in vertical padding. While the vertical padding ensures a sufficient height (likely > 48dp), there is no explicit horizontal padding or minimum width constraint. If the 'categoryName' is a very short string, the width of the interactive area might fall below the recommended minimum of 48 logical pixels, making it difficult for users with motor impairments to accurately tap.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 867,
+    "completion_tokens": 162,
+    "thinking_tokens": 1813,
+    "total_tokens": 2842
+  },
+  "latency_ms": 9950
+}

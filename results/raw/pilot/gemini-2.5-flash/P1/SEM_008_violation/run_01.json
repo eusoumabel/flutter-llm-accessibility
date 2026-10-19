@@ -1,0 +1,44 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_008_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T02:09:18.640570+00:00",
+  "request": {
+    "sample_id": "SEM_008",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Semantics and accessible information",
+        "affected_code": "Text('Recent orders')",
+        "explanation": "The 'Recent orders' text serves as a visual heading but does not explicitly convey its semantic role as a heading to assistive technologies. Wrapping it in a Semantics widget with `header: true` would improve navigation for screen reader users.",
+        "confidence": "medium"
+      },
+      {
+        "type": "Interaction and interactive target accessibility",
+        "affected_code": "ListTile(title: Text(order))",
+        "explanation": "The `ListTile` widgets are not interactive as they lack an `onTap` callback. If the intention is for users to be able to select or interact with individual orders (e.g., to view details), this prevents keyboard users, switch access users, and screen reader users from accessing this functionality.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 243,
+    "completion_tokens": 216,
+    "thinking_tokens": 1388,
+    "total_tokens": 1847
+  },
+  "latency_ms": 8699
+}

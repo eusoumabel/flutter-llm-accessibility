@@ -1,0 +1,57 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_023_component",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T01:49:03.742054+00:00",
+  "request": {
+    "sample_id": "SEM_023",
+    "variant": "component",
+    "category": "semantics",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing semantic role",
+        "affected_code": "Semantics(hint: 'Add to cart', child: MouseRegion(cursor: SystemMouseCursors.click, child: GestureDetector(onTap: onAddToCart, ...)))",
+        "explanation": "The tappable card is built from GestureDetector wrapped in Semantics without button: true. Screen readers will not announce it as a button or actionable control. The hint alone does not convey the button role.",
+        "confidence": "high"
+      },
+      {
+        "type": "Fragmented / non-merged semantics",
+        "affected_code": "Semantics(hint: 'Add to cart', child: ... Text(name) ... Text('\\$$price') ...)",
+        "explanation": "The Semantics wrapper lacks container: true or MergeSemantics. The name and price texts may be exposed as separate nodes, and the hint may not be associated with a single actionable element. The tap action can end up detached from the product label.",
+        "confidence": "medium"
+      },
+      {
+        "type": "Unlabeled / ambiguous icon",
+        "affected_code": "const Padding(padding: EdgeInsets.all(16), child: Icon(Icons.add_shopping_cart))",
+        "explanation": "The add-to-cart Icon has no semanticLabel. Its purpose as the action indicator is conveyed only visually.",
+        "confidence": "low"
+      },
+      {
+        "type": "Missing keyboard/focus accessibility for custom control",
+        "affected_code": "GestureDetector(onTap: onAddToCart, ...)",
+        "explanation": "GestureDetector is not focusable and has no keyboard activation. On a desktop card, keyboard users cannot reach or activate add-to-cart. Use InkWell, a button, or FocusableActionDetector instead.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 1264,
+    "completion_tokens": 578,
+    "total_tokens": 1842
+  },
+  "latency_ms": 6181,
+  "request_id": "req_011CgAkkXd5gB2YNMvtHR1Gh"
+}

@@ -1,0 +1,22 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "INT_004_accessible",
+  "sample_id": "INT_004",
+  "variant": "accessible",
+  "category": "interaction",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "prompt": "P1",
+  "run": 1,
+  "status": "ok",
+  "valid": true,
+  "predicted_has_violation": true,
+  "predicted_violations": [
+    "Interaction",
+    "Semantics"
+  ],
+  "predicted_confidences": [
+    "high",
+    "high"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_011_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T02:08:51.638021+00:00",
+  "request": {
+    "sample_id": "SEM_011",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing semantic state",
+        "affected_code": "Semantics(button: true, child: GestureDetector(...))",
+        "explanation": "The currently selected tab's state is visually indicated by a blue bottom border, but this 'selected' state is not communicated to assistive technologies. Screen reader users will not know which tab is currently active. The Semantics widget for the selected tab should include 'selected: true' to convey its active status.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 366,
+    "completion_tokens": 96,
+    "thinking_tokens": 1423,
+    "total_tokens": 1885
+  },
+  "latency_ms": 7934
+}

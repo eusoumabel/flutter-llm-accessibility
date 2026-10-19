@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_011_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T02:09:30.751403+00:00",
+  "request": {
+    "sample_id": "SEM_011",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing semantic label",
+        "affected_code": "Text(categories[i])",
+        "explanation": "If a category string in the 'categories' list is empty, the 'Text' widget will render an empty string. This will result in a 'Semantics' node with no accessible label, making the interactive element inaccessible to screen reader users who will not know its purpose or content.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 375,
+    "completion_tokens": 114,
+    "thinking_tokens": 2092,
+    "total_tokens": 2581
+  },
+  "latency_ms": 12109
+}

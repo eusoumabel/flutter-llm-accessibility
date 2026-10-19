@@ -1,0 +1,44 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_007_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T02:17:33.252567+00:00",
+  "request": {
+    "sample_id": "SEM_007",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Semantics and accessible information",
+        "affected_code": "GestureDetector(onTap: onPressed, child: Container(...))",
+        "explanation": "The custom button built with GestureDetector does not automatically convey its semantic role as a button to accessibility services. While the 'Continue' text is visually present, the interactive element itself lacks an explicit accessible label and semantic role, making it difficult for screen readers to understand its purpose and interact with it effectively. Standard Flutter button widgets (e.g., ElevatedButton, TextButton) automatically provide this semantic information.",
+        "confidence": "high"
+      },
+      {
+        "type": "Interaction and interactive target accessibility",
+        "affected_code": "GestureDetector(onTap: onPressed, child: Container(...))",
+        "explanation": "Building a custom interactive control with GestureDetector means that keyboard navigation (e.g., tabbing to focus, activating with Enter/Space keys) and other platform-specific accessibility actions are not automatically provided. Users who rely on keyboard input or assistive technologies that expect standard button behaviors might find this component inaccessible.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 290,
+    "completion_tokens": 259,
+    "thinking_tokens": 956,
+    "total_tokens": 1505
+  },
+  "latency_ms": 6663
+}

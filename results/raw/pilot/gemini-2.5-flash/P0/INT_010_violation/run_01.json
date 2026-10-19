@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "INT_010_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T02:09:36.464380+00:00",
+  "request": {
+    "sample_id": "INT_010",
+    "variant": "violation",
+    "category": "interaction",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Tap Target Size",
+        "affected_code": "IconButton(\n      icon: const Icon(Icons.login),\n      iconSize: 18,\n      padding: EdgeInsets.zero,\n      constraints: const BoxConstraints(),\n      style: const ButtonStyle(\n        tapTargetSize: MaterialTapTargetSize.shrinkWrap,\n      ),\n      onPressed: onLogin,\n      tooltip: 'Login',\n    )",
+        "explanation": "The IconButton has an iconSize of 18 and padding: EdgeInsets.zero. The use of tapTargetSize: MaterialTapTargetSize.shrinkWrap explicitly reduces the tap target area to the visual size of the icon (18x18 logical pixels). This is significantly smaller than the recommended minimum tap target size of 48x48 logical pixels, making it difficult for users with motor impairments or large fingers to accurately tap the button.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 231,
+    "completion_tokens": 201,
+    "thinking_tokens": 759,
+    "total_tokens": 1191
+  },
+  "latency_ms": 5709
+}

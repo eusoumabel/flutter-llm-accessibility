@@ -1,0 +1,44 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_007_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T02:17:03.041847+00:00",
+  "request": {
+    "sample_id": "SEM_007",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Accessibility",
+        "affected_code": "GestureDetector(onTap: onPressed, child: Container(...))",
+        "explanation": "The custom button implemented with GestureDetector and Container does not explicitly convey its semantic role as a button to accessibility services. Screen readers might not announce it as a button, which can reduce clarity for users. Consider wrapping it with a Semantics widget with button: true or using a Material button widget.",
+        "confidence": "high"
+      },
+      {
+        "type": "Accessibility",
+        "affected_code": "GestureDetector(onTap: onPressed, child: Container(...))",
+        "explanation": "The custom button built with GestureDetector lacks inherent keyboard accessibility. Users relying on keyboard navigation (e.g., Tab key) will not be able to focus on or activate this button, making it inaccessible to them. Consider using a FocusableActionDetector or a Material button widget that provides keyboard interaction by default.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 277,
+    "completion_tokens": 195,
+    "thinking_tokens": 1153,
+    "total_tokens": 1625
+  },
+  "latency_ms": 7469
+}

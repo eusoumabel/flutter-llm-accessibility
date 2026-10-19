@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "INT_014_component",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T02:15:08.466544+00:00",
+  "request": {
+    "sample_id": "INT_014",
+    "variant": "component",
+    "category": "interaction",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing Semantic Label",
+        "affected_code": "Image(image: image, fit: BoxFit.contain, errorBuilder: (_, _, _) => const Center(child: Text('This image could not be displayed.', style: TextStyle(color: Colors.white70),),),)",
+        "explanation": "The `Image` widget, which is the primary content of this view, does not have a `semanticLabel` property. While the `AppBar` uses the `title` property to describe the overall screen, this does not provide a specific textual description for the image content itself to screen reader users. If the `title` is generic (e.g., the default 'Image'), the image's content remains inaccessible. Adding a `semanticLabel` to the `Image` widget, perhaps derived from the `title` or a more specific `imageDescription` property, would greatly improve accessibility for users relying on screen readers.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 521,
+    "completion_tokens": 224,
+    "thinking_tokens": 2489,
+    "total_tokens": 3234
+  },
+  "latency_ms": 13749
+}

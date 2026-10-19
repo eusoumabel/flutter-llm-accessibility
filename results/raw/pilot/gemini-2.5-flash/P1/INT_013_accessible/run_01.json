@@ -1,0 +1,44 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "INT_013_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T02:10:25.768927+00:00",
+  "request": {
+    "sample_id": "INT_013",
+    "variant": "accessible",
+    "category": "interaction",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Semantics and accessible information",
+        "affected_code": "GestureDetector",
+        "explanation": "The custom double-tap gesture implemented by the GestureDetector allows users to zoom in at a specific point or reset the zoom. However, there is no explicit semantic information (e.g., via a Semantics widget or semantic properties) provided for this custom interaction. Screen reader users will not be informed about the specific functionality of the double-tap gesture.",
+        "confidence": "high"
+      },
+      {
+        "type": "Interaction and interactive target accessibility",
+        "affected_code": "GestureDetector and IconButton widgets",
+        "explanation": "The custom double-tap gesture provides two distinct functionalities: zooming in at the double-tapped location and resetting the zoom to its initial state. While 'Zoom in' and 'Zoom out' buttons are provided, they do not fully replicate the double-tap's capabilities. Specifically, there is no explicit button to 'reset zoom' to the identity matrix, nor do the buttons allow zooming to a specific point on the content. This means users who cannot perform double-tap gestures do not have full access to all interactive functionalities provided by the gesture.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 1067,
+    "completion_tokens": 282,
+    "thinking_tokens": 1368,
+    "total_tokens": 2717
+  },
+  "latency_ms": 9563
+}

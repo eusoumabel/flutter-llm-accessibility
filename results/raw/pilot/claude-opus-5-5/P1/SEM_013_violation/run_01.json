@@ -1,0 +1,57 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_013_violation",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T01:55:58.638743+00:00",
+  "request": {
+    "sample_id": "SEM_013",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing accessible label",
+        "affected_code": "GestureDetector(... child: SizedBox(... child: Icon(star <= rating ? Icons.star : Icons.star_border, ...)))",
+        "explanation": "Each star is an Icon without a semanticLabel and the GestureDetector adds no Semantics label, so screen readers cannot announce what each star represents (e.g., 'Rate 3 of 5 stars').",
+        "confidence": "high"
+      },
+      {
+        "type": "Missing semantic role",
+        "affected_code": "GestureDetector(behavior: HitTestBehavior.opaque, onTap: () => onRatingChanged(star), ...)",
+        "explanation": "GestureDetector does not expose a button role. The custom tappable stars are not identified as buttons or as a rating/slider control, so assistive technology users do not know they are interactive.",
+        "confidence": "high"
+      },
+      {
+        "type": "Missing semantic state",
+        "affected_code": "star <= rating ? Icons.star : Icons.star_border",
+        "explanation": "The current rating and each star's selected/filled state are conveyed only visually through the icon shape. No Semantics value, selected, or checked state exposes the current rating (e.g., '3 of 5') to assistive technologies.",
+        "confidence": "high"
+      },
+      {
+        "type": "Custom interactive control without proper semantics",
+        "affected_code": "Row(mainAxisSize: MainAxisSize.min, children: [for (var star = 1; star <= 5; star++) GestureDetector(...)])",
+        "explanation": "The rating widget is a custom control built from raw gesture detectors with no grouping Semantics (e.g., a labeled container or slider with increase/decrease actions), and it is not keyboard focusable since GestureDetector provides no focus handling. It should use IconButton/InkWell or wrap in Semantics with label, value, and actions.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 842,
+    "completion_tokens": 617,
+    "total_tokens": 1459
+  },
+  "latency_ms": 6085,
+  "request_id": "req_011CgAmH7tw18PVhtuLR59HP"
+}

@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_031_component",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T02:20:52.515176+00:00",
+  "request": {
+    "sample_id": "SEM_031",
+    "variant": "component",
+    "category": "semantics",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Semantics and accessible information",
+        "affected_code": "IconButton for password visibility toggle",
+        "explanation": "The IconButton used to toggle password visibility has a static tooltip of 'Show Password'. When the password is visible, the button's action changes to 'Hide Password', but the tooltip (which serves as the accessible label) does not update. This can be confusing for users of screen readers, as the announced action does not match the current function of the button. The tooltip should dynamically reflect the current state and action (e.g., 'Show password' or 'Hide password').",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 764,
+    "completion_tokens": 125,
+    "thinking_tokens": 998,
+    "total_tokens": 1887
+  },
+  "latency_ms": 6128
+}

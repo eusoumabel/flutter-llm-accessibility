@@ -1,0 +1,63 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_011_violation",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T01:58:06.170995+00:00",
+  "request": {
+    "sample_id": "SEM_011",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Selected state not exposed to assistive technology",
+        "affected_code": "Semantics(\n  button: true,\n  child: GestureDetector(... color: i == selectedIndex ? Colors.blue : Colors.transparent ...",
+        "explanation": "The currently selected tab is indicated only visually by a blue bottom border. The Semantics widget does not set 'selected: i == selectedIndex', so screen reader users cannot tell which category is active.",
+        "confidence": "high"
+      },
+      {
+        "type": "Information conveyed by color/visual cue only",
+        "affected_code": "bottom: BorderSide(color: i == selectedIndex ? Colors.blue : Colors.transparent, width: 3)",
+        "explanation": "Selection is communicated solely through a colored underline with no text style change (e.g., bold) or other non-color cue, which may be hard to perceive for users with low vision or color perception differences.",
+        "confidence": "medium"
+      },
+      {
+        "type": "Incorrect/incomplete semantic role",
+        "affected_code": "Semantics(button: true, child: GestureDetector(...))",
+        "explanation": "The items behave as a tab group but are exposed as generic buttons without tab semantics, selected state, or position information (e.g., 'tab 2 of 4'). Using TabBar or adding appropriate semantics would convey the structure to assistive technology.",
+        "confidence": "medium"
+      },
+      {
+        "type": "Missing keyboard focus support",
+        "affected_code": "GestureDetector(\n  behavior: HitTestBehavior.opaque,\n  onTap: () => onSelected(i),",
+        "explanation": "GestureDetector is not focusable and does not respond to keyboard activation, and no visual focus indicator is provided. Keyboard and switch users cannot navigate or activate the tabs. Use InkWell, a button widget, or FocusableActionDetector.",
+        "confidence": "high"
+      },
+      {
+        "type": "Semantic tap action not wired explicitly",
+        "affected_code": "Semantics(button: true, child: GestureDetector(onTap: () => onSelected(i), ...))",
+        "explanation": "The Semantics wrapper marks a button but does not provide onTap; while GestureDetector usually contributes a tap action, merging is not guaranteed in all configurations. Adding onTap to Semantics or using a Material button ensures reliable activation.",
+        "confidence": "low"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 904,
+    "completion_tokens": 769,
+    "total_tokens": 1673
+  },
+  "latency_ms": 8061,
+  "request_id": "req_011CgAmSNjAD1rmEKqK1SCLd"
+}

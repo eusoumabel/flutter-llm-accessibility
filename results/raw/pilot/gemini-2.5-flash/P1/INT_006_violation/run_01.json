@@ -1,0 +1,50 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "INT_006_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T01:44:52.603604+00:00",
+  "request": {
+    "sample_id": "INT_006",
+    "variant": "violation",
+    "category": "interaction",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Interaction and interactive target accessibility",
+        "affected_code": "LongPressDraggable<String>",
+        "explanation": "The primary interaction for moving a task from 'To do' to 'Done' relies solely on a long-press-and-drag gesture. This creates an accessibility barrier for users who cannot perform complex gestures, such as those with motor impairments or users relying on keyboard or switch access. No alternative, simpler interaction (e.g., a button or context menu item) is provided.",
+        "confidence": "high"
+      },
+      {
+        "type": "Semantics and accessible information",
+        "affected_code": "LongPressDraggable<String> (child: Card(child: ListTile(title: Text(task))))",
+        "explanation": "The draggable tasks lack explicit semantic information indicating their interactive role as 'draggable items'. While the task text is read, assistive technologies may not convey that these items can be long-pressed and dragged, making the interaction discoverability difficult for screen reader users.",
+        "confidence": "medium"
+      },
+      {
+        "type": "Semantics and accessible information",
+        "affected_code": "DragTarget<String>",
+        "explanation": "The 'Done' column, which functions as a DragTarget, does not explicitly communicate its role as a drop zone to assistive technologies. Users relying on screen readers might not understand that this area is interactive and accepts dropped items, hindering the discoverability of the drag-and-drop functionality.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 532,
+    "completion_tokens": 352,
+    "thinking_tokens": 2099,
+    "total_tokens": 2983
+  },
+  "latency_ms": 11262
+}

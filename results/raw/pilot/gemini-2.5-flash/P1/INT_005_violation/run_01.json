@@ -1,0 +1,44 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "INT_005_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T02:20:04.045802+00:00",
+  "request": {
+    "sample_id": "INT_005",
+    "variant": "violation",
+    "category": "interaction",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Interaction and interactive target accessibility",
+        "affected_code": "InteractiveViewer",
+        "explanation": "The InteractiveViewer relies solely on touch gestures (pinch-to-zoom, drag-to-pan) for its core functionality. There are no alternative interaction methods provided, such as dedicated zoom in/out buttons, pan controls, or keyboard shortcuts. This makes the interactive content inaccessible to users who cannot perform multi-touch or drag gestures.",
+        "confidence": "high"
+      },
+      {
+        "type": "Semantics and accessible information",
+        "affected_code": "Image, InteractiveViewer",
+        "explanation": "While the Image has a semanticLabel (\"Office floor plan\"), it does not explicitly convey the interactive capabilities of the InteractiveViewer (i.e., that the floor plan can be zoomed and panned). Screen reader users might not be aware of the available interactions without more explicit semantic information or actions.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 324,
+    "completion_tokens": 228,
+    "thinking_tokens": 1552,
+    "total_tokens": 2104
+  },
+  "latency_ms": 9154
+}

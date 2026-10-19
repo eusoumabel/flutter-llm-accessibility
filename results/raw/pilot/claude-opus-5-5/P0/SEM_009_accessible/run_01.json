@@ -1,0 +1,45 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_009_accessible",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T01:51:58.963937+00:00",
+  "request": {
+    "sample_id": "SEM_009",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing keyboard/focus support",
+        "affected_code": "GestureDetector(\n        behavior: HitTestBehavior.opaque,\n        onTap: onOpenTerms,",
+        "explanation": "GestureDetector does not participate in focus traversal and does not respond to keyboard activation (Enter/Space). Keyboard and switch-access users cannot focus or activate the link. Use InkWell, TextButton, or a FocusableActionDetector instead.",
+        "confidence": "medium"
+      },
+      {
+        "type": "Missing semantic tap action",
+        "affected_code": "Semantics(\n      link: true,\n      child: GestureDetector(",
+        "explanation": "The Semantics wrapper marks the node as a link but provides no onTap handler. Activation depends on GestureDetector's merged semantics, which may not be exposed consistently. Adding onTap to Semantics, or using a standard button or link widget, would ensure assistive technologies can activate it reliably.",
+        "confidence": "low"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 787,
+    "completion_tokens": 332,
+    "total_tokens": 1119
+  },
+  "latency_ms": 4399,
+  "request_id": "req_011CgAkyaSbwq5GzemP2Mmyj"
+}

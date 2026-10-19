@@ -1,0 +1,45 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_007_accessible",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T01:51:22.648241+00:00",
+  "request": {
+    "sample_id": "SEM_007",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "custom_interactive_control",
+        "affected_code": "Semantics(button: true, child: GestureDetector(onTap: onPressed, ...))",
+        "explanation": "The custom button uses GestureDetector instead of a standard Material button. Semantics marks it as a button, and GestureDetector does expose a tap action, but the control is not focusable. It has no keyboard or switch-access activation (Enter/Space), no focus highlight, and no ink feedback. A standard ElevatedButton/FilledButton, or InkWell with focus support, would provide these automatically.",
+        "confidence": "medium"
+      },
+      {
+        "type": "semantic_state",
+        "affected_code": "Semantics(button: true, ...)",
+        "explanation": "Semantics does not declare the enabled state (enabled: true). Assistive technologies may therefore not report the button as enabled. Standard buttons expose this state automatically.",
+        "confidence": "low"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 858,
+    "completion_tokens": 303,
+    "total_tokens": 1161
+  },
+  "latency_ms": 4051,
+  "request_id": "req_011CgAkvvfCaRe8FhcXoYVkV"
+}

@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "INT_010_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T02:03:26.182528+00:00",
+  "request": {
+    "sample_id": "INT_010",
+    "variant": "violation",
+    "category": "interaction",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Interactive Target Size",
+        "affected_code": "IconButton(iconSize: 18, padding: EdgeInsets.zero, constraints: const BoxConstraints(), style: const ButtonStyle(tapTargetSize: MaterialTapTargetSize.shrinkWrap), ...)",
+        "explanation": "The interactive target size of the IconButton is too small. With an iconSize of 18, zero padding, and tapTargetSize set to MaterialTapTargetSize.shrinkWrap, the effective tap area will be approximately 18x18 logical pixels. This is significantly smaller than the recommended minimum of 48x48 logical pixels for interactive elements, making it difficult for users with motor impairments or those using assistive technologies to accurately tap the button.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 244,
+    "completion_tokens": 184,
+    "thinking_tokens": 890,
+    "total_tokens": 1318
+  },
+  "latency_ms": 6271
+}

@@ -1,0 +1,68 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_029_component",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T02:08:39.047321+00:00",
+  "request": {
+    "sample_id": "SEM_029",
+    "variant": "component",
+    "category": "semantics",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Semantics and accessible information",
+        "affected_code": "InkWell(onTap: () async { await Clipboard.setData(ClipboardData(text: url)); ... }, child: Icon(Icons.content_copy, size: 16))",
+        "explanation": "The InkWell for copying the URL lacks an explicit semantic label. Screen readers will announce the icon's default description, which might not be sufficiently clear (e.g., 'content copy icon button' instead of 'Copy URL to clipboard'). Adding a Semantics widget or a Tooltip to the InkWell would improve clarity.",
+        "confidence": "high"
+      },
+      {
+        "type": "Interaction and interactive target accessibility",
+        "affected_code": "InkWell(onTap: () async { await Clipboard.setData(ClipboardData(text: url)); ... }, child: Icon(Icons.content_copy, size: 16))",
+        "explanation": "The interactive target size for the copy button (approximately 32x20 logical pixels, calculated from 16px icon + 2*8px horizontal padding and 16px icon + 2*2px vertical padding) is smaller than the recommended minimum of 48x48 logical pixels. This can make it difficult for users with motor impairments or those using assistive technologies to accurately tap.",
+        "confidence": "high"
+      },
+      {
+        "type": "Semantics and accessible information",
+        "affected_code": "InkWell(onTap: onShowQrCode, child: Icon(Icons.qr_code, size: 16))",
+        "explanation": "The InkWell for showing the QR code lacks an explicit semantic label. Screen readers will announce the icon's default description, which might not be sufficiently clear (e.g., 'QR code icon button' instead of 'Show QR code'). Adding a Semantics widget or a Tooltip to the InkWell would improve clarity.",
+        "confidence": "high"
+      },
+      {
+        "type": "Interaction and interactive target accessibility",
+        "affected_code": "InkWell(onTap: onShowQrCode, child: Icon(Icons.qr_code, size: 16))",
+        "explanation": "The interactive target size for the QR code button (approximately 32x20 logical pixels) is smaller than the recommended minimum of 48x48 logical pixels. This can make it difficult for users with motor impairments or those using assistive technologies to accurately tap.",
+        "confidence": "high"
+      },
+      {
+        "type": "Semantics and accessible information",
+        "affected_code": "InkWell(onTap: onShowZoom, child: Icon(Icons.tv, size: 16))",
+        "explanation": "The InkWell for the 'zoom' or 'TV' functionality lacks an explicit semantic label. The Icons.tv icon is ambiguous in its purpose without additional context or a clear label, making it inaccessible for screen reader users who cannot infer its function. Adding a Semantics widget or a Tooltip to the InkWell with a descriptive label (e.g., 'Show on TV' or 'Zoom view') is crucial.",
+        "confidence": "high"
+      },
+      {
+        "type": "Interaction and interactive target accessibility",
+        "affected_code": "InkWell(onTap: onShowZoom, child: Icon(Icons.tv, size: 16))",
+        "explanation": "The interactive target size for the 'zoom' or 'TV' button (approximately 32x20 logical pixels) is smaller than the recommended minimum of 48x48 logical pixels. This can make it difficult for users with motor impairments or those using assistive technologies to accurately tap.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 536,
+    "completion_tokens": 854,
+    "thinking_tokens": 1484,
+    "total_tokens": 2874
+  },
+  "latency_ms": 10708
+}

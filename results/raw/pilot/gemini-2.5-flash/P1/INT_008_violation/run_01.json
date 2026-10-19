@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "INT_008_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T02:22:57.876390+00:00",
+  "request": {
+    "sample_id": "INT_008",
+    "variant": "violation",
+    "category": "interaction",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Interaction and interactive target accessibility",
+        "affected_code": "Listener",
+        "explanation": "The SendButton uses a Listener widget for handling pointer events, which does not automatically provide accessible gesture alternatives or keyboard interaction (e.g., activation via Enter/Space key) that are typically expected for a button. While Semantics(button: true) is present, the underlying interaction mechanism does not fully support all standard button interactions for assistive technologies. Using a GestureDetector or InkWell would provide these interactions automatically.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 404,
+    "completion_tokens": 136,
+    "thinking_tokens": 734,
+    "total_tokens": 1274
+  },
+  "latency_ms": 4724
+}

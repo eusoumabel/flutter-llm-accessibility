@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_021_component",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T02:18:35.960061+00:00",
+  "request": {
+    "sample_id": "SEM_021",
+    "variant": "component",
+    "category": "semantics",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Loss of semantic emphasis",
+        "affected_code": "Semantics(value: text.replaceAll(r'**', '').replaceAll('\\n', ' '), excludeSemantics: true, child: RichText(...))",
+        "explanation": "The `Semantics` widget uses `excludeSemantics: true` and provides a flattened `value` for the entire text. This means that while the full text content is available to screen readers, the visual emphasis (bolding) applied to specific parts of the text is not conveyed semantically. Users relying on screen readers will hear the text as a continuous string without any indication of which parts were visually highlighted, potentially leading to a loss of important information or context.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 860,
+    "completion_tokens": 178,
+    "thinking_tokens": 1514,
+    "total_tokens": 2552
+  },
+  "latency_ms": 9118
+}

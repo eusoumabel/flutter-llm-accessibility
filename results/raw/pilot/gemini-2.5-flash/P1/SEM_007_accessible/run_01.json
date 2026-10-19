@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_007_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T02:10:52.098250+00:00",
+  "request": {
+    "sample_id": "SEM_007",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Interaction and interactive target accessibility",
+        "affected_code": "GestureDetector(onTap: onPressed, ...)",
+        "explanation": "The custom button uses GestureDetector for tap interaction but does not provide built-in keyboard focus or activation. Users who rely on keyboard navigation (e.g., using the Tab key to navigate and Enter/Space to activate) will not be able to interact with this button. Standard Flutter button widgets automatically handle keyboard accessibility.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 306,
+    "completion_tokens": 96,
+    "thinking_tokens": 1684,
+    "total_tokens": 2086
+  },
+  "latency_ms": 9043
+}

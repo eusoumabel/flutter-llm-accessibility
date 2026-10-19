@@ -1,0 +1,45 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "INT_018_component",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T01:52:21.770446+00:00",
+  "request": {
+    "sample_id": "INT_018",
+    "variant": "component",
+    "category": "interaction",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Insufficient color contrast",
+        "affected_code": "var a = derivedSubColor.a - KeypadKeyButton._subtextAlphaReduction;\nif (a < KeypadKeyButton._minAlphaValue) a = KeypadKeyButton._minAlphaValue;\nderivedSubColor = derivedSubColor.withValues(alpha: a);",
+        "explanation": "The subtext color is derived by reducing alpha by 0.3, with a floor of 0.2. Alpha values this low on small bodyMedium text are likely to fall below the WCAG 4.5:1 contrast ratio for text that conveys meaning (letters on keypad keys).",
+        "confidence": "medium"
+      },
+      {
+        "type": "Long-press-only functionality / timing-dependent gesture",
+        "affected_code": "onLongPress: hasLongPress ? () => widget.onKeyPressed(widget.subtext) : null,",
+        "explanation": "The subtext character can only be entered with a long press held for at least kLongPressTimeout. This path-dependent, timed gesture may be hard for users with motor impairments. No single-tap alternative is visible in this component. The Semantics node does expose onLongPress for assistive technology.",
+        "confidence": "low"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 1786,
+    "completion_tokens": 416,
+    "total_tokens": 2202
+  },
+  "latency_ms": 5484,
+  "request_id": "req_011CgAm1BGtBEYTivTNbzrLQ"
+}

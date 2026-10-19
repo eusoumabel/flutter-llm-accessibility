@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "INT_017_component",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T02:13:12.054291+00:00",
+  "request": {
+    "sample_id": "INT_017",
+    "variant": "component",
+    "category": "interaction",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Semantic Information Hiding",
+        "affected_code": "Semantics(label: tooltip, button: true, excludeSemantics: true, child: Tooltip(message: tooltip, child: InkWell(customBorder: const CircleBorder(), onTap: onTap, child: child, ), ), )",
+        "explanation": "The `excludeSemantics: true` property on the `Semantics` widget prevents the semantic information of its children from being included in the accessibility tree. While the `tooltip` is used as the `label` for the button, if the `child` widget (passed into SmoothCardHeaderButton) contains important visual text or icons that convey additional meaning not fully captured by the `tooltip`, this information will be inaccessible to screen reader users. This can lead to a loss of context or functionality for users relying on assistive technologies.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 407,
+    "completion_tokens": 178,
+    "thinking_tokens": 3539,
+    "total_tokens": 4124
+  },
+  "latency_ms": 17858
+}

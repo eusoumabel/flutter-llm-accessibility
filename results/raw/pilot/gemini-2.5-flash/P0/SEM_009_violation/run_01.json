@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_009_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T01:42:44.322081+00:00",
+  "request": {
+    "sample_id": "SEM_009",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing semantic role",
+        "affected_code": "GestureDetector(\n      behavior: HitTestBehavior.opaque,\n      onTap: onOpenTerms,\n      child: Container(\n        constraints: const BoxConstraints(minHeight: 48),\n        alignment: Alignment.centerLeft,\n        child: Text(\n          'Read the Terms of Service',\n          style: TextStyle(\n            color: Theme.of(context).colorScheme.primary,\n            decoration: TextDecoration.underline,\n          ),\n        ),\n      ),\n    )",
+        "explanation": "The GestureDetector makes the 'Read the Terms of Service' text interactive, but it does not explicitly convey its semantic role (e.g., 'button' or 'link') to accessibility services. Screen reader users might perceive this as static text rather than an interactive element.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 260,
+    "completion_tokens": 213,
+    "thinking_tokens": 904,
+    "total_tokens": 1377
+  },
+  "latency_ms": 6339
+}

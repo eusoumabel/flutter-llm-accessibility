@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_013_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T01:42:09.656649+00:00",
+  "request": {
+    "sample_id": "SEM_013",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Semantic Structure",
+        "affected_code": "Row(mainAxisSize: MainAxisSize.min,children: [for (var star = 1; star <= 5; star++)Semantics(button: true,selected: star == rating,label: 'Rate $star out of 5',child: GestureDetector(behavior: HitTestBehavior.opaque,onTap: () => onRatingChanged(star),child: SizedBox(width: 48,height: 48,child: Icon(star <= rating ? Icons.star : Icons.star_border,color: Colors.amber,),),),),],)",
+        "explanation": "While each star is individually accessible with a Semantics label and state, the entire StarRating component, which represents a single value (the overall rating), lacks a unified semantic representation. A screen reader user must navigate through each individual star to understand the current rating and its context. Providing a single Semantics widget around the Row with a descriptive label for the component (e.g., 'Star rating') and a value indicating the current rating (e.g., '3 out of 5') would offer a more efficient and consolidated experience for assistive technology users.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 340,
+    "completion_tokens": 258,
+    "thinking_tokens": 4994,
+    "total_tokens": 5592
+  },
+  "latency_ms": 25651
+}

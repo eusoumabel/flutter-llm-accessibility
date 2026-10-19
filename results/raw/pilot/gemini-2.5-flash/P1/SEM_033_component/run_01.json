@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_033_component",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T02:18:18.133932+00:00",
+  "request": {
+    "sample_id": "SEM_033",
+    "variant": "component",
+    "category": "semantics",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Semantic State",
+        "affected_code": "TextButton.icon(\n      style: TextButton.styleFrom(foregroundColor: Theme.of(context).colorScheme.onSurface),\n      onPressed: onToggle,\n      icon: const Icon(Icons.info),\n      label: Text(advanced ? 'Hide' : 'Advanced'),\n    )",
+        "explanation": "The button toggles the visibility of 'advanced details'. While the button's label dynamically changes between 'Hide' and 'Advanced' to reflect its state, it does not explicitly convey its semantic state as an expandable/collapsible control to assistive technologies. Wrapping the `TextButton.icon` with a `Semantics` widget and setting the `expanded` property based on the `advanced` boolean would provide clearer information to screen reader users about whether the associated content is currently expanded or collapsed.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 251,
+    "completion_tokens": 215,
+    "thinking_tokens": 1462,
+    "total_tokens": 1928
+  },
+  "latency_ms": 8686
+}

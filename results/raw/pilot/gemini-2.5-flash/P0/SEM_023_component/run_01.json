@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_023_component",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T02:03:19.910141+00:00",
+  "request": {
+    "sample_id": "SEM_023",
+    "variant": "component",
+    "category": "semantics",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Semantic Labeling",
+        "affected_code": "Semantics(hint: 'Add to cart', child: MouseRegion(cursor: SystemMouseCursors.click, child: GestureDetector(onTap: onAddToCart, child: Stack(...))))",
+        "explanation": "The Semantics widget wrapping the interactive product card only provides a 'hint' ('Add to cart') but lacks a comprehensive 'label'. A screen reader user will hear 'Add to cart' but might not know which product they are adding to the cart without further exploration. The 'label' should combine the product 'name' and 'price' to provide full context for the interactive element.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 552,
+    "completion_tokens": 138,
+    "thinking_tokens": 1670,
+    "total_tokens": 2360
+  },
+  "latency_ms": 9702
+}

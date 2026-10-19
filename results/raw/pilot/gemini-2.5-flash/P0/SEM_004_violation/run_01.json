@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_004_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T02:18:48.945588+00:00",
+  "request": {
+    "sample_id": "SEM_004",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Inadequate semantic label",
+        "affected_code": "tooltip: 'Trash can'",
+        "explanation": "The tooltip for the IconButton describes the icon ('Trash can') rather than the action it performs ('Remove item'). Screen reader users may not understand the button's function without a more descriptive label.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 225,
+    "completion_tokens": 68,
+    "thinking_tokens": 799,
+    "total_tokens": 1092
+  },
+  "latency_ms": 4895
+}

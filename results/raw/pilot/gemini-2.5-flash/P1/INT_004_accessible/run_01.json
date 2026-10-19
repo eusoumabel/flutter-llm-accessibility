@@ -1,0 +1,44 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "INT_004_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T02:12:41.545333+00:00",
+  "request": {
+    "sample_id": "INT_004",
+    "variant": "accessible",
+    "category": "interaction",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Interaction",
+        "affected_code": "GestureDetector(onDoubleTap: onToggleLike, ...)",
+        "explanation": "The primary visual interaction for liking/unliking is a double-tap gesture. Double-tap can be challenging for users with motor impairments or those using alternative input methods. While a CustomSemanticsAction is provided for screen readers, a more standard single-tap interaction or a dedicated interactive widget (e.g., IconButton) would improve discoverability and usability for a broader range of users, including keyboard users.",
+        "confidence": "high"
+      },
+      {
+        "type": "Semantics",
+        "affected_code": "Semantics(customSemanticsActions: {...}, child: GestureDetector(...))",
+        "explanation": "The GestureDetector wrapping the Image does not explicitly convey a semantic role (e.g., \"button\", \"toggle button\") or its current 'liked' state (e.g., SemanticsFlag.isSelected) to assistive technologies. While the CustomSemanticsAction label changes based on the 'liked' state, a standard semantic state would provide clearer information about the element's current status.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 385,
+    "completion_tokens": 275,
+    "thinking_tokens": 1850,
+    "total_tokens": 2510
+  },
+  "latency_ms": 10376
+}
