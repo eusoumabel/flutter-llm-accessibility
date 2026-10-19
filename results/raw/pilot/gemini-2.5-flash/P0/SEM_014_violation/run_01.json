@@ -1,0 +1,44 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_014_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T02:11:37.401246+00:00",
+  "request": {
+    "sample_id": "SEM_014",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing Semantic Information",
+        "affected_code": "GestureDetector(behavior: HitTestBehavior.opaque, onTap: () => onChanged(!accepted), child: SizedBox(...))",
+        "explanation": "The custom checkbox implemented using a GestureDetector and a Container lacks proper semantic information. Screen readers will not identify it as a checkbox, nor will they announce its checked/unchecked state. This makes it difficult for users relying on screen readers to understand and interact with the component. It should be wrapped in a Semantics widget with 'role: SemanticsRole.checkbox' and 'checked: accepted'.",
+        "confidence": "high"
+      },
+      {
+        "type": "Semantic Information Excluded",
+        "affected_code": "ExcludeSemantics(child: Text('I accept the terms and conditions'))",
+        "explanation": "The label text 'I accept the terms and conditions' is wrapped in ExcludeSemantics, preventing screen readers from announcing it. This means users relying on screen readers will not know what the checkbox is for, making the component unusable for them. The label should be semantically associated with the interactive checkbox, typically by including it within the same Semantics widget or using 'label' property.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 390,
+    "completion_tokens": 287,
+    "thinking_tokens": 882,
+    "total_tokens": 1559
+  },
+  "latency_ms": 6230
+}

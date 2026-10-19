@@ -1,0 +1,76 @@
+{
+    "schema_version": "1.0",
+    "id": "SEM_030",
+    "title": "Custom pill scan button with full semantics",
+    "category": "semantics",
+    "subcategory": "inaccessible_custom_control",
+    "status": "validated",
+    "source": {
+        "type": "external",
+        "repository": {
+            "name": "cake-tech/cake_wallet",
+            "url": "https://github.com/cake-tech/cake_wallet"
+        },
+        "original_file": "lib/new-ui/pages/scan_page.dart#L478-L524",
+        "commit": "02ad99523634dcb8057a6816adc25d2ef72b40dd",
+        "license": {
+            "name": "MIT",
+            "verified": true,
+            "copyright": "Copyright (c) 2018-2025 Cake Labs LLC"
+        }
+    },
+    "component": {
+        "framework": "flutter",
+        "language": "dart",
+        "widget_types": [
+            "Semantics",
+            "GestureDetector",
+            "Container",
+            "Row",
+            "Icon",
+            "Text"
+        ],
+        "description": "A pill-shaped button of a QR scanner page built with a GestureDetector, showing an icon and an optional text label."
+    },
+    "files": {
+        "component": "component.dart"
+    },
+    "ground_truth": {
+        "component": {
+            "has_violation": false,
+            "violations": []
+        }
+    },
+    "references": {
+        "flutter": [
+            {
+                "type": "documentation",
+                "reference": "https://api.flutter.dev/flutter/widgets/Semantics-class.html"
+            }
+        ],
+        "wcag": [
+            {
+                "criterion": "4.1.2",
+                "description": "Name, Role, Value"
+            }
+        ]
+    },
+    "mutations": [],
+    "validation": {
+        "automated": {
+            "performed": false,
+            "tool": null,
+            "result": null
+        },
+        "manual": {
+            "performed": true,
+            "reviewers": [
+                "researcher"
+            ]
+        },
+        "status": "validated"
+    },
+    "notes": "Negativo difícil (ADR-R006) de SEM-05: é um controle customizado construído com GestureDetector e, na variante só com ícone, sem texto visível; o Semantics fornece papel de botão, estado habilitado, rótulo (semanticsLabel ou label) e onTap, com excludeSemantics. Na variante só com ícone, a área é de 48x48 dp. Copiado sem alterações de ScanPageButton (ADR-R011).",
+    "created_at": "2026-10-18",
+    "updated_at": "2026-10-18"
+}

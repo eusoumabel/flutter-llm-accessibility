@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_011_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T02:16:45.952893+00:00",
+  "request": {
+    "sample_id": "SEM_011",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Semantics and accessible information",
+        "affected_code": "Semantics(button: true, child: GestureDetector(...))",
+        "explanation": "The `Semantics` widget for each category tab correctly identifies it as a button but does not convey its selection state. Screen reader users will not be able to determine which category is currently selected, as all tabs will be announced as 'Category Name, button' without an indication of selection. The `selected` semantic property should be set based on `i == selectedIndex`.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 379,
+    "completion_tokens": 141,
+    "thinking_tokens": 1099,
+    "total_tokens": 1619
+  },
+  "latency_ms": 6904
+}

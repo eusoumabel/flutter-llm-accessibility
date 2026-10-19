@@ -1,0 +1,63 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_017_component",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T01:47:47.039801+00:00",
+  "request": {
+    "sample_id": "SEM_017",
+    "variant": "component",
+    "category": "semantics",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing accessible name",
+        "affected_code": "IconButton(key: const Key('slideshow_slideshowButtonsLeft'), ... icon: ... Icon(Icons.arrow_back ...))",
+        "explanation": "The previous-page IconButton has no tooltip or semanticLabel, so screen readers announce it only as an unlabeled button.",
+        "confidence": "high"
+      },
+      {
+        "type": "Missing accessible name",
+        "affected_code": "IconButton(key: const Key('slideshow_slideshowButtonsRight'), ... icon: ... Icon(Icons.arrow_forward ...))",
+        "explanation": "The next-page IconButton has no tooltip or semanticLabel, so screen readers cannot convey its purpose.",
+        "confidence": "high"
+      },
+      {
+        "type": "Disabled state not exposed",
+        "affected_code": "onPressed: () async { if (_currentPage >= 1) { ... } }, icon: _currentPage == 0 ? const Icon(Icons.arrow_back, color: Colors.white38) : ...",
+        "explanation": "At the first/last page the buttons are only visually dimmed but onPressed remains non-null, so assistive technologies report them as enabled even though activating them does nothing. onPressed should be null to expose the disabled state.",
+        "confidence": "high"
+      },
+      {
+        "type": "Status change not announced",
+        "affected_code": "Text(navigationBarLabel, style: ...)",
+        "explanation": "The page indicator updates when pages change, but it is not wrapped in a live region (Semantics(liveRegion: true)), so screen reader users are not informed of the new current page after pressing navigation buttons.",
+        "confidence": "medium"
+      },
+      {
+        "type": "Insufficient color contrast",
+        "affected_code": "const Icon(Icons.arrow_back, color: Colors.white38) / Text(... color: Colors.white)",
+        "explanation": "Hardcoded white and semi-transparent white colors ignore the theme; depending on the background they may fail contrast requirements. The background is not defined in this component.",
+        "confidence": "low"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 1417,
+    "completion_tokens": 670,
+    "total_tokens": 2087
+  },
+  "latency_ms": 6907,
+  "request_id": "req_011CgAkepccVWWoYvpQCaTVv"
+}

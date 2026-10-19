@@ -1,0 +1,22 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "INT_006_violation",
+  "sample_id": "INT_006",
+  "variant": "violation",
+  "category": "interaction",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "prompt": "P0",
+  "run": 1,
+  "status": "ok",
+  "valid": true,
+  "predicted_has_violation": true,
+  "predicted_violations": [
+    "Interaction Accessibility",
+    "Interaction Accessibility"
+  ],
+  "predicted_confidences": [
+    "high",
+    "high"
+  ]
+}

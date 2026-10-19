@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_033_component",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T02:04:24.279489+00:00",
+  "request": {
+    "sample_id": "SEM_033",
+    "variant": "component",
+    "category": "semantics",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Semantic Clarity: Icon-Text Mismatch",
+        "affected_code": "icon: const Icon(Icons.info), label: Text(advanced ? 'Hide' : 'Advanced')",
+        "explanation": "The button uses a static 'info' icon while its text label dynamically changes between 'Advanced' and 'Hide'. When the label is 'Hide', the 'info' icon may not semantically align with the action of hiding information, potentially causing minor confusion for screen reader users who hear both the label and the icon's inferred semantic description. A more contextually relevant icon (e.g., Icons.expand_less or Icons.visibility_off) could improve clarity when the label is 'Hide'.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 238,
+    "completion_tokens": 151,
+    "thinking_tokens": 2409,
+    "total_tokens": 2798
+  },
+  "latency_ms": 14129
+}

@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "INT_002_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T02:11:44.147219+00:00",
+  "request": {
+    "sample_id": "INT_002",
+    "variant": "violation",
+    "category": "interaction",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Interactive Target Size",
+        "affected_code": "IconButton(\n            icon: const Icon(Icons.close),\n            iconSize: 16,\n            padding: EdgeInsets.zero,\n            constraints: const BoxConstraints(),\n            style: const ButtonStyle(\n              tapTargetSize: MaterialTapTargetSize.shrinkWrap,\n            ),\n            tooltip: 'Remove filter $label',\n            onPressed: onRemove,\n          )",
+        "explanation": "The IconButton's interactive tap target is likely too small. The `iconSize` is set to 16, `padding` is `EdgeInsets.zero`, and `tapTargetSize` is explicitly set to `MaterialTapTargetSize.shrinkWrap`. This combination will result in a tap target significantly smaller than the recommended minimum of 48x48 logical pixels, making it difficult for users with motor impairments or those using assistive technologies to accurately activate the button.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 348,
+    "completion_tokens": 231,
+    "thinking_tokens": 1041,
+    "total_tokens": 1620
+  },
+  "latency_ms": 6743
+}

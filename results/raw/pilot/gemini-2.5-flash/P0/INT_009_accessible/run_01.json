@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "INT_009_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T01:41:44.003830+00:00",
+  "request": {
+    "sample_id": "INT_009",
+    "variant": "accessible",
+    "category": "interaction",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Color Contrast",
+        "affected_code": "const Icon(Icons.play_circle_fill, size: 64, color: Colors.white)",
+        "explanation": "The white play icon is placed on top of a dynamic thumbnail image. Depending on the content of the 'thumbnail', the white icon might not have sufficient color contrast against the background image, making it difficult for users with low vision to perceive.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 302,
+    "completion_tokens": 98,
+    "thinking_tokens": 896,
+    "total_tokens": 1296
+  },
+  "latency_ms": 5245
+}

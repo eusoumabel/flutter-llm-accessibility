@@ -1,0 +1,57 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "INT_005_accessible",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T01:43:45.603412+00:00",
+  "request": {
+    "sample_id": "INT_005",
+    "variant": "accessible",
+    "category": "interaction",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing state change announcement",
+        "affected_code": "onPressed: () => _setScale(_scale - 0.5) / onPressed: () => _setScale(_scale + 0.5)",
+        "explanation": "Zoom level changes are not communicated to assistive technologies (no live region or SemanticsService announcement), and the current zoom level is not exposed semantically, so screen reader users get no feedback about the zoom state.",
+        "confidence": "medium"
+      },
+      {
+        "type": "Desynchronized state / no feedback at limits",
+        "affected_code": "_scale = value.clamp(1.0, 4.0);",
+        "explanation": "_scale is not updated when the user pinch-zooms via InteractiveViewer, so button-based zoom may jump unexpectedly; also buttons remain enabled at min/max scale, giving no indication that further zoom is impossible.",
+        "confidence": "medium"
+      },
+      {
+        "type": "Insufficient alternative text for complex image",
+        "affected_code": "semanticLabel: 'Office floor plan'",
+        "explanation": "A floor plan is a complex informational image; the generic label does not convey its content (rooms, layout), and no text alternative is provided for non-visual users.",
+        "confidence": "medium"
+      },
+      {
+        "type": "No accessible panning alternative",
+        "affected_code": "InteractiveViewer(transformationController: _controller, ...)",
+        "explanation": "When zoomed, panning is only possible via drag gestures; no button or keyboard alternative is provided to move around the plan, and zoom always scales from the origin, leaving parts unreachable without gestures.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 1095,
+    "completion_tokens": 521,
+    "total_tokens": 1616
+  },
+  "latency_ms": 5765,
+  "request_id": "req_011CgAkM7ZagL9DymYb7MSWw"
+}

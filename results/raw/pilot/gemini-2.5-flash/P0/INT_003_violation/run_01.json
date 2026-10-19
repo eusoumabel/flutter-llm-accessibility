@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "INT_003_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T02:14:54.713736+00:00",
+  "request": {
+    "sample_id": "INT_003",
+    "variant": "violation",
+    "category": "interaction",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Tap Target Size",
+        "affected_code": "InkWell(onTap: onRemove,customBorder: const CircleBorder(),child: const SizedBox(width: 20,height: 20,child: Center(child: CircleAvatar(radius: 10,child: Icon(Icons.close, size: 14),),),),)",
+        "explanation": "The interactive 'remove' button has a tap target size of 20x20 logical pixels. This is smaller than the recommended minimum of 44x44 logical pixels by accessibility guidelines (e.g., WCAG 2.5.5 Target Size), which can make it difficult for users with motor impairments or those using assistive technologies to accurately tap the button.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 417,
+    "completion_tokens": 171,
+    "thinking_tokens": 1222,
+    "total_tokens": 1810
+  },
+  "latency_ms": 7500
+}

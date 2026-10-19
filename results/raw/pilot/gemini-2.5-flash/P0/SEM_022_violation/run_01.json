@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_022_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T01:41:38.756646+00:00",
+  "request": {
+    "sample_id": "SEM_022",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing semantic information for image",
+        "affected_code": "Image(image: asset, width: 64, height: 64, excludeFromSemantics: true,)",
+        "explanation": "The Image widget is explicitly excluded from the semantics tree. If this image conveys important information that is not redundant with the adjacent 'title' text, then users of screen readers will miss this information. While it might be decorative or its meaning fully conveyed by the title, without knowing the specific content of the 'asset', it represents a potential accessibility concern that warrants review.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 352,
+    "completion_tokens": 129,
+    "thinking_tokens": 2421,
+    "total_tokens": 2902
+  },
+  "latency_ms": 12317
+}

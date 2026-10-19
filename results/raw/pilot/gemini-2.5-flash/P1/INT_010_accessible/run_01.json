@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "INT_010_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T02:12:12.819326+00:00",
+  "request": {
+    "sample_id": "INT_010",
+    "variant": "accessible",
+    "category": "interaction",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Interaction and interactive target accessibility",
+        "affected_code": "IconButton(\n      icon: const Icon(Icons.login),\n      iconSize: 24,\n      padding: const EdgeInsets.symmetric(\n        horizontal: 16,\n        vertical: 8,\n      ),\n      onPressed: onLogin,\n      tooltip: 'Login',\n    )",
+        "explanation": "The interactive target height of the LoginButton is 40 logical pixels (24 icon size + 2 * 8 vertical padding), which is less than the recommended minimum of 48 logical pixels for interactive elements. This can make it difficult for users with motor impairments or large fingers to accurately tap the button.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 230,
+    "completion_tokens": 183,
+    "thinking_tokens": 803,
+    "total_tokens": 1216
+  },
+  "latency_ms": 5006
+}

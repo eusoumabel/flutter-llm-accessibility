@@ -1,0 +1,44 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_028_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T01:43:28.861498+00:00",
+  "request": {
+    "sample_id": "SEM_028",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Semantics and accessible information",
+        "affected_code": "GestureDetector(onTap: widget.onTap, child: Focus(...))",
+        "explanation": "The custom interactive control (ThumbButton) lacks an explicit semantic label and role. Screen readers will not be able to convey the purpose of this button or identify it as an interactive element, making it difficult for users with visual impairments to understand and interact with it.",
+        "confidence": "high"
+      },
+      {
+        "type": "Semantics and accessible information",
+        "affected_code": "ExcludeSemantics(child: Image(image: widget.thumb))",
+        "explanation": "The Image widget, which serves as the visual content for the button, is wrapped in ExcludeSemantics. This prevents any descriptive information about the image from being exposed to the accessibility tree. If the image conveys important information or acts as the primary visual cue for the button's purpose, this information will be inaccessible to screen reader users.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 515,
+    "completion_tokens": 244,
+    "thinking_tokens": 1429,
+    "total_tokens": 2188
+  },
+  "latency_ms": 8164
+}

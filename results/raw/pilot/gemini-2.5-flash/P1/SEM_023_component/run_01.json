@@ -1,0 +1,50 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_023_component",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T01:43:20.692338+00:00",
+  "request": {
+    "sample_id": "SEM_023",
+    "variant": "component",
+    "category": "semantics",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Semantics and accessible information",
+        "affected_code": "Semantics(hint: 'Add to cart', child: MouseRegion(...))",
+        "explanation": "The entire `DesktopProductCard` is made interactive via a `GestureDetector` to perform an 'add to cart' action. While a `Semantics` widget provides a `hint` ('Add to cart'), it lacks a primary `label` and an explicit `role` (e.g., `SemanticsRole.button`). Screen readers might announce the card as a generic tappable area with a hint, rather than clearly identifying it as a button with a specific action. This can make it harder for users to understand its purpose and interact efficiently.",
+        "confidence": "high"
+      },
+      {
+        "type": "Semantics and accessible information",
+        "affected_code": "Image(image: image, fit: BoxFit.cover, width: imageWidth, excludeFromSemantics: true,)",
+        "explanation": "The product image is explicitly excluded from semantics (`excludeFromSemantics: true`). While the product `name` is displayed as text, if the image conveys unique or additional information crucial for identifying the product (e.g., specific color, variant, or visual details not covered by the name), then excluding it from semantics means this information is inaccessible to screen reader users. If the image is purely decorative or its information is fully redundant with the `name` text, then `excludeFromSemantics: true` is appropriate. Without further context on the image's content relative to the `name`, this is an ambiguity.",
+        "confidence": "medium"
+      },
+      {
+        "type": "Semantics and accessible information",
+        "affected_code": "Icon(Icons.add_shopping_cart)",
+        "explanation": "An `Icon(Icons.add_shopping_cart)` is visually present on the card. The entire card is interactive via a `GestureDetector` and has a `Semantics` hint 'Add to cart'. The icon's semantics are not explicitly managed. If the icon is purely decorative and its meaning is fully conveyed by the parent `Semantics` hint, it should be `excludeFromSemantics: true` to avoid redundancy. If it's meant to be part of the interactive element's accessible label, it should be included in the parent `Semantics` tree or given a `semanticLabel` that merges appropriately. As it stands, a screen reader might announce 'Add to cart' (from the parent Semantics) and then 'Add shopping cart icon' (from the icon itself), which could be redundant or confusing.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 565,
+    "completion_tokens": 592,
+    "thinking_tokens": 2133,
+    "total_tokens": 3290
+  },
+  "latency_ms": 13555
+}

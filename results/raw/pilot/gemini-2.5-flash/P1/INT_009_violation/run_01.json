@@ -1,0 +1,31 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "INT_009_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T02:16:17.020790+00:00",
+  "request": {
+    "sample_id": "INT_009",
+    "variant": "violation",
+    "category": "interaction",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": []
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 324,
+    "completion_tokens": 5,
+    "thinking_tokens": 1414,
+    "total_tokens": 1743
+  },
+  "latency_ms": 7712
+}

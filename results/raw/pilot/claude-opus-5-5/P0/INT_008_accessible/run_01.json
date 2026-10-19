@@ -1,0 +1,57 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "INT_008_accessible",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T01:57:29.844971+00:00",
+  "request": {
+    "sample_id": "INT_008",
+    "variant": "accessible",
+    "category": "interaction",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Keyboard accessibility / focus",
+        "affected_code": "Listener(onPointerDown: ..., onPointerUp: ..., onPointerCancel: ...)",
+        "explanation": "The control relies solely on raw pointer events via Listener. It is not focusable and does not respond to keyboard activation (Enter/Space) or other non-pointer input, so keyboard and switch-access users cannot operate it. Only the Semantics onTap provides a path for screen readers. Using InkWell, GestureDetector with FocusableActionDetector, or an IconButton/FloatingActionButton would provide focus and keyboard support.",
+        "confidence": "high"
+      },
+      {
+        "type": "Missing focus indicator",
+        "affected_code": "Container(width: 56, height: 56, decoration: const BoxDecoration(color: Colors.blue, shape: BoxShape.circle), ...)",
+        "explanation": "No focus or hover visual state is provided. Even if focus were added, there is no visible focus indicator for keyboard users.",
+        "confidence": "medium"
+      },
+      {
+        "type": "Pointer cancellation / activation on up without bounds check",
+        "affected_code": "onPointerUp: (_) { setState(() => _pressed = false); widget.onSend(); }",
+        "explanation": "The action fires on any pointer up, even if the pointer has moved outside the button. Users cannot abort an accidental press by sliding away, which violates the pointer cancellation guideline (WCAG 2.5.2). Unlike standard gesture recognizers, Listener does not cancel the tap when the pointer moves off the target.",
+        "confidence": "medium"
+      },
+      {
+        "type": "Missing enabled state semantics",
+        "affected_code": "Semantics(button: true, label: 'Send message', onTap: widget.onSend, ...)",
+        "explanation": "The custom Semantics does not set enabled: true. Some assistive technologies may not announce the control as an actionable enabled button. A standard button widget would supply these semantics automatically.",
+        "confidence": "low"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 934,
+    "completion_tokens": 658,
+    "total_tokens": 1592
+  },
+  "latency_ms": 7390,
+  "request_id": "req_011CgAmPkF8dhVZtFTf8x79q"
+}

@@ -1,0 +1,51 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "INT_008_violation",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T01:56:05.221445+00:00",
+  "request": {
+    "sample_id": "INT_008",
+    "variant": "violation",
+    "category": "interaction",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Custom interactive control without accessible action",
+        "affected_code": "Semantics(button: true, label: 'Send message', child: Listener(onPointerDown: ..., onPointerUp: (_) { ... widget.onSend(); }, ...))",
+        "explanation": "The control relies on a raw Listener for pointer events, which provides no semantic tap action. Although Semantics marks it as a button with a label, no onTap is provided to Semantics. Screen reader users (TalkBack/VoiceOver double-tap) and switch/keyboard users cannot activate it. Use GestureDetector/InkWell/IconButton, or add onTap: widget.onSend to Semantics.",
+        "confidence": "high"
+      },
+      {
+        "type": "No keyboard/focus support",
+        "affected_code": "Listener(...) child: Container(width: 56, height: 56, ...)",
+        "explanation": "The custom control is not focusable and has no keyboard activation (Enter/Space). Listener only handles pointer events, so keyboard and switch-access users cannot reach or trigger it. Use a Focus/FocusableActionDetector or a standard button widget.",
+        "confidence": "high"
+      },
+      {
+        "type": "Decorative icon semantics not excluded / potential duplicate",
+        "affected_code": "const Icon(Icons.send, color: Colors.white)",
+        "explanation": "The Icon has no semanticLabel, so it adds nothing to the semantics tree, and the parent label covers it. This is minor. However, the Semantics wrapper does not set excludeSemantics or container, so the merging behavior is not explicit.",
+        "confidence": "low"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 963,
+    "completion_tokens": 530,
+    "total_tokens": 1493
+  },
+  "latency_ms": 6580,
+  "request_id": "req_011CgAmHa14qfRsXni1MkskU"
+}

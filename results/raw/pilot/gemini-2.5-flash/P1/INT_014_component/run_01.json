@@ -1,0 +1,44 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "INT_014_component",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T02:15:50.020790+00:00",
+  "request": {
+    "sample_id": "INT_014",
+    "variant": "component",
+    "category": "interaction",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing semantic label",
+        "affected_code": "Image(image: image, fit: BoxFit.contain, ...)",
+        "explanation": "The Image widget lacks a semanticLabel. While the AppBar provides a title for the screen, this title might be generic (e.g., 'Image' by default) and not adequately describe the visual content of the image to users who cannot see it. This can hinder understanding for screen reader users.",
+        "confidence": "high"
+      },
+      {
+        "type": "Lack of accessible gesture alternatives",
+        "affected_code": "InteractiveViewer(maxScale: 6, child: Image(...))",
+        "explanation": "The InteractiveViewer enables zooming and panning through gestures. However, it does not expose these interactive capabilities through semantic actions for screen readers or provide alternative interactive controls (e.g., buttons for zoom in/out, pan controls) for users who cannot perform multi-touch gestures. This can make the interactive functionality inaccessible to some users.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 534,
+    "completion_tokens": 245,
+    "thinking_tokens": 1320,
+    "total_tokens": 2099
+  },
+  "latency_ms": 8031
+}

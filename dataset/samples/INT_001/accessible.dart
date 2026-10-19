@@ -7,17 +7,13 @@ class TapTargetButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Semantics(
-      button: true,
-      label: 'Submit',
-      child: SizedBox(
-        width: 48,
-        height: 48,
-        child: IconButton(
-          icon: const Icon(Icons.check),
-          onPressed: onPressed,
-          tooltip: 'Submit',
-        ),
+    return SizedBox(
+      width: 48,
+      height: 48,
+      child: IconButton(
+        icon: const Icon(Icons.check),
+        onPressed: onPressed,
+        tooltip: 'Submit',
       ),
     );
   }

@@ -1,0 +1,94 @@
+{
+    "schema_version": "1.0",
+    "id": "SEM_006",
+    "title": "Carousel next button labeled as previous",
+    "category": "semantics",
+    "subcategory": "incorrect_accessible_label",
+    "status": "validated",
+    "source": {
+        "type": "synthetic",
+        "repository": null,
+        "original_file": null,
+        "commit": null,
+        "license": null
+    },
+    "component": {
+        "framework": "flutter",
+        "language": "dart",
+        "widget_types": [
+            "Row",
+            "IconButton",
+            "Icon"
+        ],
+        "description": "Carousel controls with icon buttons to move to the previous and to the next image."
+    },
+    "files": {
+        "accessible": "accessible.dart",
+        "violation": "violation.dart"
+    },
+    "ground_truth": {
+        "accessible": {
+            "has_violation": false,
+            "violations": []
+        },
+        "violation": {
+            "has_violation": true,
+            "violations": [
+                {
+                    "id": "SEM-02",
+                    "type": "incorrect_accessible_label",
+                    "description": "The button that calls onNext has the tooltip 'Previous image', contradicting the action it performs.",
+                    "affected_lines": {
+                        "start": 23,
+                        "end": 27
+                    },
+                    "confidence": "confirmed"
+                }
+            ]
+        }
+    },
+    "references": {
+        "flutter": [
+            {
+                "type": "documentation",
+                "reference": "https://api.flutter.dev/flutter/widgets/Semantics-class.html"
+            }
+        ],
+        "wcag": [
+            {
+                "criterion": "4.1.2",
+                "description": "Name, Role, Value"
+            },
+            {
+                "criterion": "2.4.6",
+                "description": "Headings and Labels"
+            }
+        ]
+    },
+    "mutations": [
+        {
+            "id": "replace_accessible_label",
+            "description": "Replaced the tooltip of the next button with the label of the opposite action, preserving icons and callbacks.",
+            "target_variants": [
+                "violation"
+            ]
+        }
+    ],
+    "validation": {
+        "automated": {
+            "performed": false,
+            "tool": null,
+            "result": null
+        },
+        "manual": {
+            "performed": true,
+            "reviewers": [
+                "researcher"
+            ]
+        },
+        "status": "validated"
+    },
+    "notes": null,
+    "created_at": "2026-10-18",
+    "updated_at": "2026-10-18"
+}

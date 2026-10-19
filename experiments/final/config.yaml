@@ -7,12 +7,17 @@ experiment:
   repetitions: 3
 
 models:
-  - provider: provider_a
-    model_id: exact-model-id
+  - provider: gemini
+    model_id: gemini-2.5-flash
     temperature: 0
-  - provider: provider_b
-    model_id: exact-model-id
-    temperature: 0
+    thinking: provider default
+  - provider: claude
+    model_id: claude-opus-5-5
+    effort: low
+    temperature: not supported
+    fallback: disabled
+
+response_schema: prompts/response_schema.json
 
 execution:
   randomized: true

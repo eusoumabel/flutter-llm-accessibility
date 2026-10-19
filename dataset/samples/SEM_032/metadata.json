@@ -1,0 +1,98 @@
+{
+    "schema_version": "1.0",
+    "id": "SEM_032",
+    "title": "Color seed picker without selected state",
+    "category": "semantics",
+    "subcategory": "missing_state",
+    "status": "validated",
+    "source": {
+        "type": "mutation",
+        "repository": {
+            "name": "flutter/samples",
+            "url": "https://github.com/flutter/samples"
+        },
+        "original_file": "material_3_demo/lib/src/expanded_color_seed_action.dart#L9-L44; material_3_demo/lib/src/constants.dart#L18-L36",
+        "commit": "5541c59ab8e9d7e74c1a35ef22bd43a487fc596c",
+        "license": {
+            "name": "BSD-3-Clause",
+            "verified": true,
+            "copyright": "Copyright 2021 The Flutter team. All rights reserved."
+        }
+    },
+    "component": {
+        "framework": "flutter",
+        "language": "dart",
+        "widget_types": [
+            "ConstrainedBox",
+            "GridView",
+            "IconButton",
+            "Icon"
+        ],
+        "description": "A grid of color seed icon buttons; the currently selected seed is shown with a filled circle icon."
+    },
+    "files": {
+        "accessible": "accessible.dart",
+        "violation": "violation.dart"
+    },
+    "ground_truth": {
+        "accessible": {
+            "has_violation": false,
+            "violations": []
+        },
+        "violation": {
+            "has_violation": true,
+            "violations": [
+                {
+                    "id": "SEM-04",
+                    "type": "missing_state",
+                    "description": "The selected color seed is indicated only by switching to a filled circle icon; the IconButtons do not expose the selected state.",
+                    "affected_lines": {
+                        "start": 42,
+                        "end": 45
+                    },
+                    "confidence": "confirmed"
+                }
+            ]
+        }
+    },
+    "references": {
+        "flutter": [
+            {
+                "type": "documentation",
+                "reference": "https://api.flutter.dev/flutter/widgets/Semantics-class.html"
+            }
+        ],
+        "wcag": [
+            {
+                "criterion": "4.1.2",
+                "description": "Name, Role, Value"
+            }
+        ]
+    },
+    "mutations": [
+        {
+            "id": "remove_semantic_state",
+            "description": "Replaced the isSelected and selectedIcon parameters by an icon chosen with the same condition, preserving the visual indication of the selected seed but removing its semantic selected state.",
+            "target_variants": [
+                "violation"
+            ]
+        }
+    ],
+    "validation": {
+        "automated": {
+            "performed": false,
+            "tool": null,
+            "result": null
+        },
+        "manual": {
+            "performed": true,
+            "reviewers": [
+                "researcher"
+            ]
+        },
+        "status": "validated"
+    },
+    "notes": "Par adicional que substitui a violação natural de SEM-04, não encontrada após busca direcionada (ADR-R014). Adaptado de ExpandedColorSeedAction (ADR-R011): os enums ColorSeed e ColorSelectionMethod foram copiados de constants.dart.",
+    "created_at": "2026-10-18",
+    "updated_at": "2026-10-18"
+}

@@ -1,0 +1,57 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "INT_008_violation",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T01:48:33.988817+00:00",
+  "request": {
+    "sample_id": "INT_008",
+    "variant": "violation",
+    "category": "interaction",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing semantic action / not operable by assistive technology",
+        "affected_code": "Semantics(button: true, label: 'Send message', child: Listener(onPointerDown: ..., onPointerUp: (_) { ... widget.onSend(); }, ...))",
+        "explanation": "The widget is announced as a button, but no onTap semantic action is provided. Activation relies only on raw pointer events through Listener. Screen reader users (TalkBack/VoiceOver double-tap), switch access, and voice control dispatch semantic tap actions, not pointer events. As a result, the button cannot be activated. Adding onTap to Semantics, or using GestureDetector/InkWell/IconButton, would fix this.",
+        "confidence": "high"
+      },
+      {
+        "type": "Not keyboard accessible / no focus support",
+        "affected_code": "Listener(onPointerDown: ..., onPointerUp: ..., child: AnimatedScale(...))",
+        "explanation": "The control is not focusable and does not respond to keyboard activation such as Enter or Space. A Listener has no Focus or Shortcuts/Actions handling, so keyboard and switch users on desktop and web cannot reach or trigger it. It also shows no visible focus indicator.",
+        "confidence": "high"
+      },
+      {
+        "type": "Unintended activation / pointer-up without cancellation check",
+        "affected_code": "onPointerUp: (_) { setState(() => _pressed = false); widget.onSend(); }",
+        "explanation": "onSend fires on any pointer up, even when the pointer has moved off the button. Users cannot slide away to cancel an accidental press. This removes the up-event abort mechanism expected for pointer cancellation and increases the risk of accidental sends for users with motor impairments.",
+        "confidence": "medium"
+      },
+      {
+        "type": "Motion not respecting reduced-motion preference",
+        "affected_code": "AnimatedScale(scale: _pressed ? 0.9 : 1.0, duration: const Duration(milliseconds: 100), ...)",
+        "explanation": "The scale animation does not check MediaQuery.disableAnimations. The motion is minor, which is why confidence is low.",
+        "confidence": "low"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 921,
+    "completion_tokens": 713,
+    "total_tokens": 1634
+  },
+  "latency_ms": 7884,
+  "request_id": "req_011CgAkiD9HBRQ3G2JLTaU6c"
+}

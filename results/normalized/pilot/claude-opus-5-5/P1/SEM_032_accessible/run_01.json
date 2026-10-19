@@ -1,0 +1,22 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_032_accessible",
+  "sample_id": "SEM_032",
+  "variant": "accessible",
+  "category": "semantics",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "prompt": "P1",
+  "run": 1,
+  "status": "ok",
+  "valid": true,
+  "predicted_has_violation": true,
+  "predicted_violations": [
+    "semantic role",
+    "accessible label"
+  ],
+  "predicted_confidences": [
+    "medium",
+    "low"
+  ]
+}

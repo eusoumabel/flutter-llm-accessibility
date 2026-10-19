@@ -1,0 +1,50 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_028_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T02:22:07.570450+00:00",
+  "request": {
+    "sample_id": "SEM_028",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Semantic Label",
+        "affected_code": "label: 'Login'",
+        "explanation": "The `Semantics` label is hardcoded to 'Login'. This `ThumbButton` component is designed to display an arbitrary `ImageProvider` (`widget.thumb`). A generic button displaying an image should have a semantic label that accurately describes the image or the action it performs. A hardcoded 'Login' label is likely to be incorrect or misleading for many uses of this component, confusing screen reader users about the button's actual purpose. The label should be configurable, ideally passed as a parameter to `ThumbButton`.",
+        "confidence": "high"
+      },
+      {
+        "type": "Missing Semantic Information",
+        "affected_code": "ExcludeSemantics(child: Image(image: widget.thumb))",
+        "explanation": "The `Image` widget, which is the primary visual content of the button, is wrapped in `ExcludeSemantics`. This prevents any semantic information from the image itself (e.g., an implicit or explicit `semanticLabel` on the `Image` widget) from being exposed to accessibility services. Since the parent `Semantics` widget provides a potentially incorrect or generic label ('Login'), screen reader users will not receive an accurate description of the image's content or the button's specific action, leading to a poor user experience.",
+        "confidence": "high"
+      },
+      {
+        "type": "Visual Focus Indicator Contrast",
+        "affected_code": "color: Colors.white.withValues(alpha: 0.5)",
+        "explanation": "The focus indicator uses a semi-transparent white border (assuming `withValues` is intended to be `withOpacity`). A semi-transparent color, especially white, may not provide sufficient contrast against various background colors or the `thumb` image itself. This can make it difficult for users with low vision to clearly perceive which element currently has keyboard focus.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 531,
+    "completion_tokens": 446,
+    "thinking_tokens": 2272,
+    "total_tokens": 3249
+  },
+  "latency_ms": 12998
+}

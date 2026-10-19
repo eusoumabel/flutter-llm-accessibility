@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_011_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T02:13:55.212706+00:00",
+  "request": {
+    "sample_id": "SEM_011",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Interaction and interactive target accessibility",
+        "affected_code": "GestureDetector(onTap: () => onSelected(i), child: Container(...))",
+        "explanation": "The custom tab buttons are implemented using GestureDetector. While Semantics(button: true) correctly identifies them as buttons for screen readers, GestureDetector does not inherently provide keyboard focus management or keyboard activation (e.g., pressing Space or Enter). This means users navigating with a keyboard may not be able to focus on or activate these tabs. Standard Flutter button widgets (like TextButton or ElevatedButton) automatically handle keyboard accessibility.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 388,
+    "completion_tokens": 153,
+    "thinking_tokens": 1153,
+    "total_tokens": 1694
+  },
+  "latency_ms": 6958
+}

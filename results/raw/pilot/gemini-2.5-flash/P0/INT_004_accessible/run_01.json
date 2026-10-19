@@ -1,0 +1,44 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "INT_004_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T02:12:07.810822+00:00",
+  "request": {
+    "sample_id": "INT_004",
+    "variant": "accessible",
+    "category": "interaction",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Keyboard/Switch Access",
+        "affected_code": "        Semantics(          customSemanticsActions: {            CustomSemanticsAction(label: liked ? 'Unlike' : 'Like'):                onToggleLike,          },          child: GestureDetector(            onDoubleTap: onToggleLike,            child: Image(              image: photo,              semanticLabel: 'Photo by $author',              fit: BoxFit.cover,            ),          ),        ),",
+        "explanation": "The like/unlike functionality, triggered by a double-tap gesture on the image, is not accessible via keyboard or switch control. A `GestureDetector` with only `onDoubleTap` does not provide default focusability for these input methods. While `customSemanticsActions` provides an alternative for screen reader users, it does not address users who rely on keyboard or switch access without a screen reader.",
+        "confidence": "high"
+      },
+      {
+        "type": "Semantic Grouping",
+        "affected_code": "    return Column(      crossAxisAlignment: CrossAxisAlignment.start,      children: [        Semantics(          customSemanticsActions: {            CustomSemanticsAction(label: liked ? 'Unlike' : 'Like'):                onToggleLike,          },          child: GestureDetector(            onDoubleTap: onToggleLike,            child: Image(              image: photo,              semanticLabel: 'Photo by $author',              fit: BoxFit.cover,            ),          ),        ),        Padding(          padding: const EdgeInsets.all(8),          child: Text('$likeCount likes'),        ),      ],    );",
+        "explanation": "The number of likes (`$likeCount likes`) is presented as a separate semantic element from the photo and its like/unlike action. Grouping these elements within a single `Semantics` widget could provide a more cohesive and understandable experience for screen reader users, as the like count is directly related to the photo and the action.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 372,
+    "completion_tokens": 447,
+    "thinking_tokens": 2048,
+    "total_tokens": 2867
+  },
+  "latency_ms": 12403
+}

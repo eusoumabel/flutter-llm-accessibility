@@ -1,0 +1,31 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_027_component",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T01:44:10.553181+00:00",
+  "request": {
+    "sample_id": "SEM_027",
+    "variant": "component",
+    "category": "semantics",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": []
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 296,
+    "completion_tokens": 5,
+    "thinking_tokens": 901,
+    "total_tokens": 1202
+  },
+  "latency_ms": 5026
+}

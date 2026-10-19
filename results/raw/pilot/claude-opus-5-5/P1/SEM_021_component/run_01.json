@@ -1,0 +1,51 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_021_component",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T01:57:58.107283+00:00",
+  "request": {
+    "sample_id": "SEM_021",
+    "variant": "component",
+    "category": "semantics",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Incorrect semantic property (value instead of label)",
+        "affected_code": "Semantics(\n      value: text.replaceAll(r'**', '').replaceAll('\\n', ' '),\n      excludeSemantics: true,",
+        "explanation": "Static text content is exposed through the 'value' semantic property instead of 'label'. 'value' is intended for the current value of controls (sliders, text fields). Screen readers may announce it differently or inconsistently, and the node has no label. Use 'label' for static text.",
+        "confidence": "medium"
+      },
+      {
+        "type": "Meaningless semantics label on text spans",
+        "affected_code": "semanticsLabel: '-',",
+        "explanation": "Each TextSpan has its semantics label replaced with '-'. That would make screen readers announce dashes instead of the content. It is currently hidden by excludeSemantics, but this is a fragile hack. If the wrapper changes, the real text becomes inaccessible.",
+        "confidence": "medium"
+      },
+      {
+        "type": "Emphasis information lost for assistive technologies",
+        "affected_code": "text.replaceAll(r'**', '')",
+        "explanation": "The bold parts convey emphasis visually, but the merged semantic string removes all of it. Screen reader users get no indication of which parts are emphasized.",
+        "confidence": "low"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 1734,
+    "completion_tokens": 431,
+    "total_tokens": 2165
+  },
+  "latency_ms": 5867,
+  "request_id": "req_011CgAmRwhWviZ7itk2v98Lq"
+}

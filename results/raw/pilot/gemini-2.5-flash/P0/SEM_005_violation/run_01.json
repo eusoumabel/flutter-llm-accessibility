@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_005_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T02:20:46.384319+00:00",
+  "request": {
+    "sample_id": "SEM_005",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Accessibility Label",
+        "affected_code": "tooltip: 'Mute'",
+        "explanation": "The `tooltip` for the `IconButton` is static ('Mute'). When the audio is already muted (`isMuted` is true and the icon is `Icons.volume_off`), the button's action is to unmute. A static tooltip of 'Mute' would be misleading for screen reader users, as it suggests muting when the action will actually unmute. The tooltip should dynamically change to 'Unmute' when the audio is muted and 'Mute' when the audio is unmuted to accurately reflect the button's current state and action.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 210,
+    "completion_tokens": 149,
+    "thinking_tokens": 639,
+    "total_tokens": 998
+  },
+  "latency_ms": 4503
+}

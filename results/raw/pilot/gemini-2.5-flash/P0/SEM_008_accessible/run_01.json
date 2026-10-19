@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_008_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T01:42:37.980243+00:00",
+  "request": {
+    "sample_id": "SEM_008",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing interactive functionality or misleading non-interactive element",
+        "affected_code": "ListTile(title: Text(order))",
+        "explanation": "The `ListTile` widget is commonly used for interactive items in a list. However, these `ListTile` instances do not have an `onTap` handler, making them non-interactive. If these list items are intended to be interactive (e.g., to view order details), this is an accessibility barrier for users who rely on interaction. Even if not intended to be interactive, using `ListTile` might visually and semantically imply interactivity to screen reader users, potentially leading to confusion when no action can be performed.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 246,
+    "completion_tokens": 144,
+    "thinking_tokens": 2910,
+    "total_tokens": 3300
+  },
+  "latency_ms": 15220
+}

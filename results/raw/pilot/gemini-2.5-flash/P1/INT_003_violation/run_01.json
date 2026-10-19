@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "INT_003_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T02:13:48.251964+00:00",
+  "request": {
+    "sample_id": "INT_003",
+    "variant": "violation",
+    "category": "interaction",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Interactive Target Size",
+        "affected_code": "SizedBox(width: 20, height: 20)",
+        "explanation": "The interactive target for the 'remove' button, defined by the SizedBox with dimensions 20x20 logical pixels, is smaller than the recommended minimum interactive target size of 48x48 logical pixels. This can make it difficult for users, especially those with motor impairments, to accurately tap the button.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 430,
+    "completion_tokens": 129,
+    "thinking_tokens": 944,
+    "total_tokens": 1503
+  },
+  "latency_ms": 5713
+}

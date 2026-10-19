@@ -1,0 +1,96 @@
+{
+    "schema_version": "1.0",
+    "id": "INT_004",
+    "title": "Double-tap to like a photo without alternative",
+    "category": "interaction",
+    "subcategory": "inaccessible_custom_gesture",
+    "status": "validated",
+    "source": {
+        "type": "synthetic",
+        "repository": null,
+        "original_file": null,
+        "commit": null,
+        "license": null
+    },
+    "component": {
+        "framework": "flutter",
+        "language": "dart",
+        "widget_types": [
+            "Column",
+            "Semantics",
+            "GestureDetector",
+            "Image",
+            "Text"
+        ],
+        "description": "A photo post where the user likes or unlikes the photo by double-tapping it; the like count is shown below the photo."
+    },
+    "files": {
+        "accessible": "accessible.dart",
+        "violation": "violation.dart"
+    },
+    "ground_truth": {
+        "accessible": {
+            "has_violation": false,
+            "violations": []
+        },
+        "violation": {
+            "has_violation": true,
+            "violations": [
+                {
+                    "id": "INT-02",
+                    "type": "inaccessible_custom_gesture",
+                    "description": "Liking the photo is only possible through a double-tap gesture, which is not exposed as a semantic action, and no button or custom semantics action is provided as an alternative.",
+                    "affected_lines": {
+                        "start": 24,
+                        "end": 25
+                    },
+                    "confidence": "confirmed"
+                }
+            ]
+        }
+    },
+    "references": {
+        "flutter": [
+            {
+                "type": "documentation",
+                "reference": "https://api.flutter.dev/flutter/widgets/Semantics-class.html"
+            }
+        ],
+        "wcag": [
+            {
+                "criterion": "2.5.1",
+                "description": "Pointer Gestures"
+            },
+            {
+                "criterion": "2.1.1",
+                "description": "Keyboard"
+            }
+        ]
+    },
+    "mutations": [
+        {
+            "id": "remove_gesture_alternative",
+            "description": "Removed the Semantics wrapper that exposed like/unlike as a custom semantics action, preserving the double-tap gesture and visuals.",
+            "target_variants": [
+                "violation"
+            ]
+        }
+    ],
+    "validation": {
+        "automated": {
+            "performed": false,
+            "tool": null,
+            "result": null
+        },
+        "manual": {
+            "performed": true,
+            "reviewers": [
+                "researcher"
+            ]
+        },
+        "status": "validated"
+    },
+    "notes": null,
+    "created_at": "2026-10-18",
+    "updated_at": "2026-10-18"
+}

@@ -1,0 +1,106 @@
+{
+    "schema_version": "1.0",
+    "id": "INT_016",
+    "title": "Dropdown row whose merged semantics hide the tap action",
+    "category": "interaction",
+    "subcategory": "interaction_not_exposed",
+    "status": "validated",
+    "source": {
+        "type": "mutation",
+        "repository": {
+            "name": "cake-tech/cake_wallet",
+            "url": "https://github.com/cake-tech/cake_wallet"
+        },
+        "original_file": "lib/new-ui/widgets/dropdown_row.dart#L1-L59",
+        "commit": "02ad99523634dcb8057a6816adc25d2ef72b40dd",
+        "license": {
+            "name": "MIT",
+            "verified": true,
+            "copyright": "Copyright (c) 2018-2025 Cake Labs LLC"
+        }
+    },
+    "component": {
+        "framework": "flutter",
+        "language": "dart",
+        "widget_types": [
+            "Semantics",
+            "Container",
+            "Material",
+            "InkWell",
+            "Row",
+            "Text",
+            "AnimatedRotation",
+            "Icon"
+        ],
+        "description": "A 48 dp row that expands or collapses a section, showing its text and a rotating arrow."
+    },
+    "files": {
+        "accessible": "accessible.dart",
+        "violation": "violation.dart"
+    },
+    "ground_truth": {
+        "accessible": {
+            "has_violation": false,
+            "violations": []
+        },
+        "violation": {
+            "has_violation": true,
+            "violations": [
+                {
+                    "id": "INT-03",
+                    "type": "interaction_not_exposed",
+                    "description": "The Semantics wrapper uses excludeSemantics, which drops the InkWell tap action, and does not re-expose it through onTap; the row is announced as an expandable button that cannot be activated.",
+                    "affected_lines": {
+                        "start": 12,
+                        "end": 16
+                    },
+                    "confidence": "confirmed"
+                }
+            ]
+        }
+    },
+    "references": {
+        "flutter": [
+            {
+                "type": "documentation",
+                "reference": "https://api.flutter.dev/flutter/widgets/Semantics-class.html"
+            }
+        ],
+        "wcag": [
+            {
+                "criterion": "4.1.2",
+                "description": "Name, Role, Value"
+            },
+            {
+                "criterion": "2.1.1",
+                "description": "Keyboard"
+            }
+        ]
+    },
+    "mutations": [
+        {
+            "id": "remove_interaction_exposure",
+            "description": "Removed the onTap callback from the Semantics wrapper that uses excludeSemantics, preserving label, role, expanded state, visuals and the InkWell.",
+            "target_variants": [
+                "violation"
+            ]
+        }
+    ],
+    "validation": {
+        "automated": {
+            "performed": false,
+            "tool": null,
+            "result": null
+        },
+        "manual": {
+            "performed": true,
+            "reviewers": [
+                "researcher"
+            ]
+        },
+        "status": "validated"
+    },
+    "notes": "Adaptado de DropdownRow (ADR-R011): CakeImageWidget com o SVG dropdown_arrow.svg (e o import de flutter_svg) foi substituído por Icon(Icons.keyboard_arrow_up) com a mesma cor; a rotação foi preservada.",
+    "created_at": "2026-10-18",
+    "updated_at": "2026-10-18"
+}

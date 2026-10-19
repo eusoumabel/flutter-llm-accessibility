@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "INT_015_component",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T02:08:25.447455+00:00",
+  "request": {
+    "sample_id": "INT_015",
+    "variant": "component",
+    "category": "interaction",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Semantics and accessible information",
+        "affected_code": "GestureDetector's onTapUp handler within the Semantics widget",
+        "explanation": "The Semantics widget is marked with \"slider: true\", indicating its primary role is a slider. It also provides \"onIncrease\" and \"onDecrease\" actions for adjusting the slider value, and custom actions to view the reference or photo. However, the GestureDetector's \"onTapUp\" handler, which is part of the same interactive area, performs a different action (opening either the reference or photo based on tap location). For screen reader users, a primary tap gesture on a slider typically activates the slider for adjustment. Having the primary tap trigger an action to open an image, rather than interacting with the slider itself, can lead to an inconsistent and confusing user experience, despite the presence of custom semantics actions for viewing the images. The primary tap action of the Semantics node should ideally align with its declared \"slider\" role.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 2111,
+    "completion_tokens": 233,
+    "thinking_tokens": 3866,
+    "total_tokens": 6210
+  },
+  "latency_ms": 21013
+}

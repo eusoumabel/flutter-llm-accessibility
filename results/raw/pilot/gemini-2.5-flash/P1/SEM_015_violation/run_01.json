@@ -1,0 +1,44 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_015_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T02:03:49.208792+00:00",
+  "request": {
+    "sample_id": "SEM_015",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing accessible label",
+        "affected_code": "GestureDetector",
+        "explanation": "Each color swatch is an interactive element but lacks an explicit accessible label. Screen reader users will not know the name of the color they are interacting with. The 'entry.key' (e.g., 'Red', 'Blue') should be used to provide a descriptive label via a Semantics widget.",
+        "confidence": "high"
+      },
+      {
+        "type": "Missing semantic role and state",
+        "affected_code": "GestureDetector",
+        "explanation": "The GestureDetector is used to create a custom interactive control for selecting a color. It does not convey its semantic role (e.g., 'radio button', 'toggle button', 'selectable item') or its current selected state to accessibility services. Screen reader users will not know that these are selectable options or which option is currently selected, despite the visual indication (border).",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 390,
+    "completion_tokens": 231,
+    "thinking_tokens": 1237,
+    "total_tokens": 1858
+  },
+  "latency_ms": 8050
+}

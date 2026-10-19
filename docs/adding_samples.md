@@ -24,6 +24,8 @@ Verifique se o caso atende aos critérios do estudo:
 
 Não adicione uma amostra quando o comportamento depender de informações ausentes, quando a licença for incerta ou quando o ground truth for ambíguo.
 
+Para código real, registre o candidato em `dataset/candidates.csv` antes de criar a sample, inclusive quando ele for descartado. Só são aceitas as licenças MIT, BSD-2-Clause, BSD-3-Clause e Apache-2.0. Consulte o [Protocolo do dataset](dataset_protocol.md).
+
 ## 2. Escolher o ID e criar o diretório
 
 Os IDs seguem o formato:
@@ -63,20 +65,28 @@ dataset/samples/SEM_002/
 
 O `metadata.json` correspondente é:
 
-```yaml
-files:
-  accessible: accessible.dart
-  violation: violation.dart
-
-ground_truth:
-  accessible:
-    has_violation: false
-    violations: []
-  violation:
-    has_violation: true
-    violations:
-      - id: SEM-01
-        type: missing_accessible_label
+```json
+{
+  "files": {
+    "accessible": "accessible.dart",
+    "violation": "violation.dart"
+  },
+  "ground_truth": {
+    "accessible": {
+      "has_violation": false,
+      "violations": []
+    },
+    "violation": {
+      "has_violation": true,
+      "violations": [
+        {
+          "id": "SEM-01",
+          "type": "missing_accessible_label"
+        }
+      ]
+    }
+  }
+}
 ```
 
 ### Formato alternativo: componente único
@@ -91,25 +101,34 @@ dataset/samples/SEM_003/
 
 O `metadata.json` deve apontar para o arquivo único e usar uma chave correspondente no `ground_truth`:
 
-```yaml
-files:
-  component: component.dart
-
-ground_truth:
-  component:
-    has_violation: true
-    violations:
-      - id: SEM-01
-        type: missing_accessible_label
-        description: >
-          Descrição objetiva da violação observável no código.
-        affected_lines:
-          start: 10
-          end: 15
-        confidence: confirmed
+```json
+{
+  "files": {
+    "component": "component.dart"
+  },
+  "ground_truth": {
+    "component": {
+      "has_violation": true,
+      "violations": [
+        {
+          "id": "SEM-01",
+          "type": "missing_accessible_label",
+          "description": "Descrição objetiva da violação observável no código.",
+          "affected_lines": {
+            "start": 10,
+            "end": 15
+          },
+          "confidence": "confirmed"
+        }
+      ]
+    }
+  }
+}
 ```
 
 O formato único é válido para validação e análise. Ele não oferece, porém, a comparação pareada entre uma implementação acessível e uma implementação com violação.
+
+O formato único também é usado para negativos difíceis: componentes sem violação que se assemelham a um caso de violação. Nesse caso, use `has_violation: false`, `violations: []`, registre em `category` e `subcategory` a subcategoria imitada e explique em `notes` por que não há violação (ADR-R006).
 
 ### Regras comuns aos dois formatos
 
@@ -145,7 +164,8 @@ Use este modelo como ponto de partida:
     "commit": "hash-do-commit",
     "license": {
       "name": "BSD-3-Clause",
-      "verified": true
+      "verified": true,
+      "copyright": "Copyright 2014 The Chromium Authors"
     }
   },
   "component": {
@@ -272,6 +292,10 @@ Uma amostra só deve ser incluída em um experimento congelado depois de passar 
 
 Para cada variante listada em `ground_truth`:
 
+- a variante pode conter no máximo 3 violações;
+- o limite conta tipos distintos; cada tipo tem uma única entrada, com `affected_lines` cobrindo todas as ocorrências (ADR-R012);
+- quando houver mais de uma violação, `subcategory` registra a violação principal, definida em [annotation_guidelines.md](annotation_guidelines.md);
+- amostras sintéticas e mutadas devem conter uma única violação na variante `violation`;
 - `has_violation: false` exige `violations: []`;
 - `has_violation: true` exige pelo menos uma entrada em `violations`;
 - `id` deve corresponder ao código da taxonomia;
@@ -291,7 +315,10 @@ Preencha `source` com o máximo de rastreabilidade possível:
 - caminho original do arquivo;
 - hash do commit, quando aplicável;
 - nome da licença;
-- confirmação de que a licença foi verificada.
+- confirmação de que a licença foi verificada;
+- aviso de copyright original em `license.copyright` (ADR-R007).
+
+Código real pode ser adaptado para se tornar autocontido, preservando o `build` e todo o código de acessibilidade. Cada adaptação deve ser registrada em `notes` (ADR-R011).
 
 Para código externo, prefira um hash de commit em vez de uma branch mutável.
 
@@ -383,6 +410,9 @@ Adicionar uma amostra não exige alterar `config.yaml` quando o experimento já 
 - [ ] Ground truth revisado e consistente.
 - [ ] Proveniência e licença registradas.
 - [ ] Linhas afetadas atualizadas.
+- [ ] No máximo 3 violações por variante, com a principal registrada em `subcategory`.
+- [ ] Classificação conferida contra as regras de desempate de `docs/annotation_guidelines.md`.
+- [ ] Candidato registrado em `dataset/candidates.csv`, quando a origem for código real.
 - [ ] Revisão manual concluída.
 - [ ] `python3 scripts/validate_dataset.py` executado com sucesso.
 - [ ] `ground_truth.jsonl` e `dataset.csv` regenerados.

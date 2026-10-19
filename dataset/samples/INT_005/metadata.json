@@ -1,0 +1,93 @@
+{
+    "schema_version": "1.0",
+    "id": "INT_005",
+    "title": "Pinch-to-zoom floor plan without zoom controls",
+    "category": "interaction",
+    "subcategory": "inaccessible_custom_gesture",
+    "status": "validated",
+    "source": {
+        "type": "synthetic",
+        "repository": null,
+        "original_file": null,
+        "commit": null,
+        "license": null
+    },
+    "component": {
+        "framework": "flutter",
+        "language": "dart",
+        "widget_types": [
+            "InteractiveViewer",
+            "Image"
+        ],
+        "description": "A floor plan image displayed in an InteractiveViewer that supports zooming between 1x and 4x."
+    },
+    "files": {
+        "accessible": "accessible.dart",
+        "violation": "violation.dart"
+    },
+    "ground_truth": {
+        "accessible": {
+            "has_violation": false,
+            "violations": []
+        },
+        "violation": {
+            "has_violation": true,
+            "violations": [
+                {
+                    "id": "INT-02",
+                    "type": "inaccessible_custom_gesture",
+                    "description": "Zooming is only possible through the multi-finger pinch gesture of InteractiveViewer, which is not exposed to assistive technologies, and no zoom buttons are provided.",
+                    "affected_lines": {
+                        "start": 26,
+                        "end": 29
+                    },
+                    "confidence": "confirmed"
+                }
+            ]
+        }
+    },
+    "references": {
+        "flutter": [
+            {
+                "type": "documentation",
+                "reference": "https://api.flutter.dev/flutter/widgets/Semantics-class.html"
+            }
+        ],
+        "wcag": [
+            {
+                "criterion": "2.5.1",
+                "description": "Pointer Gestures"
+            },
+            {
+                "criterion": "2.1.1",
+                "description": "Keyboard"
+            }
+        ]
+    },
+    "mutations": [
+        {
+            "id": "remove_gesture_alternative",
+            "description": "Removed the zoom in and zoom out buttons and their transformation logic, preserving the InteractiveViewer pinch gesture and image.",
+            "target_variants": [
+                "violation"
+            ]
+        }
+    ],
+    "validation": {
+        "automated": {
+            "performed": false,
+            "tool": null,
+            "result": null
+        },
+        "manual": {
+            "performed": true,
+            "reviewers": [
+                "researcher"
+            ]
+        },
+        "status": "validated"
+    },
+    "notes": null,
+    "created_at": "2026-10-18",
+    "updated_at": "2026-10-18"
+}

@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_030_component",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T02:17:26.587453+00:00",
+  "request": {
+    "sample_id": "SEM_030",
+    "variant": "component",
+    "category": "semantics",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Semantics and accessible information",
+        "affected_code": "Semantics(label: semanticsLabel ?? label, ...)",
+        "explanation": "The `ScanPageButton` can be created as an icon-only button by setting the `label` parameter to `null`. If, in such a case, the `semanticsLabel` parameter is also not provided (i.e., it's `null`), the button will lack an accessible label. Screen readers will announce it merely as 'Button' without any descriptive text, making its purpose unclear to users with visual impairments. Although `semanticsLabel` is available to provide a description for icon-only buttons, its optional nature means it can be overlooked, leading to an accessibility barrier.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 509,
+    "completion_tokens": 183,
+    "thinking_tokens": 1534,
+    "total_tokens": 2226
+  },
+  "latency_ms": 8729
+}

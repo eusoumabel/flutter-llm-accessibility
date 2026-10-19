@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_001_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T02:03:41.156038+00:00",
+  "request": {
+    "sample_id": "SEM_001",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Semantics and accessible information",
+        "affected_code": "IconButton(",
+        "explanation": "The IconButton lacks a descriptive semanticLabel or tooltip. While the icon visually changes based on the 'isFavorite' state, a screen reader will likely announce the icon's name (e.g., 'favorite button' or 'favorite border button') which does not clearly convey the button's current state (favorited/not favorited) or the action it will perform when pressed (favorite/unfavorite). This can lead to confusion for users relying on screen readers.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 215,
+    "completion_tokens": 149,
+    "thinking_tokens": 891,
+    "total_tokens": 1255
+  },
+  "latency_ms": 5754
+}

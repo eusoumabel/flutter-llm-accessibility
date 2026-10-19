@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_027_component",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T02:10:35.045479+00:00",
+  "request": {
+    "sample_id": "SEM_027",
+    "variant": "component",
+    "category": "semantics",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Ambiguous visual icon",
+        "affected_code": "        icon: useMaterial3            ? const Icon(Icons.filter_2)            : const Icon(Icons.filter_3),",
+        "explanation": "The icons `Icons.filter_2` and `Icons.filter_3` are used to represent switching between Material Design versions 2 and 3. These icons are semantically related to 'filtering' and a number, which might not clearly convey the intended action of changing the Material Design version to sighted users without relying on the tooltip. While a `Tooltip` is provided, the initial visual cue from the icon itself is not optimal for immediate understanding.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 283,
+    "completion_tokens": 143,
+    "thinking_tokens": 1488,
+    "total_tokens": 1914
+  },
+  "latency_ms": 9274
+}

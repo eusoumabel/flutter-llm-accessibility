@@ -1,0 +1,91 @@
+{
+    "schema_version": "1.0",
+    "id": "SEM_013",
+    "title": "Custom star rating without semantics",
+    "category": "semantics",
+    "subcategory": "inaccessible_custom_control",
+    "status": "validated",
+    "source": {
+        "type": "synthetic",
+        "repository": null,
+        "original_file": null,
+        "commit": null,
+        "license": null
+    },
+    "component": {
+        "framework": "flutter",
+        "language": "dart",
+        "widget_types": [
+            "Row",
+            "GestureDetector",
+            "SizedBox",
+            "Icon"
+        ],
+        "description": "A five-star rating control in which each star is an icon inside a GestureDetector that sets the rating."
+    },
+    "files": {
+        "accessible": "accessible.dart",
+        "violation": "violation.dart"
+    },
+    "ground_truth": {
+        "accessible": {
+            "has_violation": false,
+            "violations": []
+        },
+        "violation": {
+            "has_violation": true,
+            "violations": [
+                {
+                    "id": "SEM-05",
+                    "type": "inaccessible_custom_control",
+                    "description": "Each star is a custom control with a tap action but no label, no button role and no selected state, so the control cannot be understood by assistive technologies.",
+                    "affected_lines": {
+                        "start": 19,
+                        "end": 30
+                    },
+                    "confidence": "confirmed"
+                }
+            ]
+        }
+    },
+    "references": {
+        "flutter": [
+            {
+                "type": "documentation",
+                "reference": "https://api.flutter.dev/flutter/widgets/Semantics-class.html"
+            }
+        ],
+        "wcag": [
+            {
+                "criterion": "4.1.2",
+                "description": "Name, Role, Value"
+            }
+        ]
+    },
+    "mutations": [
+        {
+            "id": "remove_custom_control_semantics",
+            "description": "Removed the Semantics wrapper that provided label, role and selected state for each star, preserving visuals, size and callback.",
+            "target_variants": [
+                "violation"
+            ]
+        }
+    ],
+    "validation": {
+        "automated": {
+            "performed": false,
+            "tool": null,
+            "result": null
+        },
+        "manual": {
+            "performed": true,
+            "reviewers": [
+                "researcher"
+            ]
+        },
+        "status": "validated"
+    },
+    "notes": null,
+    "created_at": "2026-10-18",
+    "updated_at": "2026-10-18"
+}

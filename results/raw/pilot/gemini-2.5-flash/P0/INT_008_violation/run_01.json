@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "INT_008_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T02:16:30.991059+00:00",
+  "request": {
+    "sample_id": "INT_008",
+    "variant": "violation",
+    "category": "interaction",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Inaccessible interaction",
+        "affected_code": "Listener(onPointerDown: (_) => setState(() => _pressed = true),onPointerUp: (_) {setState(() => _pressed = false);widget.onSend();},onPointerCancel: (_) => setState(() => _pressed = false),child: AnimatedScale(scale: _pressed ? 0.9 : 1.0,duration: const Duration(milliseconds: 100),child: Container(width: 56,height: 56,decoration: const BoxDecoration(color: Colors.blue,shape: BoxShape.circle,),child: const Icon(Icons.send, color: Colors.white),),),)",
+        "explanation": "The custom button implementation uses a Listener for pointer events, which does not automatically expose an 'onTap' or 'onPressed' callback to the accessibility tree. While Semantics(button: true, label: 'Send message') correctly identifies the element as a button for screen readers, it might not be activatable via accessibility services (e.g., screen reader 'tap' gesture, keyboard 'Enter' key) because the Listener only handles raw pointer events and doesn't provide an 'onTap' callback that the accessibility system can invoke.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 391,
+    "completion_tokens": 266,
+    "thinking_tokens": 2551,
+    "total_tokens": 3208
+  },
+  "latency_ms": 13967
+}

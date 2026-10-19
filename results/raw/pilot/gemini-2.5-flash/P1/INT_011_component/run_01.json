@@ -1,0 +1,44 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "INT_011_component",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T02:21:50.183097+00:00",
+  "request": {
+    "sample_id": "INT_011",
+    "variant": "component",
+    "category": "interaction",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Interactive Target Size",
+        "affected_code": "Container(width: size, height: size) and this.size = 18.0",
+        "explanation": "The SmoothIconButton defaults to a size of 18.0 logical pixels, and allows for custom sizes below the recommended minimum of 48x48 logical pixels for interactive elements. This makes the button difficult to tap accurately for users with motor impairments or those using assistive technologies.",
+        "confidence": "high"
+      },
+      {
+        "type": "Accessible Label",
+        "affected_code": "this.tooltip, and tooltip: tooltip,",
+        "explanation": "The tooltip parameter is optional. If it is not provided, the IconButton might lack a sufficiently descriptive accessible label for screen readers, potentially relying on a generic label or the icon's inherent semantics, which might not always be clear to all users.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 405,
+    "completion_tokens": 223,
+    "thinking_tokens": 1821,
+    "total_tokens": 2449
+  },
+  "latency_ms": 10381
+}

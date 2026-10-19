@@ -1,0 +1,44 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "INT_018_component",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T02:20:18.097182+00:00",
+  "request": {
+    "sample_id": "INT_018",
+    "variant": "component",
+    "category": "interaction",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Accessibility Exclusion",
+        "affected_code": "return Semantics(identifier: 'keypad_key_${widget.text}', label: widget.subtext.isEmpty ? widget.text : '${widget.text} ${widget.subtext}', button: true, excludeSemantics: true, onTap: () => widget.onKeyPressed(widget.text), onLongPress: hasLongPress ? () => widget.onKeyPressed(widget.subtext) : null, child: Listener(...));",
+        "explanation": "The `Semantics` widget has `excludeSemantics: true`. This property, when set on a `Semantics` node, excludes that node *and all its descendants* from the accessibility tree. Despite defining `label`, `button: true`, `onTap`, and `onLongPress` on this `Semantics` node, these properties will not be exposed to assistive technologies, rendering the button completely inaccessible. The intent was likely to exclude the semantics of the *children* (e.g., the `TextButton` and `Text` widgets) to avoid redundancy, but `excludeSemantics: true` on the parent `Semantics` node itself is incorrect for this purpose.",
+        "confidence": "high"
+      },
+      {
+        "type": "Low Contrast Text",
+        "affected_code": "Color? derivedSubColor = textStyle?.color; if (derivedSubColor != null) { var a = derivedSubColor.a - KeypadKeyButton._subtextAlphaReduction; if (a < KeypadKeyButton._minAlphaValue) a = KeypadKeyButton._minAlphaValue; derivedSubColor = derivedSubColor.withValues(alpha: a); } final subStyle = theme.textTheme.bodyMedium?.copyWith(color: derivedSubColor, height: 1.0);",
+        "explanation": "The `subtext` color is derived by reducing the alpha (opacity) of the main text color. While a minimum alpha value is enforced, reducing opacity can significantly lower the contrast ratio against various backgrounds. This could make the subtext difficult or impossible to read for users with low vision or color blindness, especially if the background color is similar to the main text color or if the main text color is already light.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 956,
+    "completion_tokens": 509,
+    "thinking_tokens": 2443,
+    "total_tokens": 3908
+  },
+  "latency_ms": 14048
+}

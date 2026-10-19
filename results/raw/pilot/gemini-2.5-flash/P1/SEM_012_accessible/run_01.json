@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_012_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T02:12:23.715123+00:00",
+  "request": {
+    "sample_id": "SEM_012",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Semantics and accessible information",
+        "affected_code": "Semantics(button: true, expanded: _expanded, child: GestureDetector(onTap: () => setState(() => _expanded = !_expanded), ...))",
+        "explanation": "The interactive FAQ item uses the question text as its primary accessible label. While this identifies the content, it does not explicitly convey the interactive purpose (to expand or collapse the answer) to screen reader users. A more explicit label, such as 'Question text, expand button' or 'Question text, collapse button', would provide clearer context about the action.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 432,
+    "completion_tokens": 127,
+    "thinking_tokens": 1861,
+    "total_tokens": 2420
+  },
+  "latency_ms": 10893
+}

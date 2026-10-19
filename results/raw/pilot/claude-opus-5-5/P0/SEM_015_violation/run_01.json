@@ -1,0 +1,63 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_015_violation",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T01:56:40.740195+00:00",
+  "request": {
+    "sample_id": "SEM_015",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing accessible name",
+        "affected_code": "GestureDetector(behavior: HitTestBehavior.opaque, onTap: () => onSelected(entry.key), child: SizedBox(... Container(decoration: BoxDecoration(color: entry.value, ...))))",
+        "explanation": "Each swatch is a purely visual colored circle with no text or Semantics label. Screen reader users cannot tell which color a swatch represents, even though a name (entry.key) is available.",
+        "confidence": "high"
+      },
+      {
+        "type": "Missing role / not exposed as button",
+        "affected_code": "GestureDetector(\n  behavior: HitTestBehavior.opaque,\n  onTap: () => onSelected(entry.key),",
+        "explanation": "GestureDetector does not expose button semantics. Assistive technologies may not announce the swatches as actionable controls, and keyboard focus and activation are not supported. An InkWell, an IconButton, or Semantics(button: true) with focus handling would fix this.",
+        "confidence": "high"
+      },
+      {
+        "type": "Selected state not exposed",
+        "affected_code": "color: entry.key == selectedColor ? Colors.black : Colors.transparent",
+        "explanation": "The selected swatch is indicated only by a visual border. No Semantics(selected: true) or equivalent state is provided, so screen reader users cannot tell which color is currently selected.",
+        "confidence": "high"
+      },
+      {
+        "type": "Selection indicated by color/contrast only",
+        "affected_code": "border: Border.all(color: entry.key == selectedColor ? Colors.black : Colors.transparent, width: 3)",
+        "explanation": "The selection indicator is a black border. On dark swatches (e.g., black or navy) this border has little or no contrast, so the selected state may not be perceivable. No other indicator, such as a checkmark, is provided.",
+        "confidence": "medium"
+      },
+      {
+        "type": "Keyboard inaccessibility",
+        "affected_code": "GestureDetector(",
+        "explanation": "GestureDetector is not focusable and does not respond to keyboard activation. Users relying on a keyboard or switch access cannot select a color.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 908,
+    "completion_tokens": 704,
+    "total_tokens": 1612
+  },
+  "latency_ms": 7174,
+  "request_id": "req_011CgAmL9EdPtzFeF4EaYfoD"
+}

@@ -1,0 +1,108 @@
+{
+    "schema_version": "1.0",
+    "id": "INT_014",
+    "title": "Full-screen clinical image with pinch-only zoom",
+    "category": "interaction",
+    "subcategory": "inaccessible_custom_gesture",
+    "status": "validated",
+    "source": {
+        "type": "external",
+        "repository": {
+            "name": "Vatsal057/oralcare",
+            "url": "https://github.com/Vatsal057/oralcare"
+        },
+        "original_file": "lib/core/widgets/fullscreen_image.dart#L1-L59",
+        "commit": "a4caa9f9a6c2281dbb659a8eb8165308f10254d6",
+        "license": {
+            "name": "MIT",
+            "verified": true,
+            "copyright": "Copyright (c) 2026 Vatsal"
+        }
+    },
+    "component": {
+        "framework": "flutter",
+        "language": "dart",
+        "widget_types": [
+            "Scaffold",
+            "AppBar",
+            "InteractiveViewer",
+            "Image",
+            "Text"
+        ],
+        "description": "A full-screen viewer that shows a clinical illustration or photograph inside an InteractiveViewer."
+    },
+    "files": {
+        "component": "component.dart"
+    },
+    "ground_truth": {
+        "component": {
+            "has_violation": true,
+            "violations": [
+                {
+                    "id": "INT-02",
+                    "type": "inaccessible_custom_gesture",
+                    "description": "Zooming into the image is only possible through the multi-finger pinch gesture of InteractiveViewer, which is not exposed to assistive technologies, and no zoom controls are provided.",
+                    "affected_lines": {
+                        "start": 32,
+                        "end": 44
+                    },
+                    "confidence": "confirmed"
+                },
+                {
+                    "id": "SEM-01",
+                    "type": "missing_accessible_label",
+                    "description": "The clinical image, which is the content of the page, has no semantic label.",
+                    "affected_lines": {
+                        "start": 34,
+                        "end": 36
+                    },
+                    "confidence": "confirmed"
+                }
+            ]
+        }
+    },
+    "references": {
+        "flutter": [
+            {
+                "type": "documentation",
+                "reference": "https://api.flutter.dev/flutter/widgets/Semantics-class.html"
+            }
+        ],
+        "wcag": [
+            {
+                "criterion": "2.5.1",
+                "description": "Pointer Gestures"
+            },
+            {
+                "criterion": "2.1.1",
+                "description": "Keyboard"
+            },
+            {
+                "criterion": "4.1.2",
+                "description": "Name, Role, Value"
+            },
+            {
+                "criterion": "1.1.1",
+                "description": "Non-text Content"
+            }
+        ]
+    },
+    "mutations": [],
+    "validation": {
+        "automated": {
+            "performed": false,
+            "tool": null,
+            "result": null
+        },
+        "manual": {
+            "performed": true,
+            "reviewers": [
+                "researcher"
+            ]
+        },
+        "status": "validated"
+    },
+    "notes": "Violação natural (ADR-R005): INT-02 é a principal (impede a operação) e SEM-01 é secundária. O título do AppBar é exposto com papel de cabeçalho pelo próprio AppBar. Adaptado de FullscreenImageView (ADR-R011): o widget ZoomHint, definido no mesmo arquivo e não usado pelo viewer, foi removido. Repositório com licença MIT verificada e sem estrelas no momento da coleta.",
+    "created_at": "2026-10-18",
+    "updated_at": "2026-10-18"
+}

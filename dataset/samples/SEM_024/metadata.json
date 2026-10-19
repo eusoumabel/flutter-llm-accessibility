@@ -1,0 +1,78 @@
+{
+    "schema_version": "1.0",
+    "id": "SEM_024",
+    "title": "Custom logout text button with button role",
+    "category": "semantics",
+    "subcategory": "missing_role",
+    "status": "validated",
+    "source": {
+        "type": "external",
+        "repository": {
+            "name": "flutter/gallery",
+            "url": "https://github.com/flutter/gallery"
+        },
+        "original_file": "lib/studies/shrine/category_menu_page.dart#L32-L41,L136-L151",
+        "commit": "d12640d4b08ee6e706fd8c64a83fba0620c9aa8d",
+        "license": {
+            "name": "BSD-3-Clause",
+            "verified": true,
+            "copyright": "Copyright 2019 The Flutter team. All rights reserved."
+        }
+    },
+    "component": {
+        "framework": "flutter",
+        "language": "dart",
+        "widget_types": [
+            "Semantics",
+            "MouseRegion",
+            "GestureDetector",
+            "Text"
+        ],
+        "description": "A logout action rendered as plain padded text inside a GestureDetector in a category menu."
+    },
+    "files": {
+        "component": "component.dart"
+    },
+    "ground_truth": {
+        "component": {
+            "has_violation": false,
+            "violations": []
+        }
+    },
+    "references": {
+        "flutter": [
+            {
+                "type": "documentation",
+                "reference": "https://api.flutter.dev/flutter/widgets/Semantics-class.html"
+            }
+        ],
+        "wcag": [
+            {
+                "criterion": "4.1.2",
+                "description": "Name, Role, Value"
+            },
+            {
+                "criterion": "1.3.1",
+                "description": "Info and Relationships"
+            }
+        ]
+    },
+    "mutations": [],
+    "validation": {
+        "automated": {
+            "performed": false,
+            "tool": null,
+            "result": null
+        },
+        "manual": {
+            "performed": true,
+            "reviewers": [
+                "researcher"
+            ]
+        },
+        "status": "validated"
+    },
+    "notes": "Negativo difícil (ADR-R006) de SEM-03: o controle é texto dentro de GestureDetector, padrão que caracteriza SEM-03 pela ADR-R013, mas o Semantics declara button: true e enabled: true. Adaptado do botão LOGOUT de CategoryMenuPage (ADR-R011): a navegação para a rota de login foi substituída pelo callback onLogout; shrineBrown900 foi substituído pelo literal 0xFF442B2D; o tamanho de fonte desktop/mobile foi fixado no valor mobile (19); a legenda de GalleryLocalizations foi substituída por 'LOGOUT' (intl_en.arb).",
+    "created_at": "2026-10-18",
+    "updated_at": "2026-10-18"
+}

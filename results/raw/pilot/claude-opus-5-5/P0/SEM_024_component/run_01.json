@@ -1,0 +1,57 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_024_component",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T01:51:18.595006+00:00",
+  "request": {
+    "sample_id": "SEM_024",
+    "variant": "component",
+    "category": "semantics",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Insufficient color contrast",
+        "affected_code": "color: const Color(0xFF442B2D).withValues(alpha: 0.6)",
+        "explanation": "The text color uses 60% opacity, which lowers its contrast against the background. Depending on the background, this may fall below the WCAG 4.5:1 minimum for text.",
+        "confidence": "medium"
+      },
+      {
+        "type": "Missing keyboard/focus support",
+        "affected_code": "GestureDetector(\n          onTap: onLogout,",
+        "explanation": "A GestureDetector is not focusable and does not respond to keyboard activation such as Enter or Space. Keyboard and switch-access users cannot reach or trigger the logout action. A button widget such as TextButton or InkWell with focus support should be used instead.",
+        "confidence": "high"
+      },
+      {
+        "type": "Semantics action not wired",
+        "affected_code": "Semantics(\n      button: true,\n      enabled: true,",
+        "explanation": "Semantics marks the widget as a button but provides no onTap handler. Screen readers may not expose or perform the tap action reliably. There is also no focus or highlight feedback.",
+        "confidence": "medium"
+      },
+      {
+        "type": "All-caps label readability",
+        "affected_code": "_buttonText('LOGOUT', logoutTextStyle)",
+        "explanation": "The hardcoded uppercase caption may be read letter by letter by some screen readers and is harder to read. Supplying a proper semantic label such as 'Log out' is preferable.",
+        "confidence": "low"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 882,
+    "completion_tokens": 495,
+    "total_tokens": 1377
+  },
+  "latency_ms": 8215,
+  "request_id": "req_011CgAkvKX6PU6Te9Ju3zvQz"
+}

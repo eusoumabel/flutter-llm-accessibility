@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_012_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T02:22:44.733444+00:00",
+  "request": {
+    "sample_id": "SEM_012",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Keyboard Accessibility",
+        "affected_code": "GestureDetector(",
+        "explanation": "The interactive FAQ item, while correctly marked as a button for screen readers using `Semantics(button: true)`, does not inherently provide keyboard focus or activation for users navigating solely with a keyboard without a screen reader. This means users relying on the Tab key for navigation might not be able to reach or activate this component directly.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 419,
+    "completion_tokens": 89,
+    "thinking_tokens": 1763,
+    "total_tokens": 2271
+  },
+  "latency_ms": 9607
+}

@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_030_component",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T02:10:01.104547+00:00",
+  "request": {
+    "sample_id": "SEM_030",
+    "variant": "component",
+    "category": "semantics",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Color Contrast",
+        "affected_code": "buttonColor, buttonIconColor",
+        "explanation": "The color contrast ratio between the button's background (buttonColor) and its foreground content (icon and text, both using buttonIconColor) cannot be determined from the provided code. Insufficient contrast can make the button difficult to perceive for users with visual impairments. Ensure the contrast ratio meets WCAG guidelines (e.g., 4.5:1 for normal text).",
+        "confidence": "low"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 496,
+    "completion_tokens": 133,
+    "thinking_tokens": 1619,
+    "total_tokens": 2248
+  },
+  "latency_ms": 9304
+}

@@ -1,0 +1,45 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_032_accessible",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T01:53:54.185089+00:00",
+  "request": {
+    "sample_id": "SEM_032",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "semantic role",
+        "affected_code": "IconButton(\n            icon: const Icon(Icons.radio_button_unchecked),\n            isSelected: ...,\n            selectedIcon: const Icon(Icons.circle),",
+        "explanation": "The color options act as a mutually exclusive single-choice group, like radio buttons, but they are exposed as plain toggle buttons. They are not wrapped in Semantics with inMutuallyExclusiveGroup or a radio role. Screen reader users are not told that only one option can be selected.",
+        "confidence": "medium"
+      },
+      {
+        "type": "accessible label",
+        "affected_code": "tooltip: ColorSeed.values[i].label,",
+        "explanation": "The tooltip provides a color name such as 'Blue'. It does not say what the control does, for example 'Select Blue as seed color'. Without visual context, the purpose of the grid of buttons is unclear, and there is no group label for the color selection.",
+        "confidence": "low"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 1230,
+    "completion_tokens": 325,
+    "total_tokens": 1555
+  },
+  "latency_ms": 4424,
+  "request_id": "req_011CgAm84v66b3EsLxr1w31K"
+}

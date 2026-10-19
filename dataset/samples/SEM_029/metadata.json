@@ -1,0 +1,104 @@
+{
+    "schema_version": "1.0",
+    "id": "SEM_029",
+    "title": "Share URL row with unlabeled tiny icon actions",
+    "category": "semantics",
+    "subcategory": "inaccessible_custom_control",
+    "status": "validated",
+    "source": {
+        "type": "external",
+        "repository": {
+            "name": "localsend/localsend",
+            "url": "https://github.com/localsend/localsend"
+        },
+        "original_file": "app/lib/pages/web_share_page.dart#L200-L257",
+        "commit": "d01fdb14c978fa8b2b13e29a50cc0feaefe5c1b9",
+        "license": {
+            "name": "Apache-2.0",
+            "verified": true,
+            "copyright": "Não declarado no LICENSE (modelo Apache-2.0 sem titular)"
+        }
+    },
+    "component": {
+        "framework": "flutter",
+        "language": "dart",
+        "widget_types": [
+            "Row",
+            "SelectableText",
+            "InkWell",
+            "Padding",
+            "Icon"
+        ],
+        "description": "A row showing a share URL followed by three icon actions: copy to clipboard, show QR code and show the address in large type."
+    },
+    "files": {
+        "component": "component.dart"
+    },
+    "ground_truth": {
+        "component": {
+            "has_violation": true,
+            "violations": [
+                {
+                    "id": "SEM-05",
+                    "type": "inaccessible_custom_control",
+                    "description": "Each action is an InkWell containing only an icon, with a tap action but no label and no button role, so the three actions cannot be told apart by assistive technologies.",
+                    "affected_lines": {
+                        "start": 27,
+                        "end": 54
+                    },
+                    "confidence": "confirmed"
+                },
+                {
+                    "id": "INT-01",
+                    "type": "insufficient_target_size",
+                    "description": "Each InkWell is sized by a 16 dp icon with 8 dp horizontal and 2 dp vertical padding, resulting in a 32x20 dp interactive area, below the adopted 48x48 dp target size.",
+                    "affected_lines": {
+                        "start": 27,
+                        "end": 54
+                    },
+                    "confidence": "confirmed"
+                }
+            ]
+        }
+    },
+    "references": {
+        "flutter": [
+            {
+                "type": "documentation",
+                "reference": "https://api.flutter.dev/flutter/flutter_test/androidTapTargetGuideline-constant.html"
+            }
+        ],
+        "wcag": [
+            {
+                "criterion": "4.1.2",
+                "description": "Name, Role, Value"
+            },
+            {
+                "criterion": "2.5.8",
+                "description": "Target Size (Minimum)"
+            },
+            {
+                "criterion": "2.5.5",
+                "description": "Target Size (Enhanced)"
+            }
+        ]
+    },
+    "mutations": [],
+    "validation": {
+        "automated": {
+            "performed": false,
+            "tool": null,
+            "result": null
+        },
+        "manual": {
+            "performed": true,
+            "reviewers": [
+                "researcher"
+            ]
+        },
+        "status": "validated"
+    },
+    "notes": "Violação natural (ADR-R005): SEM-05 é a principal (impede a operação) e INT-01 é secundária. Adaptado do Row de URLs de WebSharePage (ADR-R011): os diálogos QrDialog e ZoomDialog foram substituídos pelos callbacks onShowQrCode e onShowZoom; context.showSnackBar com checagem de plataforma desktop foi substituído por ScaffoldMessenger, sem a checagem; t.general.copiedToClipboard foi substituído por 'Copied to Clipboard' (strings_en.g.dart).",
+    "created_at": "2026-10-18",
+    "updated_at": "2026-10-18"
+}

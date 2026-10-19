@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "INT_006_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T02:08:04.432016+00:00",
+  "request": {
+    "sample_id": "INT_006",
+    "variant": "accessible",
+    "category": "interaction",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Interaction Accessibility",
+        "affected_code": "LongPressDraggable<String> and DragTarget<String>",
+        "explanation": "The drag-and-drop functionality, while visually intuitive, lacks inherent keyboard or screen reader support for initiating and completing the drag-and-drop gesture. Users relying on assistive technologies or keyboard navigation may not be able to perform this interaction. Although an IconButton provides an alternative way to move tasks, the drag-and-drop interaction itself remains inaccessible.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 568,
+    "completion_tokens": 110,
+    "thinking_tokens": 2133,
+    "total_tokens": 2811
+  },
+  "latency_ms": 11775
+}

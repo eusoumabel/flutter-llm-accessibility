@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "INT_001_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T02:22:35.123603+00:00",
+  "request": {
+    "sample_id": "INT_001",
+    "variant": "violation",
+    "category": "interaction",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Interactive Target Size",
+        "affected_code": "SizedBox(width: 20, height: 20, child: IconButton(...))",
+        "explanation": "The interactive target size of the IconButton is explicitly constrained to 20x20 logical pixels by the SizedBox. This is significantly smaller than the recommended minimum of 48x48 logical pixels for interactive elements, which can make it difficult for users with motor impairments or large fingers to accurately tap.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 219,
+    "completion_tokens": 132,
+    "thinking_tokens": 694,
+    "total_tokens": 1045
+  },
+  "latency_ms": 4464
+}

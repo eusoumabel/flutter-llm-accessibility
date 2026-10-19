@@ -7,9 +7,14 @@ class TapTargetButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onPressed,
-      child: SizedBox(width: 24, height: 24, child: Icon(Icons.check)),
+    return SizedBox(
+      width: 20,
+      height: 20,
+      child: IconButton(
+        icon: const Icon(Icons.check),
+        onPressed: onPressed,
+        tooltip: 'Submit',
+      ),
     );
   }
 }

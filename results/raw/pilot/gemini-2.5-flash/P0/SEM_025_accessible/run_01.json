@@ -1,0 +1,44 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_025_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T02:13:42.535633+00:00",
+  "request": {
+    "sample_id": "SEM_025",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Color Contrast",
+        "affected_code": "unselectedCategoryTextStyle = selectedCategoryTextStyle.copyWith(color: shrineBrown900.withValues(alpha: 0.6));",
+        "explanation": "The unselected category text uses 'shrineBrown900' with 60% opacity. Assuming a light background, this semi-transparent color likely results in insufficient contrast (less than 4.5:1) against the background, making the text difficult to read for users with low vision or color deficiencies.",
+        "confidence": "high"
+      },
+      {
+        "type": "Non-text Color Contrast",
+        "affected_code": "final myPaint = Paint()..color = shrinePink400;",
+        "explanation": "The 'TriangleCategoryIndicator' uses 'shrinePink400' (0xFFEAA4A4) to visually indicate the selected category. Assuming a light background, the contrast between this light pink indicator and the background is likely insufficient (less than 3:1), making it difficult for users with low vision to perceive which category is currently selected. While 'Semantics(selected: true)' provides an auditory cue, the visual indicator should also meet contrast requirements.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 854,
+    "completion_tokens": 295,
+    "thinking_tokens": 2656,
+    "total_tokens": 3805
+  },
+  "latency_ms": 13803
+}

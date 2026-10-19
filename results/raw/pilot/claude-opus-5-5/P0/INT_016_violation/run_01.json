@@ -1,0 +1,45 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "INT_016_violation",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T01:54:07.796948+00:00",
+  "request": {
+    "sample_id": "INT_016",
+    "variant": "violation",
+    "category": "interaction",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing semantic action (excludeSemantics removes tap action)",
+        "affected_code": "Semantics(\n      button: true,\n      expanded: expanded,\n      label: text,\n      excludeSemantics: true,\n      child: ... InkWell(onTap: onTap, ...)",
+        "explanation": "excludeSemantics: true drops the descendant semantics, including the tap action contributed by InkWell. The Semantics node declares button: true but provides no onTap handler. Assistive technologies may announce a button that cannot be activated via screen reader double-tap or switch access.",
+        "confidence": "medium"
+      },
+      {
+        "type": "Fixed height may clip text on large font scaling",
+        "affected_code": "height: 48,",
+        "explanation": "The container has a fixed height of 48. When users increase the system text scale, the 14pt text may overflow or be clipped, harming readability.",
+        "confidence": "low"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 1099,
+    "completion_tokens": 302,
+    "total_tokens": 1401
+  },
+  "latency_ms": 4050,
+  "request_id": "req_011CgAm96i2Wixof2U6xEAnU"
+}

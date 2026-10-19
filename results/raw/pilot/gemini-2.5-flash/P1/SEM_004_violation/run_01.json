@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_004_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T02:23:02.209819+00:00",
+  "request": {
+    "sample_id": "SEM_004",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Semantics and accessible information",
+        "affected_code": "tooltip: 'Trash can'",
+        "explanation": "The tooltip for the IconButton, which serves as its accessible label, is 'Trash can'. This describes the icon itself rather than the action it performs. For screen reader users, a more descriptive label like 'Remove item from cart' or 'Delete item' would clearly communicate the button's purpose and improve usability.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 238,
+    "completion_tokens": 121,
+    "thinking_tokens": 587,
+    "total_tokens": 946
+  },
+  "latency_ms": 4330
+}

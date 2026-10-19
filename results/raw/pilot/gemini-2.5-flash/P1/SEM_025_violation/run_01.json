@@ -1,0 +1,50 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_025_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T02:14:04.788753+00:00",
+  "request": {
+    "sample_id": "SEM_025",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Semantics and accessible information",
+        "affected_code": "Semantics(...)",
+        "explanation": "The `CategoryMenuItem` has an `isSelected` property that visually indicates whether a category is currently selected. However, this state is not conveyed semantically to assistive technologies. Screen reader users will not be able to determine if a category is selected or not, as the `Semantics` widget does not use the `selected` property.",
+        "confidence": "high"
+      },
+      {
+        "type": "Interaction and interactive target accessibility",
+        "affected_code": "GestureDetector(...)",
+        "explanation": "The `CategoryMenuItem` uses a `GestureDetector` for tap interaction. While `Semantics(button: true)` provides a semantic role, a raw `GestureDetector` does not automatically provide keyboard focus management or activation. This means the button might not be navigable or activatable by keyboard users or other assistive technologies that rely on standard focus mechanisms.",
+        "confidence": "high"
+      },
+      {
+        "type": "Interaction and interactive target accessibility",
+        "affected_code": "GestureDetector(...)",
+        "explanation": "The interactive area for the `CategoryMenuItem` is determined by the `GestureDetector` wrapping the `_buttonText` with vertical padding. While there's `Padding(vertical: 16)`, the overall tap target size might still fall below the recommended minimum of 48x48 logical pixels, especially if the `categoryName` is short and the text height is small. This can make it difficult for users with motor impairments to accurately tap the button.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 860,
+    "completion_tokens": 376,
+    "thinking_tokens": 1499,
+    "total_tokens": 2735
+  },
+  "latency_ms": 9573
+}

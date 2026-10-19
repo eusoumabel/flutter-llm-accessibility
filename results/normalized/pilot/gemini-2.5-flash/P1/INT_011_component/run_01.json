@@ -1,0 +1,22 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "INT_011_component",
+  "sample_id": "INT_011",
+  "variant": "component",
+  "category": "interaction",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "prompt": "P1",
+  "run": 1,
+  "status": "ok",
+  "valid": true,
+  "predicted_has_violation": true,
+  "predicted_violations": [
+    "Interactive Target Size",
+    "Accessible Label"
+  ],
+  "predicted_confidences": [
+    "high",
+    "medium"
+  ]
+}

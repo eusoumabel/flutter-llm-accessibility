@@ -1,0 +1,44 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "INT_011_component",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T01:51:47.518936+00:00",
+  "request": {
+    "sample_id": "INT_011",
+    "variant": "component",
+    "category": "interaction",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Insufficient tap target size",
+        "affected_code": "this.size = 18.0,width: size,height: size,iconSize: size - 12.0,visualDensity: VisualDensity.compact,",
+        "explanation": "The default size of the button is 18.0 logical pixels, and the iconSize is calculated as size - 12.0, resulting in a default icon size of 6.0 logical pixels. This is significantly smaller than the recommended minimum interactive target size of 48x48dp (WCAG 2.1, Material Design guidelines). Additionally, `visualDensity: VisualDensity.compact` further reduces the interactive area. Small interactive elements are difficult for users with motor impairments or low vision to accurately perceive and activate.",
+        "confidence": "high"
+      },
+      {
+        "type": "Missing semantic label",
+        "affected_code": "final String? tooltip;tooltip: tooltip,",
+        "explanation": "The `tooltip` property, which provides a semantic label for screen readers and hover text, is optional (`String?`). If `tooltip` is not provided, users relying on screen readers will not receive an audible description of the button's purpose, making it inaccessible. While the code allows for a tooltip, it doesn't enforce its presence, creating a potential accessibility barrier.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 392,
+    "completion_tokens": 322,
+    "thinking_tokens": 2075,
+    "total_tokens": 2789
+  },
+  "latency_ms": 12015
+}

@@ -1,0 +1,30 @@
+{
+    "type": "object",
+    "properties": {
+        "violations": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "type": "string"
+                    },
+                    "affected_code": {
+                        "type": "string"
+                    },
+                    "explanation": {
+                        "type": "string"
+                    },
+                    "confidence": {
+                        "type": "string",
+                        "enum": ["low", "medium", "high"]
+                    }
+                },
+                "required": ["type", "affected_code", "explanation", "confidence"],
+                "additionalProperties": false
+            }
+        }
+    },
+    "required": ["violations"],
+    "additionalProperties": false
+}

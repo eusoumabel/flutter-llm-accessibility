@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_010_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T02:17:55.758073+00:00",
+  "request": {
+    "sample_id": "SEM_010",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Insufficient Color Contrast",
+        "affected_code": "AnimatedContainer(duration: const Duration(milliseconds: 200), width: 52, height: 32, padding: const EdgeInsets.all(4), alignment: isOn ? Alignment.centerRight : Alignment.centerLeft, decoration: BoxDecoration(color: isOn ? Colors.indigo : Colors.grey.shade400, borderRadius: BorderRadius.circular(16),), child: Container(width: 24, height: 24, decoration: const BoxDecoration(color: Colors.white, shape: BoxShape.circle,),),)",
+        "explanation": "The color contrast between the toggle's background and its thumb is insufficient in both the 'on' and 'off' states. When 'on', the contrast between Colors.indigo (background) and Colors.white (thumb) is approximately 4.09:1, which is below the WCAG AA standard of 4.5:1 for non-large text and graphical objects. When 'off', the contrast between Colors.grey.shade400 (background) and Colors.white (thumb) is approximately 1.94:1, which is significantly below the standard. This makes it difficult for users with low vision or color blindness to visually discern the toggle's state.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 414,
+    "completion_tokens": 288,
+    "thinking_tokens": 1429,
+    "total_tokens": 2131
+  },
+  "latency_ms": 8539
+}

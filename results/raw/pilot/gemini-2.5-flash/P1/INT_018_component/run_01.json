@@ -1,0 +1,50 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "INT_018_component",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T02:19:23.667367+00:00",
+  "request": {
+    "sample_id": "INT_018",
+    "variant": "component",
+    "category": "interaction",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Semantics and accessible information",
+        "affected_code": "Semantics(excludeSemantics: true, ...)",
+        "explanation": "The `Semantics` widget is configured with `excludeSemantics: true`. This property removes the widget and its entire subtree from the accessibility tree. Consequently, the button's intended accessible label, role (button), and actions (`onTap`, `onLongPress`) will not be exposed to assistive technologies, rendering the component completely inaccessible. While the accompanying comment suggests an intention to exclude the inner `TextButton`'s semantics, applying `excludeSemantics: true` to the outer `Semantics` widget itself has the opposite and detrimental effect of hiding the primary accessible interface.",
+        "confidence": "high"
+      },
+      {
+        "type": "Interaction and interactive target accessibility",
+        "affected_code": "TextButton(onPressed: () {}, ...)",
+        "explanation": "The `TextButton` widget has an `onPressed` callback that performs no action (`onPressed: () {}`). If this `TextButton` were to be exposed to accessibility services (e.g., if the parent `Semantics` issue were resolved or if the `Semantics` node is excluded and the `TextButton` becomes the primary interactive element), it would be announced as an interactive button. However, activating it would yield no response, creating a confusing and frustrating experience for users of assistive technologies who expect interactive elements to perform a meaningful action.",
+        "confidence": "high"
+      },
+      {
+        "type": "Interaction and interactive target accessibility",
+        "affected_code": "Listener(...) and Semantics(onTap: ..., onLongPress: ...) and TextButton(onPressed: ..., onLongPress: ...)",
+        "explanation": "The component implements a highly complex and potentially conflicting interaction model by combining a `Listener` for custom pointer event handling, `Semantics` callbacks (`onTap`, `onLongPress`), and `TextButton` callbacks (`onPressed`, `onLongPress`). This layering can lead to unpredictable behavior and inconsistencies, especially for assistive technologies. The custom tap/long press detection logic within the `Listener` might not perfectly align with how accessibility services trigger the `Semantics` actions, potentially resulting in unreliable or inconsistent interaction for users relying on these services.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 969,
+    "completion_tokens": 523,
+    "thinking_tokens": 2902,
+    "total_tokens": 4394
+  },
+  "latency_ms": 16064
+}

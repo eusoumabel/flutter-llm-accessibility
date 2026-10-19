@@ -1,0 +1,39 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "INT_007_violation",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T01:52:09.817102+00:00",
+  "request": {
+    "sample_id": "INT_007",
+    "variant": "violation",
+    "category": "interaction",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Custom interactive control missing semantic action",
+        "affected_code": "Semantics(button: true, label: 'Order $orderNumber, $status', excludeSemantics: true, child: GestureDetector(behavior: HitTestBehavior.opaque, onTap: onOpen, ...))",
+        "explanation": "excludeSemantics: true removes all semantics from the subtree, including the tap action that GestureDetector would otherwise contribute. The outer Semantics node declares button: true but provides no onTap handler. Assistive technologies such as TalkBack, VoiceOver and Switch Access therefore see a button with no activation action, so activating it may do nothing. Pass onTap: onOpen to the Semantics widget, or use an InkWell or ListTile inside a Card, which provide the tap semantics automatically.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 919,
+    "completion_tokens": 537,
+    "total_tokens": 1456
+  },
+  "latency_ms": 6656,
+  "request_id": "req_011CgAkzD9ivdKdgpxSyJixr"
+}

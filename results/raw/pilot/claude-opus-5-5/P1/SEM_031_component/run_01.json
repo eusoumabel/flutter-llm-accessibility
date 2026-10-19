@@ -1,0 +1,45 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_031_component",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T01:58:33.235272+00:00",
+  "request": {
+    "sample_id": "SEM_031",
+    "variant": "component",
+    "category": "semantics",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Semantic state / label not updated",
+        "affected_code": "IconButton(tooltip: 'Show Password', ... onPressed: () => setState(() { _obscureText = !_obscureText; }), icon: _obscureText ? const Icon(Icons.visibility_off, size: 18.0) : const Icon(Icons.visibility, size: 18.0))",
+        "explanation": "The toggle button always announces 'Show Password' even when the password is already visible. Its label never changes to 'Hide Password' and it exposes no toggled state. Screen reader users therefore cannot tell whether the password is currently shown or hidden.",
+        "confidence": "high"
+      },
+      {
+        "type": "Accessible label relies on hint text only",
+        "affected_code": "hintText: widget.hintText,",
+        "explanation": "The field has no labelText or persistent label; it uses only hintText. The hint disappears once the user starts typing, so the field's purpose is no longer visible, and the hint may be announced only as a hint rather than as the field's name.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 1573,
+    "completion_tokens": 346,
+    "total_tokens": 1919
+  },
+  "latency_ms": 4870,
+  "request_id": "req_011CgAmUc4eWFZgn5r6TikW2"
+}

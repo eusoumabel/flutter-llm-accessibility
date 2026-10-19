@@ -1,0 +1,24 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "INT_008_accessible",
+  "sample_id": "INT_008",
+  "variant": "accessible",
+  "category": "interaction",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "prompt": "P1",
+  "run": 1,
+  "status": "ok",
+  "valid": true,
+  "predicted_has_violation": true,
+  "predicted_violations": [
+    "Custom interactive control / keyboard accessibility",
+    "Accessible gesture alternative / interaction",
+    "Semantic state"
+  ],
+  "predicted_confidences": [
+    "high",
+    "medium",
+    "low"
+  ]
+}

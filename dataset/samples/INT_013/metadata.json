@@ -1,0 +1,102 @@
+{
+    "schema_version": "1.0",
+    "id": "INT_013",
+    "title": "Zoomable image viewer without zoom buttons",
+    "category": "interaction",
+    "subcategory": "inaccessible_custom_gesture",
+    "status": "validated",
+    "source": {
+        "type": "mutation",
+        "repository": {
+            "name": "openfoodfacts/smooth-app",
+            "url": "https://github.com/openfoodfacts/smooth-app"
+        },
+        "original_file": "packages/smooth_app/lib/widgets/smooth_interactive_viewer.dart#L1-L94",
+        "commit": "887e167b76757c47e689a95994d1ab064a66cd06",
+        "license": {
+            "name": "Apache-2.0",
+            "verified": true,
+            "copyright": "Não declarado no LICENSE (modelo Apache-2.0 sem titular)"
+        }
+    },
+    "component": {
+        "framework": "flutter",
+        "language": "dart",
+        "widget_types": [
+            "GestureDetector",
+            "InteractiveViewer",
+            "Stack",
+            "IconButton"
+        ],
+        "description": "A zoomable viewer that wraps its child in an InteractiveViewer and animates a 2x zoom on double tap."
+    },
+    "files": {
+        "accessible": "accessible.dart",
+        "violation": "violation.dart"
+    },
+    "ground_truth": {
+        "accessible": {
+            "has_violation": false,
+            "violations": []
+        },
+        "violation": {
+            "has_violation": true,
+            "violations": [
+                {
+                    "id": "INT-02",
+                    "type": "inaccessible_custom_gesture",
+                    "description": "Zooming is only possible through pinch and double-tap gestures; InteractiveViewer pinch and onDoubleTap are not exposed as semantic actions, and no zoom buttons are provided.",
+                    "affected_lines": {
+                        "start": 44,
+                        "end": 55
+                    },
+                    "confidence": "confirmed"
+                }
+            ]
+        }
+    },
+    "references": {
+        "flutter": [
+            {
+                "type": "documentation",
+                "reference": "https://api.flutter.dev/flutter/widgets/Semantics-class.html"
+            }
+        ],
+        "wcag": [
+            {
+                "criterion": "2.5.1",
+                "description": "Pointer Gestures"
+            },
+            {
+                "criterion": "2.1.1",
+                "description": "Keyboard"
+            }
+        ]
+    },
+    "mutations": [
+        {
+            "id": "remove_gesture_alternative",
+            "description": "Variant without the zoom in and zoom out buttons (and their _zoomBy helper), keeping only the pinch and double-tap gestures.",
+            "target_variants": [
+                "violation"
+            ]
+        }
+    ],
+    "validation": {
+        "automated": {
+            "performed": false,
+            "tool": null,
+            "result": null
+        },
+        "manual": {
+            "performed": true,
+            "reviewers": [
+                "researcher"
+            ]
+        },
+        "status": "validated"
+    },
+    "notes": "Fonte acessível ausente no código real (ADR-R014): a variante violation é o SmoothInteractiveViewer original e a variante accessible foi construída pelos pesquisadores, adicionando botões de zoom com tooltip (_zoomBy e Positioned com dois IconButton.filledTonal). Adaptação do original (ADR-R011): SmoothAnimationsDuration.short foi substituído por Duration(milliseconds: 200) (duration_constants.dart). Os chamadores no app exibem PinchToZoomExplainer, confirmando a ausência de alternativa no original.",
+    "created_at": "2026-10-18",
+    "updated_at": "2026-10-18"
+}

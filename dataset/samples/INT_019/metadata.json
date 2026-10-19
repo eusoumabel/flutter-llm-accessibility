@@ -1,0 +1,79 @@
+{
+    "schema_version": "1.0",
+    "id": "INT_019",
+    "title": "Web view navigation bar with small icons on full-size buttons",
+    "category": "interaction",
+    "subcategory": "insufficient_target_size",
+    "status": "validated",
+    "source": {
+        "type": "external",
+        "repository": {
+            "name": "openfoodfacts/smooth-app",
+            "url": "https://github.com/openfoodfacts/smooth-app"
+        },
+        "original_file": "packages/smooth_app/lib/pages/navigator/external_page_webview.dart#L143-L184",
+        "commit": "887e167b76757c47e689a95994d1ab064a66cd06",
+        "license": {
+            "name": "Apache-2.0",
+            "verified": true,
+            "copyright": "Não declarado no LICENSE (modelo Apache-2.0 sem titular)"
+        }
+    },
+    "component": {
+        "framework": "flutter",
+        "language": "dart",
+        "widget_types": [
+            "TooltipTheme",
+            "Material",
+            "Row",
+            "IconButton",
+            "Icon"
+        ],
+        "description": "The bottom bar of an in-app web view with previous, next and reload icon buttons."
+    },
+    "files": {
+        "component": "component.dart"
+    },
+    "ground_truth": {
+        "component": {
+            "has_violation": false,
+            "violations": []
+        }
+    },
+    "references": {
+        "flutter": [
+            {
+                "type": "documentation",
+                "reference": "https://api.flutter.dev/flutter/flutter_test/androidTapTargetGuideline-constant.html"
+            }
+        ],
+        "wcag": [
+            {
+                "criterion": "2.5.8",
+                "description": "Target Size (Minimum)"
+            },
+            {
+                "criterion": "2.5.5",
+                "description": "Target Size (Enhanced)"
+            }
+        ]
+    },
+    "mutations": [],
+    "validation": {
+        "automated": {
+            "performed": false,
+            "tool": null,
+            "result": null
+        },
+        "manual": {
+            "performed": true,
+            "reviewers": [
+                "researcher"
+            ]
+        },
+        "status": "validated"
+    },
+    "notes": "Negativo difícil (ADR-R006) de INT-01: os ícones de anterior e próximo têm 18 dp, mas estão em IconButtons sem restrições reduzidas, cujo alvo é ampliado para 48x48 dp; cada botão tem tooltip no próprio IconButton. Substitui INT_012, removida do dataset pela ADR-R015. Adaptado de _WebViewBottomBar (ADR-R011): a classe foi tornada pública; foram mantidos apenas os botões de navegação (o botão de compartilhar e o snackbar foram removidos); WebViewController foi substituído pelos callbacks onBack, onForward e onReload; os ícones do pacote do app (icons.Arrow.left/right de 18 dp e icons.Reload) foram substituídos por Icon(Icons.arrow_back), Icon(Icons.arrow_forward) e Icon(Icons.refresh); VERY_SMALL_SPACE (4), SMALL_SPACE (8) e ROUNDED_BORDER_RADIUS (20) foram substituídos por literais; as strings de AppLocalizations foram substituídas por 'Previous', 'Next' e 'Reload' (app_en.arb).",
+    "created_at": "2026-10-18",
+    "updated_at": "2026-10-18"
+}

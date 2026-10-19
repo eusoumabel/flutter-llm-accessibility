@@ -1,1 +1,95 @@
-
+{
+    "schema_version": "1.0",
+    "id": "INT_002",
+    "title": "Filter chip remove button with shrink-wrapped target",
+    "category": "interaction",
+    "subcategory": "insufficient_target_size",
+    "status": "validated",
+    "source": {
+        "type": "synthetic",
+        "repository": null,
+        "original_file": null,
+        "commit": null,
+        "license": null
+    },
+    "component": {
+        "framework": "flutter",
+        "language": "dart",
+        "widget_types": [
+            "Container",
+            "Row",
+            "Text",
+            "IconButton"
+        ],
+        "description": "A filter label with a small close icon button that removes the filter."
+    },
+    "files": {
+        "accessible": "accessible.dart",
+        "violation": "violation.dart"
+    },
+    "ground_truth": {
+        "accessible": {
+            "has_violation": false,
+            "violations": []
+        },
+        "violation": {
+            "has_violation": true,
+            "violations": [
+                {
+                    "id": "INT-01",
+                    "type": "insufficient_target_size",
+                    "description": "The close IconButton has zero padding, empty constraints and shrink-wrapped tap target size, resulting in a 16x16 dp interactive area.",
+                    "affected_lines": {
+                        "start": 24,
+                        "end": 28
+                    },
+                    "confidence": "confirmed"
+                }
+            ]
+        }
+    },
+    "references": {
+        "flutter": [
+            {
+                "type": "documentation",
+                "reference": "https://api.flutter.dev/flutter/flutter_test/androidTapTargetGuideline-constant.html"
+            }
+        ],
+        "wcag": [
+            {
+                "criterion": "2.5.8",
+                "description": "Target Size (Minimum)"
+            },
+            {
+                "criterion": "2.5.5",
+                "description": "Target Size (Enhanced)"
+            }
+        ]
+    },
+    "mutations": [
+        {
+            "id": "remove_minimum_target_constraint",
+            "description": "Removed the minimum interactive size of the icon button by setting zero padding, empty constraints and shrink-wrapped tap target size, preserving icon, label and callback.",
+            "target_variants": [
+                "violation"
+            ]
+        }
+    ],
+    "validation": {
+        "automated": {
+            "performed": false,
+            "tool": null,
+            "result": null
+        },
+        "manual": {
+            "performed": true,
+            "reviewers": [
+                "researcher"
+            ]
+        },
+        "status": "validated"
+    },
+    "notes": null,
+    "created_at": "2026-10-18",
+    "updated_at": "2026-10-18"
+}

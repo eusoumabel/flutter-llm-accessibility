@@ -1,0 +1,44 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_028_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T02:22:30.657460+00:00",
+  "request": {
+    "sample_id": "SEM_028",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing Semantics Label",
+        "affected_code": "ExcludeSemantics(child: Image(image: widget.thumb))",
+        "explanation": "The Image widget, which likely conveys the purpose or content of the button, is wrapped in ExcludeSemantics. This prevents its content from being exposed to accessibility services, meaning screen readers will not announce what the button represents or does. The button needs an accessible label or description.",
+        "confidence": "high"
+      },
+      {
+        "type": "Missing Semantics Role",
+        "affected_code": "GestureDetector(onTap: widget.onTap, child: Focus(...))",
+        "explanation": "The custom ThumbButton implements tap and keyboard interactions but does not explicitly declare its role as a button to accessibility services. While it behaves like a button, screen readers might not correctly identify this widget as an interactive button, potentially confusing users. Wrapping it in a Semantics widget with 'button: true' would improve accessibility.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 502,
+    "completion_tokens": 192,
+    "thinking_tokens": 949,
+    "total_tokens": 1643
+  },
+  "latency_ms": 6229
+}

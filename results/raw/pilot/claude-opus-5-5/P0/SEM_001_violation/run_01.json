@@ -1,0 +1,45 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_001_violation",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T01:49:23.787675+00:00",
+  "request": {
+    "sample_id": "SEM_001",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing accessible label",
+        "affected_code": "IconButton(\n      icon: Icon(isFavorite ? Icons.favorite : Icons.favorite_border),\n      onPressed: onPressed,\n    )",
+        "explanation": "The IconButton has no tooltip and the Icon has no semanticLabel, so screen readers (TalkBack/VoiceOver) will announce only 'button' without describing its purpose (e.g., 'Add to favorites').",
+        "confidence": "high"
+      },
+      {
+        "type": "State not conveyed to assistive technologies",
+        "affected_code": "Icon(isFavorite ? Icons.favorite : Icons.favorite_border)",
+        "explanation": "The favorite/not-favorite state is communicated only visually by switching between a filled and outlined icon. No semantic toggled/selected state (e.g., Semantics(toggled: isFavorite) or isSelected) or state-dependent label is provided, so screen reader users cannot determine whether the item is currently favorited.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 680,
+    "completion_tokens": 345,
+    "total_tokens": 1025
+  },
+  "latency_ms": 4416,
+  "request_id": "req_011CgAkn8vdoeeAvZVzDuzSq"
+}

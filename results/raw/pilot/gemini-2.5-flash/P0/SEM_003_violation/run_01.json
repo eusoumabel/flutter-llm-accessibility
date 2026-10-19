@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_003_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T02:09:44.634173+00:00",
+  "request": {
+    "sample_id": "SEM_003",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing or empty semantic label for icon",
+        "affected_code": "Icon(delivered ? Icons.check_circle : Icons.schedule, color: delivered ? Colors.green : Colors.orange, semanticLabel: '',)",
+        "explanation": "The Icon widget has an empty semanticLabel. This means screen readers will not announce the status (delivered or scheduled) conveyed by the icon and its color, making this information inaccessible to users who rely on screen readers.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 245,
+    "completion_tokens": 100,
+    "thinking_tokens": 616,
+    "total_tokens": 961
+  },
+  "latency_ms": 4499
+}

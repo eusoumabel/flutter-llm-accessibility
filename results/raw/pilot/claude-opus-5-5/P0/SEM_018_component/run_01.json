@@ -1,0 +1,39 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_018_component",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T01:55:48.789855+00:00",
+  "request": {
+    "sample_id": "SEM_018",
+    "variant": "component",
+    "category": "semantics",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Inappropriate widget for semantics / heading",
+        "affected_code": "title: const SelectableText('Title')",
+        "explanation": "Using SelectableText as the AppBar title can change the semantics exposed to assistive technologies (it is treated as an editable/selectable text field with focus behavior) and may interfere with the AppBar's default header semantics and focus traversal. A plain Text widget is the expected choice for an app bar title.",
+        "confidence": "low"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 811,
+    "completion_tokens": 160,
+    "total_tokens": 971
+  },
+  "latency_ms": 2774,
+  "request_id": "req_011CgAmGdyQcXqaZxM8wW5qt"
+}

@@ -1,0 +1,57 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_028_violation",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T01:47:10.717981+00:00",
+  "request": {
+    "sample_id": "SEM_028",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing accessible label",
+        "affected_code": "ExcludeSemantics(child: Image(image: widget.thumb))",
+        "explanation": "The thumbnail image is excluded from semantics and no Semantics label is provided, so the interactive control has no accessible name; screen readers announce nothing meaningful.",
+        "confidence": "high"
+      },
+      {
+        "type": "Missing semantic role",
+        "affected_code": "GestureDetector(onTap: widget.onTap, child: Focus(...))",
+        "explanation": "The custom control built from GestureDetector and Focus is not wrapped in Semantics(button: true), so assistive technologies do not identify it as a button.",
+        "confidence": "high"
+      },
+      {
+        "type": "Custom interactive control lacking semantic action/focusability",
+        "affected_code": "Focus(onKeyEvent: ..., onFocusChange: ..., child: Container(...))",
+        "explanation": "Keyboard handling is implemented manually, but there is no Semantics wrapper exposing an accessible tap action and focusable state alongside a label. Because the only child content is excluded, the node may be merged into an empty or unlabeled element. A standard InkWell or a Semantics(button: true, label: ..., onTap: ...) wrapper should be used instead.",
+        "confidence": "medium"
+      },
+      {
+        "type": "Unconstrained target width",
+        "affected_code": "Container(decoration: borderDecoration, height: 120, child: ...)",
+        "explanation": "Only the height is fixed. The width depends on the image's intrinsic size, which can be very small or zero while the image is loading, potentially producing a tap target smaller than 48dp.",
+        "confidence": "low"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 1166,
+    "completion_tokens": 539,
+    "total_tokens": 1705
+  },
+  "latency_ms": 6859,
+  "request_id": "req_011CgAkc9XaDFnZbFRU6JYHc"
+}

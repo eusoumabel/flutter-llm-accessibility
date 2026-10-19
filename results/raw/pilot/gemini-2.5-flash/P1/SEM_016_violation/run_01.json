@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_016_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T02:19:54.888173+00:00",
+  "request": {
+    "sample_id": "SEM_016",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Semantics and accessible information",
+        "affected_code": "FloatingActionButton(onPressed: onSearch, child: const Icon(Icons.search))",
+        "explanation": "The FloatingActionButton uses an Icon(Icons.search) as its child but lacks an explicit accessible label (e.g., a 'tooltip' property or a 'Semantics' widget wrapper with a label). Without this, screen reader users may not fully understand the button's purpose, as the icon alone might not provide sufficient context.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 297,
+    "completion_tokens": 139,
+    "thinking_tokens": 865,
+    "total_tokens": 1301
+  },
+  "latency_ms": 5298
+}

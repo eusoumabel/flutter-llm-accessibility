@@ -1,0 +1,51 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_032_violation",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T01:54:47.789179+00:00",
+  "request": {
+    "sample_id": "SEM_032",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing selected state semantics",
+        "affected_code": "icon: colorSelected.color == ColorSeed.values[i].color && colorSelectionMethod == ColorSelectionMethod.colorSeed ? const Icon(Icons.circle) : const Icon(Icons.radio_button_unchecked)",
+        "explanation": "The selected color is indicated only visually by swapping icons (filled circle vs. unchecked radio). The IconButton exposes no selected/checked state (e.g., via Semantics(selected:), isSelected, or inMutuallyExclusiveGroup), so screen reader users cannot tell which color seed is currently selected.",
+        "confidence": "high"
+      },
+      {
+        "type": "Use of color as the only means of conveying information",
+        "affected_code": "color: ColorSeed.values[i].color,",
+        "explanation": "Each option is differentiated visually only by icon color; users with color vision deficiencies cannot distinguish options without the tooltip, which requires hover/long-press. No visible text label is provided.",
+        "confidence": "medium"
+      },
+      {
+        "type": "Insufficient non-text contrast",
+        "affected_code": "yellow('Yellow', Colors.yellow),",
+        "explanation": "Icons rendered in light colors such as Colors.yellow may not meet the 3:1 non-text contrast ratio against a light background, making the control and its state hard to perceive.",
+        "confidence": "low"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 1177,
+    "completion_tokens": 461,
+    "total_tokens": 1638
+  },
+  "latency_ms": 5079,
+  "request_id": "req_011CgAmByMLJx845uFMizMWq"
+}

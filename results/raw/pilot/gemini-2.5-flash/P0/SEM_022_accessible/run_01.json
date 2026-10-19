@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_022_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T02:09:00.177697+00:00",
+  "request": {
+    "sample_id": "SEM_022",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Semantic Information Loss",
+        "affected_code": "Image(image: asset, width: 64, height: 64, excludeFromSemantics: true,)",
+        "explanation": "The Image widget is explicitly excluded from the semantics tree using excludeFromSemantics: true. If this image conveys important information that is not otherwise available to screen reader users (e.g., through the title text), then users relying on assistive technologies will miss this content. While the image might be purely decorative or redundant with the title, this cannot be definitively inferred from the code alone. It's crucial to ensure that all meaningful visual content is accessible.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 368,
+    "completion_tokens": 138,
+    "thinking_tokens": 1543,
+    "total_tokens": 2049
+  },
+  "latency_ms": 8537
+}

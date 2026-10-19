@@ -1,0 +1,50 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_017_component",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T02:14:47.210661+00:00",
+  "request": {
+    "sample_id": "SEM_017",
+    "variant": "component",
+    "category": "semantics",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing Semantic Label",
+        "affected_code": "IconButton(key: const Key('slideshow_slideshowButtonsLeft'), onPressed: () async { if (_currentPage >= 1) { await widget.controller.previousPage(duration: _pageAnimationDuration, curve: Curves.easeInOut,); } }, icon: _currentPage == 0 ? const Icon(Icons.arrow_back, color: Colors.white38) : const Icon(Icons.arrow_back, color: Colors.white),)",
+        "explanation": "The left `IconButton` lacks an explicit `semanticLabel` or `tooltip`. Screen readers will announce the default label for the arrow icon (e.g., 'back button'), which may not clearly convey its purpose as 'Previous page' within the slideshow context. The right `IconButton` has the same issue for 'Next page'.",
+        "confidence": "high"
+      },
+      {
+        "type": "Incorrect Disabled State Handling",
+        "affected_code": "IconButton(key: const Key('slideshow_slideshowButtonsLeft'), onPressed: () async { if (_currentPage >= 1) { await widget.controller.previousPage(duration: _pageAnimationDuration, curve: Curves.easeInOut,); } }, icon: _currentPage == 0 ? const Icon(Icons.arrow_back, color: Colors.white38) : const Icon(Icons.arrow_back, color: Colors.white),)",
+        "explanation": "The `onPressed` callback for the left `IconButton` is never `null`, even when the button is logically disabled (on the first page). This causes screen readers to announce it as interactive, even though it performs no action. For a truly disabled button, `onPressed` should be set to `null`. The right `IconButton` has the same issue when on the last page.",
+        "confidence": "high"
+      },
+      {
+        "type": "Dynamic Content Not Announced",
+        "affected_code": "Text(navigationBarLabel, style: theme.textTheme.titleLarge?.apply(color: Colors.white),)",
+        "explanation": "The `Text` widget displaying the current page number (`navigationBarLabel`) updates dynamically. Without wrapping it in a `Semantics` widget with `liveRegion: true`, screen readers may not automatically announce the updated page number, potentially leaving users unaware of the current page change.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 692,
+    "completion_tokens": 543,
+    "thinking_tokens": 2755,
+    "total_tokens": 3990
+  },
+  "latency_ms": 16438
+}

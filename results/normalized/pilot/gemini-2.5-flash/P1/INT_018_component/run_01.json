@@ -1,0 +1,24 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "INT_018_component",
+  "sample_id": "INT_018",
+  "variant": "component",
+  "category": "interaction",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "prompt": "P1",
+  "run": 1,
+  "status": "ok",
+  "valid": true,
+  "predicted_has_violation": true,
+  "predicted_violations": [
+    "Semantics and accessible information",
+    "Interaction and interactive target accessibility",
+    "Interaction and interactive target accessibility"
+  ],
+  "predicted_confidences": [
+    "high",
+    "high",
+    "medium"
+  ]
+}

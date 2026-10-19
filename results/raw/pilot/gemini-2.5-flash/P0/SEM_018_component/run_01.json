@@ -1,0 +1,50 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_018_component",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T01:43:39.835804+00:00",
+  "request": {
+    "sample_id": "SEM_018",
+    "variant": "component",
+    "category": "semantics",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Usability/Functional Accessibility",
+        "affected_code": "IconButton(icon: const Icon(Icons.share), tooltip: 'Share', onPressed: () {},)",
+        "explanation": "The IconButton is an interactive element, but its onPressed callback is empty, meaning it performs no action when activated. This can be confusing and frustrating for all users, including those using assistive technologies, as interactive elements are expected to perform a function.",
+        "confidence": "high"
+      },
+      {
+        "type": "Usability/Functional Accessibility",
+        "affected_code": "IconButton(icon: const Icon(Icons.favorite), tooltip: 'Favorite', onPressed: () {},)",
+        "explanation": "The IconButton is an interactive element, but its onPressed callback is empty, meaning it performs no action when activated. This can be confusing and frustrating for all users, including those using assistive technologies, as interactive elements are expected to perform a function.",
+        "confidence": "high"
+      },
+      {
+        "type": "Usability/Functional Accessibility",
+        "affected_code": "IconButton(icon: const Icon(Icons.search), tooltip: 'Search', onPressed: () {},)",
+        "explanation": "The IconButton is an interactive element, but its onPressed callback is empty, meaning it performs no action when activated. This can be confusing and frustrating for all users, including those using assistive technologies, as interactive elements are expected to perform a function.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 281,
+    "completion_tokens": 289,
+    "thinking_tokens": 705,
+    "total_tokens": 1275
+  },
+  "latency_ms": 5241
+}

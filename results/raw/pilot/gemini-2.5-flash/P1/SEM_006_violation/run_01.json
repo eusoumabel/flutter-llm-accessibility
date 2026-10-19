@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_006_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T02:10:16.203498+00:00",
+  "request": {
+    "sample_id": "SEM_006",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Semantics and accessible information",
+        "affected_code": "IconButton(icon: const Icon(Icons.chevron_right), tooltip: 'Previous image', onPressed: onNext,)",
+        "explanation": "The 'Next' button has an incorrect tooltip 'Previous image'. This provides misleading accessible information to screen reader users and those relying on tooltips. The tooltip should accurately reflect the button's action, which is 'Next image'.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 281,
+    "completion_tokens": 102,
+    "thinking_tokens": 453,
+    "total_tokens": 836
+  },
+  "latency_ms": 3494
+}

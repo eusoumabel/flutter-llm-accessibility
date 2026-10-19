@@ -14,8 +14,7 @@ __pycache__/
 .env.*
 !.env.example
 
-# Raw experiment outputs
-results/raw/
+# Raw experiment outputs (results/raw/) are versioned as evidence (ADR-R019).
 
 # Temporary data
 *.tmp

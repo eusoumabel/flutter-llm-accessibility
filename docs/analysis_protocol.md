@@ -30,3 +30,5 @@ O estudo deve reportar resultados por:
 ## Tratamento de resultados inválidos
 
 Timeouts de resposta, JSON inválido, recusas do provedor e predições malformadas devem ser registrados explicitamente e avaliados segundo um protocolo documentado antes da interpretação final.
+
+Na implementação atual, o runner grava o status de cada resposta (`ok`, `refusal`, `max_tokens`, `invalid_json`) e `calculate_metrics.py` exclui as respostas não válidas da matriz de confusão, reportando-as na contagem `invalid` de cada grupo. Falhas da API são registradas em `results/raw/<ciclo>/_errors.jsonl` e refeitas em nova execução, de modo que não entram nas métricas.

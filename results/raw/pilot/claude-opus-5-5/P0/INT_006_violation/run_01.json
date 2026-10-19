@@ -1,0 +1,57 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "INT_006_violation",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T01:58:45.909397+00:00",
+  "request": {
+    "sample_id": "INT_006",
+    "variant": "violation",
+    "category": "interaction",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Drag-only interaction without accessible alternative",
+        "affected_code": "LongPressDraggable<String>(\n  data: task,\n  feedback: ...,\n  child: Card(\n    child: ListTile(title: Text(task)),\n  ),\n)",
+        "explanation": "Moving a task to 'Done' can only be done by long-pressing and dragging onto the DragTarget. No button, semantic custom action, or keyboard alternative exists. Screen reader users, switch/keyboard users, and users with motor impairments cannot complete the action (WCAG 2.5.7 Dragging Movements, 2.1.1 Keyboard).",
+        "confidence": "high"
+      },
+      {
+        "type": "Missing semantic action/hint for draggable item",
+        "affected_code": "Card(\n  child: ListTile(title: Text(task)),\n)",
+        "explanation": "The draggable task cards expose only their text. Nothing in the semantics tree indicates that the item can be moved or marked done, such as a hint or a CustomSemanticsAction. Assistive technology users are not informed of the available functionality.",
+        "confidence": "medium"
+      },
+      {
+        "type": "No announcement of state change",
+        "affected_code": "void _markDone(String task) {\n  setState(() {\n    _todo.remove(task);\n    _done.add(task);\n  });\n}",
+        "explanation": "When a task moves from 'To do' to 'Done', no live region or SemanticsService announcement communicates the change. Screen reader users receive no feedback that the operation succeeded.",
+        "confidence": "medium"
+      },
+      {
+        "type": "Drop target lacks semantic description",
+        "affected_code": "DragTarget<String>(\n  onAcceptWithDetails: (details) => _markDone(details.data),\n  builder: ...",
+        "explanation": "The drop zone has no semantic label or hint identifying it as a target for completing tasks. It also gives no accessible feedback while a drag is in progress, since the candidates are unused.",
+        "confidence": "low"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 1094,
+    "completion_tokens": 654,
+    "total_tokens": 1748
+  },
+  "latency_ms": 7801,
+  "request_id": "req_011CgAmVKm9GJXBYvUZoMs7o"
+}

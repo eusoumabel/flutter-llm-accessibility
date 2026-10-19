@@ -61,24 +61,27 @@ A verdade canônica de cada amostra está em `dataset/samples/*/metadata.json`, 
 
 ## Configuração do provedor real
 
-Este projeto está conectado aos provedores OpenAI e Google Gemini. Selecione o provedor com `LLM_PROVIDER`:
+Este projeto está conectado aos provedores Google Gemini e Anthropic Claude (ADR-R017). Os provedores executados em cada rodada são definidos por `LLM_PROVIDERS`:
 
-- `openai`: usa `OPENAI_API_KEY` e `OPENAI_MODEL`;
-- `gemini`: usa `GEMINI_API_KEY` e `GEMINI_MODEL`.
+- `gemini`: usa `GEMINI_API_KEY`, `GEMINI_MODEL` e `GEMINI_TEMPERATURE`;
+- `claude`: usa `ANTHROPIC_API_KEY`, `CLAUDE_MODEL`, `CLAUDE_EFFORT` e `CLAUDE_MAX_TOKENS`.
+
+Os dois provedores recebem o mesmo esquema de resposta, definido em `prompts/response_schema.json` (ADR-R018).
 
 Para executar um experimento real:
 
 1. copie o arquivo `.env.example` para `.env`;
-2. defina a chave correspondente ao provedor selecionado;
-3. opcionalmente ajuste o modelo e a temperatura;
-4. execute `python3 scripts/run_experiment.py`.
+2. defina as chaves dos provedores listados em `LLM_PROVIDERS`;
+3. confira as chamadas planejadas com `--dry-run`;
+4. execute o piloto e, depois, o experimento final.
 
 Exemplo:
 
 ```bash
 cp .env.example .env
 python3 -m pip install -r requirements.txt
-python3 scripts/run_experiment.py
+python3 scripts/run_experiment.py --experiment pilot --dry-run
+python3 scripts/run_experiment.py --experiment pilot
 ```
 
 ## Status

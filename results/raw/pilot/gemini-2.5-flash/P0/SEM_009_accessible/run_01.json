@@ -1,0 +1,31 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_009_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T02:10:43.051662+00:00",
+  "request": {
+    "sample_id": "SEM_009",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": []
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 276,
+    "completion_tokens": 5,
+    "thinking_tokens": 501,
+    "total_tokens": 782
+  },
+  "latency_ms": 3105
+}

@@ -1,0 +1,96 @@
+{
+    "schema_version": "1.0",
+    "id": "INT_008",
+    "title": "Animated send button handled by a raw pointer listener",
+    "category": "interaction",
+    "subcategory": "interaction_not_exposed",
+    "status": "validated",
+    "source": {
+        "type": "synthetic",
+        "repository": null,
+        "original_file": null,
+        "commit": null,
+        "license": null
+    },
+    "component": {
+        "framework": "flutter",
+        "language": "dart",
+        "widget_types": [
+            "Semantics",
+            "Listener",
+            "AnimatedScale",
+            "Container",
+            "Icon"
+        ],
+        "description": "A circular send button with a press animation, implemented with a Listener that handles raw pointer events."
+    },
+    "files": {
+        "accessible": "accessible.dart",
+        "violation": "violation.dart"
+    },
+    "ground_truth": {
+        "accessible": {
+            "has_violation": false,
+            "violations": []
+        },
+        "violation": {
+            "has_violation": true,
+            "violations": [
+                {
+                    "id": "INT-03",
+                    "type": "interaction_not_exposed",
+                    "description": "The button is announced with label and button role, but the action is triggered only by raw pointer events in a Listener and no semantic tap action is provided, so assistive technologies cannot activate it.",
+                    "affected_lines": {
+                        "start": 17,
+                        "end": 25
+                    },
+                    "confidence": "confirmed"
+                }
+            ]
+        }
+    },
+    "references": {
+        "flutter": [
+            {
+                "type": "documentation",
+                "reference": "https://api.flutter.dev/flutter/widgets/Semantics-class.html"
+            }
+        ],
+        "wcag": [
+            {
+                "criterion": "4.1.2",
+                "description": "Name, Role, Value"
+            },
+            {
+                "criterion": "2.1.1",
+                "description": "Keyboard"
+            }
+        ]
+    },
+    "mutations": [
+        {
+            "id": "remove_interaction_exposure",
+            "description": "Removed the onTap callback from the Semantics wrapper, preserving label, role, animation and pointer handling.",
+            "target_variants": [
+                "violation"
+            ]
+        }
+    ],
+    "validation": {
+        "automated": {
+            "performed": false,
+            "tool": null,
+            "result": null
+        },
+        "manual": {
+            "performed": true,
+            "reviewers": [
+                "researcher"
+            ]
+        },
+        "status": "validated"
+    },
+    "notes": null,
+    "created_at": "2026-10-18",
+    "updated_at": "2026-10-18"
+}

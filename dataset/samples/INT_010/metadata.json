@@ -1,0 +1,100 @@
+{
+    "schema_version": "1.0",
+    "id": "INT_010",
+    "title": "Login icon button with a shrink-wrapped target",
+    "category": "interaction",
+    "subcategory": "insufficient_target_size",
+    "status": "validated",
+    "source": {
+        "type": "mutation",
+        "repository": {
+            "name": "flutter/news_toolkit",
+            "url": "https://github.com/flutter/news_toolkit"
+        },
+        "original_file": "flutter_news_example/lib/user_profile/widgets/user_profile_button.dart#L25-L45",
+        "commit": "6655bbc503cdc8c28540536d611cd7b72fbda220",
+        "license": {
+            "name": "BSD-3-Clause",
+            "verified": true,
+            "copyright": "Copyright 2024 The Flutter Authors. All rights reserved."
+        }
+    },
+    "component": {
+        "framework": "flutter",
+        "language": "dart",
+        "widget_types": [
+            "IconButton",
+            "Icon"
+        ],
+        "description": "An icon button shown to anonymous users that opens the login modal."
+    },
+    "files": {
+        "accessible": "accessible.dart",
+        "violation": "violation.dart"
+    },
+    "ground_truth": {
+        "accessible": {
+            "has_violation": false,
+            "violations": []
+        },
+        "violation": {
+            "has_violation": true,
+            "violations": [
+                {
+                    "id": "INT-01",
+                    "type": "insufficient_target_size",
+                    "description": "The login IconButton uses an 18 dp icon with zero padding, empty constraints and shrink-wrapped tap target size, resulting in an 18x18 dp interactive area.",
+                    "affected_lines": {
+                        "start": 12,
+                        "end": 17
+                    },
+                    "confidence": "confirmed"
+                }
+            ]
+        }
+    },
+    "references": {
+        "flutter": [
+            {
+                "type": "documentation",
+                "reference": "https://api.flutter.dev/flutter/flutter_test/androidTapTargetGuideline-constant.html"
+            }
+        ],
+        "wcag": [
+            {
+                "criterion": "2.5.8",
+                "description": "Target Size (Minimum)"
+            },
+            {
+                "criterion": "2.5.5",
+                "description": "Target Size (Enhanced)"
+            }
+        ]
+    },
+    "mutations": [
+        {
+            "id": "remove_minimum_target_constraint",
+            "description": "Removed the padding and minimum interactive size of the icon button (icon size 18, zero padding, empty constraints, shrink-wrapped tap target), preserving icon, tooltip and callback.",
+            "target_variants": [
+                "violation"
+            ]
+        }
+    ],
+    "validation": {
+        "automated": {
+            "performed": false,
+            "tool": null,
+            "result": null
+        },
+        "manual": {
+            "performed": true,
+            "reviewers": [
+                "researcher"
+            ]
+        },
+        "status": "validated"
+    },
+    "notes": "Adaptado de LoginButton (ADR-R011): o ícone SVG (Assets.icons.logInIcon) foi substituído por Icon(Icons.login); AppSpacing.lg (16) e AppSpacing.sm (8) foram substituídos por literais; showAppModal com LoginModal foi substituído pelo callback onLogin; context.l10n.loginTooltip foi substituído por 'Login' (app_en.arb).",
+    "created_at": "2026-10-18",
+    "updated_at": "2026-10-18"
+}

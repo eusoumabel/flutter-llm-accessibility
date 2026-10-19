@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_026_component",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T02:11:51.255240+00:00",
+  "request": {
+    "sample_id": "SEM_026",
+    "variant": "component",
+    "category": "semantics",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Semantics and accessible information",
+        "affected_code": "Tooltip(message: 'Toggle brightness', child: IconButton(...))",
+        "explanation": "The semantic label 'Toggle brightness' provided by the Tooltip is static. For improved clarity, especially for screen reader users, the label could dynamically reflect the current state and the action to be performed (e.g., 'Switch to dark mode' when in light mode, and 'Switch to light mode' when in dark mode). This would provide more immediate context about the button's function.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 297,
+    "completion_tokens": 117,
+    "thinking_tokens": 1223,
+    "total_tokens": 1637
+  },
+  "latency_ms": 7105
+}

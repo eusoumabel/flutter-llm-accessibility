@@ -1,0 +1,44 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "INT_017_component",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T02:23:54.298216+00:00",
+  "request": {
+    "sample_id": "INT_017",
+    "variant": "component",
+    "category": "interaction",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Semantics and accessible information",
+        "affected_code": "Semantics(label: tooltip, button: true, excludeSemantics: true, ...)",
+        "explanation": "The 'excludeSemantics: true' property on the Semantics widget prevents the semantic information of the 'child' widget from being exposed to accessibility services. If the 'child' contains meaningful text, icons, or other semantic content that is not fully conveyed by the 'tooltip', this information will be lost for users relying on screen readers, potentially leading to an incomplete understanding of the button's purpose or content.",
+        "confidence": "medium"
+      },
+      {
+        "type": "Interaction and interactive target accessibility",
+        "affected_code": "InkWell(onTap: onTap, child: Padding(...))",
+        "explanation": "The interactive target size for the button is not explicitly guaranteed to meet the recommended minimum of 48x48 logical pixels. While a default padding of 12.0 is applied, the size of the 'child' widget is unconstrained. If the 'child' widget is smaller than 24x24 logical pixels, the total interactive area (child size + 24 pixels from padding) will fall below the recommended minimum, making it difficult for some users (e.g., those with motor impairments) to accurately tap the button.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 420,
+    "completion_tokens": 271,
+    "thinking_tokens": 3357,
+    "total_tokens": 4048
+  },
+  "latency_ms": 18077
+}

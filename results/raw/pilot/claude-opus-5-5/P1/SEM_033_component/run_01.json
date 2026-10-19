@@ -1,0 +1,45 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_033_component",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T01:57:04.791643+00:00",
+  "request": {
+    "sample_id": "SEM_033",
+    "variant": "component",
+    "category": "semantics",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "semantic_state",
+        "affected_code": "TextButton.icon(... onPressed: onToggle, ... label: Text(advanced ? 'Hide' : 'Advanced'))",
+        "explanation": "The button acts as a toggle for showing/hiding advanced details, but its expanded/toggled state is not exposed semantically (e.g., via Semantics(expanded: advanced) or toggled). Screen reader users only hear a changing label ('Hide'/'Advanced') without a state announcement.",
+        "confidence": "medium"
+      },
+      {
+        "type": "accessible_label",
+        "affected_code": "label: Text(advanced ? 'Hide' : 'Advanced')",
+        "explanation": "The label 'Hide' is ambiguous out of context; it does not say what is being hidden (e.g., 'Hide advanced details'). 'Advanced' likewise lacks a clear description of the action.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 779,
+    "completion_tokens": 307,
+    "total_tokens": 1086
+  },
+  "latency_ms": 4186,
+  "request_id": "req_011CgAmN8r8QR3TE8SZ5yVGr"
+}

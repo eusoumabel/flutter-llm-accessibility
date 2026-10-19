@@ -1,0 +1,39 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_005_accessible",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "prompt": "P0",
+  "run": 1,
+  "timestamp": "2026-10-19T01:48:51.324579+00:00",
+  "request": {
+    "sample_id": "SEM_005",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing toggle state semantics",
+        "affected_code": "IconButton(\n      icon: Icon(isMuted ? Icons.volume_off : Icons.volume_up),\n      tooltip: isMuted ? 'Unmute' : 'Mute',\n      onPressed: onToggle,\n    )",
+        "explanation": "The button acts as a toggle, but it does not expose a toggled/selected state to assistive technologies (e.g., via Semantics(toggled: isMuted) or IconButton's isSelected). The tooltip changes to describe the action, which gives an indirect cue, but the current state is not exposed explicitly as a toggle state.",
+        "confidence": "low"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 691,
+    "completion_tokens": 236,
+    "total_tokens": 927
+  },
+  "latency_ms": 4463,
+  "request_id": "req_011CgAkjjsVa7spwrTrnEmdg"
+}

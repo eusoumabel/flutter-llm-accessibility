@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_032_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T01:44:41.338735+00:00",
+  "request": {
+    "sample_id": "SEM_032",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Semantic State",
+        "affected_code": "IconButton(\n            icon: colorSelected.color == ColorSeed.values[i].color &&\n                    colorSelectionMethod == ColorSelectionMethod.colorSeed\n                ? const Icon(Icons.circle)\n                : const Icon(Icons.radio_button_unchecked),\n            color: ColorSeed.values[i].color,\n            onPressed: () {\n              handleColorSelect(i);\n            },\n            tooltip: ColorSeed.values[i].label,\n          )",
+        "explanation": "The IconButton widgets are used to select a color, mimicking a radio button group. While the visual representation changes (filled vs. unfilled circle icon) to indicate selection, the semantic state of 'selected' is not explicitly communicated to accessibility services for the currently chosen color. A screen reader user would hear the tooltip (e.g., 'Indigo') but not that 'Indigo is currently selected'. This can be improved by wrapping the IconButton in a Semantics widget and setting 'selected: true' when the color is chosen.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 537,
+    "completion_tokens": 230,
+    "thinking_tokens": 1507,
+    "total_tokens": 2274
+  },
+  "latency_ms": 8782
+}

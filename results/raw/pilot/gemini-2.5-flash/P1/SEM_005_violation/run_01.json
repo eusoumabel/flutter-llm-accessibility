@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "case_id": "SEM_005_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "prompt": "P1",
+  "run": 1,
+  "timestamp": "2026-10-19T01:41:26.438407+00:00",
+  "request": {
+    "sample_id": "SEM_005",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Semantics and accessible information",
+        "affected_code": "tooltip: 'Mute'",
+        "explanation": "The accessible label (tooltip) for the IconButton is statically set to 'Mute'. However, the button's icon and intended action change based on the 'isMuted' property. When 'isMuted' is true, the button's action is to unmute, and when 'isMuted' is false, the button's action is to mute. The accessible label should dynamically reflect the *action* the button will perform (e.g., 'Unmute' when currently muted, and 'Mute' when currently unmuted) to provide clear and accurate context to users of assistive technologies.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 223,
+    "completion_tokens": 183,
+    "thinking_tokens": 898,
+    "total_tokens": 1304
+  },
+  "latency_ms": 5765
+}

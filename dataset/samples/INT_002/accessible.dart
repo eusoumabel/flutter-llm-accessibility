@@ -1,36 +1,31 @@
-DropdownButtonHideUnderline(
-    child: DropdownButton<String>(
-        value: metricValue,
-        isExpanded: true,
-        borderRadius: BorderRadius.circular(12),
-        style: theme.textTheme.headlineSmall?.copyWith(
-            fontWeight: FontWeight.w700,
-            color: colorScheme.onSurface,
-        ),
-        items: [
-            DropdownMenuItem(
-                value: db.foods.calories.name,
-                child: Text(context.l10n.calories),
-            ),
-             DropdownMenuItem(
-                value: 'body-weight',
-                child: Text(context.l10n.bodyWeight),
-            ),
-            ...filteredFields.map(
-                (field) => DropdownMenuItem(
-                    value: field,
-                    child: Text(
-                        localizedFoodFieldLabel(context.l10n, field),
-                    ),
-                ),
-            ),
+import 'package:flutter/material.dart';
+
+class RemovableFilter extends StatelessWidget {
+  final String label;
+  final VoidCallback onRemove;
+
+  const RemovableFilter({super.key, required this.label, required this.onRemove});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.only(left: 12),
+      decoration: BoxDecoration(
+        color: Colors.blueGrey.shade50,
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(label),
+          IconButton(
+            icon: const Icon(Icons.close),
+            iconSize: 16,
+            tooltip: 'Remove filter $label',
+            onPressed: onRemove,
+          ),
         ],
-        onChanged: (value) {
-            if (value == null) return;
-            setState(() => metric = value);
-            db.settings.update().write(
-                SettingsCompanion(lastGraph: Value(metric)),
-            );
-        },
-    ),
-)
+      ),
+    );
+  }
+}
