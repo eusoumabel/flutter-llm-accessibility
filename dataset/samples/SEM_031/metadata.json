@@ -1,0 +1,99 @@
+{
+    "schema_version": "1.0",
+    "id": "SEM_031",
+    "title": "Password field toggle always labeled 'Show Password'",
+    "category": "semantics",
+    "subcategory": "incorrect_accessible_label",
+    "status": "validated",
+    "source": {
+        "type": "external",
+        "repository": {
+            "name": "openfoodfacts/smooth-app",
+            "url": "https://github.com/openfoodfacts/smooth-app"
+        },
+        "original_file": "packages/smooth_app/lib/generic_lib/widgets/smooth_text_form_field.dart#L70-L165",
+        "commit": "887e167b76757c47e689a95994d1ab064a66cd06",
+        "license": {
+            "name": "Apache-2.0",
+            "verified": true,
+            "copyright": "Não declarado no LICENSE (modelo Apache-2.0 sem titular)"
+        }
+    },
+    "component": {
+        "framework": "flutter",
+        "language": "dart",
+        "widget_types": [
+            "TextFormField",
+            "InputDecoration",
+            "IconButton",
+            "Icon"
+        ],
+        "description": "A rounded text form field that, for passwords, shows an eye icon button that toggles whether the text is obscured."
+    },
+    "files": {
+        "component": "component.dart"
+    },
+    "ground_truth": {
+        "component": {
+            "has_violation": true,
+            "violations": [
+                {
+                    "id": "SEM-02",
+                    "type": "incorrect_accessible_label",
+                    "description": "The visibility toggle is always labeled 'Show Password', so when the password is already visible the label announces the opposite of the action performed.",
+                    "affected_lines": {
+                        "start": 69,
+                        "end": 78
+                    },
+                    "confidence": "confirmed"
+                },
+                {
+                    "id": "SEM-04",
+                    "type": "missing_state",
+                    "description": "The toggle does not expose whether the password is currently shown or hidden; the state is conveyed only by switching between the eye icons.",
+                    "affected_lines": {
+                        "start": 69,
+                        "end": 78
+                    },
+                    "confidence": "confirmed"
+                }
+            ]
+        }
+    },
+    "references": {
+        "flutter": [
+            {
+                "type": "documentation",
+                "reference": "https://api.flutter.dev/flutter/widgets/Semantics-class.html"
+            }
+        ],
+        "wcag": [
+            {
+                "criterion": "4.1.2",
+                "description": "Name, Role, Value"
+            },
+            {
+                "criterion": "2.4.6",
+                "description": "Headings and Labels"
+            }
+        ]
+    },
+    "mutations": [],
+    "validation": {
+        "automated": {
+            "performed": false,
+            "tool": null,
+            "result": null
+        },
+        "manual": {
+            "performed": true,
+            "reviewers": [
+                "researcher"
+            ]
+        },
+        "status": "validated"
+    },
+    "notes": "Violação natural (ADR-R005): SEM-02 é a principal (impede a compreensão) e SEM-04 é secundária. Preenche a célula de SEM-02 natural, inicialmente vazia. Adaptado de SmoothTextFormField (ADR-R011): foram mantidos apenas os parâmetros usados pelo campo de senha; a extensão de tema, o filtro de emojis (TextHelper.emojiRegex) e o estilo de hint padrão foram removidos; LARGE_SPACE (16), SMALL_SPACE (8) e CIRCULAR_BORDER_RADIUS foram substituídos por literais; os ícones do pacote do app (icons.Eye.invisible e icons.Eye.visible, 18 dp) foram substituídos por Icon(Icons.visibility_off) e Icon(Icons.visibility) do mesmo tamanho; a string de AppLocalizations foi substituída por 'Show Password' (app_en.arb). O hintText é exposto como rótulo do campo na versão de referência.",
+    "created_at": "2026-10-18",
+    "updated_at": "2026-10-18"
+}

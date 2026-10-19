@@ -1,0 +1,101 @@
+{
+    "schema_version": "1.0",
+    "id": "SEM_028",
+    "title": "Fingerprint login thumb button without semantics",
+    "category": "semantics",
+    "subcategory": "inaccessible_custom_control",
+    "status": "validated",
+    "source": {
+        "type": "mutation",
+        "repository": {
+            "name": "flutter/gallery",
+            "url": "https://github.com/flutter/gallery"
+        },
+        "original_file": "lib/studies/rally/login.dart#L268-L333",
+        "commit": "d12640d4b08ee6e706fd8c64a83fba0620c9aa8d",
+        "license": {
+            "name": "BSD-3-Clause",
+            "verified": true,
+            "copyright": "Copyright 2019 The Flutter team. All rights reserved."
+        }
+    },
+    "component": {
+        "framework": "flutter",
+        "language": "dart",
+        "widget_types": [
+            "Semantics",
+            "MouseRegion",
+            "GestureDetector",
+            "Focus",
+            "Container",
+            "ExcludeSemantics",
+            "Image"
+        ],
+        "description": "A custom login control showing a thumbprint image that logs in when tapped or activated with Enter or Space."
+    },
+    "files": {
+        "accessible": "accessible.dart",
+        "violation": "violation.dart"
+    },
+    "ground_truth": {
+        "accessible": {
+            "has_violation": false,
+            "violations": []
+        },
+        "violation": {
+            "has_violation": true,
+            "violations": [
+                {
+                    "id": "SEM-05",
+                    "type": "inaccessible_custom_control",
+                    "description": "The custom control built from GestureDetector and an excluded image exposes only a tap action: it has no label and no button role, so assistive technologies cannot tell what it does.",
+                    "affected_lines": {
+                        "start": 23,
+                        "end": 26
+                    },
+                    "confidence": "confirmed"
+                }
+            ]
+        }
+    },
+    "references": {
+        "flutter": [
+            {
+                "type": "documentation",
+                "reference": "https://api.flutter.dev/flutter/widgets/Semantics-class.html"
+            }
+        ],
+        "wcag": [
+            {
+                "criterion": "4.1.2",
+                "description": "Name, Role, Value"
+            }
+        ]
+    },
+    "mutations": [
+        {
+            "id": "remove_custom_control_semantics",
+            "description": "Removed the Semantics wrapper that provided button role, enabled state and the 'Login' label, preserving visuals, focus handling and callback.",
+            "target_variants": [
+                "violation"
+            ]
+        }
+    ],
+    "validation": {
+        "automated": {
+            "performed": false,
+            "tool": null,
+            "result": null
+        },
+        "manual": {
+            "performed": true,
+            "reviewers": [
+                "researcher"
+            ]
+        },
+        "status": "validated"
+    },
+    "notes": "Adaptado de _ThumbButton do estudo Rally (ADR-R011): a classe foi tornada pública; o asset 'thumb.png' do pacote rally_assets foi substituído pelo parâmetro thumb; o rótulo de GalleryLocalizations foi substituído por 'Login' (intl_en.arb); withOpacity foi substituído por withValues(alpha:).",
+    "created_at": "2026-10-18",
+    "updated_at": "2026-10-18"
+}

@@ -1,0 +1,90 @@
+{
+    "schema_version": "1.0",
+    "id": "SEM_010",
+    "title": "Custom dark mode switch without toggled state",
+    "category": "semantics",
+    "subcategory": "missing_state",
+    "status": "validated",
+    "source": {
+        "type": "synthetic",
+        "repository": null,
+        "original_file": null,
+        "commit": null,
+        "license": null
+    },
+    "component": {
+        "framework": "flutter",
+        "language": "dart",
+        "widget_types": [
+            "Semantics",
+            "GestureDetector",
+            "AnimatedContainer"
+        ],
+        "description": "A custom switch-like control for dark mode, built with a GestureDetector and an animated track and thumb."
+    },
+    "files": {
+        "accessible": "accessible.dart",
+        "violation": "violation.dart"
+    },
+    "ground_truth": {
+        "accessible": {
+            "has_violation": false,
+            "violations": []
+        },
+        "violation": {
+            "has_violation": true,
+            "violations": [
+                {
+                    "id": "SEM-04",
+                    "type": "missing_state",
+                    "description": "The custom switch exposes label and button role, but not its on/off state, so users cannot tell whether dark mode is enabled.",
+                    "affected_lines": {
+                        "start": 11,
+                        "end": 13
+                    },
+                    "confidence": "confirmed"
+                }
+            ]
+        }
+    },
+    "references": {
+        "flutter": [
+            {
+                "type": "documentation",
+                "reference": "https://api.flutter.dev/flutter/widgets/Semantics-class.html"
+            }
+        ],
+        "wcag": [
+            {
+                "criterion": "4.1.2",
+                "description": "Name, Role, Value"
+            }
+        ]
+    },
+    "mutations": [
+        {
+            "id": "remove_semantic_state",
+            "description": "Removed the toggled state from the Semantics of the custom switch, preserving label, role, visuals and callback.",
+            "target_variants": [
+                "violation"
+            ]
+        }
+    ],
+    "validation": {
+        "automated": {
+            "performed": false,
+            "tool": null,
+            "result": null
+        },
+        "manual": {
+            "performed": true,
+            "reviewers": [
+                "researcher"
+            ]
+        },
+        "status": "validated"
+    },
+    "notes": null,
+    "created_at": "2026-10-18",
+    "updated_at": "2026-10-18"
+}

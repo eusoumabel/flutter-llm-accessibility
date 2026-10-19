@@ -1,0 +1,99 @@
+{
+    "schema_version": "1.0",
+    "id": "SEM_025",
+    "title": "Shopping category menu item without selected state",
+    "category": "semantics",
+    "subcategory": "missing_state",
+    "status": "validated",
+    "source": {
+        "type": "mutation",
+        "repository": {
+            "name": "flutter/gallery",
+            "url": "https://github.com/flutter/gallery"
+        },
+        "original_file": "lib/studies/shrine/category_menu_page.dart#L32-L95; lib/studies/shrine/triangle_category_indicator.dart#L9-L53",
+        "commit": "d12640d4b08ee6e706fd8c64a83fba0620c9aa8d",
+        "license": {
+            "name": "BSD-3-Clause",
+            "verified": true,
+            "copyright": "Copyright 2019 The Flutter team. All rights reserved."
+        }
+    },
+    "component": {
+        "framework": "flutter",
+        "language": "dart",
+        "widget_types": [
+            "Semantics",
+            "MouseRegion",
+            "GestureDetector",
+            "CustomPaint",
+            "Text"
+        ],
+        "description": "A category entry in a shopping menu; the selected category is indicated by a painted triangle and a darker text color."
+    },
+    "files": {
+        "accessible": "accessible.dart",
+        "violation": "violation.dart"
+    },
+    "ground_truth": {
+        "accessible": {
+            "has_violation": false,
+            "violations": []
+        },
+        "violation": {
+            "has_violation": true,
+            "violations": [
+                {
+                    "id": "SEM-04",
+                    "type": "missing_state",
+                    "description": "The selected category is indicated only visually by the triangle and text color; the selected state is not exposed through semantics.",
+                    "affected_lines": {
+                        "start": 40,
+                        "end": 42
+                    },
+                    "confidence": "confirmed"
+                }
+            ]
+        }
+    },
+    "references": {
+        "flutter": [
+            {
+                "type": "documentation",
+                "reference": "https://api.flutter.dev/flutter/widgets/Semantics-class.html"
+            }
+        ],
+        "wcag": [
+            {
+                "criterion": "4.1.2",
+                "description": "Name, Role, Value"
+            }
+        ]
+    },
+    "mutations": [
+        {
+            "id": "remove_semantic_state",
+            "description": "Removed the selected state from the Semantics of the category item, preserving role, enabled state, visuals and callback.",
+            "target_variants": [
+                "violation"
+            ]
+        }
+    ],
+    "validation": {
+        "automated": {
+            "performed": false,
+            "tool": null,
+            "result": null
+        },
+        "manual": {
+            "performed": true,
+            "reviewers": [
+                "researcher"
+            ]
+        },
+        "status": "validated"
+    },
+    "notes": "Adaptado de _buildCategory de CategoryMenuPage (ADR-R011): ScopedModelDescendant e AppStateModel foram substituídos pelos parâmetros isSelected e onCategoryTap; Category foi substituído por categoryName; GalleryOptions.textScaleFactor e a distinção desktop/mobile foram fixados nos valores mobile (fonte 19, indicador 30); shrineBrown900 e shrinePink400 foram copiados de colors.dart; TriangleCategoryIndicator foi copiado de triangle_category_indicator.dart.",
+    "created_at": "2026-10-18",
+    "updated_at": "2026-10-18"
+}

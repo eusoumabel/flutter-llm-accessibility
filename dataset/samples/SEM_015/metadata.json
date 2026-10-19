@@ -1,0 +1,95 @@
+{
+    "schema_version": "1.0",
+    "id": "SEM_015",
+    "title": "Custom color swatch picker without semantics",
+    "category": "semantics",
+    "subcategory": "inaccessible_custom_control",
+    "status": "validated",
+    "source": {
+        "type": "synthetic",
+        "repository": null,
+        "original_file": null,
+        "commit": null,
+        "license": null
+    },
+    "component": {
+        "framework": "flutter",
+        "language": "dart",
+        "widget_types": [
+            "Wrap",
+            "GestureDetector",
+            "SizedBox",
+            "Container"
+        ],
+        "description": "A color picker made of colored circles; the selected color is indicated by a black border."
+    },
+    "files": {
+        "accessible": "accessible.dart",
+        "violation": "violation.dart"
+    },
+    "ground_truth": {
+        "accessible": {
+            "has_violation": false,
+            "violations": []
+        },
+        "violation": {
+            "has_violation": true,
+            "violations": [
+                {
+                    "id": "SEM-05",
+                    "type": "inaccessible_custom_control",
+                    "description": "Each swatch is a custom control with a tap action but no label, no button role and no selected state; the color name and selection are only visual.",
+                    "affected_lines": {
+                        "start": 20,
+                        "end": 43
+                    },
+                    "confidence": "confirmed"
+                }
+            ]
+        }
+    },
+    "references": {
+        "flutter": [
+            {
+                "type": "documentation",
+                "reference": "https://api.flutter.dev/flutter/widgets/Semantics-class.html"
+            }
+        ],
+        "wcag": [
+            {
+                "criterion": "4.1.2",
+                "description": "Name, Role, Value"
+            },
+            {
+                "criterion": "1.1.1",
+                "description": "Non-text Content"
+            }
+        ]
+    },
+    "mutations": [
+        {
+            "id": "remove_custom_control_semantics",
+            "description": "Removed the Semantics wrapper that provided color name, role and selected state for each swatch, preserving visuals, size and callback.",
+            "target_variants": [
+                "violation"
+            ]
+        }
+    ],
+    "validation": {
+        "automated": {
+            "performed": false,
+            "tool": null,
+            "result": null
+        },
+        "manual": {
+            "performed": true,
+            "reviewers": [
+                "researcher"
+            ]
+        },
+        "status": "validated"
+    },
+    "notes": null,
+    "created_at": "2026-10-18",
+    "updated_at": "2026-10-18"
+}

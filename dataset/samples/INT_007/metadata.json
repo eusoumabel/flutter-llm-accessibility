@@ -1,0 +1,96 @@
+{
+    "schema_version": "1.0",
+    "id": "INT_007",
+    "title": "Order card whose merged semantics hide the tap action",
+    "category": "interaction",
+    "subcategory": "interaction_not_exposed",
+    "status": "validated",
+    "source": {
+        "type": "synthetic",
+        "repository": null,
+        "original_file": null,
+        "commit": null,
+        "license": null
+    },
+    "component": {
+        "framework": "flutter",
+        "language": "dart",
+        "widget_types": [
+            "Semantics",
+            "GestureDetector",
+            "Card",
+            "Column",
+            "Text"
+        ],
+        "description": "A tappable order card whose Semantics wrapper merges the order number and status into a single label."
+    },
+    "files": {
+        "accessible": "accessible.dart",
+        "violation": "violation.dart"
+    },
+    "ground_truth": {
+        "accessible": {
+            "has_violation": false,
+            "violations": []
+        },
+        "violation": {
+            "has_violation": true,
+            "violations": [
+                {
+                    "id": "INT-03",
+                    "type": "interaction_not_exposed",
+                    "description": "The Semantics wrapper uses excludeSemantics, which drops the GestureDetector tap action, and does not re-expose it through onTap; the card is announced as a button that cannot be activated.",
+                    "affected_lines": {
+                        "start": 17,
+                        "end": 20
+                    },
+                    "confidence": "confirmed"
+                }
+            ]
+        }
+    },
+    "references": {
+        "flutter": [
+            {
+                "type": "documentation",
+                "reference": "https://api.flutter.dev/flutter/widgets/Semantics-class.html"
+            }
+        ],
+        "wcag": [
+            {
+                "criterion": "4.1.2",
+                "description": "Name, Role, Value"
+            },
+            {
+                "criterion": "2.1.1",
+                "description": "Keyboard"
+            }
+        ]
+    },
+    "mutations": [
+        {
+            "id": "remove_interaction_exposure",
+            "description": "Removed the onTap callback from the Semantics wrapper that uses excludeSemantics, preserving label, role, visuals and the GestureDetector.",
+            "target_variants": [
+                "violation"
+            ]
+        }
+    ],
+    "validation": {
+        "automated": {
+            "performed": false,
+            "tool": null,
+            "result": null
+        },
+        "manual": {
+            "performed": true,
+            "reviewers": [
+                "researcher"
+            ]
+        },
+        "status": "validated"
+    },
+    "notes": null,
+    "created_at": "2026-10-18",
+    "updated_at": "2026-10-18"
+}

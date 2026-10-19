@@ -42,6 +42,9 @@ def main():
         mutations = metadata.get("mutations", [])
         mutation_ids = ";".join(item.get("id", "") for item in mutations)
         validation_status = metadata.get("status", "")
+        references = metadata.get("references", {})
+        wcag = ";".join(item.get("criterion", "") for item in references.get("wcag", []))
+        flutter_guideline = ";".join(item.get("reference", "") for item in references.get("flutter", []))
         for variant_name, variant_data in metadata.get("ground_truth", {}).items():
             rows.append({
                 "sample_id": sample_id,
@@ -53,8 +56,8 @@ def main():
                 "mutation": str(bool(mutations)).lower(),
                 "mutation_ids": mutation_ids,
                 "validation_status": validation_status,
-                "wcag": "",
-                "flutter_guideline": "",
+                "wcag": wcag,
+                "flutter_guideline": flutter_guideline,
             })
 
     with OUTPUT_PATH.open("w", encoding="utf-8", newline="") as handle:

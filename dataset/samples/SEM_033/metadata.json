@@ -1,0 +1,73 @@
+{
+    "schema_version": "1.0",
+    "id": "SEM_033",
+    "title": "Advanced details toggle with state-aware label",
+    "category": "semantics",
+    "subcategory": "missing_state",
+    "status": "validated",
+    "source": {
+        "type": "external",
+        "repository": {
+            "name": "localsend/localsend",
+            "url": "https://github.com/localsend/localsend"
+        },
+        "original_file": "app/lib/pages/progress_page.dart#L528-L535",
+        "commit": "d01fdb14c978fa8b2b13e29a50cc0feaefe5c1b9",
+        "license": {
+            "name": "Apache-2.0",
+            "verified": true,
+            "copyright": "Não declarado no LICENSE (modelo Apache-2.0 sem titular)"
+        }
+    },
+    "component": {
+        "framework": "flutter",
+        "language": "dart",
+        "widget_types": [
+            "TextButton",
+            "Icon",
+            "Text"
+        ],
+        "description": "A text button on a file transfer progress page that shows or hides advanced transfer details."
+    },
+    "files": {
+        "component": "component.dart"
+    },
+    "ground_truth": {
+        "component": {
+            "has_violation": false,
+            "violations": []
+        }
+    },
+    "references": {
+        "flutter": [
+            {
+                "type": "documentation",
+                "reference": "https://api.flutter.dev/flutter/widgets/Semantics-class.html"
+            }
+        ],
+        "wcag": [
+            {
+                "criterion": "4.1.2",
+                "description": "Name, Role, Value"
+            }
+        ]
+    },
+    "mutations": [],
+    "validation": {
+        "automated": {
+            "performed": false,
+            "tool": null,
+            "result": null
+        },
+        "manual": {
+            "performed": true,
+            "reviewers": [
+                "researcher"
+            ]
+        },
+        "status": "validated"
+    },
+    "notes": "Negativo difícil (ADR-R006) de SEM-04: o botão alterna a exibição de detalhes sem declarar estado expandido, mas o próprio rótulo do TextButton acompanha o estado ('Advanced' quando os detalhes estão ocultos e 'Hide' quando estão visíveis). Adaptado do botão de detalhes de ProgressPage (ADR-R011): o estado _advanced e o setState foram substituídos pelos parâmetros advanced e onToggle; as strings t.general.advanced e t.general.hide foram substituídas por 'Advanced' e 'Hide' (strings_en.g.dart).",
+    "created_at": "2026-10-18",
+    "updated_at": "2026-10-18"
+}

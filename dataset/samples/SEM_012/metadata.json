@@ -1,0 +1,93 @@
+{
+    "schema_version": "1.0",
+    "id": "SEM_012",
+    "title": "Expandable FAQ item without expanded state",
+    "category": "semantics",
+    "subcategory": "missing_state",
+    "status": "validated",
+    "source": {
+        "type": "synthetic",
+        "repository": null,
+        "original_file": null,
+        "commit": null,
+        "license": null
+    },
+    "component": {
+        "framework": "flutter",
+        "language": "dart",
+        "widget_types": [
+            "Semantics",
+            "GestureDetector",
+            "Container",
+            "Row",
+            "Text",
+            "Icon"
+        ],
+        "description": "A frequently asked question that shows or hides its answer when the question row is tapped."
+    },
+    "files": {
+        "accessible": "accessible.dart",
+        "violation": "violation.dart"
+    },
+    "ground_truth": {
+        "accessible": {
+            "has_violation": false,
+            "violations": []
+        },
+        "violation": {
+            "has_violation": true,
+            "violations": [
+                {
+                    "id": "SEM-04",
+                    "type": "missing_state",
+                    "description": "The question row exposes label and button role, but not whether the answer is currently expanded or collapsed.",
+                    "affected_lines": {
+                        "start": 21,
+                        "end": 22
+                    },
+                    "confidence": "confirmed"
+                }
+            ]
+        }
+    },
+    "references": {
+        "flutter": [
+            {
+                "type": "documentation",
+                "reference": "https://api.flutter.dev/flutter/widgets/Semantics-class.html"
+            }
+        ],
+        "wcag": [
+            {
+                "criterion": "4.1.2",
+                "description": "Name, Role, Value"
+            }
+        ]
+    },
+    "mutations": [
+        {
+            "id": "remove_semantic_state",
+            "description": "Removed the expanded state from the Semantics of the question row, preserving label, role, icon and behavior.",
+            "target_variants": [
+                "violation"
+            ]
+        }
+    ],
+    "validation": {
+        "automated": {
+            "performed": false,
+            "tool": null,
+            "result": null
+        },
+        "manual": {
+            "performed": true,
+            "reviewers": [
+                "researcher"
+            ]
+        },
+        "status": "validated"
+    },
+    "notes": null,
+    "created_at": "2026-10-18",
+    "updated_at": "2026-10-18"
+}

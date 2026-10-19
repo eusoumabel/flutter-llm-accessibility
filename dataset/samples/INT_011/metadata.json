@@ -1,0 +1,87 @@
+{
+    "schema_version": "1.0",
+    "id": "INT_011",
+    "title": "Circled icon button constrained to 18 dp",
+    "category": "interaction",
+    "subcategory": "insufficient_target_size",
+    "status": "validated",
+    "source": {
+        "type": "external",
+        "repository": {
+            "name": "openfoodfacts/smooth-app",
+            "url": "https://github.com/openfoodfacts/smooth-app"
+        },
+        "original_file": "packages/smooth_app/lib/generic_lib/buttons/smooth_icon_button.dart#L1-L50",
+        "commit": "887e167b76757c47e689a95994d1ab064a66cd06",
+        "license": {
+            "name": "Apache-2.0",
+            "verified": true,
+            "copyright": "Não declarado no LICENSE (modelo Apache-2.0 sem titular)"
+        }
+    },
+    "component": {
+        "framework": "flutter",
+        "language": "dart",
+        "widget_types": [
+            "Container",
+            "IconButton"
+        ],
+        "description": "A small circled icon button whose outer decorated Container defines its size, 18 dp by default."
+    },
+    "files": {
+        "component": "component.dart"
+    },
+    "ground_truth": {
+        "component": {
+            "has_violation": true,
+            "violations": [
+                {
+                    "id": "INT-01",
+                    "type": "insufficient_target_size",
+                    "description": "The IconButton is placed inside a Container with fixed width and height equal to size (18 dp by default), which constrains the interactive area to 18x18 dp.",
+                    "affected_lines": {
+                        "start": 22,
+                        "end": 24
+                    },
+                    "confidence": "confirmed"
+                }
+            ]
+        }
+    },
+    "references": {
+        "flutter": [
+            {
+                "type": "documentation",
+                "reference": "https://api.flutter.dev/flutter/flutter_test/androidTapTargetGuideline-constant.html"
+            }
+        ],
+        "wcag": [
+            {
+                "criterion": "2.5.8",
+                "description": "Target Size (Minimum)"
+            },
+            {
+                "criterion": "2.5.5",
+                "description": "Target Size (Enhanced)"
+            }
+        ]
+    },
+    "mutations": [],
+    "validation": {
+        "automated": {
+            "performed": false,
+            "tool": null,
+            "result": null
+        },
+        "manual": {
+            "performed": true,
+            "reviewers": [
+                "researcher"
+            ]
+        },
+        "status": "validated"
+    },
+    "notes": "Violação natural. Copiado sem alterações de SmoothIconButton (ADR-R011). O tooltip é um parâmetro opcional repassado ao IconButton; a anotação assume que o chamador fornece o tooltip, como nas demais amostras que recebem rótulos por parâmetro, e por isso SEM-01 não é anotado. O componente não tem chamadores no repositório de origem.",
+    "created_at": "2026-10-18",
+    "updated_at": "2026-10-18"
+}

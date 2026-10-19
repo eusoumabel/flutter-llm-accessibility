@@ -1,0 +1,98 @@
+{
+    "schema_version": "1.0",
+    "id": "SEM_026",
+    "title": "Brightness toggle named only by an outer tooltip",
+    "category": "semantics",
+    "subcategory": "missing_accessible_label",
+    "status": "validated",
+    "source": {
+        "type": "external",
+        "repository": {
+            "name": "flutter/samples",
+            "url": "https://github.com/flutter/samples"
+        },
+        "original_file": "material_3_demo/lib/src/buttons.dart#L9-L33",
+        "commit": "5541c59ab8e9d7e74c1a35ef22bd43a487fc596c",
+        "license": {
+            "name": "BSD-3-Clause",
+            "verified": true,
+            "copyright": "Copyright 2021 The Flutter team. All rights reserved."
+        }
+    },
+    "component": {
+        "framework": "flutter",
+        "language": "dart",
+        "widget_types": [
+            "Tooltip",
+            "IconButton",
+            "Icon"
+        ],
+        "description": "An icon button that toggles the app between light and dark mode, showing a moon icon in light mode and a sun icon in dark mode."
+    },
+    "files": {
+        "component": "component.dart"
+    },
+    "ground_truth": {
+        "component": {
+            "has_violation": true,
+            "violations": [
+                {
+                    "id": "SEM-01",
+                    "type": "missing_accessible_label",
+                    "description": "The name 'Toggle brightness' is provided only by an outer Tooltip, which creates a separate semantics node; the IconButton node that holds the button role and tap action has no accessible name.",
+                    "affected_lines": {
+                        "start": 16,
+                        "end": 25
+                    },
+                    "confidence": "confirmed"
+                },
+                {
+                    "id": "SEM-04",
+                    "type": "missing_state",
+                    "description": "The button toggles the brightness mode, but the current mode is conveyed only by the icon; the IconButton does not expose a selected or toggled state.",
+                    "affected_lines": {
+                        "start": 19,
+                        "end": 24
+                    },
+                    "confidence": "confirmed"
+                }
+            ]
+        }
+    },
+    "references": {
+        "flutter": [
+            {
+                "type": "documentation",
+                "reference": "https://api.flutter.dev/flutter/widgets/Semantics-class.html"
+            }
+        ],
+        "wcag": [
+            {
+                "criterion": "4.1.2",
+                "description": "Name, Role, Value"
+            },
+            {
+                "criterion": "1.1.1",
+                "description": "Non-text Content"
+            }
+        ]
+    },
+    "mutations": [],
+    "validation": {
+        "automated": {
+            "performed": false,
+            "tool": null,
+            "result": null
+        },
+        "manual": {
+            "performed": true,
+            "reviewers": [
+                "researcher"
+            ]
+        },
+        "status": "validated"
+    },
+    "notes": "Violação natural (ADR-R005): SEM-01 é a principal (ADR-R015: nome fornecido apenas por Tooltip externo, em nó distinto do botão) e SEM-04 é secundária. Reclassificada de SEM-04 para SEM-01 em 2026-10-18 após verificação da árvore semântica. Copiado sem alterações de BrightnessButton (ADR-R011).",
+    "created_at": "2026-10-18",
+    "updated_at": "2026-10-18"
+}

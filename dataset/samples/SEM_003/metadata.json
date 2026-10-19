@@ -1,0 +1,94 @@
+{
+    "schema_version": "1.0",
+    "id": "SEM_003",
+    "title": "Order status conveyed only by an icon",
+    "category": "semantics",
+    "subcategory": "missing_accessible_label",
+    "status": "validated",
+    "source": {
+        "type": "synthetic",
+        "repository": null,
+        "original_file": null,
+        "commit": null,
+        "license": null
+    },
+    "component": {
+        "framework": "flutter",
+        "language": "dart",
+        "widget_types": [
+            "Row",
+            "Text",
+            "Icon"
+        ],
+        "description": "A row showing an order number followed by an icon that indicates whether the order was delivered or is in transit."
+    },
+    "files": {
+        "accessible": "accessible.dart",
+        "violation": "violation.dart"
+    },
+    "ground_truth": {
+        "accessible": {
+            "has_violation": false,
+            "violations": []
+        },
+        "violation": {
+            "has_violation": true,
+            "violations": [
+                {
+                    "id": "SEM-01",
+                    "type": "missing_accessible_label",
+                    "description": "The status icon is the only element that conveys the delivery status, but its semantic label is an empty string.",
+                    "affected_lines": {
+                        "start": 19,
+                        "end": 23
+                    },
+                    "confidence": "confirmed"
+                }
+            ]
+        }
+    },
+    "references": {
+        "flutter": [
+            {
+                "type": "documentation",
+                "reference": "https://api.flutter.dev/flutter/widgets/Semantics-class.html"
+            }
+        ],
+        "wcag": [
+            {
+                "criterion": "1.1.1",
+                "description": "Non-text Content"
+            },
+            {
+                "criterion": "4.1.2",
+                "description": "Name, Role, Value"
+            }
+        ]
+    },
+    "mutations": [
+        {
+            "id": "replace_accessible_label_with_empty_value",
+            "description": "Replaced the conditional semantic label of the status icon with an empty string, preserving the icon and its colors.",
+            "target_variants": [
+                "violation"
+            ]
+        }
+    ],
+    "validation": {
+        "automated": {
+            "performed": false,
+            "tool": null,
+            "result": null
+        },
+        "manual": {
+            "performed": true,
+            "reviewers": [
+                "researcher"
+            ]
+        },
+        "status": "validated"
+    },
+    "notes": null,
+    "created_at": "2026-10-18",
+    "updated_at": "2026-10-18"
+}

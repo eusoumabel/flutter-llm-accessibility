@@ -1,0 +1,96 @@
+{
+    "schema_version": "1.0",
+    "id": "INT_009",
+    "title": "Video thumbnail with tap excluded from semantics",
+    "category": "interaction",
+    "subcategory": "interaction_not_exposed",
+    "status": "validated",
+    "source": {
+        "type": "synthetic",
+        "repository": null,
+        "original_file": null,
+        "commit": null,
+        "license": null
+    },
+    "component": {
+        "framework": "flutter",
+        "language": "dart",
+        "widget_types": [
+            "Semantics",
+            "GestureDetector",
+            "Stack",
+            "Image",
+            "Icon"
+        ],
+        "description": "A video thumbnail with a play icon overlay that starts playback when tapped."
+    },
+    "files": {
+        "accessible": "accessible.dart",
+        "violation": "violation.dart"
+    },
+    "ground_truth": {
+        "accessible": {
+            "has_violation": false,
+            "violations": []
+        },
+        "violation": {
+            "has_violation": true,
+            "violations": [
+                {
+                    "id": "INT-03",
+                    "type": "interaction_not_exposed",
+                    "description": "The GestureDetector sets excludeFromSemantics to true, so the thumbnail is announced as a 'Play video' button but its tap action is not available to assistive technologies.",
+                    "affected_lines": {
+                        "start": 21,
+                        "end": 21
+                    },
+                    "confidence": "confirmed"
+                }
+            ]
+        }
+    },
+    "references": {
+        "flutter": [
+            {
+                "type": "documentation",
+                "reference": "https://api.flutter.dev/flutter/widgets/Semantics-class.html"
+            }
+        ],
+        "wcag": [
+            {
+                "criterion": "4.1.2",
+                "description": "Name, Role, Value"
+            },
+            {
+                "criterion": "2.1.1",
+                "description": "Keyboard"
+            }
+        ]
+    },
+    "mutations": [
+        {
+            "id": "remove_interaction_exposure",
+            "description": "Set excludeFromSemantics to true on the GestureDetector, removing the semantic tap action while preserving label, role, visuals and callback.",
+            "target_variants": [
+                "violation"
+            ]
+        }
+    ],
+    "validation": {
+        "automated": {
+            "performed": false,
+            "tool": null,
+            "result": null
+        },
+        "manual": {
+            "performed": true,
+            "reviewers": [
+                "researcher"
+            ]
+        },
+        "status": "validated"
+    },
+    "notes": null,
+    "created_at": "2026-10-18",
+    "updated_at": "2026-10-18"
+}

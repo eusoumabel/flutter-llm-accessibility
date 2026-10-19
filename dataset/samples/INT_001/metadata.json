@@ -1,32 +1,26 @@
 {
     "schema_version": "1.0",
     "id": "INT_001",
-    "title": "Small tap target behind a custom gesture detector",
+    "title": "Submit icon button constrained to a small tap target",
     "category": "interaction",
     "subcategory": "insufficient_target_size",
     "status": "validated",
     "source": {
-        "type": "mutation",
-        "repository": {
-            "name": "flutter/samples",
-            "url": null
-        },
+        "type": "synthetic",
+        "repository": null,
         "original_file": null,
         "commit": null,
-        "license": {
-            "name": "BSD-3-Clause",
-            "verified": true
-        }
+        "license": null
     },
     "component": {
         "framework": "flutter",
         "language": "dart",
         "widget_types": [
-            "GestureDetector",
             "SizedBox",
+            "IconButton",
             "Icon"
         ],
-        "description": "A submit button implemented with a tiny GestureDetector target that does not meet an accessible interaction size."
+        "description": "A submit action exposed as an icon button with a tooltip, whose size is defined by a parent SizedBox."
     },
     "files": {
         "accessible": "accessible.dart",
@@ -43,10 +37,10 @@
                 {
                     "id": "INT-01",
                     "type": "insufficient_target_size",
-                    "description": "The tap target area is too small for comfortable and reliable interaction.",
+                    "description": "The parent SizedBox constrains the interactive icon button to 20x20 dp, below the adopted 48x48 dp target size.",
                     "affected_lines": {
-                        "start": 12,
-                        "end": 17
+                        "start": 10,
+                        "end": 12
                     },
                     "confidence": "confirmed"
                 }
@@ -57,20 +51,24 @@
         "flutter": [
             {
                 "type": "documentation",
-                "reference": "Flutter accessibility semantics"
+                "reference": "https://api.flutter.dev/flutter/flutter_test/androidTapTargetGuideline-constant.html"
             }
         ],
         "wcag": [
             {
+                "criterion": "2.5.8",
+                "description": "Target Size (Minimum)"
+            },
+            {
                 "criterion": "2.5.5",
-                "description": "Target Size"
+                "description": "Target Size (Enhanced)"
             }
         ]
     },
     "mutations": [
         {
             "id": "reduce_target_size",
-            "description": "Reduced the interactive target size from a 48x48 button to a 24x24 gesture detector area without providing an alternative accessible interaction.",
+            "description": "Reduced the SizedBox around the icon button from 48x48 to 20x20 dp, preserving the tooltip, role and callback.",
             "target_variants": [
                 "violation"
             ]
@@ -90,7 +88,7 @@
         },
         "status": "validated"
     },
-    "notes": null,
+    "notes": "Amostra refeita em 2026-10-18 para que as variantes difiram apenas no tamanho do alvo. Proveniência revisada: não há arquivo ou commit de origem rastreável; amostra reclassificada como sintética. Em 2026-10-18 o wrapper Semantics redundante foi removido das duas variantes; o rótulo é fornecido pelo tooltip.",
     "created_at": "2026-09-30",
-    "updated_at": "2026-09-30"
+    "updated_at": "2026-10-18"
 }

@@ -1,0 +1,100 @@
+{
+    "schema_version": "1.0",
+    "id": "INT_003",
+    "title": "Attachment thumbnail with a tiny remove badge",
+    "category": "interaction",
+    "subcategory": "insufficient_target_size",
+    "status": "validated",
+    "source": {
+        "type": "synthetic",
+        "repository": null,
+        "original_file": null,
+        "commit": null,
+        "license": null
+    },
+    "component": {
+        "framework": "flutter",
+        "language": "dart",
+        "widget_types": [
+            "Stack",
+            "Container",
+            "Text",
+            "Positioned",
+            "Semantics",
+            "InkWell",
+            "SizedBox",
+            "CircleAvatar",
+            "Icon"
+        ],
+        "description": "An attachment thumbnail with a circular remove badge at its top-right corner."
+    },
+    "files": {
+        "accessible": "accessible.dart",
+        "violation": "violation.dart"
+    },
+    "ground_truth": {
+        "accessible": {
+            "has_violation": false,
+            "violations": []
+        },
+        "violation": {
+            "has_violation": true,
+            "violations": [
+                {
+                    "id": "INT-01",
+                    "type": "insufficient_target_size",
+                    "description": "The remove badge's InkWell is constrained by a 20x20 dp SizedBox, below the adopted 48x48 dp target size.",
+                    "affected_lines": {
+                        "start": 37,
+                        "end": 39
+                    },
+                    "confidence": "confirmed"
+                }
+            ]
+        }
+    },
+    "references": {
+        "flutter": [
+            {
+                "type": "documentation",
+                "reference": "https://api.flutter.dev/flutter/flutter_test/androidTapTargetGuideline-constant.html"
+            }
+        ],
+        "wcag": [
+            {
+                "criterion": "2.5.8",
+                "description": "Target Size (Minimum)"
+            },
+            {
+                "criterion": "2.5.5",
+                "description": "Target Size (Enhanced)"
+            }
+        ]
+    },
+    "mutations": [
+        {
+            "id": "reduce_target_size",
+            "description": "Reduced the SizedBox that defines the remove badge's interactive area from 48x48 to 20x20 dp, preserving label, role, visuals and callback.",
+            "target_variants": [
+                "violation"
+            ]
+        }
+    ],
+    "validation": {
+        "automated": {
+            "performed": false,
+            "tool": null,
+            "result": null
+        },
+        "manual": {
+            "performed": true,
+            "reviewers": [
+                "researcher"
+            ]
+        },
+        "status": "validated"
+    },
+    "notes": null,
+    "created_at": "2026-10-18",
+    "updated_at": "2026-10-18"
+}

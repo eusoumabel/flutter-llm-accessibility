@@ -1,0 +1,80 @@
+{
+    "schema_version": "1.0",
+    "id": "INT_015",
+    "title": "Before-and-after photo slider with semantic adjustments",
+    "category": "interaction",
+    "subcategory": "inaccessible_custom_gesture",
+    "status": "validated",
+    "source": {
+        "type": "external",
+        "repository": {
+            "name": "BilyHurington/MiriaGo",
+            "url": "https://github.com/BilyHurington/MiriaGo"
+        },
+        "original_file": "lib/records/photo_compare_slider.dart#L1-L245",
+        "commit": "ef5293c9ac2c9948b7027e570ab6374470bf0c48",
+        "license": {
+            "name": "MIT",
+            "verified": true,
+            "copyright": "Copyright (c) 2026 BilyHurington"
+        }
+    },
+    "component": {
+        "framework": "flutter",
+        "language": "dart",
+        "widget_types": [
+            "Semantics",
+            "Focus",
+            "GestureDetector",
+            "Stack",
+            "ClipRect",
+            "CustomClipper"
+        ],
+        "description": "A before-and-after comparison of a reference image and a photo, split by a divider that is dragged horizontally or moved with the arrow keys."
+    },
+    "files": {
+        "component": "component.dart"
+    },
+    "ground_truth": {
+        "component": {
+            "has_violation": false,
+            "violations": []
+        }
+    },
+    "references": {
+        "flutter": [
+            {
+                "type": "documentation",
+                "reference": "https://api.flutter.dev/flutter/widgets/Semantics-class.html"
+            }
+        ],
+        "wcag": [
+            {
+                "criterion": "2.5.1",
+                "description": "Pointer Gestures"
+            },
+            {
+                "criterion": "2.1.1",
+                "description": "Keyboard"
+            }
+        ]
+    },
+    "mutations": [],
+    "validation": {
+        "automated": {
+            "performed": false,
+            "tool": null,
+            "result": null
+        },
+        "manual": {
+            "performed": true,
+            "reviewers": [
+                "researcher"
+            ]
+        },
+        "status": "validated"
+    },
+    "notes": "Negativo difícil (ADR-R006) de INT-02: a interação principal é um arrasto customizado, mas o componente expõe papel de slider, valor, increasedValue/decreasedValue, onIncrease/onDecrease e ações customizadas para abrir cada imagem, além de suporte a teclado. Os rótulos de acessibilidade estão em chinês no original e foram preservados (ADR-R011). Adaptado de PhotoCompareSlider (ADR-R011): LucideIcons.chevronsLeftRight foi substituído por Icons.compare_arrows; AppColors.surfaceMuted e AppColors.accent foram substituídos por Colors.grey.shade200 e Colors.blue.",
+    "created_at": "2026-10-18",
+    "updated_at": "2026-10-18"
+}

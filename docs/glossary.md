@@ -76,15 +76,19 @@ Este documento explica os principais termos usados no repositório e na pesquisa
 
 **LLM**: modelo de linguagem de grande escala usado para analisar o código.
 
-**Provedor**: serviço que disponibiliza o modelo por API, como OpenAI ou Google Gemini.
+**Provedor**: serviço que disponibiliza o modelo por API, como Google Gemini ou Anthropic Claude.
 
-**Modelo**: identificador específico usado no provedor, como `gpt-4o-mini` ou `gemini-2.5-flash`.
+**Modelo**: identificador específico usado no provedor, como `gemini-2.5-flash` ou `claude-opus-5-5`.
 
 **Repetição**: execução do mesmo caso com a mesma configuração para medir consistência e variabilidade.
 
 **Randomização**: embaralhamento da ordem dos casos antes da execução para reduzir efeitos de ordem.
 
-**Temperatura**: parâmetro que controla a variabilidade da geração do modelo.
+**Temperatura**: parâmetro que controla a variabilidade da geração do modelo. Não é aceito pelo Claude Opus 5.5.
+
+**Esforço (`effort`)**: parâmetro do Claude que controla a profundidade do raciocínio e o gasto de tokens (`low` a `max`).
+
+**Esquema de resposta**: JSON Schema em `prompts/response_schema.json` que define o formato obrigatório da resposta dos modelos.
 
 ## Artefatos e resultados
 

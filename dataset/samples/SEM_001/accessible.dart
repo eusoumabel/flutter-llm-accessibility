@@ -12,13 +12,10 @@ class FavoriteButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Semantics(
-      button: true,
-      label: isFavorite ? 'Remove favorite' : 'Add favorite',
-      child: IconButton(
-        icon: Icon(isFavorite ? Icons.favorite : Icons.favorite_border),
-        onPressed: onPressed,
-      ),
+    return IconButton(
+      icon: Icon(isFavorite ? Icons.favorite : Icons.favorite_border),
+      tooltip: isFavorite ? 'Remove favorite' : 'Add favorite',
+      onPressed: onPressed,
     );
   }
 }

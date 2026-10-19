@@ -6,26 +6,20 @@
     "subcategory": "missing_accessible_label",
     "status": "validated",
     "source": {
-        "type": "mutation",
-        "repository": {
-            "name": "flutter/samples",
-            "url": null
-        },
+        "type": "synthetic",
+        "repository": null,
         "original_file": null,
         "commit": null,
-        "license": {
-            "name": "BSD-3-Clause",
-            "verified": true
-        }
+        "license": null
     },
     "component": {
         "framework": "flutter",
         "language": "dart",
         "widget_types": [
             "IconButton",
-            "Semantics"
+            "Icon"
         ],
-        "description": "A favorite toggle implemented as an icon button with a label added in the accessible layer."
+        "description": "A favorite toggle implemented as an icon button whose icon reflects whether the item is a favorite."
     },
     "files": {
         "accessible": "accessible.dart",
@@ -42,10 +36,10 @@
                 {
                     "id": "SEM-01",
                     "type": "missing_accessible_label",
-                    "description": "The interactive favorite icon does not expose a sufficient accessible description.",
+                    "description": "The interactive favorite icon button has no tooltip or semantic label, so its purpose is not announced.",
                     "affected_lines": {
-                        "start": 14,
-                        "end": 19
+                        "start": 15,
+                        "end": 18
                     },
                     "confidence": "confirmed"
                 }
@@ -69,7 +63,7 @@
     "mutations": [
         {
             "id": "remove_semantics",
-            "description": "Removed the Semantics wrapper and accessible label while preserving the visual behavior of the favorite icon.",
+            "description": "Removed the state-dependent tooltip that provided the accessible label, preserving the icon and callback.",
             "target_variants": [
                 "violation"
             ]
@@ -89,7 +83,7 @@
         },
         "status": "validated"
     },
-    "notes": null,
+    "notes": "Proveniência revisada em 2026-10-18: não há arquivo ou commit de origem rastreável; amostra reclassificada como sintética. Em 2026-10-18 a variante acessível passou a usar tooltip, pois o wrapper Semantics deixava o nó interno do IconButton sem rótulo.",
     "created_at": "2026-09-30",
-    "updated_at": "2026-09-30"
+    "updated_at": "2026-10-18"
 }

@@ -1,0 +1,89 @@
+{
+    "schema_version": "1.0",
+    "id": "INT_017",
+    "title": "Card header button whose semantics hide the tap action",
+    "category": "interaction",
+    "subcategory": "interaction_not_exposed",
+    "status": "validated",
+    "source": {
+        "type": "external",
+        "repository": {
+            "name": "openfoodfacts/smooth-app",
+            "url": "https://github.com/openfoodfacts/smooth-app"
+        },
+        "original_file": "packages/smooth_app/lib/generic_lib/widgets/smooth_card.dart#L470-L516",
+        "commit": "887e167b76757c47e689a95994d1ab064a66cd06",
+        "license": {
+            "name": "Apache-2.0",
+            "verified": true,
+            "copyright": "Não declarado no LICENSE (modelo Apache-2.0 sem titular)"
+        }
+    },
+    "component": {
+        "framework": "flutter",
+        "language": "dart",
+        "widget_types": [
+            "Material",
+            "Semantics",
+            "Tooltip",
+            "InkWell"
+        ],
+        "description": "A header action of a card, optionally circled, built with an InkWell inside a Tooltip."
+    },
+    "files": {
+        "component": "component.dart"
+    },
+    "ground_truth": {
+        "component": {
+            "has_violation": true,
+            "violations": [
+                {
+                    "id": "INT-03",
+                    "type": "interaction_not_exposed",
+                    "description": "The Semantics wrapper declares label and button role with excludeSemantics but no onTap, so the InkWell tap action is removed from the semantics tree and the button cannot be activated through semantic actions.",
+                    "affected_lines": {
+                        "start": 38,
+                        "end": 41
+                    },
+                    "confidence": "confirmed"
+                }
+            ]
+        }
+    },
+    "references": {
+        "flutter": [
+            {
+                "type": "documentation",
+                "reference": "https://api.flutter.dev/flutter/widgets/Semantics-class.html"
+            }
+        ],
+        "wcag": [
+            {
+                "criterion": "4.1.2",
+                "description": "Name, Role, Value"
+            },
+            {
+                "criterion": "2.1.1",
+                "description": "Keyboard"
+            }
+        ]
+    },
+    "mutations": [],
+    "validation": {
+        "automated": {
+            "performed": false,
+            "tool": null,
+            "result": null
+        },
+        "manual": {
+            "performed": true,
+            "reviewers": [
+                "researcher"
+            ]
+        },
+        "status": "validated"
+    },
+    "notes": "Violação natural. O mesmo padrão (Semantics com button e excludeSemantics, sem onTap) ocorre em vários componentes do app de origem, por exemplo SmoothBackButton, PriceButton e SmoothBottomSheet. Adaptado de SmoothCardHeaderButton (ADR-R011): MEDIUM_SPACE (12) foi substituído por literal.",
+    "created_at": "2026-10-18",
+    "updated_at": "2026-10-18"
+}

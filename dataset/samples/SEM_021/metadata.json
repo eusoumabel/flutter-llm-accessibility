@@ -1,0 +1,77 @@
+{
+    "schema_version": "1.0",
+    "id": "SEM_021",
+    "title": "Bold-parts text with placeholder span labels",
+    "category": "semantics",
+    "subcategory": "incorrect_accessible_label",
+    "status": "validated",
+    "source": {
+        "type": "external",
+        "repository": {
+            "name": "openfoodfacts/smooth-app",
+            "url": "https://github.com/openfoodfacts/smooth-app"
+        },
+        "original_file": "packages/smooth_app/lib/widgets/text/text_highlighter.dart#L189-L241",
+        "commit": "887e167b76757c47e689a95994d1ab064a66cd06",
+        "license": {
+            "name": "Apache-2.0",
+            "verified": true,
+            "copyright": "Não declarado no LICENSE (modelo Apache-2.0 sem titular)"
+        }
+    },
+    "component": {
+        "framework": "flutter",
+        "language": "dart",
+        "widget_types": [
+            "Semantics",
+            "RichText",
+            "TextSpan"
+        ],
+        "description": "A text widget that renders parts between '**' in bold using a RichText with one TextSpan per part."
+    },
+    "files": {
+        "component": "component.dart"
+    },
+    "ground_truth": {
+        "component": {
+            "has_violation": false,
+            "violations": []
+        }
+    },
+    "references": {
+        "flutter": [
+            {
+                "type": "documentation",
+                "reference": "https://api.flutter.dev/flutter/widgets/Semantics-class.html"
+            }
+        ],
+        "wcag": [
+            {
+                "criterion": "4.1.2",
+                "description": "Name, Role, Value"
+            },
+            {
+                "criterion": "2.4.6",
+                "description": "Headings and Labels"
+            }
+        ]
+    },
+    "mutations": [],
+    "validation": {
+        "automated": {
+            "performed": false,
+            "tool": null,
+            "result": null
+        },
+        "manual": {
+            "performed": true,
+            "reviewers": [
+                "researcher"
+            ]
+        },
+        "status": "validated"
+    },
+    "notes": "Negativo difícil (ADR-R006) de SEM-02: cada TextSpan declara semanticsLabel '-', aparentemente incorreto, mas o Semantics externo usa excludeSemantics e expõe o texto completo em value, de modo que os rótulos '-' não chegam à tecnologia assistiva. Adaptado de TextWithBoldParts (ADR-R011): TextHelper.getPartsBetweenSymbol (strings_helper.dart) foi copiado como função privada _getPartsBetweenSymbol, sem alterações de lógica.",
+    "created_at": "2026-10-18",
+    "updated_at": "2026-10-18"
+}
