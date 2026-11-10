@@ -1,16 +1,18 @@
 # Prompts
 
-Este diretório contém os prompts experimentais usados no pipeline de avaliação. Cada prompt é versionado como artefato científico e deve permanecer estável após a conclusão da fase piloto.
+Este diretório contém os prompts experimentais usados no pipeline de avaliação. Cada versão é um artefato científico e não é alterada depois de usada numa rodada; mudanças entram numa nova versão (ADR-R020).
 
-## Prompts incluídos
+## Versões
 
-- P0: prompt zero-shot
-- P1: prompt informado por diretrizes
+| Versão | Rodadas | Mudanças |
+| --- | --- | --- |
+| v1 | round_01 | P0 zero-shot e P1 guiado por diretrizes; esquema com `type`, `affected_code`, `explanation` e `confidence` (ADR-R018) |
+| v2 | round_02 | Campo `severity` no esquema; resposta em português do Brasil; P1 com as subcategorias, a gravidade de cada uma e apenas a violação mais grave (ADR-R021, ADR-R022) |
+
+Cada versão contém `P0_zero_shot.md`, `P1_guidelines.md` e `response_schema.json`. O arquivo de configuração da rodada indica quais arquivos usar.
 
 ## Princípio
 
-Nenhum prompt deve incluir informações sobre o ground truth da amostra, metadados ocultos ou status da mutação. O modelo deve ver apenas o prompt e o código do componente, com identificadores neutros de caso quando necessário para o registro experimental.
+Nenhum prompt deve incluir informações sobre o ground truth da amostra, metadados ocultos ou status da mutação. O modelo deve ver apenas o prompt e o código do componente.
 
-## Esquema de resposta
-
-Todos os prompts são enviados com o mesmo JSON Schema, definido em `response_schema.json` (ADR-R018). O esquema exige a lista `violations`, cujos itens têm `type` (texto livre), `affected_code`, `explanation` e `confidence` (`low`, `medium` ou `high`). O esquema não contém a taxonomia, para não alterar a condição zero-shot do P0.
+O P0 não contém a taxonomia, para preservar a condição zero-shot. O P1 contém as diretrizes, que correspondem às subcategorias da taxonomia.

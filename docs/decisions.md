@@ -298,3 +298,78 @@ Garante rastreabilidade e reprodutibilidade da análise a partir da evidência o
 
 Data:
 2026-10-18
+
+## ADR-R020 — Rodadas no lugar de piloto e experimento final
+
+Status: Aceito
+
+Contexto:
+A divisão entre piloto e experimento final pressupunha uma configuração congelada após o piloto. A análise do piloto mostrou que a categorização, a taxonomia e os prompts continuarão sendo ajustados.
+
+Decisão:
+- O estudo passa a ser organizado em rodadas numeradas (`round_01`, `round_02`, …), cada uma com sua configuração em `experiments/round_NN/config.yaml`.
+- O antigo piloto passa a ser a rodada 1 (`round_01`). Suas respostas brutas mantêm o identificador original `EXP_PILOT_001`; apenas os diretórios foram renomeados.
+- O experimento final deixa de existir como condição separada.
+- Cada configuração indica os arquivos de prompt e o esquema de resposta usados, e os prompts de cada versão ficam em `prompts/vN/`, para que rodadas anteriores continuem reproduzíveis.
+- Cada rodada é executada uma vez (`repetitions: 1`).
+- Os scripts recebem a rodada pelo argumento `--round`.
+
+Motivo:
+Rodadas registram a evolução do processo de categorização e dos prompts sem sobrescrever a evidência das rodadas anteriores.
+
+Consequências:
+A variação entre execuções de uma mesma configuração deixa de ser medida por repetições e passa a ser uma ameaça à validade. As comparações entre rodadas misturam mudanças de prompt, de esquema e de taxonomia, e cada rodada deve registrar o que mudou.
+
+Data:
+2026-11-10
+
+## ADR-R021 — Grau de gravidade por subcategoria
+
+Status: Proposto
+
+Contexto:
+A taxonomia não diferenciava a gravidade das violações. A ordem de impacto usada para escolher a violação principal (ADR-R005, [annotation_guidelines.md](annotation_guidelines.md)) já hierarquizava as subcategorias, mas não estava registrada na taxonomia nem era informada aos modelos.
+
+Decisão:
+A taxonomia (versão 1.1) passa a ter o campo `severity` em cada subcategoria, com a escala `severity_scale`, derivada da ordem de impacto:
+
+| Gravidade | Definição | Subcategorias |
+| --- | --- | --- |
+| critical | Impede a operação do componente com tecnologia assistiva | SEM-05, INT-02, INT-03 |
+| high | Impede a compreensão da finalidade do componente | SEM-01, SEM-02 |
+| medium | O componente é utilizável, mas a informação sobre papel ou estado é incompleta | SEM-03, SEM-04 |
+| low | O componente é utilizável, mas a interação exige esforço extra | INT-01 |
+
+Motivo:
+Reaproveita a hierarquia já usada na anotação, de modo que a violação principal do ground truth e a violação mais grave pedida ao modelo seguem o mesmo critério.
+
+Consequências:
+A gravidade é atribuída por subcategoria, não por caso. Os valores aguardam revisão das pesquisadoras.
+
+Data:
+2026-11-10
+
+## ADR-R022 — Prompts v2
+
+Status: Aceito
+
+Contexto:
+Na rodada 1, o tipo em texto livre dificultou a comparação com a taxonomia, o P1 não listava as subcategorias e os modelos devolviam todas as violações encontradas.
+
+Decisão:
+- Os dois prompts e o esquema de resposta passam para a versão 2 (`prompts/v2/`). A versão 1 permanece em `prompts/v1/` para a rodada 1.
+- O esquema ganha o campo obrigatório `severity` (`critical`, `high`, `medium` ou `low`) em cada violação.
+- Os campos de texto da resposta são escritos em português do Brasil. O `affected_code` é copiado do código, e no P1 o `type` usa o nome do item da diretriz, sem tradução.
+- O P1 lista as oito subcategorias da taxonomia com descrição e gravidade, e a escala de gravidade.
+- O P1 pede apenas a violação mais grave. Em empate de gravidade, a que aparece primeiro no código, como na anotação (ADR-R005).
+- O P0 continua sem a taxonomia; ele pede a gravidade sem definir a escala, para preservar a condição zero-shot.
+
+Motivo:
+A resposta única e com o nome do item da diretriz permite comparar a predição do P1 com a violação principal do ground truth.
+
+Consequências:
+- O P0 pode devolver várias violações e o P1 apenas uma, o que deve ser considerado ao comparar o casamento de tipos entre os prompts.
+- O esquema é comum aos dois prompts e não limita o número de itens; o cumprimento da instrução de resposta única no P1 é verificado pelo campo `predicted_count` dos resultados normalizados.
+
+Data:
+2026-11-10

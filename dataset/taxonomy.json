@@ -1,5 +1,11 @@
 {
-    "version": "1.0",
+    "version": "1.1",
+    "severity_scale": {
+        "critical": "Prevents assistive-technology users from operating the component.",
+        "high": "Prevents assistive-technology users from understanding the component's purpose.",
+        "medium": "The component is usable, but assistive technologies receive incomplete information about its role or state.",
+        "low": "The component is usable, but interaction requires extra effort."
+    },
     "categories": {
         "semantics": {
             "code": "SEM",
@@ -7,6 +13,7 @@
                 "missing_accessible_label": {
                     "code": "SEM-01",
                     "description": "Interactive or meaningful component does not expose sufficient accessible labeling.",
+                    "severity": "high",
                     "possible_mutations": [
                         {
                             "id": "remove_semantics",
@@ -21,6 +28,7 @@
                 "incorrect_accessible_label": {
                     "code": "SEM-02",
                     "description": "Accessible label exists but does not correctly communicate the purpose of the component.",
+                    "severity": "high",
                     "possible_mutations": [
                         {
                             "id": "replace_accessible_label",
@@ -31,6 +39,7 @@
                 "missing_role": {
                     "code": "SEM-03",
                     "description": "Custom component does not expose a sufficient semantic role.",
+                    "severity": "medium",
                     "possible_mutations": [
                         {
                             "id": "remove_semantic_role",
@@ -41,6 +50,7 @@
                 "missing_state": {
                     "code": "SEM-04",
                     "description": "Relevant component state is not exposed through semantics.",
+                    "severity": "medium",
                     "possible_mutations": [
                         {
                             "id": "remove_semantic_state",
@@ -51,6 +61,7 @@
                 "inaccessible_custom_control": {
                     "code": "SEM-05",
                     "description": "Custom interactive component does not provide equivalent semantic information.",
+                    "severity": "critical",
                     "possible_mutations": [
                         {
                             "id": "remove_custom_control_semantics",
@@ -66,6 +77,7 @@
                 "insufficient_target_size": {
                     "code": "INT-01",
                     "description": "Interactive target provides insufficient area for interaction according to the adopted guideline.",
+                    "severity": "low",
                     "possible_mutations": [
                         {
                             "id": "reduce_target_size",
@@ -80,6 +92,7 @@
                 "inaccessible_custom_gesture": {
                     "code": "INT-02",
                     "description": "Custom gesture interaction does not provide an accessible equivalent.",
+                    "severity": "critical",
                     "possible_mutations": [
                         {
                             "id": "remove_gesture_alternative",
@@ -90,6 +103,7 @@
                 "interaction_not_exposed": {
                     "code": "INT-03",
                     "description": "Interactive behavior is not sufficiently exposed to accessibility mechanisms.",
+                    "severity": "critical",
                     "possible_mutations": [
                         {
                             "id": "remove_interaction_exposure",

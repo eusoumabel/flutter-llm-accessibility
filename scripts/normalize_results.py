@@ -12,7 +12,7 @@ NORMALIZED_ROOT = ROOT / "results" / "normalized"
 
 
 def iterate_raw_records():
-    for raw_file in sorted(RAW_ROOT.rglob("*.json")):
+    for raw_file in sorted(RAW_ROOT.rglob("run_*.json")):
         with raw_file.open("r", encoding="utf-8") as handle:
             yield raw_file, json.load(handle)
 
@@ -27,6 +27,7 @@ def main():
         request = record.get("request", {})
         normalized = {
             "experiment_id": record.get("experiment_id"),
+            "round": raw_file.relative_to(RAW_ROOT).parts[0],
             "case_id": record.get("case_id"),
             "sample_id": request.get("sample_id"),
             "variant": request.get("variant"),
@@ -40,6 +41,8 @@ def main():
             "predicted_has_violation": bool(violations),
             "predicted_violations": [item.get("type") for item in violations if "type" in item],
             "predicted_confidences": [item.get("confidence") for item in violations if "confidence" in item],
+            "predicted_severities": [item.get("severity") for item in violations if "severity" in item],
+            "predicted_count": len(violations),
         }
         out_path = NORMALIZED_ROOT / raw_file.relative_to(RAW_ROOT)
         out_path.parent.mkdir(parents=True, exist_ok=True)

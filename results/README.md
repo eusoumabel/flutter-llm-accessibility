@@ -10,8 +10,8 @@ Os dados brutos devem permanecer imutáveis após a recepção do provedor do mo
 Estrutura das respostas brutas:
 
 ```text
-raw/<pilot|final>/<modelo>/<prompt>/<sample_id>_<variante>/run_<n>.json
-raw/<pilot|final>/_errors.jsonl
+raw/<rodada>/<modelo>/<prompt>/<sample_id>_<variante>/run_<n>.json
+raw/<rodada>/_errors.jsonl
 ```
 
 O arquivo `_errors.jsonl` registra falhas da API (limite de requisições, indisponibilidade, rede); essas chamadas são refeitas na execução seguinte. As respostas brutas não contêm chaves de API.

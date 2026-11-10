@@ -1,15 +1,17 @@
 # Experimentos
 
-Este diretório armazena as definições de configuração e execução do piloto e dos testes finais do benchmark de acessibilidade com LLM.
+Este diretório armazena a configuração de cada rodada do benchmark de acessibilidade com LLM (ADR-R020).
 
 ## Estrutura
 
-- pilot/: avaliação leve para validar todo o pipeline, os prompts e as premissas de metadados
-- final/: configuração congelada para o experimento definitivo
+- round_01/: rodada 1, executada como piloto (prompts v1, taxonomia 1.0)
+- round_02/: rodada 2 (prompts v2, taxonomia 1.1 com gravidade)
+
+Cada `config.yaml` registra o dataset, a taxonomia, os arquivos de prompt, o esquema de resposta, o número de repetições e os modelos usados na rodada.
 
 ## Garantias
 
-- Os arquivos de prompt são versionados.
-- As versões do dataset são registradas.
+- Os arquivos de prompt são versionados em `prompts/vN/`, e cada rodada aponta para a versão que usou.
+- As versões do dataset e da taxonomia são registradas.
 - As respostas brutas são armazenadas separadamente das previsões normalizadas.
-- A configuração do experimento é persistida antes do início da execução.
+- A configuração da rodada é persistida antes do início da execução e não é alterada depois dela.

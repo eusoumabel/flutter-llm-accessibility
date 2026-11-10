@@ -181,6 +181,7 @@ Ver ADR-R005.
   2. impede a compreensão: SEM-01, SEM-02;
   3. informação incompleta: SEM-03, SEM-04;
   4. dificulta a operação: INT-01.
+- Essa ordem define a gravidade de cada subcategoria na taxonomia: crítica, alta, média e baixa (ADR-R021).
 - Em caso de empate no mesmo nível, a principal é a que aparece primeiro no código; o critério usado deve ser registrado em `notes`.
 
 ## Negativos difíceis
