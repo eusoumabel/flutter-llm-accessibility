@@ -2,7 +2,9 @@ You are analyzing the accessibility of a Flutter component.
 
 Analyze the following Flutter code and identify accessibility problems that can be inferred from the provided code.
 
-For each identified problem return:
+Report only the single most severe problem, not every problem you find. If two problems have the same severity, report the one that appears first in the code.
+
+For the reported problem return:
 - type
 - affected_code
 - explanation

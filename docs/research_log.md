@@ -78,10 +78,10 @@ Preparação da rodada 2 a partir da análise das respostas da rodada 1 (antigo 
 ### Decisão
 - O estudo passa a ser organizado em rodadas, executadas uma vez cada; o piloto passa a ser a rodada 1 (ADR-R020).
 - Grau de gravidade por subcategoria, derivado da ordem de impacto da anotação (ADR-R021, proposto).
-- Prompts v2: campo `severity`, resposta em português do Brasil e P1 com as subcategorias e apenas a violação mais grave (ADR-R022).
+- Prompts v2: campo `severity`, resposta em português do Brasil, apenas a violação mais grave nos dois prompts e P1 com as subcategorias (ADR-R022).
 
 ### Problema
-- O P0 pode devolver várias violações e o P1 apenas uma, o que afeta a comparação do casamento de tipos entre os prompts.
+- No P0, a violação mais grave é escolhida sem a escala da taxonomia e pode divergir da violação principal do ground truth.
 
 ### Próximo passo
 Revisar os graus de gravidade e executar a rodada 2.

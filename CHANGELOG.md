@@ -20,7 +20,7 @@ Todas as alterações relevantes da infraestrutura do dataset e dos experimentos
 - Correção do vínculo entre predições e ground truth em `calculate_metrics.py` e da sobrescrita de resultados em `normalize_results.py`.
 - Piloto e experimento final substituídos por rodadas (`round_01`, `round_02`); o piloto passa a ser a rodada 1 e os scripts recebem `--round` (ADR-R020).
 - Taxonomia 1.1 com grau de gravidade por subcategoria (ADR-R021, proposto).
-- Prompts e esquema v2: campo `severity`, resposta em português do Brasil e P1 com as subcategorias e apenas a violação mais grave (ADR-R022). Prompts v1 preservados em `prompts/v1/`.
+- Prompts e esquema v2: campo `severity`, resposta em português do Brasil, apenas a violação mais grave nos dois prompts e P1 com as subcategorias (ADR-R022). Prompts v1 preservados em `prompts/v1/`.
 - Resultados normalizados passam a registrar `round`, `predicted_severities` e `predicted_count`.
 
 ## [v1.0] - TBD

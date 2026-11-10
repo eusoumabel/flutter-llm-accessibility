@@ -7,7 +7,7 @@ Este diretório contém os prompts experimentais usados no pipeline de avaliaç�
 | Versão | Rodadas | Mudanças |
 | --- | --- | --- |
 | v1 | round_01 | P0 zero-shot e P1 guiado por diretrizes; esquema com `type`, `affected_code`, `explanation` e `confidence` (ADR-R018) |
-| v2 | round_02 | Campo `severity` no esquema; resposta em português do Brasil; P1 com as subcategorias, a gravidade de cada uma e apenas a violação mais grave (ADR-R021, ADR-R022) |
+| v2 | round_02 | Campo `severity` no esquema; resposta em português do Brasil; apenas a violação mais grave nos dois prompts; P1 com as subcategorias e a gravidade de cada uma (ADR-R021, ADR-R022) |
 
 Cada versão contém `P0_zero_shot.md`, `P1_guidelines.md` e `response_schema.json`. O arquivo de configuração da rodada indica quais arquivos usar.
 

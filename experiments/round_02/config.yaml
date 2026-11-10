@@ -1,4 +1,4 @@
-# Round 2: taxonomy with severity, prompts v2 (output in Brazilian Portuguese, severity field, P1 reports only the most severe violation).
+# Round 2: taxonomy with severity, prompts v2 (output in Brazilian Portuguese, severity field, both prompts report only the most severe violation).
 experiment:
   id: EXP_ROUND_02
   round: round_02

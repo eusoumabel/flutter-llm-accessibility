@@ -361,15 +361,15 @@ Decisão:
 - O esquema ganha o campo obrigatório `severity` (`critical`, `high`, `medium` ou `low`) em cada violação.
 - Os campos de texto da resposta são escritos em português do Brasil. O `affected_code` é copiado do código, e no P1 o `type` usa o nome do item da diretriz, sem tradução.
 - O P1 lista as oito subcategorias da taxonomia com descrição e gravidade, e a escala de gravidade.
-- O P1 pede apenas a violação mais grave. Em empate de gravidade, a que aparece primeiro no código, como na anotação (ADR-R005).
-- O P0 continua sem a taxonomia; ele pede a gravidade sem definir a escala, para preservar a condição zero-shot.
+- Os dois prompts pedem apenas a violação mais grave. Em empate de gravidade, a que aparece primeiro no código, como na anotação (ADR-R005).
+- O P0 continua sem a taxonomia; ele pede a gravidade sem definir a escala, para preservar a condição zero-shot. No P0, a violação mais grave é julgada pelo próprio modelo.
 
 Motivo:
-A resposta única e com o nome do item da diretriz permite comparar a predição do P1 com a violação principal do ground truth.
+A resposta única permite comparar a predição de cada prompt com a violação principal do ground truth, nas mesmas condições para P0 e P1. No P1, o nome do item da diretriz facilita esse casamento.
 
 Consequências:
-- O P0 pode devolver várias violações e o P1 apenas uma, o que deve ser considerado ao comparar o casamento de tipos entre os prompts.
-- O esquema é comum aos dois prompts e não limita o número de itens; o cumprimento da instrução de resposta única no P1 é verificado pelo campo `predicted_count` dos resultados normalizados.
+- No P0 o modelo escolhe a violação mais grave sem conhecer a escala da taxonomia, então a escolha pode divergir da violação principal do ground truth mesmo quando o modelo encontra a violação anotada.
+- O esquema é comum aos dois prompts e não limita o número de itens; o cumprimento da instrução de resposta única é verificado pelo campo `predicted_count` dos resultados normalizados.
 
 Data:
 2026-11-10
