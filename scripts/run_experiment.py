@@ -56,11 +56,6 @@ DATASET_DIR = ROOT / "dataset"
 PROMPTS_DIR = ROOT / "prompts"
 RESULTS_DIR = ROOT / "results"
 
-PROMPT_MAP = {
-    "P0": "P0_zero_shot.md",
-    "P1": "P1_guidelines.md",
-}
-RESPONSE_SCHEMA_PATH = PROMPTS_DIR / "response_schema.json"
 SUPPORTED_PROVIDERS = ("gemini", "claude")
 API_KEY_VARIABLES = {
     "gemini": "GEMINI_API_KEY",
@@ -78,7 +73,8 @@ def load_yaml(path: Path):
         return yaml.safe_load(handle) or {}
 
 
-RESPONSE_SCHEMA = load_json(RESPONSE_SCHEMA_PATH)
+def available_rounds() -> list[str]:
+    return sorted(path.parent.name for path in EXPERIMENTS_DIR.glob("*/config.yaml"))
 
 
 def selected_providers() -> list[str]:
@@ -131,12 +127,12 @@ def collect_samples():
     return sample_rows
 
 
-def load_prompt(prompt_name: str) -> str:
-    file_name = PROMPT_MAP.get(prompt_name)
-    if not file_name:
-        raise ValueError(f"Unsupported prompt {prompt_name!r}")
-    path = PROMPTS_DIR / file_name
-    return path.read_text(encoding="utf-8")
+def load_prompt(prompt_files: dict, prompt_name: str) -> str:
+    """Read a prompt template from the path the round's config gives for it."""
+    relative_path = prompt_files.get(prompt_name)
+    if not relative_path:
+        raise ValueError(f"Prompt {prompt_name!r} is not listed in the round's config")
+    return (ROOT / relative_path).read_text(encoding="utf-8")
 
 
 def load_code_for_sample(sample: dict) -> str:
@@ -157,7 +153,7 @@ def parse_response(content: str) -> tuple[dict, bool]:
     return parsed, True
 
 
-def call_gemini(client, settings: dict, final_prompt: str) -> dict:
+def call_gemini(client, settings: dict, final_prompt: str, schema: dict) -> dict:
     started_at = time.perf_counter()
     response = client.models.generate_content(
         model=settings["model"],
@@ -165,7 +161,7 @@ def call_gemini(client, settings: dict, final_prompt: str) -> dict:
         config=genai.types.GenerateContentConfig(
             temperature=settings["temperature"],
             response_mime_type="application/json",
-            response_json_schema=RESPONSE_SCHEMA,
+            response_json_schema=schema,
         ),
     )
     latency_ms = int((time.perf_counter() - started_at) * 1000)
@@ -192,14 +188,14 @@ def call_gemini(client, settings: dict, final_prompt: str) -> dict:
     }
 
 
-def call_claude(client, settings: dict, final_prompt: str) -> dict:
+def call_claude(client, settings: dict, final_prompt: str, schema: dict) -> dict:
     started_at = time.perf_counter()
     response = client.messages.create(
         model=settings["model"],
         max_tokens=settings["max_tokens"],
         output_config={
             "effort": settings["effort"],
-            "format": {"type": "json_schema", "schema": RESPONSE_SCHEMA},
+            "format": {"type": "json_schema", "schema": schema},
         },
         messages=[{"role": "user", "content": final_prompt}],
     )
@@ -240,11 +236,11 @@ def build_clients(providers: list[str]) -> dict:
     return clients
 
 
-def call_provider(provider: str, client, settings: dict, final_prompt: str) -> dict:
+def call_provider(provider: str, client, settings: dict, final_prompt: str, schema: dict) -> dict:
     try:
         if provider == "gemini":
-            return call_gemini(client, settings, final_prompt)
-        return call_claude(client, settings, final_prompt)
+            return call_gemini(client, settings, final_prompt, schema)
+        return call_claude(client, settings, final_prompt, schema)
     except (anthropic.APIStatusError, anthropic.APIConnectionError, genai_errors.APIError) as exc:
         return {
             "response": {"violations": []},
@@ -270,7 +266,7 @@ def classify_status(result: dict) -> str:
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--experiment", choices=("pilot", "final"), default="final")
+    parser.add_argument("--round", required=True, choices=available_rounds(), help="Round directory under experiments/, e.g. round_02.")
     parser.add_argument(
         "--dry-run",
         action="store_true",
@@ -278,9 +274,12 @@ def main():
     )
     args = parser.parse_args()
 
-    config = load_yaml(EXPERIMENTS_DIR / args.experiment / "config.yaml")
+    config = load_yaml(EXPERIMENTS_DIR / args.round / "config.yaml")
     experiment_id = config["experiment"]["id"]
-    prompt_names = config["experiment"].get("prompts", ["P0"])
+    prompt_files = config["experiment"]["prompts"]
+    prompt_names = list(prompt_files)
+    schema_path = config["response_schema"]
+    schema = load_json(ROOT / schema_path)
     repetitions = int(config["experiment"].get("repetitions", 1))
     providers = selected_providers()
     settings = {provider: provider_settings(provider) for provider in providers}
@@ -295,7 +294,7 @@ def main():
     ]
     random.shuffle(tasks)
 
-    output_root = RESULTS_DIR / "raw" / args.experiment
+    output_root = RESULTS_DIR / "raw" / args.round
 
     def output_path(provider, sample, prompt_name, run_number) -> Path:
         case_id = f"{sample['sample_id']}_{sample['variant']}"
@@ -310,24 +309,30 @@ def main():
     )
     for provider in providers:
         print(f"  {provider}: {settings[provider]}")
+    for prompt_name in prompt_names:
+        print(f"  {prompt_name}: {prompt_files[prompt_name]}")
+    print(f"  schema: {schema_path}")
     if args.dry_run:
         return
 
     clients = build_clients(providers)
-    prompt_templates = {name: load_prompt(name) for name in prompt_names}
+    prompt_templates = {name: load_prompt(prompt_files, name) for name in prompt_names}
     errors = 0
 
     for index, (provider, sample, prompt_name, run_number) in enumerate(pending, start=1):
         code = load_code_for_sample(sample)
         final_prompt = prompt_templates[prompt_name].replace("{{CODE}}", code)
-        result = call_provider(provider, clients[provider], settings[provider], final_prompt)
+        result = call_provider(provider, clients[provider], settings[provider], final_prompt, schema)
         payload = {
             "experiment_id": experiment_id,
             "case_id": f"{sample['sample_id']}_{sample['variant']}",
             "provider": provider,
             "model": settings[provider]["model"],
             "parameters": {key: value for key, value in settings[provider].items() if key != "model"},
+            "round": args.round,
             "prompt": prompt_name,
+            "prompt_file": prompt_files[prompt_name],
+            "response_schema": schema_path,
             "run": run_number,
             "timestamp": datetime.now(timezone.utc).isoformat(),
             "request": {

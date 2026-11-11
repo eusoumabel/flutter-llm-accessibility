@@ -69,3 +69,19 @@ Substituição da OpenAI pelo Anthropic Claude no runner, adoção de um esquema
 
 ### Próximo passo
 Configurar as chaves, executar o piloto e definir o procedimento de mapeamento dos tipos previstos para a taxonomia.
+
+## 2026-11-10 (rodada 2)
+
+### Atividade
+Preparação da rodada 2 a partir da análise das respostas da rodada 1 (antigo piloto).
+
+### Decisão
+- O estudo passa a ser organizado em rodadas, executadas uma vez cada; o piloto passa a ser a rodada 1 (ADR-R020).
+- Grau de gravidade por subcategoria, derivado da ordem de impacto da anotação (ADR-R021, proposto).
+- Prompts v2: campo `severity`, resposta em português do Brasil, apenas a violação mais grave nos dois prompts e P1 com as subcategorias (ADR-R022).
+
+### Problema
+- No P0, a violação mais grave é escolhida sem a escala da taxonomia e pode divergir da violação principal do ground truth.
+
+### Próximo passo
+Revisar os graus de gravidade e executar a rodada 2.

@@ -1,0 +1,23 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "round": "round_01",
+  "case_id": "SEM_033_component",
+  "sample_id": "SEM_033",
+  "variant": "component",
+  "category": "semantics",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "prompt": "P1",
+  "run": 1,
+  "status": "ok",
+  "valid": true,
+  "predicted_has_violation": true,
+  "predicted_violations": [
+    "Semantic State"
+  ],
+  "predicted_confidences": [
+    "medium"
+  ],
+  "predicted_severities": [],
+  "predicted_count": 1
+}

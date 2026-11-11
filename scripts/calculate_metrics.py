@@ -30,8 +30,11 @@ def load_ground_truth():
     return truth
 
 
-def load_predictions(experiment: str):
-    for result_path in sorted((NORMALIZED_DIR / experiment).rglob("*.json")):
+def load_predictions(round_name: str):
+    round_dir = NORMALIZED_DIR / round_name
+    if not round_dir.is_dir():
+        raise SystemExit(f"No normalized results for {round_name!r} in {NORMALIZED_DIR.relative_to(ROOT)}")
+    for result_path in sorted(round_dir.rglob("*.json")):
         data = json.loads(result_path.read_text(encoding="utf-8"))
         if data.get("sample_id") and data.get("variant"):
             yield data
@@ -69,14 +72,14 @@ def with_scores(counts: dict) -> dict:
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--experiment", choices=("pilot", "final"), default="final")
+    parser.add_argument("--round", required=True, help="Round directory under results/normalized/, e.g. round_02.")
     args = parser.parse_args()
 
     truth = load_ground_truth()
     overall = defaultdict(empty_counts)
     by_category = defaultdict(empty_counts)
 
-    for pred in load_predictions(args.experiment):
+    for pred in load_predictions(args.round):
         row = truth.get((pred["sample_id"], pred["variant"]))
         expected = bool(row["has_violation"]) if row else None
         group = (pred.get("model"), pred.get("prompt"))
@@ -85,7 +88,7 @@ def main():
             add_prediction(by_category[group + (row["category"],)], expected, pred)
 
     report = {
-        "experiment": args.experiment,
+        "round": args.round,
         "by_model_prompt": [
             {"model": model, "prompt": prompt, **with_scores(counts)}
             for (model, prompt), counts in sorted(overall.items())
@@ -97,7 +100,7 @@ def main():
     }
 
     METRICS_DIR.mkdir(parents=True, exist_ok=True)
-    out_path = METRICS_DIR / f"metrics_{args.experiment}.json"
+    out_path = METRICS_DIR / f"metrics_{args.round}.json"
     out_path.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
     print(json.dumps(report["by_model_prompt"], ensure_ascii=False, indent=2))
     print(f"Metrics written to {out_path.relative_to(ROOT)}")

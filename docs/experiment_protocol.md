@@ -2,13 +2,13 @@
 
 ## Checklist
 
-- [ ] O dataset está congelado para o ciclo experimental atual
+- [ ] O dataset está congelado para a rodada atual
 - [ ] A taxonomia está congelada e documentada
-- [ ] Os prompts estão congelados e versionados
+- [ ] Os prompts da rodada estão numa versão própria em `prompts/vN/`
 - [ ] Os identificadores dos modelos são registrados exatamente como informados pelo provedor
 - [ ] A configuração do experimento foi armazenada em `experiments/`
 - [ ] O acesso à API foi verificado
-- [ ] A execução piloto foi concluída e revisada
+- [ ] A rodada anterior foi analisada e as mudanças desta rodada estão registradas em ADR
 - [ ] A randomização está pronta para execução
 - [ ] As respostas brutas estão habilitadas
 - [ ] A geração de saídas normalizadas está habilitada
@@ -26,4 +26,4 @@
 8. Calcular as métricas de avaliação.
 9. Escrever o relatório de análise.
 
-Os comandos e as dependências entre os scripts estão detalhados no [Guia de execução](execution_guide.md). A configuração do experimento permanece em `experiments/*/config.yaml`; metadata e taxonomia usam JSON.
+Os comandos e as dependências entre os scripts estão detalhados no [Guia de execução](execution_guide.md). A configuração de cada rodada permanece em `experiments/round_NN/config.yaml`; metadata e taxonomia usam JSON.

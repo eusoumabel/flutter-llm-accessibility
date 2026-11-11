@@ -24,7 +24,7 @@ Este não é um aplicativo Flutter convencional. É um repositório científico 
 
 - dataset/: taxonomia, metadados, ground truth gerado e arquivos de amostras
 - prompts/: artefatos de prompt para zero-shot, guideline-informed e estratégia opcional few-shot
-- experiments/: definições de configuração para piloto e experimento final
+- experiments/: configuração de cada rodada (`round_NN/config.yaml`)
 - results/: respostas brutas da API e saídas normalizadas
 - analysis/: tabelas, gráficos e notebooks de análise
 - scripts/: automação para validação, exportação e execução dos experimentos
@@ -73,17 +73,17 @@ Para executar um experimento real:
 1. copie o arquivo `.env.example` para `.env`;
 2. defina as chaves dos provedores listados em `LLM_PROVIDERS`;
 3. confira as chamadas planejadas com `--dry-run`;
-4. execute o piloto e, depois, o experimento final.
+4. execute a rodada atual.
 
 Exemplo:
 
 ```bash
 cp .env.example .env
 python3 -m pip install -r requirements.txt
-python3 scripts/run_experiment.py --experiment pilot --dry-run
-python3 scripts/run_experiment.py --experiment pilot
+python3 scripts/run_experiment.py --round round_02 --dry-run
+python3 scripts/run_experiment.py --round round_02
 ```
 
 ## Status
 
-Este repositório foi estruturado como infraestrutura de pesquisa. Ele inclui a estrutura necessária, a taxonomia inicial, amostras iniciais, templates de prompts e scripts de automação para começar a coleta de dados e a experimentação piloto.
+Este repositório foi estruturado como infraestrutura de pesquisa. Ele inclui a estrutura necessária, a taxonomia inicial, amostras iniciais, templates de prompts e scripts de automação para começar a coleta de dados e as rodadas de experimentação.

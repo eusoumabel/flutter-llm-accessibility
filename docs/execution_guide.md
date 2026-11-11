@@ -144,51 +144,50 @@ O CSV contém uma linha por variante e inclui os IDs das mutações aplicadas na
 A configuração atual fica em:
 
 ```text
-experiments/final/config.yaml
+experiments/round_02/config.yaml
 ```
 
 Antes de uma execução, confira:
 
 - `experiment.id`;
 - `dataset_version`;
-- prompts listados em `prompts`;
+- arquivos de prompt listados em `prompts` e o `response_schema`;
 - número de `repetitions`;
 - identificadores dos modelos e parâmetros registrados em `models`;
 - armazenamento de respostas brutas.
 
-O runner usa as variáveis do `.env` para selecionar provedores, modelos e parâmetros, e grava em cada resposta bruta os parâmetros efetivamente usados. O arquivo de configuração documenta o desenho do experimento, deve refletir os valores do `.env` e deve ser congelado antes da execução final.
+O runner usa as variáveis do `.env` para selecionar provedores, modelos e parâmetros, e grava em cada resposta bruta os parâmetros efetivamente usados. O arquivo de configuração documenta o desenho do experimento, deve refletir os valores do `.env` e não deve ser alterado depois que a rodada for executada.
 
 ## 6. Executar o experimento
 
 Confira primeiro as chamadas planejadas, sem contatar os provedores:
 
 ```bash
-python3 scripts/run_experiment.py --experiment pilot --dry-run
+python3 scripts/run_experiment.py --round round_02 --dry-run
 ```
 
-Depois execute o piloto e, após revisá-lo, o experimento final:
+Depois execute a rodada:
 
 ```bash
-python3 scripts/run_experiment.py --experiment pilot
-python3 scripts/run_experiment.py --experiment final
+python3 scripts/run_experiment.py --round round_02
 ```
 
 O script:
 
-1. lê `experiments/<pilot|final>/config.yaml`;
+1. lê `experiments/<rodada>/config.yaml`;
 2. descobre todas as samples em `dataset/samples/*/metadata.json`;
 3. combina provedores, variantes, prompts e repetições e embaralha a ordem das chamadas;
 4. ignora chamadas cuja resposta bruta já existe, o que permite retomar uma execução interrompida;
-5. envia o prompt com o código da variante e o esquema `prompts/response_schema.json`;
+5. envia o prompt com o código da variante e o esquema de resposta indicados na configuração da rodada;
 6. grava a resposta bruta com provedor, modelo, parâmetros, status, motivo de parada, uso de tokens, timestamp e latência.
 
 As respostas são gravadas em:
 
 ```text
-results/raw/<pilot|final>/<modelo>/<prompt>/<sample_id>_<variante>/run_<n>.json
+results/raw/<rodada>/<modelo>/<prompt>/<sample_id>_<variante>/run_<n>.json
 ```
 
-O campo `status` registra `ok`, `refusal` (recusa do provedor), `max_tokens` (resposta truncada) ou `invalid_json`; esses resultados são respostas do modelo e ficam gravados. Falhas da API (limite de requisições, indisponibilidade, rede) não interrompem a execução: são registradas em `results/raw/<pilot|final>/_errors.jsonl` e a chamada é refeita na próxima execução do script. Não há fallback automático para outro modelo (ADR-R017).
+O campo `status` registra `ok`, `refusal` (recusa do provedor), `max_tokens` (resposta truncada) ou `invalid_json`; esses resultados são respostas do modelo e ficam gravados. Falhas da API (limite de requisições, indisponibilidade, rede) não interrompem a execução: são registradas em `results/raw/<rodada>/_errors.jsonl` e a chamada é refeita na próxima execução do script. Não há fallback automático para outro modelo (ADR-R017).
 
 O ground truth não é enviado ao provedor. Ele permanece separado no dataset e é usado somente na avaliação.
 
@@ -211,7 +210,7 @@ As respostas em `results/raw/` são evidência original e devem permanecer imut�
 Execute:
 
 ```bash
-python3 scripts/calculate_metrics.py --experiment final
+python3 scripts/calculate_metrics.py --round round_02
 ```
 
 O script combina `dataset/ground_truth.jsonl` com os resultados normalizados, por amostra e variante, e calcula por modelo e prompt, e por modelo, prompt e categoria:
@@ -225,7 +224,7 @@ O script combina `dataset/ground_truth.jsonl` com os resultados normalizados, po
 - F1 (`f1`);
 - resultados inválidos (`invalid`), excluídos da matriz de confusão.
 
-O relatório é gravado em `analysis/metrics/metrics_<pilot|final>.json`. Nesta versão, a métrica considera apenas a detecção de violação (variante com ou sem violação); o casamento do tipo previsto com a subcategoria ainda depende de um procedimento de mapeamento a definir (ADR-R018).
+O relatório é gravado em `analysis/metrics/metrics_<rodada>.json`. Nesta versão, a métrica considera apenas a detecção de violação (variante com ou sem violação); o casamento do tipo previsto com a subcategoria ainda depende de um procedimento de mapeamento a definir (ADR-R018).
 
 Interprete os números somente depois de verificar se todas as respostas esperadas foram normalizadas e se resultados inválidos foram registrados.
 
@@ -242,9 +241,9 @@ python3 scripts/generate_dataset_csv.py
 Para executar também o experimento real e a análise:
 
 ```bash
-python3 scripts/run_experiment.py --experiment final
+python3 scripts/run_experiment.py --round round_02
 python3 scripts/normalize_results.py
-python3 scripts/calculate_metrics.py --experiment final
+python3 scripts/calculate_metrics.py --round round_02
 ```
 
 ## Quando adicionar ou modificar uma sample

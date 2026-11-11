@@ -1,0 +1,19 @@
+{
+  "experiment_id": "EXP_PILOT_001",
+  "round": "round_01",
+  "case_id": "INT_010_accessible",
+  "sample_id": "INT_010",
+  "variant": "accessible",
+  "category": "interaction",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "prompt": "P0",
+  "run": 1,
+  "status": "ok",
+  "valid": true,
+  "predicted_has_violation": false,
+  "predicted_violations": [],
+  "predicted_confidences": [],
+  "predicted_severities": [],
+  "predicted_count": 0
+}

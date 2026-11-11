@@ -391,8 +391,8 @@ Não edite esses arquivos manualmente. Se houver um erro, corrija o `metadata.js
 
 Se a amostra fizer parte do ciclo experimental atual:
 
-1. confirme que `experiments/final/config.yaml` usa os prompts e o número de repetições desejados;
-2. verifique se o dataset está congelado antes da execução final;
+1. crie a configuração da nova rodada em `experiments/round_NN/config.yaml`, com os prompts e o número de repetições desejados;
+2. verifique se o dataset está congelado antes de executar a rodada;
 3. execute o experimento somente depois de revisar a amostra;
 4. mantenha as respostas brutas em `results/raw/`;
 5. normalize os resultados com `python3 scripts/normalize_results.py`;
