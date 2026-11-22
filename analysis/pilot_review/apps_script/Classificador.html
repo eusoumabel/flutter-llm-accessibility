@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html>
+<head>
+<base target="_top">
+<meta charset="utf-8">
+<style>
+  :root {
+    --bg: #f4f6f7; --panel: #ffffff; --fg: #1d2429; --muted: #5d6971; --line: #dce2e6;
+    --accent: #1f5f73; --accent-soft: #e3eef2;
+    --hl: #fff1c2; --hl-line: #e0b84a;
+    --gt: #2d6a3e; --gt-bg: #e8f3ea; --model: #8a4b12; --model-bg: #fbefe2;
+    --ok: #2d6a3e; --ok-bg: #e2f0e5; --warn: #8a5a12; --warn-bg: #f7ecd6; --err: #a3262a; --err-bg: #f9e2e2;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body { background: var(--bg); color: var(--fg); font: 14px/1.55 -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+  button, select, textarea { font: inherit; color: inherit; }
+  button { cursor: pointer; border: 1px solid var(--line); background: var(--panel); border-radius: 8px; padding: 7px 14px; }
+  button:hover:not(:disabled) { border-color: var(--accent); }
+  button:focus-visible, select:focus-visible, textarea:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  button.primary { background: var(--accent); color: #fff; border-color: var(--accent); font-weight: 600; }
+  button.link { border: 0; background: none; padding: 0; color: var(--accent); text-decoration: underline; }
+  button:disabled { opacity: .45; cursor: default; }
+
+  .wrap { max-width: 920px; margin: 0 auto; padding: 16px; display: grid; gap: 12px; }
+
+  /* Barra de localização */
+  .top { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 12px 16px; display: grid; gap: 10px; }
+  .who { font-size: 12.5px; color: var(--muted); }
+  .who b { color: var(--fg); }
+  .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: 15px; }
+  .crumbs .sep { color: var(--muted); }
+  .crumbs b { font-weight: 650; }
+  .crumbs .muted { color: var(--muted); }
+  .toprow { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; justify-content: space-between; }
+  .progress { flex: 1; min-width: 200px; display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 12.5px; }
+  .bar { flex: 1; height: 6px; background: var(--line); border-radius: 3px; overflow: hidden; }
+  .bar i { display: block; height: 100%; background: var(--accent); }
+  .varpick { display: flex; gap: 6px; align-items: center; font-size: 12.5px; color: var(--muted); }
+  .varpick select { padding: 4px 6px; border: 1px solid var(--line); border-radius: 6px; background: var(--panel); max-width: 300px; }
+
+  /* Navegador de respostas e alertas */
+  .navr { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; font-size: 13px; }
+  .navr .grp { display: flex; align-items: center; gap: 4px; }
+  .navr .grp > span { font-weight: 600; min-width: 14px; }
+  .dot { width: 22px; height: 22px; padding: 0; border-radius: 50%; font-size: 11px; line-height: 20px; text-align: center; }
+  .dot.done { background: var(--ok-bg); border-color: var(--ok); color: var(--ok); }
+  .dot.dirty { background: var(--warn-bg); border-color: var(--warn); color: var(--warn); }
+  .dot.current { box-shadow: 0 0 0 2px var(--accent); font-weight: 700; }
+
+  .intro { background: var(--accent-soft); border-radius: 8px; padding: 8px 12px; font-size: 13.5px; }
+
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px; }
+  .card > h2 { margin: 0 0 10px; font-size: 12px; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); }
+
+  /* Gabarito x modelo */
+  .versus { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .side { border-radius: 8px; padding: 10px 12px; min-width: 0; }
+  .side h3 { margin: 0 0 4px; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; }
+  .side.gt { background: var(--gt-bg); } .side.gt h3 { color: var(--gt); }
+  .side.model { background: var(--model-bg); } .side.model h3 { color: var(--model); }
+  .side .big { font-size: 15.5px; font-weight: 650; margin: 0 0 4px; }
+  .side p { margin: 4px 0 0; white-space: pre-wrap; }
+  .side pre { margin: 6px 0 0; font: 12px/1.5 var(--mono); white-space: pre-wrap; background: rgba(255,255,255,.7); padding: 6px 8px; border-radius: 6px; }
+  .side .meta { color: var(--muted); font-size: 12.5px; }
+
+  /* Perguntas */
+  .q { margin: 0 0 14px; }
+  .q .qt { font-size: 16px; font-weight: 650; margin: 0; }
+  .q .qh { color: var(--muted); margin: 2px 0 8px; font-size: 13px; }
+  .q .opts { display: flex; gap: 8px; flex-wrap: wrap; }
+  .q .opts button { padding: 8px 16px; }
+  .q .opts button.chosen { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .q.past .qt { font-size: 14px; color: var(--muted); font-weight: 500; }
+  .q.past .opts button { padding: 3px 10px; font-size: 12.5px; }
+  .tip { background: var(--warn-bg); color: var(--warn); padding: 8px 12px; border-radius: 8px; margin: 0 0 14px; }
+
+  .result { border: 2px solid var(--accent); border-radius: 10px; padding: 12px 14px; display: grid; gap: 10px; }
+  .result .cls { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px; }
+  .result .cls b { font-size: 18px; color: var(--accent); }
+  .choices { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 6px; }
+  .choice { text-align: left; padding: 7px 10px; }
+  .choice b { display: block; }
+  .choice span { display: block; font-size: 12px; color: var(--muted); line-height: 1.35; }
+  .choice.sel { background: var(--accent-soft); border-color: var(--accent); }
+  .field > label { display: block; font-weight: 600; margin-bottom: 4px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip { border-radius: 999px; padding: 4px 12px; font-size: 13px; }
+  .chip.sel { background: var(--accent-soft); border-color: var(--accent); font-weight: 600; }
+  textarea { width: 100%; min-height: 70px; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; resize: vertical; background: var(--panel); }
+  select.full { width: 100%; padding: 7px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); }
+
+  .actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-top: 14px; }
+  .actions .grow { flex: 1; }
+  .hint { color: var(--muted); font-size: 12px; }
+  kbd { font: 11px var(--mono); border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 4px; padding: 0 4px; background: var(--panel); }
+  .msg { padding: 8px 12px; border-radius: 8px; margin-top: 10px; }
+  .msg.err { background: var(--err-bg); color: var(--err); }
+  .msg.ok { background: var(--ok-bg); color: var(--ok); }
+  .msg:empty { display: none; }
+
+  /* Código */
+  details.codebox > summary { cursor: pointer; font-weight: 600; list-style: none; display: flex; align-items: baseline; gap: 4px 12px; flex-wrap: wrap; }
+  details.codebox > summary .legend { margin-left: auto; }
+  details.codebox > summary::-webkit-details-marker { display: none; }
+  details.codebox > summary::before { content: "▸ "; }
+  details.codebox[open] > summary::before { content: "▾ "; }
+  .legend { font-weight: 400; color: var(--muted); font-size: 12.5px; }
+  .legend i { display: inline-block; width: 10px; height: 10px; background: var(--hl); border-left: 3px solid var(--hl-line); margin-right: 4px; vertical-align: -1px; }
+  .code { margin-top: 10px; font: 12px/1.6 var(--mono); border: 1px solid var(--line); border-radius: 8px; overflow: auto; max-height: 380px; }
+  .code .ln { display: grid; grid-template-columns: 40px 1fr; }
+  .code .ln span:first-child { color: var(--muted); text-align: right; padding-right: 10px; user-select: none; }
+  .code .ln span:last-child { white-space: pre; padding-right: 12px; }
+  .code .ln.hl { background: var(--hl); box-shadow: inset 3px 0 0 var(--hl-line); }
+  .extra { margin-top: 10px; display: grid; gap: 6px; }
+  .extra details summary { cursor: pointer; color: var(--muted); font-size: 13px; }
+  .extra details div { white-space: pre-wrap; margin: 4px 0 0 14px; font-size: 13px; }
+
+  /* Referência das subcategorias */
+  details.ref { margin-top: 12px; border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; }
+  details.ref > summary { cursor: pointer; font-weight: 600; color: var(--accent); }
+  table.ref { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 6px; }
+  table.ref td { padding: 5px 6px; border-top: 1px solid var(--line); vertical-align: top; }
+  table.ref td:first-child { font-family: var(--mono); font-weight: 600; white-space: nowrap; }
+  table.ref td:nth-child(2) { font-weight: 600; white-space: nowrap; }
+  table.ref tr.group td { border-top: 0; padding-top: 10px; color: var(--muted); font: 600 11.5px/1.4 inherit; letter-spacing: .06em; text-transform: uppercase; font-family: inherit; }
+
+  .loading { padding: 40px; text-align: center; color: var(--muted); }
+
+  @media (max-width: 640px) { .versus { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="wrap" id="app"><div class="loading">Carregando a planilha…</div></div>
+
+<script>
+const S = { data: null, vi: 0, ii: 0, showAll: false, finished: false };
+
+const LABELS = {
+  'FP-GT':     'O modelo tem razão: o problema está na taxonomia e o gabarito errou.',
+  'FP-FORA':   'Problema real, mas fora do escopo SEM/INT.',
+  'FP-SUG':    'Só uma recomendação de boa prática.',
+  'FP-FALSO':  'O que o modelo afirma é falso.',
+};
+
+const TREE = {
+  fp: {
+    q1: { text: 'O que o modelo afirma é verdade neste código?', help: 'O trecho existe? O widget se comporta como ele diz?',
+          opts: [['Sim', 'q2'], ['Não', '=FP-FALSO'], ['Não sei', '?q2']] },
+    q2: { text: 'É uma barreira real para quem usa leitor de tela ou tem dificuldade motora?', help: 'Ou é só uma recomendação do tipo "considere…", "seria melhor…"?',
+          opts: [['Barreira real', 'q3'], ['Só sugestão', '=FP-SUG']] },
+    q3: { text: 'Essa barreira se encaixa em alguma subcategoria SEM-01 a INT-03?', help: 'Mesmos critérios da anotação (diretrizes e ADRs R003, R004, R013, R015, R016). Fora do escopo: contraste, foco, idioma, tamanho visual do ícone.',
+          opts: [['Sim', '=FP-GT'], ['Não', '=FP-FORA']] },
+  },
+};
+
+function h(tag, props, ...kids) {
+  const el = document.createElement(tag);
+  Object.entries(props || {}).forEach(([k, v]) => {
+    if (v == null || v === false) return;
+    if (k === 'class') el.className = v;
+    else if (k.startsWith('on')) el.addEventListener(k.slice(2), v);
+    else el.setAttribute(k, v === true ? '' : v);
+  });
+  kids.flat().forEach((c) => { if (c != null && c !== false) el.append(c.nodeType ? c : document.createTextNode(String(c))); });
+  return el;
+}
+
+const V = () => S.data.variantes[S.vi];
+const I = () => V().itens[S.ii];
+const saved = (it) => !!it.classificacao;
+const dirty = (it) => !!it._d && ['classificacao', 'subcategoria', 'evidencia', 'justificativa'].some((k) => (it._d[k] || '') !== (it[k] || ''));
+const variantDone = (v) => v.itens.every(saved);
+const allSaved = (v) => v.itens.every((x) => saved(x) && !dirty(x));
+const errorsOf = (v) => parseInt(v.respostas_com_erro, 10) || 0;
+
+function draft(it) {
+  if (!it._d) it._d = { classificacao: it.classificacao || '', subcategoria: it.subcategoria || '', evidencia: it.evidencia || '', justificativa: it.justificativa || '', path: [] };
+  return it._d;
+}
+
+function order() {
+  return S.data.variantes.map((_, i) => i).sort((a, b) => {
+    const va = S.data.variantes[a], vb = S.data.variantes[b];
+    return errorsOf(vb) - errorsOf(va) || (va.sample_id + va.variant).localeCompare(vb.sample_id + vb.variant);
+  });
+}
+
+function groups(v) {
+  const out = [];
+  v.itens.forEach((it, k) => {
+    let g = out.find((x) => x.resposta === it.resposta);
+    if (!g) out.push(g = { resposta: it.resposta, idx: [] });
+    g.idx.push(k);
+  });
+  return out;
+}
+
+/* ---------- Código ---------- */
+function parseCode(text) {
+  return String(text || '').split('\n').map((line) => {
+    const m = line.match(/^\s*(\d+) {2}(.*)$/);
+    return m ? [Number(m[1]), m[2]] : [null, line];
+  });
+}
+const compact = (s) => String(s || '').replace(/\s+/g, '');
+
+function highlighted(lines, it) {
+  const set = new Set();
+  if (!it) return set;
+  // A line is marked when it is part of the quoted snippet, or when it contains a
+  // fragment of it (models often quote only part of a line, or join pieces with " / ").
+  const target = compact(it.trecho_afetado);
+  const pieces = String(it.trecho_afetado || '').split(/\n|\s\/\s|\.\.\.|…/).map(compact).filter((p) => p.length >= 6);
+  lines.forEach(([n, src]) => {
+    const c = compact(src);
+    if (n && c.length >= 6 && (target.includes(c) || pieces.some((p) => c.includes(p)))) set.add(n);
+  });
+  return set;
+}
+
+function codeCard(v, it) {
+  const lines = parseCode(v.codigo.codigo);
+  const hl = highlighted(lines, it);
+  const box = h('div', { class: 'code' }, lines.map(([n, src]) =>
+    h('div', { class: 'ln' + (hl.has(n) ? ' hl' : '') }, h('span', {}, n == null ? '' : n), h('span', {}, src))));
+  const det = h('details', { class: 'codebox', open: true },
+    h('summary', {}, 'Código da variante',
+      it ? h('span', { class: 'legend' }, h('i'), 'Em amarelo: trecho citado pelo modelo' + (hl.size ? '' : ' (o modelo descreveu sem citar o código)')) : null),
+    box,
+    h('div', { class: 'extra' },
+      h('details', {}, h('summary', {}, 'Outras variantes desta amostra'), h('div', {}, v.codigo.outras_variantes || '–')),
+      v.codigo.nota_anotacao ? h('details', {}, h('summary', {}, 'Nota da anotação'), h('div', {}, v.codigo.nota_anotacao)) : null));
+  setTimeout(() => { const first = box.querySelector('.ln.hl'); if (first) box.scrollTop = Math.max(0, first.offsetTop - 60); }, 0);
+  return h('div', { class: 'card' }, det);
+}
+
+/* ---------- Topo ---------- */
+function topBar() {
+  const v = V(), ord = order(), pos = ord.indexOf(S.vi) + 1;
+  const all = S.data.variantes.flatMap((x) => x.itens);
+  const nSaved = all.filter(saved).length;
+  const nDirty = all.filter(dirty).length;
+  const closedVars = S.data.variantes.filter(variantDone).length;
+
+  const it = I();
+  const g = groups(v);
+  const crumbs = h('div', { class: 'crumbs' },
+    h('span', { class: 'muted' }, 'Variante ' + pos + ' de ' + ord.length), h('span', { class: 'sep' }, '›'),
+    h('b', {}, v.sample_id + ' · ' + v.variant), h('span', { class: 'sep' }, '›'),
+    h('b', {}, 'Resposta ' + it.resposta),
+    h('span', { class: 'muted' }, '(alerta ' + it.n_violacao + ' de ' + g.find((x) => x.resposta === it.resposta).idx.length + ')'));
+
+  const sel = h('select', { 'aria-label': 'Trocar de variante', onchange: (e) => goVariant(Number(e.target.value)) },
+    ord.map((i, k) => {
+      const x = S.data.variantes[i];
+      const mark = variantDone(x) ? '✓' : x.itens.some(saved) ? '◐' : '○';
+      return h('option', { value: i, selected: i === S.vi }, mark + ' ' + (k + 1) + '. ' + x.sample_id + ' · ' + x.variant + ' (' + x.itens.length + ' itens)');
+    }));
+
+  const navr = h('div', { class: 'navr' },
+    g.map((grp) => h('div', { class: 'grp' }, h('span', {}, grp.resposta),
+      grp.idx.map((k) => {
+        const x = v.itens[k];
+        return h('button', {
+          class: 'dot' + (dirty(x) ? ' dirty' : saved(x) ? ' done' : '') + (k === S.ii ? ' current' : ''),
+          title: 'Resposta ' + x.resposta + ', alerta ' + x.n_violacao + (saved(x) ? ' · ' + x.classificacao : ' · pendente'),
+          onclick: () => { S.ii = k; S.showAll = false; render(); },
+        }, x.n_violacao);
+      }))));
+
+  return h('div', { class: 'top' },
+    h('div', { class: 'who' }, 'Revisando como ', h('b', {}, S.data.revisor), ' · suas respostas ficam na aba "' + S.data.abas.itens + '"'),
+    crumbs,
+    navr,
+    h('div', { class: 'toprow' },
+      h('div', { class: 'progress' }, h('div', { class: 'bar' }, h('i', { style: 'width:' + (100 * nSaved / all.length).toFixed(1) + '%' })),
+        h('span', {}, nSaved + '/' + all.length + ' itens · ' + closedVars + '/' + S.data.variantes.length + ' variantes concluídas' + (nDirty ? ' · ' + nDirty + ' não salvo(s)' : ''))),
+      h('label', { class: 'varpick' }, 'Ir para', sel)));
+}
+
+function introLine(v) {
+  const n = v.itens.length, r = groups(v).length;
+  return h('div', { class: 'intro' },
+    'Pelo gabarito, este código está acessível. Mesmo assim, ' + v.respostas_com_erro + ' respostas apontaram problemas: ' + n + ' alerta(s) ao todo, em ' + r + ' resposta(s). Você vai julgar cada alerta separadamente.');
+}
+
+/* ---------- Tela de um item ---------- */
+function versus(v, it) {
+  const gtSide = h('div', { class: 'side gt' }, h('h3', {}, 'O gabarito diz'),
+    h('p', { class: 'big' }, 'Sem violação'),
+    h('p', { class: 'meta' }, v.codigo.categoria + ' · ' + v.codigo.subcategoria),
+    v.codigo.outras_variantes && v.codigo.outras_variantes !== '-'
+      ? [h('p', { class: 'meta', style: 'margin-top:10px' }, 'Para comparar, a outra versão desta amostra:'), h('p', {}, v.codigo.outras_variantes)]
+      : null);
+  const modelSide = h('div', { class: 'side model' }, h('h3', {}, 'O modelo diz (resposta ' + it.resposta + ')'),
+    h('p', { class: 'big' }, it.tipo_modelo || 'Problema sem nome'),
+    h('p', {}, it.explicacao || '–'),
+    it.trecho_afetado ? h('pre', {}, it.trecho_afetado) : null,
+    h('p', { class: 'meta' }, 'Confiança declarada: ' + (it.confianca_modelo || '–')));
+  return h('div', { class: 'card' }, h('h2', {}, 'O caso'), h('div', { class: 'versus' }, gtSide, modelSide));
+}
+
+function subcatRef(open) {
+  const rows = [];
+  S.data.subcategorias.forEach(([code, name, desc], k) => {
+    const prev = k > 0 ? S.data.subcategorias[k - 1][0].slice(0, 3) : '';
+    if (code.slice(0, 3) !== prev) rows.push(h('tr', { class: 'group' }, h('td', { colspan: 3 }, code.startsWith('SEM') ? 'Semântica (SEM)' : 'Interação (INT)')));
+    rows.push(h('tr', {}, h('td', {}, code), h('td', {}, name), h('td', {}, desc || '')));
+  });
+  return h('details', { class: 'ref', open: open || null },
+    h('summary', {}, 'Subcategorias da taxonomia (SEM e INT)'),
+    h('table', { class: 'ref' }, h('tbody', {}, rows)));
+}
+
+// The reference opens by itself on the question that asks whether the problem fits the taxonomy.
+function isTaxonomyStep(it, d) {
+  return d.path[0] != null && TREE.fp.q1.opts[d.path[0]][1].replace('?', '') === 'q2' && d.path[1] === 0 && d.path[2] == null;
+}
+
+function questions(it, d) {
+  const tree = TREE[it.aba];
+  const box = h('div', {});
+  let qid = 'q1', step = 0;
+  while (qid) {
+    const q = tree[qid];
+    const answered = d.path[step];
+    const thisStep = step;
+    box.append(h('div', { class: 'q' + (answered != null ? ' past' : '') },
+      h('p', { class: 'qt' }, q.text),
+      answered == null ? h('p', { class: 'qh' }, q.help) : null,
+      h('div', { class: 'opts' }, q.opts.map(([label, next], k) =>
+        h('button', { class: answered === k ? 'chosen' : '', onclick: () => {
+          d.path = d.path.slice(0, thisStep).concat(k);
+          d.classificacao = next.startsWith('=') ? next.slice(1) : '';
+          if (next.startsWith('?') && !/^DÚVIDA/i.test(d.justificativa)) d.justificativa = 'DÚVIDA: ' + d.justificativa;
+          render(true);
+        } }, label)))));
+    if (answered == null) break;
+    const next = q.opts[answered][1];
+    if (next.startsWith('?')) box.append(h('div', { class: 'tip' }, 'Marquei "DÚVIDA:" na justificativa. Siga com a melhor hipótese; essas linhas serão discutidas no final.'));
+    if (next.startsWith('=')) break;
+    qid = next.replace('?', ''); step++;
+  }
+  return box;
+}
+
+function resultBox(it, d) {
+  const classes = S.data.classes[it.aba];
+  const sub = d.classificacao === 'FP-GT'
+    ? h('div', { class: 'field' }, h('label', { for: 'sub' }, 'Qual subcategoria faltou no gabarito?'),
+        h('select', { class: 'full', id: 'sub', onchange: (e) => { d.subcategoria = e.target.value; render(true); } },
+          h('option', { value: '' }, 'Escolha…'),
+          S.data.subcategorias.map(([code, name]) => h('option', { value: code, selected: d.subcategoria === code }, code + ' · ' + name))))
+    : null;
+
+  const evid = h('div', { class: 'field' }, h('label', {}, 'Em que você se baseou?'),
+    h('div', { class: 'chips' }, S.data.evidencias.map((e) =>
+      h('button', { class: 'chip' + (d.evidencia === e ? ' sel' : ''), onclick: () => { d.evidencia = e; render(true); } }, e))));
+
+  const just = h('textarea', { id: 'just', placeholder: 'Uma ou duas frases, citando a linha e o critério. Ex.: "Linha 14: o IconButton mantém o alvo de 48 dp; o alerta fala do tamanho visual do ícone."' });
+  just.value = d.justificativa;
+  just.addEventListener('input', () => { d.justificativa = just.value; });
+
+  const all = h('div', { class: 'choices' }, classes.map((c, k) =>
+    h('button', { class: 'choice' + (d.classificacao === c ? ' sel' : ''), title: 'Atalho: tecla ' + (k + 1),
+      onclick: () => { d.classificacao = c; S.showAll = false; render(true); } },
+      h('b', {}, (k + 1) + ' · ' + c), h('span', {}, LABELS[c]))));
+
+  return h('div', { class: 'result' },
+    d.classificacao
+      ? h('div', { class: 'cls' }, h('span', {}, 'Classe:'), h('b', {}, d.classificacao), h('span', {}, LABELS[d.classificacao]),
+          h('button', { class: 'link', onclick: () => { S.showAll = !S.showAll; render(true); } }, S.showAll ? 'esconder opções' : 'trocar classe'))
+      : h('div', { class: 'cls' }, h('span', {}, 'Responda às perguntas acima, ou'),
+          h('button', { class: 'link', onclick: () => { S.showAll = !S.showAll; render(true); } }, 'escolha a classe direto')),
+    S.showAll ? all : null,
+    sub, evid,
+    h('div', { class: 'field' }, h('label', { for: 'just' }, 'Justificativa'), just));
+}
+
+function itemScreen(v, it) {
+  const d = draft(it);
+  const isLast = v.itens.every((x, k) => k === S.ii || saved(x));
+  return [
+    versus(v, it),
+    h('div', { class: 'card' }, h('h2', {}, 'Sua decisão'),
+      questions(it, d),
+      isTaxonomyStep(it, d) ? subcatRef(true) : null,
+      resultBox(it, d),
+      isTaxonomyStep(it, d) ? null : subcatRef(false),
+      h('div', { class: 'msg', id: 'msg' }),
+      h('div', { class: 'actions' },
+        h('button', { onclick: () => moveItem(-1), disabled: S.ii === 0 }, '← Anterior'),
+        h('span', { class: 'grow hint' }, h('kbd', {}, '⌘/Ctrl'), ' + ', h('kbd', {}, 'Enter'), ' salva'),
+        h('button', { class: 'primary', id: 'saveBtn', onclick: saveItem }, isLast ? 'Salvar e ir para a próxima variante →' : 'Salvar e ir para o próximo →'))),
+    codeCard(v, it),
+  ];
+}
+
+function finishedCard() {
+  return h('div', { class: 'msg ok' }, 'Você classificou todos os itens. Revisão concluída! Ainda dá para rever qualquer item pela lista "Ir para".');
+}
+
+/* ---------- Render e ações ---------- */
+function render(keepScroll) {
+  const y = window.scrollY;
+  const v = V();
+  const app = document.getElementById('app');
+  app.replaceChildren(...(S.finished ? [finishedCard()] : []), topBar(), introLine(v), ...itemScreen(v, I()));
+  window.scrollTo(0, keepScroll ? y : 0);
+}
+
+function showMsg(id, kind, text) { const el = document.getElementById(id); if (el) { el.className = 'msg ' + kind; el.textContent = text; } }
+
+function moveItem(step) {
+  const n = V().itens.length;
+  S.ii = Math.max(0, Math.min(n - 1, S.ii + step)); S.showAll = false; render();
+}
+
+function goVariant(i) {
+  S.vi = i; S.showAll = false;
+  const v = V();
+  const pending = v.itens.findIndex((x) => !saved(x));
+  S.ii = Math.max(0, pending);
+  render();
+}
+
+function saveItem() {
+  const v = V(), it = I(), d = draft(it);
+  if (!d.classificacao) return showMsg('msg', 'err', 'Falta a classe: responda às perguntas ou escolha direto.');
+  if (d.classificacao === 'FP-GT' && !d.subcategoria) return showMsg('msg', 'err', 'Para FP-GT, escolha a subcategoria que faltou no gabarito.');
+  if (!d.evidencia) return showMsg('msg', 'err', 'Falta dizer em que você se baseou.');
+  if (!d.justificativa.trim()) return showMsg('msg', 'err', 'Falta a justificativa (uma ou duas frases).');
+  const btn = document.getElementById('saveBtn'); btn.disabled = true; btn.textContent = 'Salvando…';
+  const payload = { aba: it.aba, resposta: it.resposta, n_violacao: it.n_violacao, classificacao: d.classificacao, subcategoria: d.subcategoria, evidencia: d.evidencia, justificativa: d.justificativa.trim() };
+  google.script.run
+    .withSuccessHandler(() => {
+      Object.assign(it, { classificacao: payload.classificacao, subcategoria: payload.classificacao === 'FP-GT' ? payload.subcategoria : '', evidencia: payload.evidencia, justificativa: payload.justificativa });
+      it._d = null; S.showAll = false;
+      const after = v.itens.findIndex((x, k) => k > S.ii && !saved(x));
+      const any = after >= 0 ? after : v.itens.findIndex((x) => !saved(x));
+      if (any >= 0) { S.ii = any; render(); return; }
+      const ord = order(), pos = ord.indexOf(S.vi);
+      const next = ord.slice(pos + 1).concat(ord.slice(0, pos)).find((k) => !variantDone(S.data.variantes[k]));
+      if (next == null) { S.finished = true; render(); return; }
+      goVariant(next);
+    })
+    .withFailureHandler((e) => { btn.disabled = false; btn.textContent = 'Tentar salvar de novo'; showMsg('msg', 'err', 'Não salvou: ' + e.message); })
+    .salvarItem(v.sample_id, v.variant, payload);
+}
+
+document.addEventListener('keydown', (e) => {
+  if (!S.data) return;
+  if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') { e.preventDefault(); saveItem(); return; }
+  const typing = ['TEXTAREA', 'INPUT', 'SELECT'].includes(document.activeElement.tagName);
+  if (typing) return;
+  const it = I();
+  if (/^[1-4]$/.test(e.key)) {
+    const c = S.data.classes[it.aba][Number(e.key) - 1];
+    if (c) { draft(it).classificacao = c; render(true); }
+  }
+});
+
+function fail(e) {
+  document.getElementById('app').replaceChildren(h('div', { class: 'msg err' }, 'Não consegui ler a planilha: ' + e.message));
+}
+
+function start(data) {
+  if (data.precisaNome) return askName();
+  S.data = data;
+  const ord = order();
+  const first = ord.find((i) => !variantDone(data.variantes[i]));
+  goVariant(first != null ? first : ord[0]);
+}
+
+// Shown only when Google does not report the reviewer's e-mail.
+function askName() {
+  const input = h('textarea', { id: 'nome', rows: 1, style: 'min-height:0', placeholder: 'Ex.: Mabel' });
+  const msg = h('div', { class: 'msg', id: 'msgNome' });
+  const send = () => {
+    msg.className = 'msg'; msg.textContent = '';
+    google.script.run.withSuccessHandler(start)
+      .withFailureHandler((e) => { msg.className = 'msg err'; msg.textContent = e.message; })
+      .definirRevisor(input.value);
+  };
+  document.getElementById('app').replaceChildren(h('div', { class: 'card' },
+    h('h2', {}, 'Quem está revisando?'),
+    h('p', {}, 'O Google não informou o e-mail desta conta. Digite seu nome; suas classificações ficam numa aba só sua, e você só vê as suas.'),
+    input, msg, h('div', { class: 'actions' }, h('span', { class: 'grow' }), h('button', { class: 'primary', onclick: send }, 'Começar'))));
+  input.focus();
+}
+
+google.script.run.withSuccessHandler(start).withFailureHandler(fail).carregarDados();
+</script>
+</body>
+</html>
