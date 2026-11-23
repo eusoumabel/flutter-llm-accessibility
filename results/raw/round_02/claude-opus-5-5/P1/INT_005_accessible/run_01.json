@@ -1,0 +1,35 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "INT_005_accessible",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "round": "round_02",
+  "prompt": "P1",
+  "prompt_file": "prompts/v2/P1_guidelines.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:41:36.145714+00:00",
+  "request": {
+    "sample_id": "INT_005",
+    "variant": "accessible",
+    "category": "interaction",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": []
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 1729,
+    "completion_tokens": 10,
+    "total_tokens": 1739
+  },
+  "latency_ms": 1514,
+  "request_id": "req_011ChJvvZ9oiJRwrYL3CuA76"
+}

@@ -1,0 +1,25 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "round": "round_02",
+  "case_id": "INT_009_accessible",
+  "sample_id": "INT_009",
+  "variant": "accessible",
+  "category": "interaction",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "prompt": "P0",
+  "run": 1,
+  "status": "ok",
+  "valid": true,
+  "predicted_has_violation": true,
+  "predicted_violations": [
+    "Ícone de reprodução com baixo contraste potencial sobre imagem"
+  ],
+  "predicted_confidences": [
+    "medium"
+  ],
+  "predicted_severities": [
+    "low"
+  ],
+  "predicted_count": 1
+}

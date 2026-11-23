@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_032_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P1",
+  "prompt_file": "prompts/v2/P1_guidelines.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T01:14:50.464528+00:00",
+  "request": {
+    "sample_id": "SEM_032",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing semantic state",
+        "affected_code": "IconButton(icon: colorSelected.color == ColorSeed.values[i].color && colorSelectionMethod == ColorSelectionMethod.colorSeed ? const Icon(Icons.circle) : const Icon(Icons.radio_button_unchecked),color: ColorSeed.values[i].color,onPressed: () {handleColorSelect(i);},tooltip: ColorSeed.values[i].label,)",
+        "explanation": "O estado de seleção (marcado/desmarcado) de cada opção de cor não é exposto semanticamente. Embora o ícone mude visualmente, tecnologias assistivas não recebem informações sobre qual cor está atualmente selecionada.",
+        "confidence": "high",
+        "severity": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 869,
+    "completion_tokens": 156,
+    "thinking_tokens": 1345,
+    "total_tokens": 2370
+  },
+  "latency_ms": 7470
+}

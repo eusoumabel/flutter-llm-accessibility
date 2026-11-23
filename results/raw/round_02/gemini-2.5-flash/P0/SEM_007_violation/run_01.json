@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_007_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T01:11:47.615253+00:00",
+  "request": {
+    "sample_id": "SEM_007",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Elemento Interativo Não Semântico e Inacessível por Teclado",
+        "affected_code": "    return GestureDetector(\n      onTap: onPressed,\n      child: Container(\n        constraints: const BoxConstraints(minHeight: 48, minWidth: 120),\n        alignment: Alignment.center,\n        padding: const EdgeInsets.symmetric(horizontal: 24),\n        decoration: BoxDecoration(\n          color: colors.primary,\n          borderRadius: BorderRadius.circular(24),\n        ),\n        child: Text('Continue', style: TextStyle(color: colors.onPrimary)),\n      ),\n    );",
+        "explanation": "O uso de `GestureDetector` para criar um botão interativo não fornece automaticamente as informações semânticas necessárias para tecnologias assistivas (como leitores de tela) identificarem o elemento como um botão. Mais criticamente, não há suporte nativo para navegação por teclado ou ativação, impedindo que usuários que dependem do teclado interajam com este componente, tornando-o inacessível para eles.",
+        "confidence": "high",
+        "severity": "critical"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 345,
+    "completion_tokens": 240,
+    "thinking_tokens": 2025,
+    "total_tokens": 2610
+  },
+  "latency_ms": 11935
+}

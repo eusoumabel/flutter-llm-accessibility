@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "INT_004_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P1",
+  "prompt_file": "prompts/v2/P1_guidelines.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:53:40.124786+00:00",
+  "request": {
+    "sample_id": "INT_004",
+    "variant": "violation",
+    "category": "interaction",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Inaccessible custom gesture",
+        "affected_code": "GestureDetector(onDoubleTap: onToggleLike,child: Image(image: photo,semanticLabel: 'Photo by $author',fit: BoxFit.cover,),)",
+        "explanation": "A interação de toque duplo (onDoubleTap) não possui um equivalente acessível para usuários de tecnologias assistivas. Isso impede que usuários que não podem realizar o gesto de toque duplo ativem a funcionalidade de curtir/descurtir a foto.",
+        "confidence": "high",
+        "severity": "critical"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 662,
+    "completion_tokens": 114,
+    "thinking_tokens": 1010,
+    "total_tokens": 1786
+  },
+  "latency_ms": 5763
+}

@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "INT_007_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P1",
+  "prompt_file": "prompts/v2/P1_guidelines.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:29:54.619241+00:00",
+  "request": {
+    "sample_id": "INT_007",
+    "variant": "violation",
+    "category": "interaction",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing accessible label",
+        "affected_code": "Semantics(button: true,label: 'Order $orderNumber, $status',excludeSemantics: true,child: GestureDetector(behavior: HitTestBehavior.opaque,onTap: onOpen,child: Card(child: Padding(padding: const EdgeInsets.all(16),child: Column(crossAxisAlignment: CrossAxisAlignment.start,children: [Text('Order #$orderNumber',style: Theme.of(context).textTheme.titleMedium,),const SizedBox(height: 4),Text(status),]))),),)",
+        "explanation": "O widget Semantics está usando excludeSemantics: true, o que impede que o conteúdo textual ('Order #$orderNumber' e '$status') seja exposto individualmente aos serviços de acessibilidade. Embora o Semantics pai forneça um rótulo consolidado, a exclusão impede que usuários de tecnologias assistivas acessem as informações de forma mais granular, o que pode ser útil para entender detalhes específicos do pedido.",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 694,
+    "completion_tokens": 224,
+    "thinking_tokens": 4293,
+    "total_tokens": 5211
+  },
+  "latency_ms": 19788
+}

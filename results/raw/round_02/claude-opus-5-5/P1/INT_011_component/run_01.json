@@ -1,0 +1,43 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "INT_011_component",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "round": "round_02",
+  "prompt": "P1",
+  "prompt_file": "prompts/v2/P1_guidelines.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:38:49.039217+00:00",
+  "request": {
+    "sample_id": "INT_011",
+    "variant": "component",
+    "category": "interaction",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing accessible label",
+        "affected_code": "tooltip: tooltip,",
+        "explanation": "O tooltip é opcional (String?) e o ícone é um Widget genérico; quando tooltip não é fornecido, o IconButton não expõe nenhum rótulo acessível, e leitores de tela anunciam apenas 'botão' sem indicar sua finalidade.",
+        "confidence": "medium",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 1574,
+    "completion_tokens": 153,
+    "total_tokens": 1727
+  },
+  "latency_ms": 3311,
+  "request_id": "req_011ChJvi72qsKXsJbphsnwDS"
+}

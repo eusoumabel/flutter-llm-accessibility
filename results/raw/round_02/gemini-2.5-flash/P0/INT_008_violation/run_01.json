@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "INT_008_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:32:22.676430+00:00",
+  "request": {
+    "sample_id": "INT_008",
+    "variant": "violation",
+    "category": "interaction",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Falta de ação semântica de toque/ativação por teclado",
+        "affected_code": "        child: Listener(\n          onPointerDown: (_) => setState(() => _pressed = true),\n          onPointerUp: (_) {\n            setState(() => _pressed = false);\n            widget.onSend();\n          },\n          onPointerCancel: (_) => setState(() => _pressed = false),\n          child: AnimatedScale(\n            scale: _pressed ? 0.9 : 1.0,\n            duration: const Duration(milliseconds: 100),\n            child: Container(\n              width: 56,\n              height: 56,\n              decoration: const BoxDecoration(\n                color: Colors.blue,\n                shape: BoxShape.circle,\n              ),\n              child: const Icon(Icons.send, color: Colors.white),\n            ),\n          ),\n        ),",
+        "explanation": "O widget Listener é usado para detectar eventos de ponteiro de baixo nível, mas não expõe uma ação semântica de \"toque\" (onTap) para serviços de acessibilidade. Isso significa que usuários de leitores de tela ou navegação por teclado podem não conseguir ativar o botão, mesmo que o Semantics o identifique como um botão. Para garantir a acessibilidade, deve-se usar um widget como GestureDetector ou InkWell com um callback onTap, ou um widget de botão padrão do Flutter.",
+        "confidence": "high",
+        "severity": "critical"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 459,
+    "completion_tokens": 319,
+    "thinking_tokens": 3661,
+    "total_tokens": 4439
+  },
+  "latency_ms": 17849
+}

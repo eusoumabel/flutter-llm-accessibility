@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_009_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P1",
+  "prompt_file": "prompts/v2/P1_guidelines.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:31:00.134543+00:00",
+  "request": {
+    "sample_id": "SEM_009",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Inaccessible custom control",
+        "affected_code": "GestureDetector(behavior: HitTestBehavior.opaque,onTap: onOpenTerms,child: Container(constraints: const BoxConstraints(minHeight: 48),alignment: Alignment.centerLeft,child: Text('Read the Terms of Service',style: TextStyle(color: Theme.of(context).colorScheme.primary,decoration: TextDecoration.underline,),),),)",
+        "explanation": "O GestureDetector é um controle interativo personalizado que não fornece informações semânticas equivalentes para tecnologias assistivas. Embora o texto \"Read the Terms of Service\" seja visível, o GestureDetector não expõe explicitamente um rótulo acessível ou um papel semântico (como \"botão\" ou \"link\") para indicar sua natureza interativa. Isso impede que usuários de tecnologias assistivas compreendam e operem o componente de forma eficaz.",
+        "confidence": "high",
+        "severity": "critical"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 605,
+    "completion_tokens": 197,
+    "thinking_tokens": 2070,
+    "total_tokens": 2872
+  },
+  "latency_ms": 11751
+}

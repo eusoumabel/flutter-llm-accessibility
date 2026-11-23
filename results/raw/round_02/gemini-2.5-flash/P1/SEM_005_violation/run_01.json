@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_005_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P1",
+  "prompt_file": "prompts/v2/P1_guidelines.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T01:15:18.709896+00:00",
+  "request": {
+    "sample_id": "SEM_005",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Incorrect accessible label",
+        "affected_code": "tooltip: 'Mute'",
+        "explanation": "O rótulo de acessibilidade 'Mute' está incorreto quando o botão está no estado 'mutado' (isMuted é verdadeiro), pois a ação de pressionar o botão será 'desmutar' (ativar o som). O rótulo deve refletir a ação atual do botão, mudando para 'Unmute' ou 'Ativar som' quando o som estiver desativado.",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 555,
+    "completion_tokens": 149,
+    "thinking_tokens": 1252,
+    "total_tokens": 1956
+  },
+  "latency_ms": 7238
+}

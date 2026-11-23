@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_028_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P1",
+  "prompt_file": "prompts/v2/P1_guidelines.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T01:11:11.114564+00:00",
+  "request": {
+    "sample_id": "SEM_028",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Inaccessible custom control",
+        "affected_code": "        GestureDetector(          onTap: widget.onTap,          child: Focus(            onKeyEvent: (node, event) {              if (event is KeyDownEvent || event is KeyRepeatEvent) {                if (event.logicalKey == LogicalKeyboardKey.enter ||                    event.logicalKey == LogicalKeyboardKey.space) {                  widget.onTap();                  return KeyEventResult.handled;                }              }              return KeyEventResult.ignored;            },            onFocusChange: (hasFocus) {              if (hasFocus) {                setState(() {                  borderDecoration = BoxDecoration(                    border: Border.all(                      color: Colors.white.withValues(alpha: 0.5),                      width: 2,                    ),                  );                });              } else {                setState(() {                  borderDecoration = null;                });              }            },            child: Container(              decoration: borderDecoration,              height: 120,              child: ExcludeSemantics(                child: Image(image: widget.thumb),              ),            ),          ),        )",
+        "explanation": "O componente ThumbButton é um controle interativo personalizado que utiliza GestureDetector para interações de toque e Focus para interações de teclado. No entanto, ele não fornece informações semânticas equivalentes para tecnologias assistivas. A imagem principal (Image(image: widget.thumb)) é explicitamente excluída da árvore semântica usando ExcludeSemantics, e não há um widget Semantics pai que forneça um rótulo ou função acessível para descrever o propósito do botão. Isso impede que usuários de tecnologias assistivas compreendam e operem o componente.",
+        "confidence": "high",
+        "severity": "critical"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 847,
+    "completion_tokens": 365,
+    "thinking_tokens": 2606,
+    "total_tokens": 3818
+  },
+  "latency_ms": 19287
+}

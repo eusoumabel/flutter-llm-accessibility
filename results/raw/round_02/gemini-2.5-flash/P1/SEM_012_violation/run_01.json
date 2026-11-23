@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_012_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P1",
+  "prompt_file": "prompts/v2/P1_guidelines.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:53:34.358206+00:00",
+  "request": {
+    "sample_id": "SEM_012",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing accessible label",
+        "affected_code": "Semantics(button: true, child: GestureDetector(behavior: HitTestBehavior.opaque, onTap: () => setState(() => _expanded = !_expanded), child: Container(constraints: const BoxConstraints(minHeight: 48), padding: const EdgeInsets.symmetric(horizontal: 16), child: Row(children: [Expanded(child: Text(widget.question)), Icon(_expanded ? Icons.expand_less : Icons.expand_more)]))))",
+        "explanation": "O componente interativo, que atua como um botão para expandir/recolher a resposta, não fornece um rótulo acessível que comunique de forma suficiente sua finalidade. O rótulo atual, derivado da pergunta, não informa ao usuário que o componente é um botão de alternância para mostrar ou ocultar conteúdo, nem seu estado atual (expandido/recolhido).",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 757,
+    "completion_tokens": 205,
+    "thinking_tokens": 3632,
+    "total_tokens": 4594
+  },
+  "latency_ms": 17025
+}

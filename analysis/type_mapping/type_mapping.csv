@@ -1,0 +1,428 @@
+round,model,prompt,raw_type,occurrences,subcategory,category,method
+round_01,claude-opus-5-5,P0,All-caps label readability,1,SEM-01,semantics,auto
+round_01,claude-opus-5-5,P0,Ambiguous label,1,SEM-02,semantics,auto
+round_01,claude-opus-5-5,P0,Animation does not respect reduced motion preference,1,,,out_of_scope
+round_01,claude-opus-5-5,P0,Animation without reduced motion support,1,,,out_of_scope
+round_01,claude-opus-5-5,P0,Color-only state indication / low contrast,1,SEM-04,semantics,auto
+round_01,claude-opus-5-5,P0,Color/visual-only selection indication,1,SEM-04,semantics,auto
+round_01,claude-opus-5-5,P0,Contrast not guaranteed,1,,,out_of_scope
+round_01,claude-opus-5-5,P0,Custom focus handling without semantic tap action,1,INT-03,interaction,auto
+round_01,claude-opus-5-5,P0,Desynchronized state / no feedback at limits,1,SEM-04,semantics,auto
+round_01,claude-opus-5-5,P0,Disabled state not exposed,1,SEM-04,semantics,auto
+round_01,claude-opus-5-5,P0,Drag-only interaction without accessible alternative,1,INT-02,interaction,auto
+round_01,claude-opus-5-5,P0,Drop target lacks semantic description,1,,,
+round_01,claude-opus-5-5,P0,Fixed height may clip text on large font scaling,1,,,out_of_scope
+round_01,claude-opus-5-5,P0,Fixed-size container with text scaling,1,,,out_of_scope
+round_01,claude-opus-5-5,P0,Gesture-only interaction / no accessible alternative,2,INT-02,interaction,auto
+round_01,claude-opus-5-5,P0,Gesture-only interaction / no alternative for zoom and pan,1,INT-02,interaction,auto
+round_01,claude-opus-5-5,P0,Icon conveys state only visually,1,SEM-04,semantics,auto
+round_01,claude-opus-5-5,P0,Icon too small / scaling issue,1,,,
+round_01,claude-opus-5-5,P0,Icon without semantic label,1,SEM-01,semantics,auto
+round_01,claude-opus-5-5,P0,Inaccurate/static accessible name for toggle state,1,SEM-04|SEM-02,semantics,auto_multi
+round_01,claude-opus-5-5,P0,Inappropriate widget for semantics / heading,1,SEM-03,semantics,auto
+round_01,claude-opus-5-5,P0,Incomplete state semantics,1,SEM-04,semantics,auto
+round_01,claude-opus-5-5,P0,Incorrect accessible name,1,SEM-02,semantics,auto
+round_01,claude-opus-5-5,P0,Incorrect role,1,SEM-03,semantics,auto
+round_01,claude-opus-5-5,P0,Incorrect semantic property (value instead of label),1,SEM-01,semantics,auto
+round_01,claude-opus-5-5,P0,Incorrect semantic role,1,SEM-03,semantics,auto
+round_01,claude-opus-5-5,P0,Incorrect/incomplete semantic role,1,SEM-03,semantics,auto
+round_01,claude-opus-5-5,P0,Information conveyed by color and icon shape only,1,,,out_of_scope
+round_01,claude-opus-5-5,P0,Information conveyed by color/visual cue only,1,,,out_of_scope
+round_01,claude-opus-5-5,P0,Information conveyed by color/visual only,1,,,out_of_scope
+round_01,claude-opus-5-5,P0,Insufficient alternative text for complex image,1,SEM-01,semantics,auto
+round_01,claude-opus-5-5,P0,Insufficient color contrast,7,,,out_of_scope
+round_01,claude-opus-5-5,P0,Insufficient color contrast / hardcoded color,1,,,out_of_scope
+round_01,claude-opus-5-5,P0,Insufficient focus indicator contrast,1,,,out_of_scope
+round_01,claude-opus-5-5,P0,Insufficient non-text contrast,2,,,out_of_scope
+round_01,claude-opus-5-5,P0,Insufficient text alternative for complex image,1,,,
+round_01,claude-opus-5-5,P0,Insufficient touch target size,5,INT-01,interaction,auto
+round_01,claude-opus-5-5,P0,Keyboard / focus accessibility,1,,,out_of_scope
+round_01,claude-opus-5-5,P0,Keyboard accessibility / focus,4,,,out_of_scope
+round_01,claude-opus-5-5,P0,Keyboard accessibility – actions not operable via keyboard,1,INT-03,interaction,auto
+round_01,claude-opus-5-5,P0,Keyboard inaccessibility,1,,,out_of_scope
+round_01,claude-opus-5-5,P0,Label not associated with control / small activation area for label,1,SEM-01,semantics,auto
+round_01,claude-opus-5-5,P0,Label relies on tooltip only,1,SEM-01,semantics,auto
+round_01,claude-opus-5-5,P0,Long-press-only functionality / timing-dependent gesture,1,INT-02,interaction,auto
+round_01,claude-opus-5-5,P0,Loss of emphasis information for assistive technologies,1,,,
+round_01,claude-opus-5-5,P0,Low contrast / color-only information,1,,,out_of_scope
+round_01,claude-opus-5-5,P0,Low contrast / invisible field boundary,1,,,out_of_scope
+round_01,claude-opus-5-5,P0,Low contrast / non-text contrast,1,,,out_of_scope
+round_01,claude-opus-5-5,P0,Low-contrast focus indicator,1,,,out_of_scope
+round_01,claude-opus-5-5,P0,Misleading accessible name,1,SEM-02,semantics,auto
+round_01,claude-opus-5-5,P0,Misleading icon,1,SEM-02,semantics,auto
+round_01,claude-opus-5-5,P0,Misleading semantics label on text spans,1,SEM-02,semantics,auto
+round_01,claude-opus-5-5,P0,Missing accessible label,4,SEM-01,semantics,auto
+round_01,claude-opus-5-5,P0,Missing accessible name,6,SEM-01,semantics,auto
+round_01,claude-opus-5-5,P0,Missing accessible name (potential),1,SEM-01,semantics,auto
+round_01,claude-opus-5-5,P0,Missing accessible name / label,2,SEM-01,semantics,auto
+round_01,claude-opus-5-5,P0,Missing accessible name and role,1,SEM-03|SEM-01,semantics,auto_multi
+round_01,claude-opus-5-5,P0,Missing accessible name for informative icon,1,SEM-01,semantics,auto
+round_01,claude-opus-5-5,P0,Missing button role / semantics,1,SEM-03,semantics,auto
+round_01,claude-opus-5-5,P0,Missing button semantics,1,SEM-03,semantics,auto
+round_01,claude-opus-5-5,P0,Missing enabled state semantics,1,SEM-04,semantics,auto
+round_01,claude-opus-5-5,P0,Missing expanded/collapsed state,1,SEM-04,semantics,auto
+round_01,claude-opus-5-5,P0,Missing focus indicator,3,,,out_of_scope
+round_01,claude-opus-5-5,P0,Missing group semantics for composite control,1,,,
+round_01,claude-opus-5-5,P0,Missing header semantics,2,SEM-03,semantics,auto
+round_01,claude-opus-5-5,P0,Missing image semantic label,1,SEM-01,semantics,auto
+round_01,claude-opus-5-5,P0,Missing keyboard focus support,2,,,out_of_scope
+round_01,claude-opus-5-5,P0,Missing keyboard focus/activation support,1,,,out_of_scope
+round_01,claude-opus-5-5,P0,Missing keyboard/focus support,5,,,out_of_scope
+round_01,claude-opus-5-5,P0,Missing live update announcement,1,,,
+round_01,claude-opus-5-5,P0,Missing persistent label,1,SEM-01,semantics,auto
+round_01,claude-opus-5-5,P0,Missing reset/alternative for gesture-only function,1,INT-02,interaction,auto
+round_01,claude-opus-5-5,P0,Missing role / not exposed as button,2,SEM-03,semantics,auto
+round_01,claude-opus-5-5,P0,Missing role/label for interactive element,1,SEM-03|SEM-01,semantics,auto_multi
+round_01,claude-opus-5-5,P0,Missing selected state in semantics,1,SEM-04,semantics,auto
+round_01,claude-opus-5-5,P0,Missing selected state semantics,1,SEM-04,semantics,auto
+round_01,claude-opus-5-5,P0,Missing selection state semantics,1,SEM-04,semantics,auto
+round_01,claude-opus-5-5,P0,Missing semantic action,2,INT-03,interaction,auto
+round_01,claude-opus-5-5,P0,Missing semantic action (excludeSemantics removes tap action),1,INT-03,interaction,auto
+round_01,claude-opus-5-5,P0,Missing semantic action / focus support,1,INT-03,interaction,auto
+round_01,claude-opus-5-5,P0,Missing semantic action / non-operable control for assistive technologies,1,INT-03,interaction,auto
+round_01,claude-opus-5-5,P0,Missing semantic action / not operable by assistive technology,1,INT-03,interaction,auto
+round_01,claude-opus-5-5,P0,Missing semantic action / state,1,INT-03|SEM-04,,auto_multi
+round_01,claude-opus-5-5,P0,Missing semantic action hint / button role,1,INT-03|SEM-03,,auto_multi
+round_01,claude-opus-5-5,P0,Missing semantic action/hint for draggable item,1,INT-02|INT-03,interaction,auto_multi
+round_01,claude-opus-5-5,P0,Missing semantic role,2,SEM-03,semantics,auto
+round_01,claude-opus-5-5,P0,Missing semantic role and state,1,SEM-04|SEM-03,semantics,auto_multi
+round_01,claude-opus-5-5,P0,Missing semantic state/hint for interactive region,1,SEM-04,semantics,auto
+round_01,claude-opus-5-5,P0,Missing semantic tap action,2,INT-03,interaction,auto
+round_01,claude-opus-5-5,P0,Missing semantics for interactive region,1,,,
+round_01,claude-opus-5-5,P0,Missing state change announcement,1,SEM-04,semantics,auto
+round_01,claude-opus-5-5,P0,Missing state information,2,SEM-04,semantics,auto
+round_01,claude-opus-5-5,P0,Missing state information for toggle control,1,SEM-04,semantics,auto
+round_01,claude-opus-5-5,P0,Missing state semantics,1,SEM-04,semantics,auto
+round_01,claude-opus-5-5,P0,Missing toggle state semantics,2,SEM-04,semantics,auto
+round_01,claude-opus-5-5,P0,Missing toggle/expanded state semantics,1,SEM-04,semantics,auto
+round_01,claude-opus-5-5,P0,Missing visible/accessible alternative control,1,,,
+round_01,claude-opus-5-5,P0,Missing visual feedback for interaction states,1,SEM-04,semantics,auto
+round_01,claude-opus-5-5,P0,Motion / animation not respecting reduced-motion preference,1,,,out_of_scope
+round_01,claude-opus-5-5,P0,Motion not respecting reduced-motion preference,1,,,out_of_scope
+round_01,claude-opus-5-5,P0,No accessible panning alternative,1,INT-02,interaction,auto
+round_01,claude-opus-5-5,P0,No announcement of content change,1,,,
+round_01,claude-opus-5-5,P0,No announcement of state change,2,SEM-04,semantics,auto
+round_01,claude-opus-5-5,P0,No visible focus indicator,1,,,out_of_scope
+round_01,claude-opus-5-5,P0,Non-descriptive accessible label,1,SEM-02,semantics,auto
+round_01,claude-opus-5-5,P0,Non-descriptive default title,1,SEM-02,semantics,auto
+round_01,claude-opus-5-5,P0,Non-descriptive image alternative text,1,SEM-02,semantics,auto
+round_01,claude-opus-5-5,P0,Non-text contrast of selection indicator,1,SEM-04,semantics,auto
+round_01,claude-opus-5-5,P0,Not keyboard accessible,1,,,out_of_scope
+round_01,claude-opus-5-5,P0,Not keyboard accessible / no focus support,1,,,out_of_scope
+round_01,claude-opus-5-5,P0,Not keyboard focusable,1,,,out_of_scope
+round_01,claude-opus-5-5,P0,Not keyboard focusable / operable,1,,,out_of_scope
+round_01,claude-opus-5-5,P0,Not keyboard/focus accessible,1,,,out_of_scope
+round_01,claude-opus-5-5,P0,Pointer cancellation / activation on up without bounds check,1,,,
+round_01,claude-opus-5-5,P0,Potentially misleading accessible label,1,SEM-02,semantics,auto
+round_01,claude-opus-5-5,P0,Potentially small touch target,1,INT-01,interaction,auto
+round_01,claude-opus-5-5,P0,Redundant/merged semantics not excluded,1,,,
+round_01,claude-opus-5-5,P0,Reliance on color / low-contrast state indicator,1,SEM-04,semantics,auto
+round_01,claude-opus-5-5,P0,Selected state not exposed,1,SEM-04,semantics,auto
+round_01,claude-opus-5-5,P0,Selected state not exposed to assistive technology,1,SEM-04,semantics,auto
+round_01,claude-opus-5-5,P0,Selection indicated by color/contrast only,1,SEM-04,semantics,auto
+round_01,claude-opus-5-5,P0,Semantic action not wired,1,INT-03,interaction,auto
+round_01,claude-opus-5-5,P0,Semantic content mismatch with visual truncation,1,SEM-02,semantics,auto
+round_01,claude-opus-5-5,P0,Semantic tap action not wired explicitly,1,INT-03,interaction,auto
+round_01,claude-opus-5-5,P0,Semantics action not wired,1,INT-03,interaction,auto
+round_01,claude-opus-5-5,P0,Semantics action not wired (missing onTap in Semantics),1,INT-03,interaction,auto
+round_01,claude-opus-5-5,P0,Semantics tap action not explicitly bound,1,INT-03,interaction,auto
+round_01,claude-opus-5-5,P0,Small fixed text size / readability,1,,,out_of_scope
+round_01,claude-opus-5-5,P0,Small touch target / label not tappable,1,INT-01|SEM-01,,auto_multi
+round_01,claude-opus-5-5,P0,State not conveyed to assistive technologies,2,SEM-04,semantics,auto
+round_01,claude-opus-5-5,P0,Status change not announced,1,,,
+round_01,claude-opus-5-5,P0,Text overflow / reflow,1,,,out_of_scope
+round_01,claude-opus-5-5,P0,Text scaling / fixed height,1,,,out_of_scope
+round_01,claude-opus-5-5,P0,Text truncation without accessible alternative,1,,,out_of_scope
+round_01,claude-opus-5-5,P0,Toggle button state not conveyed,1,SEM-04,semantics,auto
+round_01,claude-opus-5-5,P0,Touch target size,1,INT-01,interaction,auto
+round_01,claude-opus-5-5,P0,Touch target too small,1,INT-01,interaction,auto
+round_01,claude-opus-5-5,P0,Truncated text without accessible alternative,1,,,out_of_scope
+round_01,claude-opus-5-5,P0,Unclear instructional text,1,,,out_of_scope
+round_01,claude-opus-5-5,P0,Unclear instructional text / sensory reference,1,,,out_of_scope
+round_01,claude-opus-5-5,P0,Unintended activation / pointer-up without cancellation check,1,,,
+round_01,claude-opus-5-5,P0,Unmerged / fragmented semantics,1,,,
+round_01,claude-opus-5-5,P0,Use of color as the only means of conveying information,1,,,out_of_scope
+round_01,claude-opus-5-5,P0,Zoom gesture without accessible alternative,1,INT-02,interaction,auto
+round_01,claude-opus-5-5,P1,Accessible gesture alternative / interaction,1,INT-02,interaction,auto
+round_01,claude-opus-5-5,P1,Accessible gesture alternatives,2,INT-02,interaction,auto
+round_01,claude-opus-5-5,P1,Accessible label,1,SEM-01,semantics,auto
+round_01,claude-opus-5-5,P1,Accessible label in all caps,1,SEM-01,semantics,auto
+round_01,claude-opus-5-5,P1,Accessible label relies on hint text only,1,SEM-01,semantics,auto
+round_01,claude-opus-5-5,P1,Custom interactive control / keyboard accessibility,1,SEM-05,semantics,auto
+round_01,claude-opus-5-5,P1,Custom interactive control instead of standard button,1,SEM-05,semantics,auto
+round_01,claude-opus-5-5,P1,Custom interactive control lacking keyboard/focus support,1,SEM-05,semantics,auto
+round_01,claude-opus-5-5,P1,Custom interactive control lacking semantic action/focusability,1,SEM-05|INT-03,,auto_multi
+round_01,claude-opus-5-5,P1,Custom interactive control lacks keyboard/focus support,1,SEM-05,semantics,auto
+round_01,claude-opus-5-5,P1,Custom interactive control missing semantic action,4,SEM-05|INT-03,,auto_multi
+round_01,claude-opus-5-5,P1,Custom interactive control without accessible action,1,SEM-05,semantics,auto
+round_01,claude-opus-5-5,P1,Custom interactive control without proper semantic action,1,SEM-05|INT-03,,auto_multi
+round_01,claude-opus-5-5,P1,Custom interactive control without proper semantics,2,SEM-05,semantics,auto
+round_01,claude-opus-5-5,P1,Custom interactive control without semantic action,1,SEM-05|INT-03,,auto_multi
+round_01,claude-opus-5-5,P1,Custom interactive control without semantic tap action,1,SEM-05|INT-03,,auto_multi
+round_01,claude-opus-5-5,P1,Decorative icon semantics not excluded / potential duplicate,1,,,
+round_01,claude-opus-5-5,P1,Emphasis information lost for assistive technologies,1,,,
+round_01,claude-opus-5-5,P1,Fragmented / non-merged semantics,1,,,
+round_01,claude-opus-5-5,P1,Gesture without accessible alternative,1,INT-02,interaction,auto
+round_01,claude-opus-5-5,P1,Inaccurate / hardcoded accessible label,1,SEM-02,semantics,auto
+round_01,claude-opus-5-5,P1,Inaccurate accessible label,1,SEM-02,semantics,auto
+round_01,claude-opus-5-5,P1,Incorrect accessible label,1,SEM-02,semantics,auto
+round_01,claude-opus-5-5,P1,Incorrect semantic property (value instead of label),1,SEM-01,semantics,auto
+round_01,claude-opus-5-5,P1,Incorrect semantic role,3,SEM-03,semantics,auto
+round_01,claude-opus-5-5,P1,Incorrect semantic state,2,SEM-04,semantics,auto
+round_01,claude-opus-5-5,P1,Insufficient interactive target size,1,INT-01,interaction,auto
+round_01,claude-opus-5-5,P1,Insufficient touch target size,1,INT-01,interaction,auto
+round_01,claude-opus-5-5,P1,Interactive target size,2,INT-01,interaction,auto
+round_01,claude-opus-5-5,P1,Interactive target size possibly insufficient,1,INT-01,interaction,auto
+round_01,claude-opus-5-5,P1,Label not part of interactive target,1,INT-01|SEM-01,,auto_multi
+round_01,claude-opus-5-5,P1,Meaningless semantics label on text spans,1,SEM-02,semantics,auto
+round_01,claude-opus-5-5,P1,Missing accessible gesture alternative,3,INT-02,interaction,auto
+round_01,claude-opus-5-5,P1,Missing accessible label,12,SEM-01,semantics,auto
+round_01,claude-opus-5-5,P1,Missing accessible label / state information,1,SEM-04|SEM-01,semantics,auto_multi
+round_01,claude-opus-5-5,P1,Missing enabled state semantics,1,SEM-04,semantics,auto
+round_01,claude-opus-5-5,P1,Missing focus/keyboard accessibility,1,,,out_of_scope
+round_01,claude-opus-5-5,P1,Missing group semantics / current value,1,,,
+round_01,claude-opus-5-5,P1,Missing header semantics,1,SEM-03,semantics,auto
+round_01,claude-opus-5-5,P1,Missing keyboard focus/activation for custom control,1,SEM-05,semantics,auto
+round_01,claude-opus-5-5,P1,Missing keyboard/focus accessibility for custom control,1,SEM-05,semantics,auto
+round_01,claude-opus-5-5,P1,Missing live region / state change announcement,1,SEM-04,semantics,auto
+round_01,claude-opus-5-5,P1,Missing semantic action,1,INT-03,interaction,auto
+round_01,claude-opus-5-5,P1,Missing semantic action / focusable state,1,INT-03|SEM-04,,auto_multi
+round_01,claude-opus-5-5,P1,Missing semantic action / gesture not accessible,1,INT-02|INT-03,interaction,auto_multi
+round_01,claude-opus-5-5,P1,Missing semantic action / merged semantics,1,INT-03,interaction,auto
+round_01,claude-opus-5-5,P1,Missing semantic action/hint for custom interactive control,1,SEM-05|INT-03,,auto_multi
+round_01,claude-opus-5-5,P1,Missing semantic role,5,SEM-03,semantics,auto
+round_01,claude-opus-5-5,P1,Missing semantic role (header),1,SEM-03,semantics,auto
+round_01,claude-opus-5-5,P1,Missing semantic role / custom interactive control without semantics,1,SEM-05|SEM-03,semantics,auto_multi
+round_01,claude-opus-5-5,P1,Missing semantic role and state,1,SEM-04|SEM-03,semantics,auto_multi
+round_01,claude-opus-5-5,P1,Missing semantic role for custom interactive control,1,SEM-05|SEM-03,semantics,auto_multi
+round_01,claude-opus-5-5,P1,Missing semantic state,9,SEM-04,semantics,auto
+round_01,claude-opus-5-5,P1,Missing semantic state / incorrect role,1,SEM-04|SEM-03,semantics,auto_multi
+round_01,claude-opus-5-5,P1,Missing semantic tap action,1,INT-03,interaction,auto
+round_01,claude-opus-5-5,P1,Missing semantics for custom interactive control,1,SEM-05,semantics,auto
+round_01,claude-opus-5-5,P1,Missing tap target width constraint,1,INT-01,interaction,auto
+round_01,claude-opus-5-5,P1,No keyboard/focus support,1,,,out_of_scope
+round_01,claude-opus-5-5,P1,Non-descriptive instructional text,1,SEM-02,semantics,auto
+round_01,claude-opus-5-5,P1,Non-focusable custom control,1,SEM-05,semantics,auto
+round_01,claude-opus-5-5,P1,Semantic state,2,SEM-04,semantics,auto
+round_01,claude-opus-5-5,P1,Semantic state / label not updated,1,SEM-04|SEM-01,semantics,auto_multi
+round_01,claude-opus-5-5,P1,Unconstrained target width,1,INT-01,interaction,auto
+round_01,claude-opus-5-5,P1,Unlabeled / ambiguous icon,1,SEM-01,semantics,auto
+round_01,claude-opus-5-5,P1,accessible gesture alternatives,1,INT-02,interaction,auto
+round_01,claude-opus-5-5,P1,accessible label,1,SEM-01,semantics,auto
+round_01,claude-opus-5-5,P1,accessible labels,1,SEM-01,semantics,auto
+round_01,claude-opus-5-5,P1,accessible_label,4,SEM-01,semantics,auto
+round_01,claude-opus-5-5,P1,custom_interactive_control,1,SEM-05,semantics,auto
+round_01,claude-opus-5-5,P1,interactive target size,1,INT-01,interaction,auto
+round_01,claude-opus-5-5,P1,interactive_target,1,INT-01,interaction,auto
+round_01,claude-opus-5-5,P1,interactive_target_accessibility,1,,interaction,generic
+round_01,claude-opus-5-5,P1,interactive_target_size,3,INT-01,interaction,auto
+round_01,claude-opus-5-5,P1,missing_accessible_label,1,SEM-01,semantics,auto
+round_01,claude-opus-5-5,P1,missing_semantic_state,1,SEM-04,semantics,auto
+round_01,claude-opus-5-5,P1,semantic role,1,SEM-03,semantics,auto
+round_01,claude-opus-5-5,P1,semantic states,1,SEM-04,semantics,auto
+round_01,claude-opus-5-5,P1,semantic_role,1,SEM-03,semantics,auto
+round_01,claude-opus-5-5,P1,semantic_state,5,SEM-04,semantics,auto
+round_01,gemini-2.5-flash,P0,Accessibility,3,,,generic
+round_01,gemini-2.5-flash,P0,Accessibility Exclusion,1,,,
+round_01,gemini-2.5-flash,P0,Accessibility Label,1,SEM-01,semantics,auto
+round_01,gemini-2.5-flash,P0,Alternative Input Missing,1,,,
+round_01,gemini-2.5-flash,P0,Ambiguous visual icon,1,,,
+round_01,gemini-2.5-flash,P0,Color Contrast,6,,,out_of_scope
+round_01,gemini-2.5-flash,P0,Color contrast,1,,,out_of_scope
+round_01,gemini-2.5-flash,P0,Dynamic Content Not Announced,1,,,
+round_01,gemini-2.5-flash,P0,Inaccessible Interaction,1,INT-03,interaction,auto
+round_01,gemini-2.5-flash,P0,Inaccessible interaction,1,INT-03,interaction,auto
+round_01,gemini-2.5-flash,P0,Inaccurate semantic label,1,SEM-02,semantics,auto
+round_01,gemini-2.5-flash,P0,Inadequate semantic label,1,SEM-02,semantics,auto
+round_01,gemini-2.5-flash,P0,Incorrect Disabled State Handling,1,SEM-04,semantics,auto
+round_01,gemini-2.5-flash,P0,Input method accessibility,1,,,
+round_01,gemini-2.5-flash,P0,Insufficient Color Contrast,2,,,out_of_scope
+round_01,gemini-2.5-flash,P0,Insufficient Tap Target Size,1,INT-01,interaction,auto
+round_01,gemini-2.5-flash,P0,Insufficient semantic label,1,SEM-01,semantics,auto
+round_01,gemini-2.5-flash,P0,Insufficient tap target size,1,INT-01,interaction,auto
+round_01,gemini-2.5-flash,P0,Interaction Accessibility,3,,interaction,generic
+round_01,gemini-2.5-flash,P0,Keyboard Accessibility,4,,,out_of_scope
+round_01,gemini-2.5-flash,P0,Keyboard/Switch Access,1,,,out_of_scope
+round_01,gemini-2.5-flash,P0,Loss of semantic emphasis,1,,,
+round_01,gemini-2.5-flash,P0,Low Contrast,1,,,out_of_scope
+round_01,gemini-2.5-flash,P0,Low Contrast Text,1,,,out_of_scope
+round_01,gemini-2.5-flash,P0,Missing Semantic Information,2,SEM-01,semantics,auto
+round_01,gemini-2.5-flash,P0,Missing Semantic Label,5,SEM-01,semantics,auto
+round_01,gemini-2.5-flash,P0,Missing Semantics Label,1,SEM-01,semantics,auto
+round_01,gemini-2.5-flash,P0,Missing Semantics Role,1,SEM-03,semantics,auto
+round_01,gemini-2.5-flash,P0,Missing accessibility label,1,SEM-01,semantics,auto
+round_01,gemini-2.5-flash,P0,Missing accessibility state,1,SEM-04,semantics,auto
+round_01,gemini-2.5-flash,P0,Missing interactive element functionality,1,INT-03,interaction,auto
+round_01,gemini-2.5-flash,P0,Missing interactive functionality or misleading non-interactive element,1,INT-03|SEM-02,,auto_multi
+round_01,gemini-2.5-flash,P0,Missing or empty semantic label for icon,1,SEM-01,semantics,auto
+round_01,gemini-2.5-flash,P0,Missing semantic information for image,1,SEM-01,semantics,auto
+round_01,gemini-2.5-flash,P0,Missing semantic label,5,SEM-01,semantics,auto
+round_01,gemini-2.5-flash,P0,Missing semantic role,1,SEM-03,semantics,auto
+round_01,gemini-2.5-flash,P0,Missing semantic state,1,SEM-04,semantics,auto
+round_01,gemini-2.5-flash,P0,Non-text Color Contrast,1,,,out_of_scope
+round_01,gemini-2.5-flash,P0,Semantic Clarity: Icon-Text Mismatch,1,SEM-02,semantics,auto
+round_01,gemini-2.5-flash,P0,Semantic Grouping,1,,,
+round_01,gemini-2.5-flash,P0,Semantic Information Excluded,1,,,
+round_01,gemini-2.5-flash,P0,Semantic Information Hiding,1,,,
+round_01,gemini-2.5-flash,P0,Semantic Information Loss,1,,,
+round_01,gemini-2.5-flash,P0,Semantic Information Missing,1,SEM-01,semantics,auto
+round_01,gemini-2.5-flash,P0,Semantic Label,1,SEM-01,semantics,auto
+round_01,gemini-2.5-flash,P0,Semantic Label Mismatch,1,SEM-02,semantics,auto
+round_01,gemini-2.5-flash,P0,Semantic Label Missing,1,SEM-01,semantics,auto
+round_01,gemini-2.5-flash,P0,Semantic Labeling,1,SEM-01,semantics,auto
+round_01,gemini-2.5-flash,P0,Semantic Role and State,1,SEM-04|SEM-03,semantics,auto_multi
+round_01,gemini-2.5-flash,P0,Semantic Structure,1,,,
+round_01,gemini-2.5-flash,P0,Semantic information missing,2,SEM-01,semantics,auto
+round_01,gemini-2.5-flash,P0,Tap Target Size,3,INT-01,interaction,auto
+round_01,gemini-2.5-flash,P0,Usability/Functional Accessibility,3,,,generic
+round_01,gemini-2.5-flash,P0,Visual Accessibility,1,,,generic
+round_01,gemini-2.5-flash,P0,Visual Focus Indicator Contrast,1,,,out_of_scope
+round_01,gemini-2.5-flash,P1,Accessibility: Accessible Labels,2,SEM-01,semantics,auto
+round_01,gemini-2.5-flash,P1,Accessibility: Semantic State,2,SEM-04,semantics,auto
+round_01,gemini-2.5-flash,P1,Accessibility: Semantics and accessible information,2,,semantics,generic
+round_01,gemini-2.5-flash,P1,Accessible Label,1,SEM-01,semantics,auto
+round_01,gemini-2.5-flash,P1,Accessible Label Missing,1,SEM-01,semantics,auto
+round_01,gemini-2.5-flash,P1,Accessible gesture alternatives,1,INT-02,interaction,auto
+round_01,gemini-2.5-flash,P1,Incomplete Semantic Information,1,,,
+round_01,gemini-2.5-flash,P1,Interaction,1,,interaction,generic
+round_01,gemini-2.5-flash,P1,Interaction and interactive target accessibility,24,,interaction,generic
+round_01,gemini-2.5-flash,P1,Interactive Target Size,6,INT-01,interaction,auto
+round_01,gemini-2.5-flash,P1,Lack of Keyboard Accessibility,1,,,out_of_scope
+round_01,gemini-2.5-flash,P1,Lack of accessible gesture alternatives,1,INT-02,interaction,auto
+round_01,gemini-2.5-flash,P1,Missing Overall Semantic Information,1,,,
+round_01,gemini-2.5-flash,P1,Missing Semantic Label,1,SEM-01,semantics,auto
+round_01,gemini-2.5-flash,P1,Missing accessible label,1,SEM-01,semantics,auto
+round_01,gemini-2.5-flash,P1,Missing semantic label,1,SEM-01,semantics,auto
+round_01,gemini-2.5-flash,P1,Missing semantic role and state,1,SEM-04|SEM-03,semantics,auto_multi
+round_01,gemini-2.5-flash,P1,Semantic Label,1,SEM-01,semantics,auto
+round_01,gemini-2.5-flash,P1,Semantic Role,1,SEM-03,semantics,auto
+round_01,gemini-2.5-flash,P1,Semantic State,2,SEM-04,semantics,auto
+round_01,gemini-2.5-flash,P1,Semantic state,2,SEM-04,semantics,auto
+round_01,gemini-2.5-flash,P1,Semantics,1,,semantics,generic
+round_01,gemini-2.5-flash,P1,Semantics Violation,1,,semantics,generic
+round_01,gemini-2.5-flash,P1,Semantics and accessible information,42,,semantics,generic
+round_01,gemini-2.5-flash,P1,Semantics information missing,1,,,
+round_02,claude-opus-5-5,P0,Acesso por teclado incompleto às ações de abrir imagem,1,,,out_of_scope
+round_02,claude-opus-5-5,P0,Altura fixa pode cortar texto ampliado,1,,,
+round_02,claude-opus-5-5,P0,Animação sem respeitar preferência de redução de movimento,1,,,out_of_scope
+round_02,claude-opus-5-5,P0,"Ação acionada apenas por eventos de ponteiro, sem suporte a teclado e tecnologias assistivas",1,,,out_of_scope
+round_02,claude-opus-5-5,P0,Ação de toque ausente na árvore de semântica,1,INT-03,interaction,auto
+round_02,claude-opus-5-5,P0,Ação de toque inacessível para tecnologias assistivas,1,INT-03,interaction,auto
+round_02,claude-opus-5-5,P0,Ação de toque não exposta à acessibilidade,1,INT-03,interaction,auto
+round_02,claude-opus-5-5,P0,Ação semântica ausente no Semantics,1,INT-03,interaction,auto
+round_02,claude-opus-5-5,P0,Botão de ícone sem rótulo acessível,5,SEM-01,semantics,auto
+round_02,claude-opus-5-5,P0,Cabeçalho sem semântica de título,2,SEM-03,semantics,auto
+round_02,claude-opus-5-5,P0,Checkbox customizado sem semântica de estado e rótulo,1,SEM-04|SEM-01,semantics,auto_multi
+round_02,claude-opus-5-5,P0,Componente interativo sem suporte a foco e ativação por teclado,1,,,out_of_scope
+round_02,claude-opus-5-5,P0,Contraste de cor insuficiente,1,,,out_of_scope
+round_02,claude-opus-5-5,P0,Contraste insuficiente de componentes não textuais,1,,,out_of_scope
+round_02,claude-opus-5-5,P0,Elemento interativo inacessível por teclado,1,,,out_of_scope
+round_02,claude-opus-5-5,P0,Elemento interativo não acessível por teclado/foco,1,,,out_of_scope
+round_02,claude-opus-5-5,P0,Elemento interativo sem nome acessível e sem papel de botão,1,SEM-03|SEM-01,semantics,auto_multi
+round_02,claude-opus-5-5,P0,Elemento interativo sem nome acessível e sem papel semântico,1,SEM-03|SEM-01,semantics,auto_multi
+round_02,claude-opus-5-5,P0,Elemento interativo sem papel de botão,1,SEM-03,semantics,auto
+round_02,claude-opus-5-5,P0,Elemento interativo sem papel semântico,1,SEM-03,semantics,auto
+round_02,claude-opus-5-5,P0,Elemento interativo sem rótulo acessível e sem estado de seleção,1,SEM-04|SEM-01,semantics,auto_multi
+round_02,claude-opus-5-5,P0,Elemento interativo sem semântica de botão,1,SEM-03,semantics,auto
+round_02,claude-opus-5-5,P0,Elemento interativo sem suporte a teclado/foco,1,,,out_of_scope
+round_02,claude-opus-5-5,P0,Estado de expansão não comunicado,1,SEM-04,semantics,auto
+round_02,claude-opus-5-5,P0,Estado de seleção não exposto semanticamente,1,INT-03|SEM-04,,auto_multi
+round_02,claude-opus-5-5,P0,Estado de seleção não exposto à tecnologia assistiva,2,INT-03|SEM-04,,auto_multi
+round_02,claude-opus-5-5,P0,Estado do controle não comunicado,1,SEM-04,semantics,auto
+round_02,claude-opus-5-5,P0,Estado do controle não exposto à tecnologia assistiva,1,INT-03|SEM-04,,auto_multi
+round_02,claude-opus-5-5,P0,Funcionalidade acessível apenas por gesto complexo,1,INT-02,interaction,auto
+round_02,claude-opus-5-5,P0,Funcionalidade dependente de gestos complexos sem alternativa acessível,1,INT-02,interaction,auto
+round_02,claude-opus-5-5,P0,Funcionalidade dependente exclusivamente de gesto de arrastar,1,INT-02,interaction,auto
+round_02,claude-opus-5-5,P0,Imagem sem texto alternativo (semanticLabel),1,SEM-01,semantics,auto
+round_02,claude-opus-5-5,P0,Indicador de foco com contraste insuficiente,1,,,out_of_scope
+round_02,claude-opus-5-5,P0,Informação de status transmitida apenas visualmente (ícone sem rótulo semântico),1,SEM-01,semantics,auto
+round_02,claude-opus-5-5,P0,Interação dependente de gestos multitoque sem alternativa,1,INT-02,interaction,auto
+round_02,claude-opus-5-5,P0,Interação por ponteiro sem suporte a teclado/foco,1,,,out_of_scope
+round_02,claude-opus-5-5,P0,Movimento de arrastar sem alternativa (panorâmica),1,INT-02,interaction,auto
+round_02,claude-opus-5-5,P0,Operabilidade por teclado,1,,,out_of_scope
+round_02,claude-opus-5-5,P0,Rótulo acessível inconsistente com a função,1,SEM-01,semantics,auto
+round_02,claude-opus-5-5,P0,Rótulo acessível incorreto/enganoso,1,SEM-02,semantics,auto
+round_02,claude-opus-5-5,P0,Rótulo acessível não descritivo,1,SEM-01,semantics,auto
+round_02,claude-opus-5-5,P0,Rótulo acessível não reflete o estado do controle,1,SEM-04|SEM-01,semantics,auto_multi
+round_02,claude-opus-5-5,P0,Rótulo acessível potencialmente ausente,1,SEM-01,semantics,auto
+round_02,claude-opus-5-5,P0,Rótulo de botão ambíguo / estado de expansão não comunicado,1,SEM-04|SEM-01,semantics,auto_multi
+round_02,claude-opus-5-5,P0,Rótulo de botão não reflete o estado,1,SEM-04|SEM-01,semantics,auto_multi
+round_02,claude-opus-5-5,P0,Rótulo visível não clicável / área de toque inconsistente,1,INT-01|SEM-01,,auto_multi
+round_02,claude-opus-5-5,P0,Uso inadequado de Semantics (value em vez de label),1,SEM-01,semantics,auto
+round_02,claude-opus-5-5,P0,Uso inadequado de texto selecionável no título da AppBar,1,,,
+round_02,claude-opus-5-5,P0,Área de toque insuficiente,6,INT-01,interaction,auto
+round_02,claude-opus-5-5,P0,Ícone de reprodução com baixo contraste potencial sobre imagem,1,,,out_of_scope
+round_02,claude-opus-5-5,P1,Inaccessible custom control,4,SEM-05,semantics,auto
+round_02,claude-opus-5-5,P1,Inaccessible custom gesture,4,INT-02,interaction,auto
+round_02,claude-opus-5-5,P1,Incorrect accessible label,7,SEM-02,semantics,auto
+round_02,claude-opus-5-5,P1,Insufficient target size,4,INT-01,interaction,auto
+round_02,claude-opus-5-5,P1,Interaction not exposed,5,INT-03,interaction,auto
+round_02,claude-opus-5-5,P1,Missing accessible label,8,SEM-01,semantics,auto
+round_02,claude-opus-5-5,P1,Missing semantic role,4,SEM-03,semantics,auto
+round_02,claude-opus-5-5,P1,Missing semantic state,5,SEM-04,semantics,auto
+round_02,gemini-2.5-flash,P0,Acessibilidade de Interação,1,,,
+round_02,gemini-2.5-flash,P0,Agrupamento Semântico Insuficiente,1,,,
+round_02,gemini-2.5-flash,P0,Botão com conteúdo de imagem sem descrição semântica,1,SEM-01,semantics,auto
+round_02,gemini-2.5-flash,P0,Botão interativo sem funcionalidade,1,,,
+round_02,gemini-2.5-flash,P0,Componente interativo sem funcionalidade,1,,,
+round_02,gemini-2.5-flash,P0,Conteúdo de texto ignorado por leitores de tela,1,,,
+round_02,gemini-2.5-flash,P0,Conteúdo interativo sem descrição detalhada acessível,1,SEM-01,semantics,auto
+round_02,gemini-2.5-flash,P0,Conteúdo não traduzido,1,,,
+round_02,gemini-2.5-flash,P0,Conteúdo textual excluído da árvore semântica,1,,,
+round_02,gemini-2.5-flash,P0,Conteúdo textual oculto para leitores de tela,1,,,
+round_02,gemini-2.5-flash,P0,Conteúdo visual inacessível e rótulo semântico inadequado.,1,SEM-01,semantics,auto
+round_02,gemini-2.5-flash,P0,Contraste de cor insuficiente,7,,,out_of_scope
+round_02,gemini-2.5-flash,P0,Elemento Interativo Não Semântico e Inacessível por Teclado,1,,,out_of_scope
+round_02,gemini-2.5-flash,P0,Elemento interativo não focável via teclado,1,,,out_of_scope
+round_02,gemini-2.5-flash,P0,Elemento interativo sem rótulo semântico,1,SEM-01,semantics,auto
+round_02,gemini-2.5-flash,P0,Falta de Semântica e Rótulo Textual,1,SEM-01,semantics,auto
+round_02,gemini-2.5-flash,P0,Falta de Semântica para Elementos Interativos,1,,,
+round_02,gemini-2.5-flash,P0,Falta de acessibilidade para área de soltura (DragTarget),1,INT-02,interaction,auto
+round_02,gemini-2.5-flash,P0,Falta de alternativa para gesto complexo,1,INT-02,interaction,auto
+round_02,gemini-2.5-flash,P0,Falta de ação semântica de toque/ativação por teclado,1,INT-03,interaction,auto
+round_02,gemini-2.5-flash,P0,Falta de contexto semântico para o grupo de avaliação,1,,,
+round_02,gemini-2.5-flash,P0,Falta de controles alternativos para navegação por gestos,1,INT-02,interaction,auto
+round_02,gemini-2.5-flash,P0,Falta de diferenciação visual para usuários com deficiência de visão de cores,1,,,out_of_scope
+round_02,gemini-2.5-flash,P0,Falta de estado de seleção acessível,1,SEM-04,semantics,auto
+round_02,gemini-2.5-flash,P0,Falta de informação semântica de estado,1,INT-03|SEM-04,,auto_multi
+round_02,gemini-2.5-flash,P0,Falta de interatividade para item de lista,1,,,
+round_02,gemini-2.5-flash,P0,Falta de rótulo semântico,2,SEM-01,semantics,auto
+round_02,gemini-2.5-flash,P0,Falta de rótulo semântico para imagem,1,SEM-01,semantics,auto
+round_02,gemini-2.5-flash,P0,Falta de rótulo semântico/descrição para botão de navegação.,1,SEM-01,semantics,auto
+round_02,gemini-2.5-flash,P0,Falta de semântica para elementos interativos,1,,,
+round_02,gemini-2.5-flash,P0,Falta de suporte à navegação por teclado,1,,,out_of_scope
+round_02,gemini-2.5-flash,P0,Feedback visual inconsistente,1,,,
+round_02,gemini-2.5-flash,P0,Feedback visual insuficiente para interação,1,,,
+round_02,gemini-2.5-flash,P0,Imagem sem descrição semântica,3,SEM-01,semantics,auto
+round_02,gemini-2.5-flash,P0,Informação de acessibilidade inconsistente,1,,,
+round_02,gemini-2.5-flash,P0,Informação de estado ausente para leitores de tela,1,SEM-04,semantics,auto
+round_02,gemini-2.5-flash,P0,Interação de Arrastar e Soltar Inacessível,1,INT-02,interaction,auto
+round_02,gemini-2.5-flash,P0,Interação não acessível,1,,,
+round_02,gemini-2.5-flash,P0,Interação não convencional,1,,,
+round_02,gemini-2.5-flash,P0,Localização,1,,,
+round_02,gemini-2.5-flash,P0,Ocultação de conteúdo semântico detalhado,1,,,
+round_02,gemini-2.5-flash,P0,Perda de Informação Semântica,1,INT-03,interaction,auto
+round_02,gemini-2.5-flash,P0,Problema de Acessibilidade - Rótulo Semântico Ausente,1,SEM-01,semantics,auto
+round_02,gemini-2.5-flash,P0,Problema de Localização,1,,,
+round_02,gemini-2.5-flash,P0,Problema de Localização/Internacionalização (Acessibilidade),1,,,
+round_02,gemini-2.5-flash,P0,Problema de Semântica,1,,,
+round_02,gemini-2.5-flash,P0,Problema de Tamanho do Alvo de Toque,1,INT-01,interaction,auto
+round_02,gemini-2.5-flash,P0,Rótulo Semântico Ausente,4,SEM-01,semantics,auto
+round_02,gemini-2.5-flash,P0,Rótulo Semântico Incorreto,1,SEM-02,semantics,auto
+round_02,gemini-2.5-flash,P0,Rótulo de Ação Incorreto,1,SEM-02,semantics,auto
+round_02,gemini-2.5-flash,P0,Rótulo de botão ambíguo para alternância de estado,1,SEM-04|SEM-01,semantics,auto_multi
+round_02,gemini-2.5-flash,P0,Rótulo de botão inconsistente,1,SEM-01,semantics,auto
+round_02,gemini-2.5-flash,P0,Rótulo semântico estático para botão de alternância,1,SEM-04|SEM-01,semantics,auto_multi
+round_02,gemini-2.5-flash,P0,Tamanho do Alvo de Toque Insuficiente,2,INT-01,interaction,auto
+round_02,gemini-2.5-flash,P0,Tamanho do alvo de toque muito pequeno,2,INT-01,interaction,auto
+round_02,gemini-2.5-flash,P0,Tamanho visual do ícone interativo,1,,,
+round_02,gemini-2.5-flash,P0,Truncamento de Texto Visual,1,,,
+round_02,gemini-2.5-flash,P0,Ícone com significado ambíguo,1,,,
+round_02,gemini-2.5-flash,P1,Inaccessible custom control,7,SEM-05,semantics,auto
+round_02,gemini-2.5-flash,P1,Inaccessible custom gesture,4,INT-02,interaction,auto
+round_02,gemini-2.5-flash,P1,Incorrect accessible label,7,SEM-02,semantics,auto
+round_02,gemini-2.5-flash,P1,Insufficient target size,7,INT-01,interaction,auto
+round_02,gemini-2.5-flash,P1,Interaction not exposed,4,INT-03,interaction,auto
+round_02,gemini-2.5-flash,P1,Missing accessible label,19,SEM-01,semantics,auto
+round_02,gemini-2.5-flash,P1,Missing semantic role,2,SEM-03,semantics,auto
+round_02,gemini-2.5-flash,P1,Missing semantic state,8,SEM-04,semantics,auto

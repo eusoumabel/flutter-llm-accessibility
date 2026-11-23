@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_012_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T01:14:56.771973+00:00",
+  "request": {
+    "sample_id": "SEM_012",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Rótulo Semântico Ausente",
+        "affected_code": "Semantics(button: true,expanded: _expanded,child: GestureDetector(behavior: HitTestBehavior.opaque,onTap: () => setState(() => _expanded = !_expanded),child: Container(constraints: const BoxConstraints(minHeight: 48),padding: const EdgeInsets.symmetric(horizontal: 16),child: Row(children: [Expanded(child: Text(widget.question)),Icon(_expanded ? Icons.expand_less : Icons.expand_more),],),),),),",
+        "explanation": "O widget `Semantics` que envolve o `GestureDetector` está marcado como um botão (`button: true`) e indica seu estado de expansão (`expanded: _expanded`), mas não fornece um rótulo semântico (`label`) para o conteúdo do botão. Isso significa que usuários de leitores de tela ouvirão \"Botão\" e seu estado (expandido/recolhido), mas não a pergunta real (`widget.question`), tornando impossível para eles entenderem a finalidade do botão.",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 487,
+    "completion_tokens": 241,
+    "thinking_tokens": 980,
+    "total_tokens": 1708
+  },
+  "latency_ms": 6305
+}

@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_025_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:32:40.696588+00:00",
+  "request": {
+    "sample_id": "SEM_025",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Falta de informação semântica de estado",
+        "affected_code": "Semantics(button: true,enabled: true,child: MouseRegion(cursor: SystemMouseCursors.click,child: GestureDetector(onTap: onCategoryTap,child: isSelected? CustomPaint(painter: const TriangleCategoryIndicator(indicatorWidth,indicatorHeight,),child: _buttonText(categoryName, selectedCategoryTextStyle),): _buttonText(categoryName, unselectedCategoryTextStyle),),),)",
+        "explanation": "O widget `Semantics` não informa o estado de seleção (`isSelected`) do item da categoria para tecnologias assistivas. Usuários de leitores de tela não conseguirão saber se a categoria está selecionada ou não, o que prejudica a navegação e a compreensão do estado da interface.",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 915,
+    "completion_tokens": 176,
+    "thinking_tokens": 2106,
+    "total_tokens": 3197
+  },
+  "latency_ms": 11105
+}

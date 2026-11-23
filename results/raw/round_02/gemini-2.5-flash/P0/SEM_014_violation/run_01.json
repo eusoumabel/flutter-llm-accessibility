@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_014_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:58:36.995987+00:00",
+  "request": {
+    "sample_id": "SEM_014",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Conteúdo textual excluído da árvore semântica",
+        "affected_code": "ExcludeSemantics(child: Text('I accept the terms and conditions'))",
+        "explanation": "O widget Text que descreve a finalidade do checkbox está envolvido em um ExcludeSemantics, o que impede que seu conteúdo seja exposto a tecnologias assistivas. Usuários de leitores de tela não conseguirão entender o que estão aceitando ou recusando, tornando o controle inacessível.",
+        "confidence": "high",
+        "severity": "critical"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 458,
+    "completion_tokens": 110,
+    "thinking_tokens": 1099,
+    "total_tokens": 1667
+  },
+  "latency_ms": 5943
+}

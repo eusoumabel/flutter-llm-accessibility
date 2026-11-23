@@ -1,0 +1,43 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_007_violation",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "round": "round_02",
+  "prompt": "P1",
+  "prompt_file": "prompts/v2/P1_guidelines.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:37:36.314591+00:00",
+  "request": {
+    "sample_id": "SEM_007",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing semantic role",
+        "affected_code": "return GestureDetector(\n      onTap: onPressed,",
+        "explanation": "O botão customizado usa GestureDetector sem Semantics(button: true). O texto 'Continue' é exposto como rótulo e o toque é exposto pelo GestureDetector, mas leitores de tela não anunciam o componente como botão. Use ElevatedButton/FilledButton ou envolva o widget em Semantics(button: true).",
+        "confidence": "high",
+        "severity": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 1431,
+    "completion_tokens": 187,
+    "total_tokens": 1618
+  },
+  "latency_ms": 2965,
+  "request_id": "req_011ChJvcmZvZdpPK4Fga8Uhu"
+}

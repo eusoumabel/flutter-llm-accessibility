@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_026_component",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:30:04.101178+00:00",
+  "request": {
+    "sample_id": "SEM_026",
+    "variant": "component",
+    "category": "semantics",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Rótulo semântico estático para botão de alternância",
+        "affected_code": "message: 'Toggle brightness'",
+        "explanation": "A mensagem do Tooltip, que serve como rótulo semântico para leitores de tela, é estática (\"Toggle brightness\") e não muda para refletir o estado atual do tema (claro/escuro) ou a ação específica que será realizada (por exemplo, \"Alternar para modo escuro\" ou \"Alternar para modo claro\"). Isso pode dificultar a compreensão do contexto completo da função do botão para usuários que dependem de leitores de tela.",
+        "confidence": "high",
+        "severity": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 352,
+    "completion_tokens": 140,
+    "thinking_tokens": 1526,
+    "total_tokens": 2018
+  },
+  "latency_ms": 7855
+}

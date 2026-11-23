@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_015_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P1",
+  "prompt_file": "prompts/v2/P1_guidelines.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:36:17.164864+00:00",
+  "request": {
+    "sample_id": "SEM_015",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Inaccessible custom control",
+        "affected_code": "GestureDetector(behavior: HitTestBehavior.opaque,onTap: () => onSelected(entry.key),child: SizedBox(width: 48,height: 48,child: Center(child: Container(width: 32,height: 32,decoration: BoxDecoration(color: entry.value,shape: BoxShape.circle,border: Border.all(color: entry.key == selectedColor? Colors.black: Colors.transparent,width: 3,)),),),),)",
+        "explanation": "O controle interativo personalizado para seleção de cores não fornece informações semânticas equivalentes, como um rótulo acessível para cada cor (ex: \"Cor Vermelha\") e o estado de seleção (ex: \"selecionado\"). Isso impede que usuários de tecnologias assistivas compreendam e operem o componente de forma eficaz para selecionar uma cor específica.",
+        "confidence": "high",
+        "severity": "critical"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 722,
+    "completion_tokens": 211,
+    "thinking_tokens": 2922,
+    "total_tokens": 3855
+  },
+  "latency_ms": 14875
+}

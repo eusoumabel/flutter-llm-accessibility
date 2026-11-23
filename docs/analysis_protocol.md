@@ -16,6 +16,24 @@ Possíveis resultados:
 - recall = VP / (VP + FN)
 - F1 = 2 * precision * recall / (precision + recall)
 
+## Comparação entre rodadas
+
+Cada rodada é avaliada com a mesma bateria de medidas (ADR-R023), por modelo e prompt, com `scripts/compare_rounds.py`:
+
+| Medida | Definição |
+| --- | --- |
+| Conformidade | Respostas válidas, itens por resposta e proporção de respostas com no máximo um item |
+| Detecção binária (RQ1) | VP, FP, VN, FN, precisão, revocação, F1 e proporção de código correto acusado, FP / (FP + VN) |
+| Violação principal (RQ1) | Entre as detecções, proporção em que a subcategoria principal do ground truth (`subcategory` dos metadados, ADR-R005) está entre os tipos previstos (qualquer posição) e é o primeiro tipo previsto |
+| Categoria | Entre as detecções, proporção com algum tipo previsto na categoria do ground truth |
+| Ruído | Itens em variantes sem violação, itens fora do escopo, genéricos e ainda sem mapeamento |
+| Gravidade | Distribuição da gravidade prevista e, quando o tipo corresponde a uma única subcategoria, concordância com a gravidade da taxonomia (ADR-R021) |
+| Custo | Tokens e latência média por resposta |
+
+A RQ2 é reportada como a diferença P1 − P0 de cada medida dentro da rodada. O tipo previsto é associado à taxonomia por `scripts/map_types.py` e revisado manualmente em `analysis/type_mapping/type_mapping.csv`. Itens fora do escopo não contam como erro de subcategoria.
+
+A leitura qualitativa usa a planilha gerada por `scripts/build_round_comparison.py`, com a resposta de cada modelo e prompt em cada rodada e o resultado de cada variante.
+
 ## Agregação
 
 O estudo deve reportar resultados por:

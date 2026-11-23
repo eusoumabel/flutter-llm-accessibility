@@ -85,3 +85,47 @@ Preparação da rodada 2 a partir da análise das respostas da rodada 1 (antigo 
 
 ### Próximo passo
 Revisar os graus de gravidade e executar a rodada 2.
+
+## 2026-11-22 (análise entre rodadas)
+
+### Atividade
+Ferramentas para comparar rodadas: `map_types.py`, `compare_rounds.py` e `build_round_comparison.py`. `build_pilot_review.py` passou a receber `--round`. Diretório vazio `results/normalized/final/` removido.
+
+### Decisão
+- A revisão cega dos falsos positivos da rodada 1 não será feita; a análise passa a comparar as rodadas com uma bateria fixa de medidas e uma planilha aberta (ADR-R023, proposto).
+- Tipos previstos associados à taxonomia de forma semiautomática.
+
+### Problema
+- Na rodada 1, 303 tipos distintos: 183 associados automaticamente, 26 com mais de uma subcategoria, 11 genéricos, 51 fora do escopo e 32 sem correspondência, que aguardam classificação manual.
+
+### Próximo passo
+Revisar os graus de gravidade (ADR-R021), executar a rodada 2 e completar o mapeamento manual das duas rodadas.
+
+## 2026-11-22 (rodada 2 e linha de base)
+
+### Atividade
+- ADR-R021 (gravidades) e ADR-R023 (comparação entre rodadas) aceitas; execução da rodada 2.
+- Linha de base com ferramentas tradicionais (ADR-R024, proposto): Flutter 3.41.8 instalado via fvm, projeto `baselines/flutter_static/` e script `run_static_baseline.py`.
+- `compare_rounds.py` passou a listar os candidatos à revisão do ground truth (`analysis/tables/ground_truth_review_candidates.csv`); na rodada 1 são as 9 variantes corretas acusadas pelas quatro configurações.
+
+### Decisão
+- A linha de base usa a versão de referência do Flutter, e não a versão instalada na máquina (3.47.9).
+
+### Problema
+- A cota da API do Gemini se esgotou durante a rodada 2 (erro 429); as chamadas que falharam ficaram em `results/raw/round_02/_errors.jsonl` e serão refeitas depois da recarga de créditos.
+- Linha de base: `flutter analyze` não detecta nenhuma violação; os widget tests detectam 15 das 42 variantes com violação (revocação 0,36, precisão 0,83), concentradas em SEM-01, INT-01 e SEM-05, e acusam 3 variantes corretas, duas delas por tratar texto selecionável como alvo de toque (o oposto da ADR-R016).
+
+### Próximo passo
+Recarregar a cota do Gemini, completar a rodada 2 e gerar a comparação entre as rodadas.
+
+## 2026-11-22 (rodada 2 concluída)
+
+### Atividade
+Após a recarga da cota do Gemini, as chamadas que faltavam foram refeitas; a rodada 2 tem as 332 respostas com status `ok`. Comparação entre as rodadas gerada em `analysis/tables/` e planilha em `analysis/round_comparison/comparacao_round_01_round_02.xlsx`.
+
+### Problema
+- As medidas de violação principal e categoria do P0 ainda dependem do mapeamento manual (103 itens sem subcategoria definida nas duas rodadas); as do P1 da rodada 2 estão totalmente mapeadas.
+- 13 variantes corretas são candidatas à revisão do ground truth; SEM_021 e SEM_028 foram acusadas pelas quatro configurações nas duas rodadas.
+
+### Próximo passo
+Completar o mapeamento manual, revisar os candidatos do ground truth e decidir a rodada 3 e a repetição de estabilidade.

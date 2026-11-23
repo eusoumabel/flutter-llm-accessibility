@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_028_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P1",
+  "prompt_file": "prompts/v2/P1_guidelines.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T01:14:38.462797+00:00",
+  "request": {
+    "sample_id": "SEM_028",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Incorrect accessible label",
+        "affected_code": "label: 'Login'",
+        "explanation": "O rótulo de acessibilidade 'Login' é estático e não reflete o propósito do botão, que é visualmente representado pela imagem `widget.thumb`. Isso pode levar a uma comunicação incorreta da função do componente para usuários de tecnologias assistivas.",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 876,
+    "completion_tokens": 84,
+    "thinking_tokens": 1324,
+    "total_tokens": 2284
+  },
+  "latency_ms": 8065
+}

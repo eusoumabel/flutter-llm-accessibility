@@ -325,7 +325,7 @@ Data:
 
 ## ADR-R021 — Grau de gravidade por subcategoria
 
-Status: Proposto
+Status: Aceito
 
 Contexto:
 A taxonomia não diferenciava a gravidade das violações. A ordem de impacto usada para escolher a violação principal (ADR-R005, [annotation_guidelines.md](annotation_guidelines.md)) já hierarquizava as subcategorias, mas não estava registrada na taxonomia nem era informada aos modelos.
@@ -344,7 +344,7 @@ Motivo:
 Reaproveita a hierarquia já usada na anotação, de modo que a violação principal do ground truth e a violação mais grave pedida ao modelo seguem o mesmo critério.
 
 Consequências:
-A gravidade é atribuída por subcategoria, não por caso. Os valores aguardam revisão das pesquisadoras.
+A gravidade é atribuída por subcategoria, não por caso. Os valores foram revisados e aceitos pelas pesquisadoras em 2026-11-22.
 
 Data:
 2026-11-10
@@ -373,3 +373,52 @@ Consequências:
 
 Data:
 2026-11-10
+
+## ADR-R023 — Análise por comparação entre rodadas
+
+Status: Aceito
+
+Contexto:
+Com o estudo organizado em rodadas (ADR-R020), a revisão cega dos falsos positivos da rodada 1 deixou de ser feita. A análise precisa mostrar o que muda nas respostas das LLMs quando o processo muda, sem perder as perguntas de pesquisa: a precisão na identificação de violações (RQ1) e o efeito do prompt com diretrizes em relação ao zero-shot (RQ2).
+
+Decisão:
+- Toda rodada é avaliada com a mesma bateria de medidas, calculada por `compare_rounds.py`, por modelo e prompt: conformidade (itens por resposta, respostas com no máximo um item), detecção binária (a mesma de `calculate_metrics.py`), violação principal entre as detecções (a subcategoria principal do ground truth entre os tipos previstos, em qualquer posição e na primeira), acerto de categoria, ruído (itens em código correto, fora do escopo, genéricos), gravidade (rodadas com prompts v2) e custo (tokens e latência).
+- A RQ2 é reportada como a diferença P1 − P0 dentro de cada rodada.
+- O tipo previsto é associado à taxonomia de forma semiautomática por `map_types.py`: chave da taxonomia ou nome do item da diretriz do P1 v2, depois palavras-chave em inglês e português. Os itens sem correspondência ou com mais de uma subcategoria são classificados pelas pesquisadoras em `analysis/type_mapping/type_mapping.csv` (`method=manual`), e essas linhas não são sobrescritas.
+- Itens fora do escopo (contraste, cor, teclado, foco, movimento, escala de texto) não contam como erro de subcategoria; são contados à parte.
+- A leitura qualitativa é feita numa planilha aberta, lado a lado, gerada por `build_round_comparison.py`, com modelos e prompts identificados e o resultado de cada variante em cada rodada.
+
+Motivo:
+Medidas fixas tornam as rodadas comparáveis, e a planilha aberta mostra onde cada mudança de processo ajudou ou piorou, variante por variante.
+
+Consequências:
+- Na rodada 1 os modelos devolvem várias violações e, a partir da rodada 2, apenas a mais grave. A violação principal é por isso reportada em qualquer posição e na primeira; só a primeira é comparável entre as duas rodadas.
+- Enquanto houver itens sem mapeamento manual, as medidas de violação principal e categoria são provisórias.
+
+Data:
+2026-11-22
+
+## ADR-R024 — Linha de base com ferramentas tradicionais
+
+Status: Proposto
+
+Contexto:
+O objetivo O4 compara a abordagem com LLM às ferramentas tradicionais do ecossistema Flutter, que ainda não tinham sido executadas no dataset.
+
+Decisão:
+- Duas ferramentas são executadas nas 83 variantes, na versão de referência do Flutter (ADR-R009, 3.41.8, via `fvm spawn`), pelo projeto `baselines/flutter_static/` e pelo script `run_static_baseline.py`:
+  - `flutter analyze` com o conjunto `flutter_lints`, a análise puramente estática;
+  - as diretrizes de acessibilidade do `flutter_test` (`androidTapTargetGuideline`, `iOSTapTargetGuideline`, `labeledTapTargetGuideline`, `textContrastGuideline`), avaliadas num widget test por variante.
+- Cada componente é construído pela expressão registrada em `baselines/flutter_static/harness.json`, gerada a partir dos parâmetros obrigatórios do construtor com valores padrão por tipo e corrigida à mão quando necessário. As duas variantes de um par usam a mesma expressão.
+- A falha nas diretrizes de alvo de toque conta como INT-01, a falha em `labeledTapTargetGuideline` como SEM-01 e a falha de contraste como fora do escopo. A variante é considerada com violação quando alguma diretriz no escopo falha.
+
+Motivo:
+São as verificações de acessibilidade disponíveis no próprio SDK, sem dependências externas, e cobrem parte da taxonomia (INT-01 e SEM-01).
+
+Consequências:
+- Os widget tests renderizam o componente, então não são estritamente análise estática; são a referência automatizada mais próxima disponível no ecossistema.
+- Os valores padrão do harness (por exemplo, `false` para estados booleanos) definem um único estado do componente, e violações que dependem de outro estado podem não aparecer.
+- `flutter_lints` não tem regras de acessibilidade, então `flutter analyze` serve como registro de que a análise estática padrão não detecta essas violações.
+
+Data:
+2026-11-22

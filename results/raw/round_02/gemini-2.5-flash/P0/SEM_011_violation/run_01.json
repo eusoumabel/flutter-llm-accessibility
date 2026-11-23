@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_011_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:57:46.029518+00:00",
+  "request": {
+    "sample_id": "SEM_011",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Falta de estado de seleção acessível",
+        "affected_code": "Semantics(button: true,child: GestureDetector(behavior: HitTestBehavior.opaque,onTap: () => onSelected(i),child: Container(height: 48,alignment: Alignment.center,decoration: BoxDecoration(border: Border(bottom: BorderSide(color: i == selectedIndex? Colors.blue: Colors.transparent,width: 3,),),),child: Text(categories[i]),),),)",
+        "explanation": "O componente de aba não informa seu estado de seleção (se está ativo ou não) para tecnologias assistivas, como leitores de tela. Embora haja um indicador visual (borda azul), usuários que dependem de leitores de tela não conseguirão determinar qual aba está selecionada no momento. Isso impede a navegação e a compreensão adequadas da interface.",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 434,
+    "completion_tokens": 194,
+    "thinking_tokens": 1908,
+    "total_tokens": 2536
+  },
+  "latency_ms": 9238
+}

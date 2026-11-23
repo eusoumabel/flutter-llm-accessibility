@@ -1,0 +1,34 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "INT_009_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P1",
+  "prompt_file": "prompts/v2/P1_guidelines.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:57:52.346531+00:00",
+  "request": {
+    "sample_id": "INT_009",
+    "variant": "violation",
+    "category": "interaction",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": []
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 656,
+    "completion_tokens": 5,
+    "thinking_tokens": 1371,
+    "total_tokens": 2032
+  },
+  "latency_ms": 6315
+}

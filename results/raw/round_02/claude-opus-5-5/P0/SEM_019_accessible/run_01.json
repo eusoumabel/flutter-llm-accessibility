@@ -1,0 +1,43 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_019_accessible",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:33:29.424634+00:00",
+  "request": {
+    "sample_id": "SEM_019",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Área de toque insuficiente",
+        "affected_code": "padding: const EdgeInsets.symmetric(\n        horizontal: 16,\n        vertical: 8,\n      ),",
+        "explanation": "O padding vertical de 8 somado ao ícone de 24 resulta em altura de 40dp, abaixo do mínimo recomendado de 48x48dp para alvos de toque. Isso pode dificultar a interação de usuários com limitações motoras. Observação: o IconButton aplica restrições mínimas via visualDensity/materialTapTargetSize por padrão, o que pode mitigar o problema dependendo do tema.",
+        "confidence": "low",
+        "severity": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 866,
+    "completion_tokens": 241,
+    "total_tokens": 1107
+  },
+  "latency_ms": 3259,
+  "request_id": "req_011ChJvJYnU9dPMxFYnCzSDi"
+}

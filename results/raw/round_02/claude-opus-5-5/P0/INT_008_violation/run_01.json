@@ -1,0 +1,43 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "INT_008_violation",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:32:03.930350+00:00",
+  "request": {
+    "sample_id": "INT_008",
+    "variant": "violation",
+    "category": "interaction",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Ação acionada apenas por eventos de ponteiro, sem suporte a teclado e tecnologias assistivas",
+        "affected_code": "child: Listener(\n        onPointerDown: (_) => setState(() => _pressed = true),\n        onPointerUp: (_) {\n          setState(() => _pressed = false);\n          widget.onSend();\n        },",
+        "explanation": "O botão usa Listener com eventos brutos de ponteiro para disparar onSend. Embora o Semantics declare button: true e um rótulo, não há onTap no Semantics nem um GestureDetector/InkWell. Assim, leitores de tela (TalkBack/VoiceOver) anunciam um botão que não pode ser ativado por toque duplo, e o widget não é focável nem ativável via teclado ou switch access. Além disso, a ação ocorre no 'pointer up' sem verificar se o ponteiro ainda está sobre o alvo, impedindo o cancelamento ao arrastar para fora. Deve-se usar IconButton/InkWell ou fornecer onTap no Semantics e suporte a foco.",
+        "confidence": "high",
+        "severity": "critical"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 1074,
+    "completion_tokens": 404,
+    "total_tokens": 1478
+  },
+  "latency_ms": 5427,
+  "request_id": "req_011ChJvC5y1675a3U4HNfEh4"
+}

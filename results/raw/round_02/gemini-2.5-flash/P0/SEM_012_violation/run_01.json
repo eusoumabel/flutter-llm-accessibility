@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_012_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T01:00:53.141855+00:00",
+  "request": {
+    "sample_id": "SEM_012",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Informação de estado ausente para leitores de tela",
+        "affected_code": "Semantics(button: true,child: GestureDetector(behavior: HitTestBehavior.opaque,onTap: () => setState(() => _expanded = !_expanded),child: Container(constraints: const BoxConstraints(minHeight: 48),padding: const EdgeInsets.symmetric(horizontal: 16),child: Row(children: [Expanded(child: Text(widget.question)),Icon(_expanded ? Icons.expand_less : Icons.expand_more)],)),),)",
+        "explanation": "O widget `Semantics` marca o `GestureDetector` como um botão, mas não comunica seu estado de expansão (expandido/recolhido) aos leitores de tela. Isso impede que usuários com deficiência visual saibam se a seção de FAQ está aberta ou fechada, dificultando a interação.",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 480,
+    "completion_tokens": 199,
+    "thinking_tokens": 1648,
+    "total_tokens": 2327
+  },
+  "latency_ms": 9988
+}

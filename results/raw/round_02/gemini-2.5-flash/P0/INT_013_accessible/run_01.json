@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "INT_013_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:51:43.756507+00:00",
+  "request": {
+    "sample_id": "INT_013",
+    "variant": "accessible",
+    "category": "interaction",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Problema de Localização/Internacionalização (Acessibilidade)",
+        "affected_code": "tooltip: 'Zoom out',",
+        "explanation": "O tooltip do botão de 'Zoom out' está em inglês, o que pode dificultar a compreensão para usuários de leitores de tela que utilizam o idioma português do Brasil.",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 1122,
+    "completion_tokens": 79,
+    "thinking_tokens": 2934,
+    "total_tokens": 4135
+  },
+  "latency_ms": 14714
+}

@@ -1,0 +1,43 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_028_violation",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "round": "round_02",
+  "prompt": "P1",
+  "prompt_file": "prompts/v2/P1_guidelines.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:38:03.864451+00:00",
+  "request": {
+    "sample_id": "SEM_028",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Inaccessible custom control",
+        "affected_code": "child: GestureDetector(\n        onTap: widget.onTap,\n        child: Focus(",
+        "explanation": "O botão customizado é construído com GestureDetector e Focus, sem Semantics que exponha papel de botão, rótulo ou ação de toque. A imagem está dentro de ExcludeSemantics, então leitores de tela não recebem nenhum rótulo nem a informação de que o elemento é um botão acionável. Isso impede usuários de tecnologias assistivas de identificar e operar o controle.",
+        "confidence": "high",
+        "severity": "critical"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 1758,
+    "completion_tokens": 222,
+    "total_tokens": 1980
+  },
+  "latency_ms": 3128,
+  "request_id": "req_011ChJvenfwfofg4JGYhM5tw"
+}

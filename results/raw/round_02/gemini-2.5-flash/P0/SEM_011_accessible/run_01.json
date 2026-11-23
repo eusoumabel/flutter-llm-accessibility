@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_011_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T01:12:08.638992+00:00",
+  "request": {
+    "sample_id": "SEM_011",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Feedback visual insuficiente para interação",
+        "affected_code": "GestureDetector(behavior: HitTestBehavior.opaque,onTap: () => onSelected(i),child: Container(height: 48,alignment: Alignment.center,decoration: BoxDecoration(border: Border(bottom: BorderSide(color: i == selectedIndex? Colors.blue: Colors.transparent,width: 3,),),),child: Text(categories[i]),),)",
+        "explanation": "O GestureDetector é usado para criar um botão personalizado, mas não há feedback visual claro (como um efeito de ondulação, mudança de elevação ou destaque) para indicar que o item foi tocado ou está sendo pressionado. A única mudança visual é a cor da borda inferior ao selecionar, o que pode não ser suficiente para usuários com baixa visão ou deficiências cognitivas para confirmar a interação.",
+        "confidence": "high",
+        "severity": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 443,
+    "completion_tokens": 199,
+    "thinking_tokens": 2551,
+    "total_tokens": 3193
+  },
+  "latency_ms": 15265
+}

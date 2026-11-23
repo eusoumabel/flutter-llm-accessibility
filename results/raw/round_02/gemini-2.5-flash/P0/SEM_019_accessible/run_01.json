@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_019_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T01:10:40.771017+00:00",
+  "request": {
+    "sample_id": "SEM_019",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Conteúdo não traduzido",
+        "affected_code": "tooltip: 'Open profile'",
+        "explanation": "O texto do tooltip está em inglês ('Open profile'). Para garantir a acessibilidade e uma experiência de usuário consistente para falantes de português do Brasil, o tooltip deve ser traduzido para o idioma apropriado do aplicativo.",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 293,
+    "completion_tokens": 80,
+    "thinking_tokens": 1559,
+    "total_tokens": 1932
+  },
+  "latency_ms": 11570
+}

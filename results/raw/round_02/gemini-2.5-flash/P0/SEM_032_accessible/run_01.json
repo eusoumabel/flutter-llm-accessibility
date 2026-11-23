@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_032_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:36:25.880031+00:00",
+  "request": {
+    "sample_id": "SEM_032",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Contraste de cor insuficiente",
+        "affected_code": "IconButton(icon: const Icon(Icons.radio_button_unchecked),isSelected:colorSelected.color == ColorSeed.values[i].color &&colorSelectionMethod == ColorSelectionMethod.colorSeed,selectedIcon: const Icon(Icons.circle),color: ColorSeed.values[i].color,onPressed: () {handleColorSelect(i);},tooltip: ColorSeed.values[i].label,)",
+        "explanation": "Os ícones dos botões de seleção de cor podem ter contraste insuficiente com o plano de fundo, especialmente quando cores claras (como amarelo ou verde) são usadas em um tema claro. Isso pode dificultar a visualização e a interação para usuários com baixa visão ou daltonismo.",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 598,
+    "completion_tokens": 172,
+    "thinking_tokens": 1488,
+    "total_tokens": 2258
+  },
+  "latency_ms": 8471
+}

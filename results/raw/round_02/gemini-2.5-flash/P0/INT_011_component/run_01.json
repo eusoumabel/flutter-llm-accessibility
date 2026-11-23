@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "INT_011_component",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T01:10:01.241680+00:00",
+  "request": {
+    "sample_id": "INT_011",
+    "variant": "component",
+    "category": "interaction",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Problema de Tamanho do Alvo de Toque",
+        "affected_code": "return Container(width: size,height: size,decoration: BoxDecoration(color: Theme.of(context).cardColor,borderRadius: BorderRadius.circular(99999),border: Border.all(color: theme.primaryColor,width: 1.0,strokeAlign: BorderSide.strokeAlignInside,)),child: Center(child: IconButton(icon: icon,iconSize: size - 12.0,onPressed: onPressed,color: color ?? theme.primaryColor,padding: EdgeInsets.zero,tooltip: tooltip,visualDensity: VisualDensity.compact,)),);",
+        "explanation": "O alvo de toque para este botão é muito pequeno (18x18 pixels lógicos por padrão), o que dificulta a interação para usuários com deficiências motoras, dedos grandes ou que usam dispositivos de entrada menos precisos. As diretrizes de acessibilidade recomendam um tamanho mínimo de 48x48 pixels lógicos para elementos interativos.",
+        "confidence": "high",
+        "severity": "critical"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 460,
+    "completion_tokens": 245,
+    "thinking_tokens": 3620,
+    "total_tokens": 4325
+  },
+  "latency_ms": 17495
+}

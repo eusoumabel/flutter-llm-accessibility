@@ -1,0 +1,43 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "INT_007_violation",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:34:13.574742+00:00",
+  "request": {
+    "sample_id": "INT_007",
+    "variant": "violation",
+    "category": "interaction",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Ação de toque ausente na árvore de semântica",
+        "affected_code": "Semantics(\n      button: true,\n      label: 'Order $orderNumber, $status',\n      excludeSemantics: true,",
+        "explanation": "O Semantics marca o card como botão, mas usa excludeSemantics: true, o que descarta a semântica dos descendentes, inclusive a ação de toque do GestureDetector. Como nenhum onTap é definido no próprio Semantics, o nó é anunciado como botão sem ação associada. Usuários de leitores de tela (TalkBack/VoiceOver) podem não conseguir ativar o card com o gesto de ativação. A solução é definir onTap: onOpen no Semantics ou usar um widget interativo como InkWell.",
+        "confidence": "high",
+        "severity": "critical"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 1030,
+    "completion_tokens": 439,
+    "total_tokens": 1469
+  },
+  "latency_ms": 4650,
+  "request_id": "req_011ChJvMhatdkJYqXyjaWLZo"
+}

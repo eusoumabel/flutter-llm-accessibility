@@ -1,0 +1,43 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_030_component",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:37:44.377846+00:00",
+  "request": {
+    "sample_id": "SEM_030",
+    "variant": "component",
+    "category": "semantics",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Rótulo acessível potencialmente ausente",
+        "affected_code": "label: semanticsLabel ?? label,",
+        "explanation": "Tanto semanticsLabel quanto label são opcionais. Na variante apenas com ícone, se semanticsLabel não for fornecido, o botão fica sem nome acessível. Como excludeSemantics: true remove a semântica dos filhos, leitores de tela anunciarão apenas \"botão\" sem indicar sua função.",
+        "confidence": "medium",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 1233,
+    "completion_tokens": 187,
+    "total_tokens": 1420
+  },
+  "latency_ms": 2605,
+  "request_id": "req_011ChJvdPbrB1i8x7FoaTaMG"
+}

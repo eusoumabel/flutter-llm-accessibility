@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_003_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T01:03:53.297912+00:00",
+  "request": {
+    "sample_id": "SEM_003",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Problema de Acessibilidade - Rótulo Semântico Ausente",
+        "affected_code": "semanticLabel: '',",
+        "explanation": "O `semanticLabel` de um `Icon` está vazio, o que impede que leitores de tela informem aos usuários o significado visual do ícone. Neste caso, o ícone representa o status de entrega do pedido, uma informação crucial que não será acessível para usuários com deficiência visual.",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 313,
+    "completion_tokens": 103,
+    "thinking_tokens": 799,
+    "total_tokens": 1215
+  },
+  "latency_ms": 5187
+}

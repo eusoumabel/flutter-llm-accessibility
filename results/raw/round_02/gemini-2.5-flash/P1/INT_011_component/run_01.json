@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "INT_011_component",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P1",
+  "prompt_file": "prompts/v2/P1_guidelines.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T01:14:30.395721+00:00",
+  "request": {
+    "sample_id": "INT_011",
+    "variant": "component",
+    "category": "interaction",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing accessible label",
+        "affected_code": "tooltip: tooltip,",
+        "explanation": "O componente IconButton utiliza a propriedade 'tooltip' que é opcional. Se esta propriedade não for fornecida, o botão interativo não terá um rótulo acessível para tecnologias assistivas, impedindo que usuários compreendam seu propósito.",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 737,
+    "completion_tokens": 78,
+    "thinking_tokens": 2754,
+    "total_tokens": 3569
+  },
+  "latency_ms": 14669
+}

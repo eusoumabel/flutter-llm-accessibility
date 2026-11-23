@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_013_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:54:40.199532+00:00",
+  "request": {
+    "sample_id": "SEM_013",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Falta de contexto semântico para o grupo de avaliação",
+        "affected_code": "return Row(mainAxisSize: MainAxisSize.min,children: [for (var star = 1; star <= 5; star++)Semantics(button: true,selected: star == rating,label: 'Rate $star out of 5',child: GestureDetector(behavior: HitTestBehavior.opaque,onTap: () => onRatingChanged(star),child: SizedBox(width: 48,height: 48,child: Icon(star <= rating ? Icons.star : Icons.star_border,color: Colors.amber,),),),),],);",
+        "explanation": "O grupo de estrelas de avaliação (o widget Row que as contém) não possui um rótulo semântico que descreva o propósito geral do componente. Usuários de leitores de tela podem não entender o que está sendo avaliado, pois cada estrela individualmente apenas descreve sua própria ação (\"Avaliar X de 5\"), sem um contexto maior para o conjunto.",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 408,
+    "completion_tokens": 243,
+    "thinking_tokens": 2164,
+    "total_tokens": 2815
+  },
+  "latency_ms": 10751
+}

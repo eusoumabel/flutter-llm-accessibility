@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_031_component",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P1",
+  "prompt_file": "prompts/v2/P1_guidelines.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:56:13.065354+00:00",
+  "request": {
+    "sample_id": "SEM_031",
+    "variant": "component",
+    "category": "semantics",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Incorrect accessible label",
+        "affected_code": "tooltip: 'Show Password'",
+        "explanation": "O rótulo de acessibilidade (tooltip) do botão de alternância de visibilidade da senha é estático (\"Show Password\"). Quando a senha já está visível, o rótulo se torna incorreto, pois a ação do botão seria ocultar a senha, não mostrá-la. Isso pode confundir usuários de tecnologias assistivas.",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 1096,
+    "completion_tokens": 104,
+    "thinking_tokens": 1388,
+    "total_tokens": 2588
+  },
+  "latency_ms": 6944
+}

@@ -1,0 +1,43 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_025_violation",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:35:02.207780+00:00",
+  "request": {
+    "sample_id": "SEM_025",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Estado de seleção não exposto à tecnologia assistiva",
+        "affected_code": "return Semantics(\n      button: true,\n      enabled: true,",
+        "explanation": "O item de menu indica a categoria selecionada apenas visualmente (indicador triangular desenhado com CustomPaint e mudança de cor do texto), mas o widget Semantics não define 'selected: isSelected'. Usuários de leitores de tela não conseguem saber qual categoria está atualmente selecionada.",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 1791,
+    "completion_tokens": 192,
+    "total_tokens": 1983
+  },
+  "latency_ms": 2870,
+  "request_id": "req_011ChJvRR7HzJqn5AZnWC8MW"
+}

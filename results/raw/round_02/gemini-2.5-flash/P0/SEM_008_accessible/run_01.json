@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_008_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T01:01:22.394805+00:00",
+  "request": {
+    "sample_id": "SEM_008",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Componente interativo sem funcionalidade",
+        "affected_code": "ListTile(title: Text(order))",
+        "explanation": "Os `ListTile`s são frequentemente usados para itens de lista interativos. A ausência de um manipulador `onTap` pode levar usuários de leitores de tela a esperar uma ação que não existe, causando confusão ou frustração. Se os itens da lista não forem interativos, considere usar um widget diferente ou garantir que a falta de interatividade seja clara.",
+        "confidence": "medium",
+        "severity": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 314,
+    "completion_tokens": 115,
+    "thinking_tokens": 1670,
+    "total_tokens": 2099
+  },
+  "latency_ms": 9340
+}

@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "INT_017_component",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:52:18.679973+00:00",
+  "request": {
+    "sample_id": "INT_017",
+    "variant": "component",
+    "category": "interaction",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Perda de Informação Semântica",
+        "affected_code": "        excludeSemantics: true,",
+        "explanation": "O widget Semantics está configurado com excludeSemantics: true, o que impede que a informação semântica do widget child seja exposta a serviços de acessibilidade. Se o child contiver texto ou outros elementos com significado semântico que não são totalmente capturados pela propriedade tooltip, usuários de leitores de tela podem perder informações cruciais sobre a função ou o conteúdo do botão.",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 475,
+    "completion_tokens": 118,
+    "thinking_tokens": 3255,
+    "total_tokens": 3848
+  },
+  "latency_ms": 16879
+}

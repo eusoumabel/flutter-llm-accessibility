@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "INT_013_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P1",
+  "prompt_file": "prompts/v2/P1_guidelines.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:52:46.074677+00:00",
+  "request": {
+    "sample_id": "INT_013",
+    "variant": "violation",
+    "category": "interaction",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Inaccessible custom gesture",
+        "affected_code": "GestureDetector(onDoubleTapDown: _onDoubleTapDown,onDoubleTap: _onDoubleTap,child: InteractiveViewer(interactionEndFrictionCoefficient:widget.interactionEndFrictionCoefficient ?? 0.0000135,maxScale: widget.maxScale ?? 2.5,minScale: widget.minScale ?? 0.8,transformationController: _transformationController,child: widget.child,),)",
+        "explanation": "O gesto de toque duplo (onDoubleTap) é uma interação personalizada que não possui um equivalente acessível para usuários de tecnologias assistivas. Usuários de leitores de tela, por exemplo, não seriam informados sobre essa funcionalidade de zoom e não teriam uma maneira alternativa de ativá-la.",
+        "confidence": "high",
+        "severity": "critical"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 1135,
+    "completion_tokens": 184,
+    "thinking_tokens": 1526,
+    "total_tokens": 2845
+  },
+  "latency_ms": 8095
+}

@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_008_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T01:02:47.126803+00:00",
+  "request": {
+    "sample_id": "SEM_008",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Falta de interatividade para item de lista",
+        "affected_code": "ListTile(title: Text(order))",
+        "explanation": "O widget ListTile é frequentemente usado para itens interativos em uma lista. A ausência de um callback onTap impede que usuários de leitores de tela ou navegação por teclado interajam com os itens da lista de pedidos, tornando-os inacessíveis se a intenção for que sejam clicáveis para ver detalhes.",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 298,
+    "completion_tokens": 113,
+    "thinking_tokens": 1446,
+    "total_tokens": 1857
+  },
+  "latency_ms": 8770
+}

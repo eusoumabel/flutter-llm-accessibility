@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "INT_007_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:31:48.929355+00:00",
+  "request": {
+    "sample_id": "INT_007",
+    "variant": "accessible",
+    "category": "interaction",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Ocultação de conteúdo semântico detalhado",
+        "affected_code": "excludeSemantics: true,",
+        "explanation": "O uso de excludeSemantics: true no widget Semantics impede que os leitores de tela acessem individualmente os widgets Text filhos que exibem o número do pedido e o status. Embora o label forneça um resumo adequado para o botão, a ocultação do conteúdo detalhado pode limitar a capacidade de alguns usuários de explorar as informações de forma granular, o que pode ser útil em certos contextos.",
+        "confidence": "medium",
+        "severity": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 425,
+    "completion_tokens": 128,
+    "thinking_tokens": 3702,
+    "total_tokens": 4255
+  },
+  "latency_ms": 19422
+}

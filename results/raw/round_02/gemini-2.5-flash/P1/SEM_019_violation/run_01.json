@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_019_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P1",
+  "prompt_file": "prompts/v2/P1_guidelines.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:50:15.520861+00:00",
+  "request": {
+    "sample_id": "SEM_019",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Incorrect accessible label",
+        "affected_code": "tooltip: 'Login'",
+        "explanation": "O rótulo de acessibilidade \"Login\" não corresponde ao propósito do botão, que é abrir o perfil do usuário (indicado pelo ícone e pelo nome do widget `OpenProfileButton`). Isso pode confundir usuários de tecnologias assistivas.",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 569,
+    "completion_tokens": 81,
+    "thinking_tokens": 993,
+    "total_tokens": 1643
+  },
+  "latency_ms": 5235
+}

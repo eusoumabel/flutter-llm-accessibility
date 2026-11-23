@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_011_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P1",
+  "prompt_file": "prompts/v2/P1_guidelines.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T01:02:22.693369+00:00",
+  "request": {
+    "sample_id": "SEM_011",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing semantic state",
+        "affected_code": "Semantics(button: true,child: GestureDetector(behavior: HitTestBehavior.opaque,onTap: () => onSelected(i),child: Container(height: 48,alignment: Alignment.center,decoration: BoxDecoration(border: Border(bottom: BorderSide(color: i == selectedIndex ? Colors.blue : Colors.transparent,width: 3,),),),child: Text(categories[i]),),),)",
+        "explanation": "O componente Semantics para cada aba interativa não expõe o estado de \"selecionado\" ou \"não selecionado\". Usuários de tecnologias assistivas não conseguirão identificar qual aba está ativa no momento.",
+        "confidence": "high",
+        "severity": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 711,
+    "completion_tokens": 160,
+    "thinking_tokens": 2406,
+    "total_tokens": 3277
+  },
+  "latency_ms": 12532
+}

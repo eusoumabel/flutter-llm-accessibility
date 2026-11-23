@@ -1,0 +1,43 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "INT_013_violation",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "round": "round_02",
+  "prompt": "P1",
+  "prompt_file": "prompts/v2/P1_guidelines.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:42:11.633251+00:00",
+  "request": {
+    "sample_id": "INT_013",
+    "variant": "violation",
+    "category": "interaction",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Inaccessible custom gesture",
+        "affected_code": "GestureDetector(\n      onDoubleTapDown: _onDoubleTapDown,\n      onDoubleTap: _onDoubleTap,",
+        "explanation": "O zoom é acionado apenas por um gesto personalizado de toque duplo (e por pinça no InteractiveViewer), sem nenhuma alternativa acessível, como botões de ampliar/reduzir ou ações semânticas personalizadas (customSemanticsActions). O GestureDetector não expõe o toque duplo como ação semântica, e o toque duplo em leitores de tela é reservado para ativação. Por isso, usuários de tecnologias assistivas não conseguem ampliar nem redefinir o zoom.",
+        "confidence": "high",
+        "severity": "critical"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 2184,
+    "completion_tokens": 284,
+    "total_tokens": 2468
+  },
+  "latency_ms": 3980,
+  "request_id": "req_011ChJvxzNfQdpqzZX76ty1E"
+}

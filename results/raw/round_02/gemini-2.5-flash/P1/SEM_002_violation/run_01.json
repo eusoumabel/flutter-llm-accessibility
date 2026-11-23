@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_002_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P1",
+  "prompt_file": "prompts/v2/P1_guidelines.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:54:56.722570+00:00",
+  "request": {
+    "sample_id": "SEM_002",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing accessible label",
+        "affected_code": "IconButton(icon: const Icon(Icons.share),onPressed: onShare,)",
+        "explanation": "O IconButton não possui um rótulo acessível (como um tooltip ou semanticLabel) que descreva sua finalidade. Usuários de tecnologias assistivas podem não entender que este botão serve para \"compartilhar\".",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 589,
+    "completion_tokens": 87,
+    "thinking_tokens": 928,
+    "total_tokens": 1604
+  },
+  "latency_ms": 5004
+}

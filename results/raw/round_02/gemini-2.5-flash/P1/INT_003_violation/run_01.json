@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "INT_003_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P1",
+  "prompt_file": "prompts/v2/P1_guidelines.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T01:03:29.537656+00:00",
+  "request": {
+    "sample_id": "INT_003",
+    "variant": "violation",
+    "category": "interaction",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Insufficient target size",
+        "affected_code": "SizedBox(width: 20,height: 20,",
+        "explanation": "O alvo interativo para o botão de remoção tem um tamanho de 20x20 pixels, o que é menor do que o tamanho mínimo recomendado de 44x44 pixels para facilitar a interação, especialmente para usuários com dificuldades motoras ou que usam tecnologias assistivas.",
+        "confidence": "high",
+        "severity": "low"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 762,
+    "completion_tokens": 101,
+    "thinking_tokens": 997,
+    "total_tokens": 1860
+  },
+  "latency_ms": 5511
+}

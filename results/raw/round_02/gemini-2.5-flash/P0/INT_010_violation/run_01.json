@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "INT_010_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T01:05:44.897572+00:00",
+  "request": {
+    "sample_id": "INT_010",
+    "variant": "violation",
+    "category": "interaction",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Tamanho do Alvo de Toque Insuficiente",
+        "affected_code": "IconButton(icon: const Icon(Icons.login),iconSize: 18,padding: EdgeInsets.zero,constraints: const BoxConstraints(),style: const ButtonStyle(tapTargetSize: MaterialTapTargetSize.shrinkWrap,),onPressed: onLogin,tooltip: 'Login',)",
+        "explanation": "O tamanho do alvo de toque do botão é muito pequeno, o que dificulta a interação para usuários com deficiência motora ou que utilizam dispositivos de assistência. As diretrizes de acessibilidade recomendam um tamanho mínimo de 48x48 pixels lógicos.",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 299,
+    "completion_tokens": 148,
+    "thinking_tokens": 678,
+    "total_tokens": 1125
+  },
+  "latency_ms": 4823
+}

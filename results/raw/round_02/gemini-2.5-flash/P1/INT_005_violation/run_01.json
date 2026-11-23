@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "INT_005_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P1",
+  "prompt_file": "prompts/v2/P1_guidelines.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:59:59.334495+00:00",
+  "request": {
+    "sample_id": "INT_005",
+    "variant": "violation",
+    "category": "interaction",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Interaction not exposed",
+        "affected_code": "          child: InteractiveViewer(\n            transformationController: _controller,\n            minScale: 1.0,\n            maxScale: 4.0,\n            child: Image(\n              image: widget.floorPlan,\n              semanticLabel: 'Office floor plan',\n            ),\n          )",
+        "explanation": "O InteractiveViewer permite interações de zoom e pan, mas por padrão, essas interações não são expostas aos mecanismos de acessibilidade. Usuários de tecnologias assistivas não conseguirão operar as funcionalidades de zoom e pan sem uma implementação explícita de semântica para o InteractiveViewer.",
+        "confidence": "high",
+        "severity": "critical"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 656,
+    "completion_tokens": 151,
+    "thinking_tokens": 2174,
+    "total_tokens": 2981
+  },
+  "latency_ms": 10642
+}

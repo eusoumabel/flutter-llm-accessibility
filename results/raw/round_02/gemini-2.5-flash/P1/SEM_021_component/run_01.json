@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_021_component",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P1",
+  "prompt_file": "prompts/v2/P1_guidelines.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:59:27.384256+00:00",
+  "request": {
+    "sample_id": "SEM_021",
+    "variant": "component",
+    "category": "semantics",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Incorrect accessible label",
+        "affected_code": "semanticsLabel: '-'",
+        "explanation": "O rótulo de acessibilidade '-' atribuído ao TextSpan não descreve corretamente o seu conteúdo textual. Embora a semântica deste TextSpan possa ser excluída por um widget Semantics pai, a presença de um rótulo incorreto no código é uma má prática e pode levar a problemas se a estrutura semântica for alterada.",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 1205,
+    "completion_tokens": 101,
+    "thinking_tokens": 3628,
+    "total_tokens": 4934
+  },
+  "latency_ms": 16943
+}

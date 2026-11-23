@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_006_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P1",
+  "prompt_file": "prompts/v2/P1_guidelines.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T01:00:17.508154+00:00",
+  "request": {
+    "sample_id": "SEM_006",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Incorrect accessible label",
+        "affected_code": "tooltip: 'Previous image'",
+        "explanation": "O rótulo de acessibilidade \"Previous image\" (Imagem anterior) está incorreto para um botão que visualmente representa a ação de \"próxima imagem\". Isso pode confundir usuários de tecnologias assistivas.",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 613,
+    "completion_tokens": 76,
+    "thinking_tokens": 1105,
+    "total_tokens": 1794
+  },
+  "latency_ms": 6178
+}

@@ -1,0 +1,43 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "INT_004_violation",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:39:46.679090+00:00",
+  "request": {
+    "sample_id": "INT_004",
+    "variant": "violation",
+    "category": "interaction",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Funcionalidade acessível apenas por gesto complexo",
+        "affected_code": "GestureDetector(\n          onDoubleTap: onToggleLike,",
+        "explanation": "A ação de curtir só pode ser executada por toque duplo na imagem, sem botão alternativo nem ação semântica exposta. Usuários de leitores de tela (cujo toque duplo ativa apenas a ação padrão), de teclado ou de tecnologias assistivas não conseguem descobrir nem executar a ação, e o estado 'curtido' (liked) não é comunicado. Deve-se fornecer um botão visível (ex.: IconButton com tooltip/label e estado) ou ações semânticas.",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 991,
+    "completion_tokens": 262,
+    "total_tokens": 1253
+  },
+  "latency_ms": 3592,
+  "request_id": "req_011ChJvnLGvRSo8wD3AXSCXG"
+}

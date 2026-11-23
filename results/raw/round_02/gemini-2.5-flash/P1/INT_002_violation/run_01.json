@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "INT_002_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P1",
+  "prompt_file": "prompts/v2/P1_guidelines.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:51:29.039210+00:00",
+  "request": {
+    "sample_id": "INT_002",
+    "variant": "violation",
+    "category": "interaction",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Insufficient target size",
+        "affected_code": "IconButton(icon: const Icon(Icons.close), iconSize: 16, padding: EdgeInsets.zero, constraints: const BoxConstraints(), style: const ButtonStyle(tapTargetSize: MaterialTapTargetSize.shrinkWrap,), tooltip: 'Remove filter $label', onPressed: onRemove,)",
+        "explanation": "O IconButton tem um tamanho de alvo de toque insuficiente para interação, pois o tapTargetSize foi explicitamente definido como shrinkWrap e o padding é zero, resultando em uma área interativa menor que o recomendado para acessibilidade.",
+        "confidence": "high",
+        "severity": "low"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 680,
+    "completion_tokens": 133,
+    "thinking_tokens": 1566,
+    "total_tokens": 2379
+  },
+  "latency_ms": 7153
+}

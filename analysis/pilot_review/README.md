@@ -17,7 +17,7 @@ Os falsos negativos (10 respostas) e os verdadeiros positivos não fazem parte d
 | `revisao_pilot.xlsx` | Os itens a revisar. É enviado ao Google Drive. |
 | `apps_script/Code.gs` e `apps_script/Classificador.html` | O classificador, instalado na planilha do Google. |
 | `chave_respostas_pilot.csv` | Liga cada letra (A a D) ao modelo e ao prompt. **Não envie ao Drive e não abra antes de os dois revisores terminarem.** |
-| `../../scripts/build_pilot_review.py` | Gera a planilha e a chave a partir de `results/raw/pilot/`. |
+| `../../scripts/build_pilot_review.py` | Gera a planilha e a chave de uma rodada a partir de `results/raw/<rodada>/` (`--round round_01`). Os arquivos `*_pilot` acima foram gerados antes da renomeação para rodadas (ADR-R020). |
 
 O script usa uma semente fixa (`--seed 20261023`), então as letras são sempre as mesmas. Rodar o script de novo recria a planilha local, mas **não afeta** a cópia no Google, onde fica o trabalho dos revisores.
 

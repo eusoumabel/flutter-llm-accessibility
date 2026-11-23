@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "INT_008_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P1",
+  "prompt_file": "prompts/v2/P1_guidelines.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T01:12:57.576842+00:00",
+  "request": {
+    "sample_id": "INT_008",
+    "variant": "violation",
+    "category": "interaction",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Interaction not exposed",
+        "affected_code": "    return Semantics(\n      button: true,\n      label: 'Send message',\n      child: Listener(\n        onPointerDown: (_) => setState(() => _pressed = true),\n        onPointerUp: (_) {\n          setState(() => _pressed = false);\n          widget.onSend();\n        },\n        onPointerCancel: (_) => setState(() => _pressed = false),\n        child: AnimatedScale(\n          scale: _pressed ? 0.9 : 1.0,\n          duration: const Duration(milliseconds: 100),\n          child: Container(\n            width: 56,\n            height: 56,\n            decoration: const BoxDecoration(\n              color: Colors.blue,\n              shape: BoxShape.circle,\n            ),\n            child: const Icon(Icons.send, color: Colors.white),\n          ),\n        ),\n      ),\n    );",
+        "explanation": "A interação de envio (chamada `widget.onSend()`) é tratada por um `Listener` de baixo nível e não é exposta aos mecanismos de acessibilidade através de uma ação semântica (como `onTap` ou `onLongPress`) no widget `Semantics`. Isso impede que usuários de tecnologias assistivas ativem o botão.",
+        "confidence": "high",
+        "severity": "critical"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 736,
+    "completion_tokens": 335,
+    "thinking_tokens": 2630,
+    "total_tokens": 3701
+  },
+  "latency_ms": 16338
+}

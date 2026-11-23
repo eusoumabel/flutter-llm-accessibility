@@ -1,0 +1,43 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "INT_005_violation",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:37:04.639545+00:00",
+  "request": {
+    "sample_id": "INT_005",
+    "variant": "violation",
+    "category": "interaction",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Interação dependente de gestos multitoque sem alternativa",
+        "affected_code": "InteractiveViewer(\n            transformationController: _controller,\n            minScale: 1.0,\n            maxScale: 4.0,",
+        "explanation": "O zoom e o deslocamento da planta só podem ser feitos por gestos de pinça e arrasto. Não há botões ou outros controles alternativos, como aumentar, diminuir ou redefinir o zoom, acionáveis por toque simples, teclado ou leitor de tela. Usuários com limitações motoras ou de tecnologia assistiva não conseguem ampliar a planta, o que viola o critério WCAG 2.5.1 (Gestos de ponteiro).",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 985,
+    "completion_tokens": 271,
+    "total_tokens": 1256
+  },
+  "latency_ms": 3615,
+  "request_id": "req_011ChJvaPRbhmuSikbdhxTDx"
+}

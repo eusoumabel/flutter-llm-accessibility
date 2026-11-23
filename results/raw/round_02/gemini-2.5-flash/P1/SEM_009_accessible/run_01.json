@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_009_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P1",
+  "prompt_file": "prompts/v2/P1_guidelines.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T01:03:48.107446+00:00",
+  "request": {
+    "sample_id": "SEM_009",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Insufficient target size",
+        "affected_code": "constraints: const BoxConstraints(minHeight: 48),",
+        "explanation": "O componente interativo garante uma altura mínima de 48 pixels lógicos, mas não garante uma largura mínima, o que pode resultar em uma área de toque insuficiente se o texto for curto.",
+        "confidence": "high",
+        "severity": "low"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 621,
+    "completion_tokens": 78,
+    "thinking_tokens": 3221,
+    "total_tokens": 3920
+  },
+  "latency_ms": 18566
+}

@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "INT_014_component",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:52:56.987623+00:00",
+  "request": {
+    "sample_id": "INT_014",
+    "variant": "component",
+    "category": "interaction",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Falta de rótulo semântico para imagem",
+        "affected_code": "Image(image: image,fit: BoxFit.contain,errorBuilder: (_, _, _) => const Center(child: Text('This image could not be displayed.',style: TextStyle(color: Colors.white70),),),)",
+        "explanation": "A imagem principal não possui um rótulo semântico explícito (`semanticLabel`) ou não está envolvida em um widget `Semantics` com uma descrição. Isso significa que usuários de leitores de tela podem não conseguir entender o conteúdo ou o propósito da imagem. Embora o `AppBar` tenha um título, ele não é diretamente associado à imagem para fins de acessibilidade.",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 589,
+    "completion_tokens": 160,
+    "thinking_tokens": 2197,
+    "total_tokens": 2946
+  },
+  "latency_ms": 10910
+}
