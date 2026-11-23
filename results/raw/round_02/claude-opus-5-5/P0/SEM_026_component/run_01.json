@@ -1,0 +1,43 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_026_component",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:30:27.199628+00:00",
+  "request": {
+    "sample_id": "SEM_026",
+    "variant": "component",
+    "category": "semantics",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Estado do controle não comunicado",
+        "affected_code": "Tooltip(\n      preferBelow: showTooltipBelow,\n      message: 'Toggle brightness',",
+        "explanation": "O botão funciona como alternância entre modo claro e escuro, mas o rótulo acessível 'Toggle brightness' é estático e não informa o estado atual (claro/escuro) nem a ação resultante. A troca de ícone é apenas visual. Usuários de leitores de tela não sabem qual modo está ativo. Recomenda-se usar uma mensagem dinâmica (ex.: 'Ativar modo escuro'/'Ativar modo claro') ou Semantics com toggled.",
+        "confidence": "medium",
+        "severity": "low"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 957,
+    "completion_tokens": 261,
+    "total_tokens": 1218
+  },
+  "latency_ms": 3760,
+  "request_id": "req_011ChJv55ZznR1WkCPDxhyXg"
+}

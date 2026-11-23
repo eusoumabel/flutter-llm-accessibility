@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "INT_005_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T01:06:47.785538+00:00",
+  "request": {
+    "sample_id": "INT_005",
+    "variant": "violation",
+    "category": "interaction",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Conteúdo interativo sem descrição detalhada acessível",
+        "affected_code": "Image(image: widget.floorPlan,semanticLabel: 'Office floor plan',)",
+        "explanation": "A imagem do plano de andar é interativa (zoom e pan), mas sua 'semanticLabel' é muito genérica (\"Office floor plan\"). Usuários com deficiência visual não conseguem acessar os detalhes do plano (como salas, saídas, pontos de interesse) que são visíveis para outros usuários. É necessário fornecer uma descrição mais detalhada ou uma alternativa acessível para explorar o conteúdo do plano.",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 379,
+    "completion_tokens": 133,
+    "thinking_tokens": 1372,
+    "total_tokens": 1884
+  },
+  "latency_ms": 8377
+}

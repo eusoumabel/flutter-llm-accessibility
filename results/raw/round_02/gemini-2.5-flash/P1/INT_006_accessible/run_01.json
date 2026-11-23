@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "INT_006_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P1",
+  "prompt_file": "prompts/v2/P1_guidelines.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:30:17.452853+00:00",
+  "request": {
+    "sample_id": "INT_006",
+    "variant": "accessible",
+    "category": "interaction",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Interaction not exposed",
+        "affected_code": "DragTarget<String>(onAcceptWithDetails: (details) => _markDone(details.data), builder: (context, candidates, rejected) => Column(children: [Semantics(header: true, child: const Text('Done')), for (final task in _done) Card(child: ListTile(title: Text(task)))]))",
+        "explanation": "O componente DragTarget permite que itens sejam soltos nele, mas sua funcionalidade interativa como uma área de destino para arrastar e soltar não é explicitamente exposta aos mecanismos de acessibilidade. Usuários de tecnologias assistivas podem não conseguir identificar que esta é uma área onde itens podem ser soltos.",
+        "confidence": "high",
+        "severity": "critical"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 913,
+    "completion_tokens": 162,
+    "thinking_tokens": 2753,
+    "total_tokens": 3828
+  },
+  "latency_ms": 13350
+}

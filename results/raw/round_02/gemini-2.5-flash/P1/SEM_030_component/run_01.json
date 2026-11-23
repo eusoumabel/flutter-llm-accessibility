@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_030_component",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P1",
+  "prompt_file": "prompts/v2/P1_guidelines.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T01:13:34.132660+00:00",
+  "request": {
+    "sample_id": "SEM_030",
+    "variant": "component",
+    "category": "semantics",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing accessible label",
+        "affected_code": "label: semanticsLabel ?? label,",
+        "explanation": "O componente interativo pode ser instanciado sem um rótulo acessível, pois tanto 'label' quanto 'semanticsLabel' são opcionais. Se ambos forem nulos, o botão não terá uma descrição para tecnologias assistivas.",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 841,
+    "completion_tokens": 81,
+    "thinking_tokens": 1362,
+    "total_tokens": 2284
+  },
+  "latency_ms": 6896
+}

@@ -1,0 +1,43 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_009_violation",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "round": "round_02",
+  "prompt": "P1",
+  "prompt_file": "prompts/v2/P1_guidelines.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:37:22.529264+00:00",
+  "request": {
+    "sample_id": "SEM_009",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing semantic role",
+        "affected_code": "GestureDetector(\n      behavior: HitTestBehavior.opaque,\n      onTap: onOpenTerms,",
+        "explanation": "O link é implementado com GestureDetector sem Semantics(link: true ou button: true). O texto fornece o rótulo e o GestureDetector expõe a ação de toque, mas leitores de tela não anunciam que o elemento é um link/controle interativo, fornecendo informação incompleta sobre seu papel.",
+        "confidence": "medium",
+        "severity": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 1402,
+    "completion_tokens": 199,
+    "total_tokens": 1601
+  },
+  "latency_ms": 2800,
+  "request_id": "req_011ChJvbmLkMXe1tPZfXAPsX"
+}

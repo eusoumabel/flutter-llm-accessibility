@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "INT_002_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T01:02:38.354256+00:00",
+  "request": {
+    "sample_id": "INT_002",
+    "variant": "accessible",
+    "category": "interaction",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Tamanho visual do ícone interativo",
+        "affected_code": "iconSize: 16,",
+        "explanation": "O ícone de fechar tem um tamanho visual de 16x16 pixels. Embora o IconButton geralmente forneça uma área de toque maior, o tamanho visual pequeno do ícone pode dificultar a identificação e a interação para usuários com baixa visão ou dificuldades motoras, não atendendo às recomendações de tamanho mínimo visual para elementos interativos (geralmente 24x24 pixels ou maior).",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 362,
+    "completion_tokens": 123,
+    "thinking_tokens": 2943,
+    "total_tokens": 3428
+  },
+  "latency_ms": 15658
+}

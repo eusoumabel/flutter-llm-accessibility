@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_003_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P1",
+  "prompt_file": "prompts/v2/P1_guidelines.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T01:11:16.654698+00:00",
+  "request": {
+    "sample_id": "SEM_003",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing accessible label",
+        "affected_code": "Icon(delivered ? Icons.check_circle : Icons.schedule,color: delivered ? Colors.green : Colors.orange,semanticLabel: '',)",
+        "explanation": "O ícone indica o status do pedido (entregue ou agendado), mas seu `semanticLabel` está definido como uma string vazia, impedindo que leitores de tela anunciem seu propósito. Ele deveria descrever o status que representa.",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 590,
+    "completion_tokens": 109,
+    "thinking_tokens": 947,
+    "total_tokens": 1646
+  },
+  "latency_ms": 5537
+}

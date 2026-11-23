@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "INT_014_component",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P1",
+  "prompt_file": "prompts/v2/P1_guidelines.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T01:00:27.787942+00:00",
+  "request": {
+    "sample_id": "INT_014",
+    "variant": "component",
+    "category": "interaction",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing accessible label",
+        "affected_code": "Image(image: image,fit: BoxFit.contain,errorBuilder: (_, _, _) => const Center(child: Text('This image could not be displayed.',style: TextStyle(color: Colors.white70),),),)",
+        "explanation": "A imagem principal, que é o conteúdo central da tela e interativa (zoom), não possui um rótulo semântico. Usuários de tecnologias assistivas não conseguirão entender o que a imagem representa, pois o título da AppBar descreve a tela, mas não necessariamente o conteúdo específico da imagem.",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 866,
+    "completion_tokens": 136,
+    "thinking_tokens": 1831,
+    "total_tokens": 2833
+  },
+  "latency_ms": 10276
+}

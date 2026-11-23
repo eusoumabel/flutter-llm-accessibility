@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_009_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T01:12:41.235510+00:00",
+  "request": {
+    "sample_id": "SEM_009",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Elemento interativo não focável via teclado",
+        "affected_code": "      child: GestureDetector(behavior: HitTestBehavior.opaque,onTap: onOpenTerms,child: Container(constraints: const BoxConstraints(minHeight: 48),alignment: Alignment.centerLeft,child: Text('Read the Terms of Service',style: TextStyle(color: Theme.of(context).colorScheme.primary,decoration: TextDecoration.underline,),),),),",
+        "explanation": "O link não é focável via teclado, impedindo que usuários que dependem de navegação por teclado (como usuários com deficiência motora ou que usam leitores de tela com teclado físico) interajam com ele. Widgets como GestureDetector não fornecem foco de teclado por padrão; é necessário usar um widget como TextButton ou envolver o GestureDetector em um FocusableActionDetector.",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 344,
+    "completion_tokens": 191,
+    "thinking_tokens": 3887,
+    "total_tokens": 4422
+  },
+  "latency_ms": 20552
+}

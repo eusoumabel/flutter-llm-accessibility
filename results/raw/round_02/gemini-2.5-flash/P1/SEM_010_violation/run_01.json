@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_010_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P1",
+  "prompt_file": "prompts/v2/P1_guidelines.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T01:15:38.444513+00:00",
+  "request": {
+    "sample_id": "SEM_010",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Inaccessible custom control",
+        "affected_code": "Semantics(button: true,label: 'Dark mode',child: GestureDetector(behavior: HitTestBehavior.opaque,onTap: () => onChanged(!isOn),child: SizedBox(width: 64,height: 48,child: Center(child: AnimatedContainer(duration: const Duration(milliseconds: 200),width: 52,height: 32,padding: const EdgeInsets.all(4),alignment: isOn ? Alignment.centerRight : Alignment.centerLeft,decoration: BoxDecoration(color: isOn ? Colors.indigo : Colors.grey.shade400,borderRadius: BorderRadius.circular(16),),child: Container(width: 24,height: 24,decoration: const BoxDecoration(color: Colors.white,shape: BoxShape.circle,),),),),),),)",
+        "explanation": "O controle personalizado não expõe informações semânticas equivalentes a um controle de alternância padrão. Embora tenha um rótulo e um papel de botão, ele não comunica o estado atual (ligado/desligado) através da semântica, o que impede que usuários de tecnologias assistivas compreendam e operem o componente de forma eficaz.",
+        "confidence": "high",
+        "severity": "critical"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 752,
+    "completion_tokens": 276,
+    "thinking_tokens": 1805,
+    "total_tokens": 2833
+  },
+  "latency_ms": 11563
+}

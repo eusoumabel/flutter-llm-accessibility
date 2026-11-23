@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_028_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:51:58.543374+00:00",
+  "request": {
+    "sample_id": "SEM_028",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Conteúdo visual inacessível e rótulo semântico inadequado.",
+        "affected_code": "    return Semantics(      button: true,      enabled: true,      label: 'Login',      child: MouseRegion(        cursor: SystemMouseCursors.click,        child: GestureDetector(          onTap: widget.onTap,          child: Focus(            onKeyEvent: (node, event) {              if (event is KeyDownEvent || event is KeyRepeatEvent) {                if (event.logicalKey == LogicalKeyboardKey.enter ||                    event.logicalKey == LogicalKeyboardKey.space) {                  widget.onTap();                  return KeyEventResult.handled;                }              }              return KeyEventResult.ignored;            },            onFocusChange: (hasFocus) {              if (hasFocus) {                setState(() {                  borderDecoration = BoxDecoration(                    border: Border.all(                      color: Colors.white.withValues(alpha: 0.5),                      width: 2,                    ),                  );                });              } else {                setState(() {                  borderDecoration = null;                });              }            },            child: Container(              decoration: borderDecoration,              height: 120,              child: ExcludeSemantics(                child: Image(image: widget.thumb),              ),            ),          ),        ),      ),    );",
+        "explanation": "O widget 'Image' que exibe a miniatura ('thumb') está envolto em 'ExcludeSemantics', tornando-o invisível para serviços de acessibilidade. Simultaneamente, o 'Semantics' pai tem um rótulo genérico ('Login'). Isso impede que usuários de leitores de tela compreendam o propósito do botão, pois o conteúdo visual principal é oculto e o rótulo não descreve adequadamente a função ou o conteúdo da imagem. O rótulo semântico deve ser dinâmico e descritivo do conteúdo da imagem ou da ação do botão.",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 599,
+    "completion_tokens": 425,
+    "thinking_tokens": 2656,
+    "total_tokens": 3680
+  },
+  "latency_ms": 14784
+}

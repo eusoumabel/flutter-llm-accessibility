@@ -1,0 +1,43 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_031_component",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:33:41.130674+00:00",
+  "request": {
+    "sample_id": "SEM_031",
+    "variant": "component",
+    "category": "semantics",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Rótulo de botão não reflete o estado",
+        "affected_code": "tooltip: 'Show Password',",
+        "explanation": "O botão de alternar visibilidade da senha usa um tooltip fixo 'Show Password' independentemente do estado de _obscureText. Quando a senha já está visível, leitores de tela continuam anunciando 'Show Password', sem informar que a ação agora oculta a senha nem qual é o estado atual. O rótulo deveria mudar conforme o estado (ex.: 'Mostrar senha'/'Ocultar senha').",
+        "confidence": "high",
+        "severity": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 1684,
+    "completion_tokens": 217,
+    "total_tokens": 1901
+  },
+  "latency_ms": 3575,
+  "request_id": "req_011ChJvKPdqUZ3mgkyJiK6Y4"
+}

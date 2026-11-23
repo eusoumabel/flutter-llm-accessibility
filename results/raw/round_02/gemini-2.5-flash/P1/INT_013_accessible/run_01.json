@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "INT_013_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P1",
+  "prompt_file": "prompts/v2/P1_guidelines.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T01:12:20.681382+00:00",
+  "request": {
+    "sample_id": "INT_013",
+    "variant": "accessible",
+    "category": "interaction",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Inaccessible custom gesture",
+        "affected_code": "          child: GestureDetector(            onDoubleTapDown: _onDoubleTapDown,            onDoubleTap: _onDoubleTap,            child: InteractiveViewer(              interactionEndFrictionCoefficient:                  widget.interactionEndFrictionCoefficient ?? 0.0000135,              maxScale: widget.maxScale ?? 2.5,              minScale: widget.minScale ?? 0.8,              transformationController: _transformationController,              child: widget.child,            ),          ),",
+        "explanation": "A interação de toque duplo (double-tap) para zoom/reset é um gesto personalizado que não possui um equivalente acessível. Usuários de tecnologias assistivas não conseguirão ativar essa funcionalidade.",
+        "confidence": "high",
+        "severity": "critical"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 1399,
+    "completion_tokens": 174,
+    "thinking_tokens": 1442,
+    "total_tokens": 3015
+  },
+  "latency_ms": 7819
+}

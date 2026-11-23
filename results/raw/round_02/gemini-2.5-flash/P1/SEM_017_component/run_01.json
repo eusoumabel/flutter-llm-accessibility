@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_017_component",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P1",
+  "prompt_file": "prompts/v2/P1_guidelines.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:51:21.883647+00:00",
+  "request": {
+    "sample_id": "SEM_017",
+    "variant": "component",
+    "category": "semantics",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing accessible label",
+        "affected_code": "          IconButton(            key: const Key('slideshow_slideshowButtonsLeft'),            onPressed: () async {              if (_currentPage >= 1) {                await widget.controller.previousPage(                  duration: _pageAnimationDuration,                  curve: Curves.easeInOut,                );              }            },            icon: _currentPage == 0                ? const Icon(Icons.arrow_back, color: Colors.white38)                : const Icon(Icons.arrow_back, color: Colors.white),          )",
+        "explanation": "O IconButton para navegar para a página anterior não possui um tooltip ou semanticLabel explícito. Sem um rótulo acessível, usuários de tecnologias assistivas não conseguirão entender o propósito do botão.",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 1037,
+    "completion_tokens": 175,
+    "thinking_tokens": 3523,
+    "total_tokens": 4735
+  },
+  "latency_ms": 16481
+}

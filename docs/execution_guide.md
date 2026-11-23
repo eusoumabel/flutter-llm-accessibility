@@ -228,6 +228,45 @@ O relatório é gravado em `analysis/metrics/metrics_<rodada>.json`. Nesta vers�
 
 Interprete os números somente depois de verificar se todas as respostas esperadas foram normalizadas e se resultados inválidos foram registrados.
 
+## 9. Comparar as rodadas
+
+A comparação entre rodadas segue a ADR-R023.
+
+1. Associe os tipos previstos à taxonomia:
+
+   ```bash
+   python3 scripts/map_types.py --round round_02
+   ```
+
+   O script atualiza `analysis/type_mapping/type_mapping.csv`. Complete as linhas com `method` vazio ou `auto_multi`, preenchendo `subcategory` (por exemplo `SEM-01`, ou vazio para fora do escopo) e `category`, e troque `method` para `manual`. Linhas `manual` não são sobrescritas quando o script roda de novo.
+
+2. Gere as tabelas:
+
+   ```bash
+   python3 scripts/compare_rounds.py --rounds round_01 round_02
+   ```
+
+   Saídas em `analysis/tables/`: `rounds_comparison.csv` e `rounds_comparison.md` (medidas por rodada, modelo e prompt, e a diferença P1 − P0) e `round_transitions.csv` (resultado de cada variante em cada rodada).
+
+3. Gere a planilha de leitura:
+
+   ```bash
+   python3 scripts/build_round_comparison.py --rounds round_01 round_02
+   ```
+
+   A planilha `analysis/round_comparison/comparacao_round_01_round_02.xlsx` tem uma linha por variante e a aba `Mudanças`, só com as variantes cujo resultado mudou.
+
+## 10. Linha de base com ferramentas tradicionais (O4)
+
+Requer o [fvm](https://fvm.app) e o Flutter 3.41.8 instalado por ele (`fvm install 3.41.8`, ADR-R009).
+
+```bash
+python3 scripts/run_static_baseline.py --init-harness   # completa baselines/flutter_static/harness.json
+python3 scripts/run_static_baseline.py
+```
+
+O primeiro comando acrescenta ao harness a expressão de construção de cada variante nova e lista as que precisam ser completadas à mão (`TODO`). O segundo copia as variantes para o projeto `baselines/flutter_static/`, executa `flutter analyze` e um widget test por variante com as diretrizes de acessibilidade do `flutter_test`, e grava `results/baseline/static_tools.json` e `analysis/tables/static_baseline.md` (ADR-R024).
+
 ## Execução completa
 
 Para executar o fluxo completo sem chamada externa durante a preparação:
@@ -244,6 +283,9 @@ Para executar também o experimento real e a análise:
 python3 scripts/run_experiment.py --round round_02
 python3 scripts/normalize_results.py
 python3 scripts/calculate_metrics.py --round round_02
+python3 scripts/map_types.py --round round_02
+python3 scripts/compare_rounds.py --rounds round_01 round_02
+python3 scripts/build_round_comparison.py --rounds round_01 round_02
 ```
 
 ## Quando adicionar ou modificar uma sample

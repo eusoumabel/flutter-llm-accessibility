@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_022_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:52:28.239627+00:00",
+  "request": {
+    "sample_id": "SEM_022",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Imagem sem descrição semântica",
+        "affected_code": "Image(image: asset, width: 64, height: 64, excludeFromSemantics: true,)",
+        "explanation": "A imagem está marcada com `excludeFromSemantics: true`, o que impede que leitores de tela e outras tecnologias assistivas acessem seu conteúdo. Se esta imagem transmite informações importantes ou é mais do que puramente decorativa, usuários com deficiência visual não terão acesso a essa informação.",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 420,
+    "completion_tokens": 113,
+    "thinking_tokens": 1778,
+    "total_tokens": 2311
+  },
+  "latency_ms": 9558
+}

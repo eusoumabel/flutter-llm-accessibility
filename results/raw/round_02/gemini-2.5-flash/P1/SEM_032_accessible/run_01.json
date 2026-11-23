@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_032_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P1",
+  "prompt_file": "prompts/v2/P1_guidelines.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T01:08:23.606711+00:00",
+  "request": {
+    "sample_id": "SEM_032",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing semantic state",
+        "affected_code": "IconButton(icon: const Icon(Icons.radio_button_unchecked),isSelected:colorSelected.color == ColorSeed.values[i].color &&colorSelectionMethod == ColorSelectionMethod.colorSeed,selectedIcon: const Icon(Icons.circle),color: ColorSeed.values[i].color,onPressed: () {handleColorSelect(i);},tooltip: ColorSeed.values[i].label,)",
+        "explanation": "O estado de seleção (selecionado/não selecionado) dos botões de ícone, que visualmente funcionam como botões de rádio para escolher uma cor, não é exposto semanticamente. Isso pode dificultar para usuários de tecnologias assistivas entenderem qual cor está atualmente selecionada.",
+        "confidence": "high",
+        "severity": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 875,
+    "completion_tokens": 174,
+    "thinking_tokens": 1464,
+    "total_tokens": 2513
+  },
+  "latency_ms": 49234
+}

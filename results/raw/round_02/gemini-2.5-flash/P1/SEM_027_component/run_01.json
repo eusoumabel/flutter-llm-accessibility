@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_027_component",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P1",
+  "prompt_file": "prompts/v2/P1_guidelines.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T01:01:07.138063+00:00",
+  "request": {
+    "sample_id": "SEM_027",
+    "variant": "component",
+    "category": "semantics",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing semantic state",
+        "affected_code": "IconButton(        icon: useMaterial3            ? const Icon(Icons.filter_2)            : const Icon(Icons.filter_3),        onPressed: handleMaterialVersionChange,      )",
+        "explanation": "O estado atual da versão do Material Design (Material 2 ou Material 3) não é explicitamente exposto através de semânticas para tecnologias assistivas. Embora a dica de ferramenta (tooltip) descreva a ação de alternar para a outra versão, ela não comunica diretamente qual versão está ativa no momento.",
+        "confidence": "high",
+        "severity": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 628,
+    "completion_tokens": 131,
+    "thinking_tokens": 2833,
+    "total_tokens": 3592
+  },
+  "latency_ms": 13993
+}

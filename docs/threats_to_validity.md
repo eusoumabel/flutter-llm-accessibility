@@ -38,4 +38,8 @@ O Gemini é executado com temperatura 0, enquanto o Claude Opus 5.5 não aceita 
 
 ## Mapeamento dos tipos previstos
 
-O tipo de violação previsto é texto livre (ADR-R018). Enquanto o procedimento de mapeamento para a taxonomia não for definido e validado, as métricas refletem apenas a detecção da presença de violação.
+O tipo de violação previsto é texto livre (ADR-R018). Ele é associado à taxonomia por palavras-chave e revisado manualmente (ADR-R023); a revisão é feita pelas próprias pesquisadoras, sem medida de concordância, e tipos compostos (por exemplo, "papel e estado") exigem uma escolha que pode favorecer ou penalizar a predição.
+
+## Comparação entre rodadas
+
+Cada rodada pode mudar mais de um elemento do processo; a rodada 2 mudou ao mesmo tempo a taxonomia no P1, a resposta única, o campo de gravidade e o idioma da resposta (ADR-R022). Diferenças entre rodadas não podem ser atribuídas a uma única mudança. Além disso, a rodada 1 devolve várias violações por resposta e as seguintes apenas uma, de modo que a violação principal só é comparável pela primeira posição prevista.

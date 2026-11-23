@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "INT_003_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T01:05:40.071817+00:00",
+  "request": {
+    "sample_id": "INT_003",
+    "variant": "violation",
+    "category": "interaction",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Tamanho do alvo de toque muito pequeno",
+        "affected_code": "SizedBox(width: 20,height: 20,child: Center(child: CircleAvatar(radius: 10,child: Icon(Icons.close, size: 14),),),)",
+        "explanation": "O alvo de toque para o botão de remover é de 20x20 pixels, o que é menor do que o tamanho mínimo recomendado de 48x48 pixels para elementos interativos. Isso pode dificultar a interação para usuários com deficiência motora ou que usam dispositivos com telas pequenas.",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 485,
+    "completion_tokens": 142,
+    "thinking_tokens": 1214,
+    "total_tokens": 1841
+  },
+  "latency_ms": 7170
+}

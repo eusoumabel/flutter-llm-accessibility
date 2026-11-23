@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_003_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P1",
+  "prompt_file": "prompts/v2/P1_guidelines.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T01:14:15.723880+00:00",
+  "request": {
+    "sample_id": "SEM_003",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing accessible label",
+        "affected_code": "Row(children: [Text('Order #$orderNumber'),const SizedBox(width: 8),Icon(delivered ? Icons.check_circle : Icons.schedule,color: delivered ? Colors.green : Colors.orange,semanticLabel: delivered ? 'Delivered' : 'In transit',),],)",
+        "explanation": "O componente Row é um componente significativo que exibe o status de um pedido. Embora seus filhos (Text e Icon) forneçam informações semânticas individualmente, o Row em si não expõe um rótulo acessível unificado que combine o número do pedido e o status de entrega, o que pode dificultar a compreensão coesa para usuários de tecnologias assistivas.",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 600,
+    "completion_tokens": 197,
+    "thinking_tokens": 2266,
+    "total_tokens": 3063
+  },
+  "latency_ms": 12916
+}

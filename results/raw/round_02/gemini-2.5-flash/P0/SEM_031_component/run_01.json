@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_031_component",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:56:36.698653+00:00",
+  "request": {
+    "sample_id": "SEM_031",
+    "variant": "component",
+    "category": "semantics",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Rótulo de botão inconsistente",
+        "affected_code": "IconButton(tooltip: 'Show Password',splashRadius: 10.0,onPressed: () => setState(() {_obscureText = !_obscureText;}),icon: _obscureText? const Icon(Icons.visibility_off, size: 18.0): const Icon(Icons.visibility, size: 18.0),)",
+        "explanation": "O rótulo do tooltip para o botão de alternar visibilidade da senha é estático ('Show Password') e não muda para refletir o estado atual da senha (visível/oculta). Isso pode confundir usuários de leitores de tela, pois a ação anunciada não corresponde à função atual do botão.",
+        "confidence": "high",
+        "severity": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 819,
+    "completion_tokens": 170,
+    "thinking_tokens": 953,
+    "total_tokens": 1942
+  },
+  "latency_ms": 5269
+}

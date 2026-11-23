@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_014_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:28:51.404596+00:00",
+  "request": {
+    "sample_id": "SEM_014",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Falta de suporte à navegação por teclado",
+        "affected_code": "GestureDetector(behavior: HitTestBehavior.opaque,onTap: () => onChanged(!accepted),child: SizedBox(width: 48,height: 48,child: Center(child: Container(width: 24,height: 24,decoration: BoxDecoration(color: accepted ? Colors.blue : Colors.transparent,border: Border.all(color: Colors.blue, width: 2),borderRadius: BorderRadius.circular(4),),child: accepted? const Icon(Icons.check, size: 18, color: Colors.white): null,),),),)",
+        "explanation": "O widget GestureDetector não oferece suporte inerente à navegação por teclado. Usuários que dependem de teclado (por exemplo, para navegação com a tecla Tab) não conseguirão interagir com esta caixa de seleção personalizada, tornando-a inacessível para eles.",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 485,
+    "completion_tokens": 212,
+    "thinking_tokens": 2772,
+    "total_tokens": 3469
+  },
+  "latency_ms": 13975
+}

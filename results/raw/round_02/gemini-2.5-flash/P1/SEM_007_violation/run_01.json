@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_007_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P1",
+  "prompt_file": "prompts/v2/P1_guidelines.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:28:37.428272+00:00",
+  "request": {
+    "sample_id": "SEM_007",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Inaccessible custom control",
+        "affected_code": "GestureDetector(onTap: onPressed,child: Container(constraints: const BoxConstraints(minHeight: 48, minWidth: 120),alignment: Alignment.center,padding: const EdgeInsets.symmetric(horizontal: 24),decoration: BoxDecoration(color: colors.primary,borderRadius: BorderRadius.circular(24),),child: Text('Continue', style: TextStyle(color: colors.onPrimary)),),)",
+        "explanation": "O componente interativo personalizado (GestureDetector) não expõe informações semânticas equivalentes para tecnologias assistivas. Ele funciona como um botão, mas não declara seu papel semântico como tal, o que impede que usuários de tecnologias assistivas compreendam sua finalidade e o operem corretamente.",
+        "confidence": "high",
+        "severity": "critical"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 622,
+    "completion_tokens": 178,
+    "thinking_tokens": 1412,
+    "total_tokens": 2212
+  },
+  "latency_ms": 7220
+}

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the blind review spreadsheet for pilot false positives.
+"""Build the blind review spreadsheet for the false positives of a round.
 
 A false positive is a response that reports at least one violation for a variant whose
 ground truth has none. Every reported violation becomes one review item. Each response
@@ -57,9 +57,13 @@ def describe_violations(violations: list) -> str:
     return "\n".join(parts)
 
 
-def load_responses(experiment: str):
+def available_rounds() -> list[str]:
+    return sorted(path.name for path in RAW_DIR.iterdir() if path.is_dir())
+
+
+def load_responses(round_name: str):
     responses = defaultdict(list)
-    for path in sorted((RAW_DIR / experiment).rglob("*.json")):
+    for path in sorted((RAW_DIR / round_name).rglob("*.json")):
         record = json.loads(path.read_text(encoding="utf-8"))
         request = record.get("request", {})
         key = (request.get("sample_id"), request.get("variant"))
@@ -83,12 +87,12 @@ def style_sheet(ws, widths: dict):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--experiment", choices=("pilot", "final"), default="pilot")
+    parser.add_argument("--round", required=True, choices=available_rounds(), help="Round directory under results/raw/, e.g. round_02.")
     parser.add_argument("--seed", type=int, default=20261023)
     args = parser.parse_args()
 
     samples = load_samples()
-    responses = load_responses(args.experiment)
+    responses = load_responses(args.round)
 
     fp_rows, key_rows, variants = [], [], {}
     for (sample_id, variant), records in sorted(responses.items()):
@@ -121,6 +125,8 @@ def main():
                     sample_id, variant, meta["category"], letter, index,
                     item.get("type", ""), item.get("affected_code", ""),
                     item.get("explanation", ""), item.get("confidence", ""),
+                    # Prompts v2 add severity (ADR-R022); round_01 leaves it empty.
+                    item.get("severity", ""),
                 ])
         if flagged:
             paired = [
@@ -145,7 +151,7 @@ def main():
     ws = wb.active
     ws.title = "Como usar"
     guide = [
-        ["Revisão cega do piloto: falsos positivos"],
+        [f"Revisão cega da {args.round}: falsos positivos"],
         ["Passo a passo completo: analysis/pilot_review/README.md"],
         [""],
         ["Como classificar"],
@@ -160,7 +166,7 @@ def main():
         ["FP-SUG", "Recomendação de boa prática, não uma violação."],
         ["FP-FALSO", "A afirmação é falsa sobre o código ou sobre o comportamento do Flutter."],
         [""],
-        ["Não abra chave_respostas_pilot.csv antes de terminar a revisão."],
+        [f"Não abra chave_respostas_{args.round}.csv antes de terminar a revisão."],
     ]
     for line in guide:
         ws.append(line)
@@ -186,17 +192,17 @@ def main():
     ws = wb.create_sheet("Falsos positivos")
     ws.append([
         "sample_id", "variant", "categoria", "resposta", "n_violacao", "tipo_modelo",
-        "trecho_afetado", "explicacao", "confianca_modelo",
+        "trecho_afetado", "explicacao", "confianca_modelo", "gravidade_modelo",
     ])
     for row in fp_rows:
         ws.append(row)
-    style_sheet(ws, {"A": 11, "B": 12, "C": 12, "D": 9, "E": 7, "F": 26, "G": 40, "H": 60, "I": 10})
+    style_sheet(ws, {"A": 11, "B": 12, "C": 12, "D": 9, "E": 7, "F": 26, "G": 40, "H": 60, "I": 10, "J": 10})
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    xlsx_path = OUT_DIR / f"revisao_{args.experiment}.xlsx"
+    xlsx_path = OUT_DIR / f"revisao_{args.round}.xlsx"
     wb.save(xlsx_path)
 
-    key_path = OUT_DIR / f"chave_respostas_{args.experiment}.csv"
+    key_path = OUT_DIR / f"chave_respostas_{args.round}.csv"
     with key_path.open("w", encoding="utf-8", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=list(key_rows[0].keys()) if key_rows else ["sample_id"])
         writer.writeheader()

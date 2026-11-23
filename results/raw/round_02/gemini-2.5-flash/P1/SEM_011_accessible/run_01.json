@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_011_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P1",
+  "prompt_file": "prompts/v2/P1_guidelines.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T01:00:11.326869+00:00",
+  "request": {
+    "sample_id": "SEM_011",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Insufficient target size",
+        "affected_code": "Container(height: 48,alignment: Alignment.center,decoration: BoxDecoration(border: Border(bottom: BorderSide(color: i == selectedIndex? Colors.blue: Colors.transparent,width: 3,),),),child: Text(categories[i]),)",
+        "explanation": "O tamanho da área interativa para cada categoria pode ser insuficiente. Embora a altura seja de 48 pixels, a largura é determinada pelo número de categorias e pode ser menor que o tamanho mínimo recomendado de 48x48 pixels para alvos de toque, especialmente se houver muitas categorias.",
+        "confidence": "high",
+        "severity": "low"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 720,
+    "completion_tokens": 145,
+    "thinking_tokens": 2320,
+    "total_tokens": 3185
+  },
+  "latency_ms": 11990
+}

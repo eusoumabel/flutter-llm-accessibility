@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "INT_002_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P1",
+  "prompt_file": "prompts/v2/P1_guidelines.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:55:38.353489+00:00",
+  "request": {
+    "sample_id": "INT_002",
+    "variant": "accessible",
+    "category": "interaction",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing semantic role",
+        "affected_code": "Container(padding: const EdgeInsets.only(left: 12),decoration: BoxDecoration(color: Colors.blueGrey.shade50,borderRadius: BorderRadius.circular(16),),child: Row(mainAxisSize: MainAxisSize.min,children: [Text(label),IconButton(icon: const Icon(Icons.close),iconSize: 16,tooltip: 'Remove filter $label',onPressed: onRemove,)],),)",
+        "explanation": "O componente `RemovableFilter` é um componente personalizado que funciona como um 'chip' ou 'tag' removível. Embora seus elementos internos (`Text` e `IconButton`) possuam seus próprios papéis semânticos, o componente como um todo não expõe um papel semântico unificado que agrupe esses elementos ou o identifique como um 'chip' para tecnologias assistivas. Isso pode fazer com que o componente seja percebido como dois elementos separados em vez de uma unidade coesa.",
+        "confidence": "medium",
+        "severity": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 639,
+    "completion_tokens": 256,
+    "thinking_tokens": 5423,
+    "total_tokens": 6318
+  },
+  "latency_ms": 27805
+}

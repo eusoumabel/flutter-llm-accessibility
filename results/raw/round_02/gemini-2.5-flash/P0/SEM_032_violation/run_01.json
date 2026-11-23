@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_032_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T01:16:23.706849+00:00",
+  "request": {
+    "sample_id": "SEM_032",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Contraste de cor insuficiente",
+        "affected_code": "color: ColorSeed.values[i].color,",
+        "explanation": "O ícone do botão usa a cor selecionada (`ColorSeed.values[i].color`) como sua própria cor. Algumas dessas cores podem ter contraste insuficiente com o plano de fundo padrão do tema (claro ou escuro), tornando o ícone difícil ou impossível de ver para usuários com deficiência visual. Isso afeta a capacidade de identificar o estado do botão (selecionado/não selecionado) e interagir com ele.",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 592,
+    "completion_tokens": 131,
+    "thinking_tokens": 2292,
+    "total_tokens": 3015
+  },
+  "latency_ms": 12586
+}

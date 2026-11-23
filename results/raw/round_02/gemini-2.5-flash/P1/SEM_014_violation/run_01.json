@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_014_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P1",
+  "prompt_file": "prompts/v2/P1_guidelines.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:55:10.545508+00:00",
+  "request": {
+    "sample_id": "SEM_014",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Inaccessible custom control",
+        "affected_code": "        GestureDetector(\n          behavior: HitTestBehavior.opaque,\n          onTap: () => onChanged(!accepted),\n          child: SizedBox(\n            width: 48,\n            height: 48,\n            child: Center(\n              child: Container(\n                width: 24,\n                height: 24,\n                decoration: BoxDecoration(\n                  color: accepted ? Colors.blue : Colors.transparent,\n                  border: Border.all(color: Colors.blue, width: 2),\n                  borderRadius: BorderRadius.circular(4),\n                ),\n                child: accepted\n                    ? const Icon(Icons.check, size: 18, color: Colors.white)\n                    : null,\n              ),\n            ),\n          ),\n        ),",
+        "explanation": "O controle interativo personalizado (o GestureDetector que simula um checkbox) não fornece informações semânticas equivalentes para tecnologias assistivas. Ele não expõe seu rótulo, função (checkbox) ou estado (marcado/desmarcado), tornando-o inacessível para usuários de leitores de tela. A Text adjacente está dentro de um ExcludeSemantics, o que impede que seu conteúdo seja usado como rótulo acessível.",
+        "confidence": "high",
+        "severity": "critical"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 735,
+    "completion_tokens": 292,
+    "thinking_tokens": 1950,
+    "total_tokens": 2977
+  },
+  "latency_ms": 10133
+}

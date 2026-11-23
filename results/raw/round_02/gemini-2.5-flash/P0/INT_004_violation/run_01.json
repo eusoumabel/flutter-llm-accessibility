@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "INT_004_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:30:33.240245+00:00",
+  "request": {
+    "sample_id": "INT_004",
+    "variant": "violation",
+    "category": "interaction",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Interação não acessível",
+        "affected_code": "GestureDetector(onDoubleTap: onToggleLike,child: Image(image: photo,semanticLabel: 'Photo by $author',fit: BoxFit.cover,),)",
+        "explanation": "A funcionalidade de 'curtir' (onToggleLike) está vinculada exclusivamente a um gesto de toque duplo (onDoubleTap) dentro de um GestureDetector. Isso torna a interação inacessível para usuários que não conseguem realizar gestos de toque duplo, como aqueles com deficiências motoras, ou para usuários de leitores de tela que podem não descobrir essa funcionalidade facilmente. Não há uma alternativa de toque único ou um rótulo semântico explícito para descrever a ação do GestureDetector.",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 385,
+    "completion_tokens": 167,
+    "thinking_tokens": 712,
+    "total_tokens": 1264
+  },
+  "latency_ms": 6039
+}

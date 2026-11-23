@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "INT_004_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T01:02:00.976073+00:00",
+  "request": {
+    "sample_id": "INT_004",
+    "variant": "accessible",
+    "category": "interaction",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Interação não convencional",
+        "affected_code": "          child: GestureDetector(\n            onDoubleTap: onToggleLike,\n            child: Image(\n              image: photo,\n              semanticLabel: 'Photo by $author',\n              fit: BoxFit.cover,\n            ),\n          ),",
+        "explanation": "O GestureDetector utiliza apenas onDoubleTap para a ação de curtir/descurtir. Embora haja uma ação semântica personalizada para leitores de tela, a interação visual principal para uma funcionalidade de \"curtir\" é geralmente um toque único (onTap). Isso pode dificultar a descoberta e o uso para usuários que esperam um toque simples ou que têm dificuldades motoras para realizar um toque duplo.",
+        "confidence": "high",
+        "severity": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 440,
+    "completion_tokens": 162,
+    "thinking_tokens": 2018,
+    "total_tokens": 2620
+  },
+  "latency_ms": 38578
+}

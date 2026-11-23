@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "INT_003_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:57:12.302242+00:00",
+  "request": {
+    "sample_id": "INT_003",
+    "variant": "accessible",
+    "category": "interaction",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Truncamento de Texto Visual",
+        "affected_code": "Text(fileName, overflow: TextOverflow.ellipsis)",
+        "explanation": "O nome do arquivo pode ser visualmente truncado devido ao uso de 'TextOverflow.ellipsis' dentro de um contêiner de tamanho fixo. Embora leitores de tela geralmente leiam o texto completo, usuários com baixa visão ou certas deficiências cognitivas podem ter dificuldade em identificar ou distinguir arquivos se o nome completo não estiver visível.",
+        "confidence": "medium",
+        "severity": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 485,
+    "completion_tokens": 111,
+    "thinking_tokens": 2581,
+    "total_tokens": 3177
+  },
+  "latency_ms": 12996
+}

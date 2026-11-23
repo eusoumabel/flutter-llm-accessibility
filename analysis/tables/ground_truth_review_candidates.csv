@@ -1,0 +1,14 @@
+sample_id,variant,fp_round_01,fp_round_02,reason
+INT_004,accessible,4/4,2/4,all configurations in round_01
+INT_013,accessible,3/4,3/4,3+ configurations in 2+ rounds
+SEM_011,accessible,4/4,3/4,all configurations in round_01
+SEM_013,accessible,4/4,1/4,all configurations in round_01
+SEM_014,accessible,3/4,3/4,3+ configurations in 2+ rounds
+SEM_015,accessible,3/4,3/4,3+ configurations in 2+ rounds
+SEM_021,component,4/4,4/4,"all configurations in round_01, round_02"
+SEM_024,component,3/4,3/4,3+ configurations in 2+ rounds
+SEM_025,accessible,4/4,3/4,all configurations in round_01
+SEM_028,accessible,4/4,4/4,"all configurations in round_01, round_02"
+SEM_030,component,4/4,3/4,all configurations in round_01
+SEM_032,accessible,4/4,3/4,all configurations in round_01
+SEM_033,component,4/4,2/4,all configurations in round_01

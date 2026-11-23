@@ -1,0 +1,43 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "INT_006_violation",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:34:03.444633+00:00",
+  "request": {
+    "sample_id": "INT_006",
+    "variant": "violation",
+    "category": "interaction",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Funcionalidade dependente exclusivamente de gesto de arrastar",
+        "affected_code": "LongPressDraggable<String>(\n                  data: task,",
+        "explanation": "A única forma de mover uma tarefa para 'Done' é pressionar longamente e arrastar o cartão até o DragTarget. Não há alternativa acessível (botão, ação semântica personalizada via Semantics customSemanticsActions ou onTap) para usuários de leitores de tela, teclado, switch access ou com limitações motoras, que não conseguem executar o gesto de arrastar. Assim, a função de marcar tarefas como concluídas fica inacessível para esses usuários.",
+        "confidence": "high",
+        "severity": "critical"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 1247,
+    "completion_tokens": 254,
+    "total_tokens": 1501
+  },
+  "latency_ms": 3963,
+  "request_id": "req_011ChJvM1hnG1UC27awwyAQP"
+}

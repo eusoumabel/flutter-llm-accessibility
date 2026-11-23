@@ -1,0 +1,43 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "INT_016_accessible",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:30:23.438586+00:00",
+  "request": {
+    "sample_id": "INT_016",
+    "variant": "accessible",
+    "category": "interaction",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Altura fixa pode cortar texto ampliado",
+        "affected_code": "height: 48,",
+        "explanation": "O Container tem altura fixa de 48. Com escalas de fonte muito grandes definidas pelo usuário, o texto pode ser cortado verticalmente ou transbordar, prejudicando a leitura por pessoas com baixa visão. Usar uma altura mínima (BoxConstraints(minHeight: 48)) permitiria que o componente crescesse junto com o texto.",
+        "confidence": "low",
+        "severity": "low"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 1262,
+    "completion_tokens": 414,
+    "total_tokens": 1676
+  },
+  "latency_ms": 5984,
+  "request_id": "req_011ChJv4iMntd6ZgwghuWxUV"
+}

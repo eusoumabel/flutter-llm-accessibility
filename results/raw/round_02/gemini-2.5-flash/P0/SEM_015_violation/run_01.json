@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_015_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T01:10:51.824565+00:00",
+  "request": {
+    "sample_id": "SEM_015",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Falta de Semântica e Rótulo Textual",
+        "affected_code": "          GestureDetector(            behavior: HitTestBehavior.opaque,            onTap: () => onSelected(entry.key),            child: SizedBox(              width: 48,              height: 48,              child: Center(                child: Container(                  width: 32,                  height: 32,                  decoration: BoxDecoration(                    color: entry.value,                    shape: BoxShape.circle,                    border: Border.all(                      color: entry.key == selectedColor                          ? Colors.black                          : Colors.transparent,                      width: 3,                    ),                  ),                ),              ),            ),          )",
+        "explanation": "Cada amostra de cor é um `GestureDetector` interativo, mas não fornece informações semânticas ou um rótulo textual para leitores de tela. Usuários de tecnologias assistivas não conseguirão identificar qual cor está sendo representada ou se está selecionada.",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 445,
+    "completion_tokens": 223,
+    "thinking_tokens": 1879,
+    "total_tokens": 2547
+  },
+  "latency_ms": 11050
+}

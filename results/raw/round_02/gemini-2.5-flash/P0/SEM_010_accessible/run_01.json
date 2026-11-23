@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_010_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T01:13:43.630851+00:00",
+  "request": {
+    "sample_id": "SEM_010",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Contraste de cor insuficiente",
+        "affected_code": "decoration: BoxDecoration(color: isOn ? Colors.indigo : Colors.grey.shade400,borderRadius: BorderRadius.circular(16),),child: Container(width: 24,height: 24,decoration: const BoxDecoration(color: Colors.white,shape: BoxShape.circle,),),",
+        "explanation": "A cor de fundo do interruptor quando está desligado (Colors.grey.shade400) tem um contraste insuficiente com a cor do \"polegar\" (Colors.white). Isso torna difícil para usuários com baixa visão distinguir visualmente o estado do interruptor.",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 482,
+    "completion_tokens": 150,
+    "thinking_tokens": 1744,
+    "total_tokens": 2376
+  },
+  "latency_ms": 9495
+}

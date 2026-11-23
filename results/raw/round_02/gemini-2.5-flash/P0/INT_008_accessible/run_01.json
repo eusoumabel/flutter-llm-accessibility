@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "INT_008_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:57:30.630877+00:00",
+  "request": {
+    "sample_id": "INT_008",
+    "variant": "accessible",
+    "category": "interaction",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Feedback visual inconsistente",
+        "affected_code": "AnimatedScale(scale: _pressed ? 0.9 : 1.0,duration: const Duration(milliseconds: 100),child: Container(width: 56,height: 56,decoration: const BoxDecoration(color: Colors.blue,shape: BoxShape.circle,),child: const Icon(Icons.send, color: Colors.white),),)",
+        "explanation": "O feedback visual de pressionar o botão (animação de escala) é acionado apenas por eventos de ponteiro (toque/mouse) e não é ativado quando o botão é acionado por serviços de acessibilidade (como TalkBack ou VoiceOver) através do Semantics.onTap. Isso pode levar a uma experiência inconsistente e à falta de confirmação visual para usuários de acessibilidade.",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 469,
+    "completion_tokens": 190,
+    "thinking_tokens": 1978,
+    "total_tokens": 2637
+  },
+  "latency_ms": 10442
+}

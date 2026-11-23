@@ -1,0 +1,43 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_011_accessible",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:35:38.223257+00:00",
+  "request": {
+    "sample_id": "SEM_011",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Componente interativo sem suporte a foco e ativação por teclado",
+        "affected_code": "child: GestureDetector(\n                behavior: HitTestBehavior.opaque,\n                onTap: () => onSelected(i),",
+        "explanation": "As abas usam GestureDetector, que não é focável nem ativável por teclado (Tab/Enter/Espaço). Embora o Semantics informe button e selected aos leitores de tela, usuários de teclado ou dispositivos de acesso por switch não conseguem navegar entre as categorias nem selecioná-las. Além disso, não há indicação visual de foco. Recomenda-se usar InkWell, TextButton ou o TabBar nativo, que oferecem foco, ativação por teclado e semântica de aba.",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 1071,
+    "completion_tokens": 285,
+    "total_tokens": 1356
+  },
+  "latency_ms": 3838,
+  "request_id": "req_011ChJvTzyZNZ23D5SZTmVmQ"
+}

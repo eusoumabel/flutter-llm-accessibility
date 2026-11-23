@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "INT_013_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T01:02:53.232040+00:00",
+  "request": {
+    "sample_id": "INT_013",
+    "variant": "violation",
+    "category": "interaction",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Falta de alternativa para gesto complexo",
+        "affected_code": "GestureDetector(onDoubleTapDown: _onDoubleTapDown,onDoubleTap: _onDoubleTap,child: InteractiveViewer(interactionEndFrictionCoefficient:widget.interactionEndFrictionCoefficient ?? 0.0000135,maxScale: widget.maxScale ?? 2.5,minScale: widget.minScale ?? 0.8,transformationController: _transformationController,child: widget.child,),)",
+        "explanation": "A funcionalidade de zoom (aproximar/afastar) é acionada exclusivamente por um gesto de toque duplo (onDoubleTap). Usuários com deficiências motoras, que utilizam teclado ou tecnologias assistivas (como leitores de tela), podem ter dificuldade ou ser incapazes de realizar este gesto, impedindo-os de acessar a funcionalidade de zoom. É necessário fornecer uma alternativa acessível, como botões de zoom ou controles de slider.",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 858,
+    "completion_tokens": 219,
+    "thinking_tokens": 910,
+    "total_tokens": 1987
+  },
+  "latency_ms": 6102
+}

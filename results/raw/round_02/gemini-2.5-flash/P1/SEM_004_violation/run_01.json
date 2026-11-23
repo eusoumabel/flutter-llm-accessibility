@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_004_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P1",
+  "prompt_file": "prompts/v2/P1_guidelines.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:59:33.616932+00:00",
+  "request": {
+    "sample_id": "SEM_004",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Incorrect accessible label",
+        "affected_code": "tooltip: 'Trash can'",
+        "explanation": "O rótulo de acessibilidade \"Trash can\" (lixeira) descreve o ícone visual do botão, mas não comunica claramente a ação de \"remover o item\" do carrinho. Um rótulo mais preciso, como \"Remover item\" ou \"Excluir item\", ajudaria usuários de tecnologias assistivas a entender o propósito do botão.",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 570,
+    "completion_tokens": 106,
+    "thinking_tokens": 1203,
+    "total_tokens": 1879
+  },
+  "latency_ms": 6231
+}

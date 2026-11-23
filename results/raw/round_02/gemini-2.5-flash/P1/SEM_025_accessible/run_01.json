@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_025_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P1",
+  "prompt_file": "prompts/v2/P1_guidelines.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T01:05:23.332880+00:00",
+  "request": {
+    "sample_id": "SEM_025",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Insufficient target size",
+        "affected_code": "GestureDetector(onTap: onCategoryTap,child: isSelected? CustomPaint(painter: const TriangleCategoryIndicator(indicatorWidth,indicatorHeight,),child: _buttonText(categoryName, selectedCategoryTextStyle),): _buttonText(categoryName, unselectedCategoryTextStyle),)",
+        "explanation": "O alvo interativo, que é o GestureDetector envolvendo o texto da categoria, não garante um tamanho mínimo de 48x48 pixels independentemente do comprimento do categoryName. Embora a altura seja suficiente devido ao preenchimento vertical (16dp em cima e 16dp embaixo), a largura é determinada apenas pelo texto, o que pode resultar em uma área de toque muito pequena para nomes de categoria curtos, não atendendo ao requisito mínimo de 48dp para alvos interativos.",
+        "confidence": "high",
+        "severity": "low"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 1199,
+    "completion_tokens": 219,
+    "thinking_tokens": 6088,
+    "total_tokens": 7506
+  },
+  "latency_ms": 30626
+}

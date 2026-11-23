@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "INT_018_component",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T01:13:13.860469+00:00",
+  "request": {
+    "sample_id": "INT_018",
+    "variant": "component",
+    "category": "interaction",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Acessibilidade de Interação",
+        "affected_code": "Semantics(identifier: 'keypad_key_${widget.text}',label: widget.subtext.isEmpty ? widget.text : '${widget.text} ${widget.subtext}',button: true,excludeSemantics: true,onTap: () => widget.onKeyPressed(widget.text),onLongPress: hasLongPress ? () => widget.onKeyPressed(widget.subtext) : null,child: Listener(",
+        "explanation": "O widget `Semantics` está configurado com `excludeSemantics: true`. Isso remove o nó semântico e todo o seu conteúdo da árvore de acessibilidade, o que significa que o botão e suas ações (`onTap`, `onLongPress`) não serão expostos a tecnologias assistivas, como leitores de tela. Isso torna o componente completamente inacessível para usuários que dependem dessas tecnologias.",
+        "confidence": "high",
+        "severity": "critical"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 1024,
+    "completion_tokens": 204,
+    "thinking_tokens": 2665,
+    "total_tokens": 3893
+  },
+  "latency_ms": 16280
+}

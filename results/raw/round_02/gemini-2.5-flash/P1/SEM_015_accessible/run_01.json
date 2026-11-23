@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_015_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P1",
+  "prompt_file": "prompts/v2/P1_guidelines.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T01:15:59.321015+00:00",
+  "request": {
+    "sample_id": "SEM_015",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing accessible label",
+        "affected_code": "label: entry.key",
+        "explanation": "O rótulo acessível para cada seletor de cor pode estar ausente se a chave (entry.key) fornecida for uma string vazia. Isso impediria que usuários de tecnologias assistivas compreendessem o propósito do componente de seleção de cor.",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 756,
+    "completion_tokens": 118,
+    "thinking_tokens": 3522,
+    "total_tokens": 4396
+  },
+  "latency_ms": 20874
+}

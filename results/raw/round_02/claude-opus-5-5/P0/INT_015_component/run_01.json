@@ -1,0 +1,43 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "INT_015_component",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:32:29.588397+00:00",
+  "request": {
+    "sample_id": "INT_015",
+    "variant": "component",
+    "category": "interaction",
+    "source_file": "component.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Acesso por teclado incompleto às ações de abrir imagem",
+        "affected_code": "onTapUp: (details) => details.localPosition.dx < dividerX\n                      ? widget.onTapReference?.call()\n                      : widget.onTapPhoto?.call(),",
+        "explanation": "As ações de abrir a imagem de referência ou a foto só são acionáveis por toque/clique (onTapUp) ou por ações semânticas personalizadas para leitores de tela. O handler de teclado (_handleKey) trata apenas as setas esquerda/direita, portanto usuários que navegam apenas por teclado não conseguem abrir nenhuma das imagens (por exemplo, com Enter/Espaço).",
+        "confidence": "medium",
+        "severity": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 3613,
+    "completion_tokens": 271,
+    "total_tokens": 3884
+  },
+  "latency_ms": 3373,
+  "request_id": "req_011ChJvE8StbzQJajSyPWFE3"
+}

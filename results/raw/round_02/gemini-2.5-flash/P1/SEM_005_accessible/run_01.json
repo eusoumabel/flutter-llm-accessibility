@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_005_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P1",
+  "prompt_file": "prompts/v2/P1_guidelines.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T01:07:34.369378+00:00",
+  "request": {
+    "sample_id": "SEM_005",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing semantic state",
+        "affected_code": "IconButton(icon: Icon(isMuted ? Icons.volume_off : Icons.volume_up),tooltip: isMuted ? 'Unmute' : 'Mute',onPressed: onToggle,)",
+        "explanation": "O estado de mudo/desativado (isMuted) é um estado relevante que não é explicitamente exposto através da propriedade semântica 'toggled'. Embora o 'tooltip' mude para indicar a ação, a ausência de um estado 'toggled' explícito pode dificultar a navegação ou compreensão do estado atual do componente para usuários de tecnologias assistivas.",
+        "confidence": "high",
+        "severity": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 564,
+    "completion_tokens": 148,
+    "thinking_tokens": 2804,
+    "total_tokens": 3516
+  },
+  "latency_ms": 16674
+}

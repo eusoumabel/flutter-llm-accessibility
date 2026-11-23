@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_019_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T01:03:24.023432+00:00",
+  "request": {
+    "sample_id": "SEM_019",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Rótulo Semântico Incorreto",
+        "affected_code": "tooltip: 'Login'",
+        "explanation": "O rótulo semântico ('Login') fornecido para o IconButton através da propriedade `tooltip` não corresponde à ação real do botão, que é 'Abrir Perfil'. Isso pode confundir usuários de leitores de tela, pois a descrição anunciada não reflete a funcionalidade esperada.",
+        "confidence": "high",
+        "severity": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 292,
+    "completion_tokens": 99,
+    "thinking_tokens": 1124,
+    "total_tokens": 1515
+  },
+  "latency_ms": 7241
+}

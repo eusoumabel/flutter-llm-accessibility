@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_015_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T01:07:17.692876+00:00",
+  "request": {
+    "sample_id": "SEM_015",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Falta de diferenciação visual para usuários com deficiência de visão de cores",
+        "affected_code": "                  child: Container(\n                    width: 32,\n                    height: 32,\n                    decoration: BoxDecoration(\n                      color: entry.value,\n                      shape: BoxShape.circle,\n                      border: Border.all(\n                        color: entry.key == selectedColor\n                            ? Colors.black\n                            : Colors.transparent,\n                        width: 3,\n                      ),\n                    ),\n                  ),",
+        "explanation": "O componente utiliza apenas a cor (`entry.value`) como principal meio de diferenciação visual entre as opções de cores. Embora o `Semantics` forneça um rótulo textual (`entry.key`), usuários com deficiência de visão de cores podem ter dificuldade em distinguir visualmente as opções, especialmente se as cores forem semelhantes. É recomendável adicionar um indicador visual não baseado em cor (como um ícone ou padrão) para auxiliar na diferenciação, além do rótulo textual.",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 479,
+    "completion_tokens": 239,
+    "thinking_tokens": 2349,
+    "total_tokens": 3067
+  },
+  "latency_ms": 29905
+}

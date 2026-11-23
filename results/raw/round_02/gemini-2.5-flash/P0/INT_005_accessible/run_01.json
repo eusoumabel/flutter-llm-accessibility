@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "INT_005_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:28:15.166735+00:00",
+  "request": {
+    "sample_id": "INT_005",
+    "variant": "accessible",
+    "category": "interaction",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Falta de controles alternativos para navegação por gestos",
+        "affected_code": "          child: InteractiveViewer(\n            transformationController: _controller,\n            minScale: 1.0,\n            maxScale: 4.0,\n            child: Image(\n              image: widget.floorPlan,\n              semanticLabel: 'Office floor plan',\n            ),\n          )",
+        "explanation": "O componente InteractiveViewer permite que os usuários apliquem zoom e pan na imagem do mapa usando gestos. Embora existam botões explícitos para controlar o zoom, não há controles alternativos (como botões de seta ou um joystick virtual) para a funcionalidade de pan. Isso pode dificultar a navegação para usuários que não conseguem realizar gestos de arrastar (pan) com precisão ou de forma alguma, como usuários de teclado ou com certas deficiências motoras.",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 560,
+    "completion_tokens": 202,
+    "thinking_tokens": 1727,
+    "total_tokens": 2489
+  },
+  "latency_ms": 9353
+}

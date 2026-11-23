@@ -1,0 +1,2300 @@
+[
+  {
+    "sample_id": "INT_001",
+    "variant": "accessible",
+    "has_violation": false,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "INT_001",
+    "variant": "violation",
+    "has_violation": true,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": false,
+        "reason": "SemanticsNode#4(Rect.fromLTRB(390.0, 290.0, 410.0, 310.0), actions: [focus, tap], flags: [isButton, hasEnabledState, isEnabled, isFocusable], traversalParentIdentifier: _OverlayPortalState#f82b3, tooltip: \"Submit\", textDirection: ltr): expected tap target size of at least Size(48.0, 48.0), but found Size(20.0, 20.0) See also: https://support.google.com/accessibility/android/answer/7101858?hl=en"
+      },
+      "iOSTapTargetGuideline": {
+        "passed": false,
+        "reason": "SemanticsNode#4(Rect.fromLTRB(390.0, 290.0, 410.0, 310.0), actions: [focus, tap], flags: [isButton, hasEnabledState, isEnabled, isFocusable], traversalParentIdentifier: _OverlayPortalState#f82b3, tooltip: \"Submit\", textDirection: ltr): expected tap target size of at least Size(44.0, 44.0), but found Size(20.0, 20.0) See also: https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/adaptivity-and-layout/"
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [
+      "INT-01"
+    ],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "INT_002",
+    "variant": "accessible",
+    "has_violation": false,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "INT_002",
+    "variant": "violation",
+    "has_violation": true,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": false,
+        "reason": "SemanticsNode#5(Rect.fromLTRB(426.5, 292.0, 442.5, 308.0), actions: [focus, tap], flags: [isButton, hasEnabledState, isEnabled, isFocusable], traversalParentIdentifier: _OverlayPortalState#41682, tooltip: \"Remove filter Item\", textDirection: ltr): expected tap target size of at least Size(48.0, 48.0), but found Size(16.0, 16.0) See also: https://support.google.com/accessibility/android/answer/7101858?hl=en"
+      },
+      "iOSTapTargetGuideline": {
+        "passed": false,
+        "reason": "SemanticsNode#5(Rect.fromLTRB(426.5, 292.0, 442.5, 308.0), actions: [focus, tap], flags: [isButton, hasEnabledState, isEnabled, isFocusable], traversalParentIdentifier: _OverlayPortalState#41682, tooltip: \"Remove filter Item\", textDirection: ltr): expected tap target size of at least Size(44.0, 44.0), but found Size(16.0, 16.0) See also: https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/adaptivity-and-layout/"
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [
+      "INT-01"
+    ],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "INT_003",
+    "variant": "accessible",
+    "has_violation": false,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "INT_003",
+    "variant": "violation",
+    "has_violation": true,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": false,
+        "reason": "SemanticsNode#5(Rect.fromLTRB(440.0, 240.0, 460.0, 260.0), actions: [focus, tap], flags: [isButton, isFocusable], label: \"Remove Item\", textDirection: ltr): expected tap target size of at least Size(48.0, 48.0), but found Size(20.0, 20.0) See also: https://support.google.com/accessibility/android/answer/7101858?hl=en"
+      },
+      "iOSTapTargetGuideline": {
+        "passed": false,
+        "reason": "SemanticsNode#5(Rect.fromLTRB(440.0, 240.0, 460.0, 260.0), actions: [focus, tap], flags: [isButton, isFocusable], label: \"Remove Item\", textDirection: ltr): expected tap target size of at least Size(44.0, 44.0), but found Size(20.0, 20.0) See also: https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/adaptivity-and-layout/"
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [
+      "INT-01"
+    ],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "INT_004",
+    "variant": "accessible",
+    "has_violation": false,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "INT_004",
+    "variant": "violation",
+    "has_violation": true,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "INT_005",
+    "variant": "accessible",
+    "has_violation": false,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "INT_005",
+    "variant": "violation",
+    "has_violation": true,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "INT_006",
+    "variant": "accessible",
+    "has_violation": false,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "INT_006",
+    "variant": "violation",
+    "has_violation": true,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "INT_007",
+    "variant": "accessible",
+    "has_violation": false,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "INT_007",
+    "variant": "violation",
+    "has_violation": true,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "INT_008",
+    "variant": "accessible",
+    "has_violation": false,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "INT_008",
+    "variant": "violation",
+    "has_violation": true,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "INT_009",
+    "variant": "accessible",
+    "has_violation": false,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "INT_009",
+    "variant": "violation",
+    "has_violation": true,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "INT_010",
+    "variant": "accessible",
+    "has_violation": false,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "INT_010",
+    "variant": "violation",
+    "has_violation": true,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": false,
+        "reason": "SemanticsNode#4(Rect.fromLTRB(391.0, 291.0, 409.0, 309.0), actions: [focus, tap], flags: [isButton, hasEnabledState, isEnabled, isFocusable], traversalParentIdentifier: _OverlayPortalState#3f102, tooltip: \"Login\", textDirection: ltr): expected tap target size of at least Size(48.0, 48.0), but found Size(18.0, 18.0) See also: https://support.google.com/accessibility/android/answer/7101858?hl=en"
+      },
+      "iOSTapTargetGuideline": {
+        "passed": false,
+        "reason": "SemanticsNode#4(Rect.fromLTRB(391.0, 291.0, 409.0, 309.0), actions: [focus, tap], flags: [isButton, hasEnabledState, isEnabled, isFocusable], traversalParentIdentifier: _OverlayPortalState#3f102, tooltip: \"Login\", textDirection: ltr): expected tap target size of at least Size(44.0, 44.0), but found Size(18.0, 18.0) See also: https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/adaptivity-and-layout/"
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [
+      "INT-01"
+    ],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "INT_011",
+    "variant": "component",
+    "has_violation": true,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": [
+      {
+        "severity": "info",
+        "rule": "use_key_in_widget_constructors",
+        "line": 4,
+        "message": "Constructors for public widgets should have a named 'key' parameter"
+      }
+    ]
+  },
+  {
+    "sample_id": "INT_013",
+    "variant": "accessible",
+    "has_violation": false,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": false,
+        "reason": "SemanticsNode#4(Rect.fromLTRB(0.0, 0.0, 800.0, 600.0), label: \"Content\", textDirection: ltr): Expected contrast ratio of at least 4.5 but found 1.23 for a font size of 14.0. The computed colors was: light - Color(alpha: 1.0000, red: 0.9961, green: 0.9686, blue: 1.0000, colorSpace: ColorSpace.sRGB), dark - Color(alpha: 1.0000, red: 0.9098, green: 0.8706, blue: 0.9725, colorSpace: ColorSpace.sRGB) See also: https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html"
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": true,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "INT_013",
+    "variant": "violation",
+    "has_violation": true,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "INT_014",
+    "variant": "component",
+    "has_violation": true,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "INT_015",
+    "variant": "component",
+    "has_violation": false,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "INT_016",
+    "variant": "accessible",
+    "has_violation": false,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "INT_016",
+    "variant": "violation",
+    "has_violation": true,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "INT_017",
+    "variant": "component",
+    "has_violation": true,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "INT_018",
+    "variant": "component",
+    "has_violation": false,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "INT_019",
+    "variant": "component",
+    "has_violation": false,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "SEM_001",
+    "variant": "accessible",
+    "has_violation": false,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "SEM_001",
+    "variant": "violation",
+    "has_violation": true,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": false,
+        "reason": "SemanticsNode#4(Rect.fromLTRB(376.0, 276.0, 424.0, 324.0), actions: [focus, tap], flags: [isButton, hasEnabledState, isEnabled, isFocusable]): expected tappable node to have semantic label, but none was found."
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [
+      "SEM-01"
+    ],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "SEM_002",
+    "variant": "accessible",
+    "has_violation": false,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "SEM_002",
+    "variant": "violation",
+    "has_violation": true,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": false,
+        "reason": "SemanticsNode#5(Rect.fromLTRB(752.0, 276.0, 800.0, 324.0), actions: [focus, tap], flags: [isButton, hasEnabledState, isEnabled, isFocusable]): expected tappable node to have semantic label, but none was found."
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [
+      "SEM-01"
+    ],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "SEM_003",
+    "variant": "accessible",
+    "has_violation": false,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "SEM_003",
+    "variant": "violation",
+    "has_violation": true,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "SEM_004",
+    "variant": "accessible",
+    "has_violation": false,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "SEM_004",
+    "variant": "violation",
+    "has_violation": true,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "SEM_005",
+    "variant": "accessible",
+    "has_violation": false,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "SEM_005",
+    "variant": "violation",
+    "has_violation": true,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "SEM_006",
+    "variant": "accessible",
+    "has_violation": false,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "SEM_006",
+    "variant": "violation",
+    "has_violation": true,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "SEM_007",
+    "variant": "accessible",
+    "has_violation": false,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "SEM_007",
+    "variant": "violation",
+    "has_violation": true,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "SEM_008",
+    "variant": "accessible",
+    "has_violation": false,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "SEM_008",
+    "variant": "violation",
+    "has_violation": true,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "SEM_009",
+    "variant": "accessible",
+    "has_violation": false,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "SEM_009",
+    "variant": "violation",
+    "has_violation": true,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "SEM_010",
+    "variant": "accessible",
+    "has_violation": false,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "SEM_010",
+    "variant": "violation",
+    "has_violation": true,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "SEM_011",
+    "variant": "accessible",
+    "has_violation": false,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "SEM_011",
+    "variant": "violation",
+    "has_violation": true,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "SEM_012",
+    "variant": "accessible",
+    "has_violation": false,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "SEM_012",
+    "variant": "violation",
+    "has_violation": true,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "SEM_013",
+    "variant": "accessible",
+    "has_violation": false,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "SEM_013",
+    "variant": "violation",
+    "has_violation": true,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": false,
+        "reason": "SemanticsNode#4(Rect.fromLTRB(280.0, 276.0, 328.0, 324.0), actions: [tap]): expected tappable node to have semantic label, but none was found. SemanticsNode#5(Rect.fromLTRB(328.0, 276.0, 376.0, 324.0), actions: [tap]): expected tappable node to have semantic label, but none was found. SemanticsNode#6(Rect.fromLTRB(376.0, 276.0, 424.0, 324.0), actions: [tap]): expected tappable node to have semantic label, but none was found. SemanticsNode#7(Rect.fromLTRB(424.0, 276.0, 472.0, 324.0), actions: [tap]): expected tappable node to have semantic label, but none was found. SemanticsNode#8(Rect.fromLTRB(472.0, 276.0, 520.0, 324.0), actions: [tap]): expected tappable node to have semantic label, but none was found."
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [
+      "SEM-01"
+    ],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "SEM_014",
+    "variant": "accessible",
+    "has_violation": false,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "SEM_014",
+    "variant": "violation",
+    "has_violation": true,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": false,
+        "reason": "SemanticsNode#4(Rect.fromLTRB(0.0, 276.0, 48.0, 324.0), actions: [tap]): expected tappable node to have semantic label, but none was found."
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [
+      "SEM-01"
+    ],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "SEM_015",
+    "variant": "accessible",
+    "has_violation": false,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "SEM_015",
+    "variant": "violation",
+    "has_violation": true,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": false,
+        "reason": "SemanticsNode#4(Rect.fromLTRB(328.0, 276.0, 376.0, 324.0), actions: [tap]): expected tappable node to have semantic label, but none was found. SemanticsNode#5(Rect.fromLTRB(376.0, 276.0, 424.0, 324.0), actions: [tap]): expected tappable node to have semantic label, but none was found. SemanticsNode#6(Rect.fromLTRB(424.0, 276.0, 472.0, 324.0), actions: [tap]): expected tappable node to have semantic label, but none was found."
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [
+      "SEM-01"
+    ],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "SEM_016",
+    "variant": "accessible",
+    "has_violation": false,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "SEM_016",
+    "variant": "violation",
+    "has_violation": true,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": false,
+        "reason": "SemanticsNode#7(merge boundary ⛔️, Rect.fromLTRB(0.0, 0.0, 56.0, 56.0) with transform [[1.0,2.4492935982947064e-16,0.0,728.0]; [-2.4492935982947064e-16,1.0,0.0,528.0]; [0.0,0.0,1.0,0.0]; [0.0,0.0,0.0,1.0]]): expected tappable node to have semantic label, but none was found."
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [
+      "SEM-01"
+    ],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "SEM_017",
+    "variant": "component",
+    "has_violation": true,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": false,
+        "reason": "SemanticsNode#4(Rect.fromLTRB(16.0, 276.0, 64.0, 324.0), actions: [focus, tap], flags: [isButton, hasEnabledState, isEnabled, isFocusable]): expected tappable node to have semantic label, but none was found.  SemanticsNode#6(Rect.fromLTRB(736.0, 276.0, 784.0, 324.0), actions: [focus, tap], flags: [isButton, hasEnabledState, isEnabled, isFocusable]): expected tappable node to have semantic label, but none was found."
+      },
+      "textContrastGuideline": {
+        "passed": false,
+        "reason": "SemanticsNode#5(Rect.fromLTRB(312.0, 286.0, 488.0, 314.0), label: \"1 Item 3\", textDirection: ltr): Expected contrast ratio of at least 3.0 but found 1.05 for a font size of 22.0. The computed colors was: light - Color(alpha: 1.0000, red: 1.0000, green: 1.0000, blue: 1.0000, colorSpace: ColorSpace.sRGB), dark - Color(alpha: 1.0000, red: 0.9961, green: 0.9686, blue: 1.0000, colorSpace: ColorSpace.sRGB) See also: https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html"
+      }
+    },
+    "predicted": [
+      "SEM-01"
+    ],
+    "out_of_scope_failures": true,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "SEM_018",
+    "variant": "component",
+    "has_violation": false,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": false,
+        "reason": "SemanticsNode#5(Rect.fromLTRB(16.0, 14.0, 129.0, 42.0), actions: [longPress], flags: [isTextField, isHeader, namesRoute, isMultiline, isReadOnly, isFocusable], value: \"Title\", textDirection: ltr, inputType: text): expected tap target size of at least Size(48.0, 48.0), but found Size(113.0, 28.0) See also: https://support.google.com/accessibility/android/answer/7101858?hl=en"
+      },
+      "iOSTapTargetGuideline": {
+        "passed": false,
+        "reason": "SemanticsNode#5(Rect.fromLTRB(16.0, 14.0, 129.0, 42.0), actions: [longPress], flags: [isTextField, isHeader, namesRoute, isMultiline, isReadOnly, isFocusable], value: \"Title\", textDirection: ltr, inputType: text): expected tap target size of at least Size(44.0, 44.0), but found Size(113.0, 28.0) See also: https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/adaptivity-and-layout/"
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [
+      "INT-01"
+    ],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "SEM_019",
+    "variant": "accessible",
+    "has_violation": false,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "SEM_019",
+    "variant": "violation",
+    "has_violation": true,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "SEM_021",
+    "variant": "component",
+    "has_violation": false,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "SEM_022",
+    "variant": "accessible",
+    "has_violation": false,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": false,
+        "reason": "SemanticsNode#4(Rect.fromLTRB(92.0, 284.0, 191.0, 316.0), actions: [longPress], flags: [isTextField, isHeader, isMultiline, isReadOnly, isFocusable], value: \"Item\", textDirection: ltr, inputType: text): expected tap target size of at least Size(48.0, 48.0), but found Size(99.0, 32.0) See also: https://support.google.com/accessibility/android/answer/7101858?hl=en"
+      },
+      "iOSTapTargetGuideline": {
+        "passed": false,
+        "reason": "SemanticsNode#4(Rect.fromLTRB(92.0, 284.0, 191.0, 316.0), actions: [longPress], flags: [isTextField, isHeader, isMultiline, isReadOnly, isFocusable], value: \"Item\", textDirection: ltr, inputType: text): expected tap target size of at least Size(44.0, 44.0), but found Size(99.0, 32.0) See also: https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/adaptivity-and-layout/"
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [
+      "INT-01"
+    ],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "SEM_022",
+    "variant": "violation",
+    "has_violation": true,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": false,
+        "reason": "SemanticsNode#4(Rect.fromLTRB(92.0, 284.0, 191.0, 316.0), actions: [longPress], flags: [isTextField, isMultiline, isReadOnly, isFocusable], value: \"Item\", textDirection: ltr, inputType: text): expected tap target size of at least Size(48.0, 48.0), but found Size(99.0, 32.0) See also: https://support.google.com/accessibility/android/answer/7101858?hl=en"
+      },
+      "iOSTapTargetGuideline": {
+        "passed": false,
+        "reason": "SemanticsNode#4(Rect.fromLTRB(92.0, 284.0, 191.0, 316.0), actions: [longPress], flags: [isTextField, isMultiline, isReadOnly, isFocusable], value: \"Item\", textDirection: ltr, inputType: text): expected tap target size of at least Size(44.0, 44.0), but found Size(99.0, 32.0) See also: https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/adaptivity-and-layout/"
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [
+      "INT-01"
+    ],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "SEM_023",
+    "variant": "component",
+    "has_violation": true,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "SEM_024",
+    "variant": "component",
+    "has_violation": false,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "SEM_025",
+    "variant": "accessible",
+    "has_violation": false,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "SEM_025",
+    "variant": "violation",
+    "has_violation": true,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "SEM_026",
+    "variant": "component",
+    "has_violation": true,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": false,
+        "reason": "SemanticsNode#5(Rect.fromLTRB(0.0, 0.0, 48.0, 48.0), actions: [focus, tap], flags: [isButton, hasEnabledState, isEnabled, isFocusable]): expected tappable node to have semantic label, but none was found."
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [
+      "SEM-01"
+    ],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "SEM_027",
+    "variant": "component",
+    "has_violation": true,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": false,
+        "reason": "SemanticsNode#5(Rect.fromLTRB(0.0, 0.0, 48.0, 48.0), actions: [focus, tap], flags: [isButton, hasEnabledState, isEnabled, isFocusable]): expected tappable node to have semantic label, but none was found."
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [
+      "SEM-01"
+    ],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "SEM_028",
+    "variant": "accessible",
+    "has_violation": false,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "SEM_028",
+    "variant": "violation",
+    "has_violation": true,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "SEM_029",
+    "variant": "component",
+    "has_violation": true,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": false,
+        "reason": "SemanticsNode#4(Rect.fromLTRB(5.0, 290.0, 65.0, 310.0), actions: [longPress], flags: [isTextField, isMultiline, isReadOnly, isFocusable], value: \"Item\", textDirection: ltr, inputType: text): expected tap target size of at least Size(48.0, 48.0), but found Size(60.0, 20.0) See also: https://support.google.com/accessibility/android/answer/7101858?hl=en SemanticsNode#5(Rect.fromLTRB(70.0, 290.0, 102.0, 310.0), actions: [focus, tap], flags: [isFocusable]): expected tap target size of at least Size(48.0, 48.0), but found Size(32.0, 20.0) See also: https://support.google.com/accessibility/android/answer/7101858?hl=en SemanticsNode#6(Rect.fromLTRB(102.0, 290.0, 134.0, 310.0), actions: [focus, tap], flags: [isFocusable]): expected tap target size of at least Size(48.0, 48.0), but found Size(32.0, 20.0) See also: https://support.google.com/accessibility/android/answer/7101858?hl=en SemanticsNode#7(Rect.fromLTRB(134.0, 290.0, 166.0, 310.0), actions: [focus, tap], flags: [isFocusable]): expected tap target size of at least Size(48.0, 48.0), but found Size(32.0, 20.0) See also: https://support.google.com/accessibility/android/answer/7101858?hl=en"
+      },
+      "iOSTapTargetGuideline": {
+        "passed": false,
+        "reason": "SemanticsNode#4(Rect.fromLTRB(5.0, 290.0, 65.0, 310.0), actions: [longPress], flags: [isTextField, isMultiline, isReadOnly, isFocusable], value: \"Item\", textDirection: ltr, inputType: text): expected tap target size of at least Size(44.0, 44.0), but found Size(60.0, 20.0) See also: https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/adaptivity-and-layout/ SemanticsNode#5(Rect.fromLTRB(70.0, 290.0, 102.0, 310.0), actions: [focus, tap], flags: [isFocusable]): expected tap target size of at least Size(44.0, 44.0), but found Size(32.0, 20.0) See also: https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/adaptivity-and-layout/ SemanticsNode#6(Rect.fromLTRB(102.0, 290.0, 134.0, 310.0), actions: [focus, tap], flags: [isFocusable]): expected tap target size of at least Size(44.0, 44.0), but found Size(32.0, 20.0) See also: https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/adaptivity-and-layout/ SemanticsNode#7(Rect.fromLTRB(134.0, 290.0, 166.0, 310.0), actions: [focus, tap], flags: [isFocusable]): expected tap target size of at least Size(44.0, 44.0), but found Size(32.0, 20.0) See also: https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/adaptivity-and-layout/"
+      },
+      "labeledTapTargetGuideline": {
+        "passed": false,
+        "reason": "SemanticsNode#5(Rect.fromLTRB(70.0, 290.0, 102.0, 310.0), actions: [focus, tap], flags: [isFocusable]): expected tappable node to have semantic label, but none was found. SemanticsNode#6(Rect.fromLTRB(102.0, 290.0, 134.0, 310.0), actions: [focus, tap], flags: [isFocusable]): expected tappable node to have semantic label, but none was found. SemanticsNode#7(Rect.fromLTRB(134.0, 290.0, 166.0, 310.0), actions: [focus, tap], flags: [isFocusable]): expected tappable node to have semantic label, but none was found."
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [
+      "INT-01",
+      "SEM-01"
+    ],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "SEM_030",
+    "variant": "component",
+    "has_violation": false,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": false,
+        "reason": "SemanticsNode#4(Rect.fromLTRB(0.0, 276.0, 800.0, 324.0), actions: [tap], flags: [isButton, hasEnabledState, isEnabled]): expected tappable node to have semantic label, but none was found."
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [
+      "SEM-01"
+    ],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "SEM_031",
+    "variant": "component",
+    "has_violation": true,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": [
+      {
+        "severity": "info",
+        "rule": "constant_identifier_names",
+        "line": 3,
+        "message": "The constant name 'PLAIN_TEXT' isn't a lowerCamelCase identifier"
+      },
+      {
+        "severity": "info",
+        "rule": "constant_identifier_names",
+        "line": 3,
+        "message": "The constant name 'PASSWORD' isn't a lowerCamelCase identifier"
+      }
+    ]
+  },
+  {
+    "sample_id": "SEM_032",
+    "variant": "accessible",
+    "has_violation": false,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "SEM_032",
+    "variant": "violation",
+    "has_violation": true,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  },
+  {
+    "sample_id": "SEM_033",
+    "variant": "component",
+    "has_violation": false,
+    "guidelines": {
+      "androidTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "iOSTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "labeledTapTargetGuideline": {
+        "passed": true,
+        "reason": ""
+      },
+      "textContrastGuideline": {
+        "passed": true,
+        "reason": ""
+      }
+    },
+    "predicted": [],
+    "out_of_scope_failures": false,
+    "test_error": "",
+    "analyze": []
+  }
+]

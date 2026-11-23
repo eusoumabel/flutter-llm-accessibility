@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "INT_008_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P1",
+  "prompt_file": "prompts/v2/P1_guidelines.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T01:06:32.338494+00:00",
+  "request": {
+    "sample_id": "INT_008",
+    "variant": "accessible",
+    "category": "interaction",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing semantic state",
+        "affected_code": "Semantics(button: true,label: 'Send message',onTap: widget.onSend,child: Listener(onPointerDown: (_) => setState(() => _pressed = true),onPointerUp: (_) {setState(() => _pressed = false);widget.onSend();},onPointerCancel: (_) => setState(() => _pressed = false),child: AnimatedScale(scale: _pressed ? 0.9 : 1.0,duration: const Duration(milliseconds: 100),child: Container(width: 56,height: 56,decoration: const BoxDecoration(color: Colors.blue,shape: BoxShape.circle,),child: const Icon(Icons.send, color: Colors.white),),),),)",
+        "explanation": "O estado visual `_pressed`, que controla a animação de escala do botão, é gerenciado pelos eventos `onPointerDown` e `onPointerUp` do `Listener`. No entanto, quando o botão é ativado por meio de mecanismos de acessibilidade (como um toque do leitor de tela que aciona `Semantics.onTap`), o estado `_pressed` não é atualizado. Isso significa que a retroalimentação visual de que o botão foi pressionado não é fornecida aos usuários de tecnologias assistivas, resultando em uma experiência inconsistente.",
+        "confidence": "high",
+        "severity": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 746,
+    "completion_tokens": 333,
+    "thinking_tokens": 4992,
+    "total_tokens": 6071
+  },
+  "latency_ms": 26717
+}

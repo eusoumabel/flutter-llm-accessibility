@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_014_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P1",
+  "prompt_file": "prompts/v2/P1_guidelines.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:28:27.389419+00:00",
+  "request": {
+    "sample_id": "SEM_014",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing semantic role",
+        "affected_code": "Semantics(checked: accepted,label: 'I accept the terms and conditions',child: GestureDetector(behavior: HitTestBehavior.opaque,onTap: () => onChanged(!accepted),child: SizedBox(width: 48,height: 48,child: Center(child: Container(width: 24,height: 24,decoration: BoxDecoration(color: accepted ? Colors.blue : Colors.transparent,border: Border.all(color: Colors.blue, width: 2),borderRadius: BorderRadius.circular(4),),child: accepted? const Icon(Icons.check, size: 18, color: Colors.white): null,),),),),)",
+        "explanation": "O componente personalizado que atua como uma caixa de seleção não expõe explicitamente seu papel semântico (por exemplo, SemanticsRole.checkbox), o que pode levar a uma interpretação incompleta por tecnologias assistivas.",
+        "confidence": "high",
+        "severity": "medium"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 762,
+    "completion_tokens": 217,
+    "thinking_tokens": 2356,
+    "total_tokens": 3335
+  },
+  "latency_ms": 12220
+}

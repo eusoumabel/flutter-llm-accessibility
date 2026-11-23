@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "INT_006_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:58:10.364624+00:00",
+  "request": {
+    "sample_id": "INT_006",
+    "variant": "accessible",
+    "category": "interaction",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Falta de acessibilidade para área de soltura (DragTarget)",
+        "affected_code": "DragTarget<String>(onAcceptWithDetails: (details) => _markDone(details.data),builder: (context, candidates, rejected) => Column(children: [Semantics(header: true, child: const Text('Done')),for (final task in _done)Card(child: ListTile(title: Text(task))),],),)",
+        "explanation": "O widget `DragTarget` não possui uma descrição semântica ou rótulo acessível que informe aos usuários de leitores de tela ou teclado que esta é uma área onde itens podem ser soltos para serem marcados como \"concluídos\". Isso impede que usuários com deficiência visual ou motora compreendam e interajam com a funcionalidade de arrastar e soltar. Embora exista um botão alternativo para mover tarefas, a interação principal de arrastar e soltar não é totalmente acessível.",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 636,
+    "completion_tokens": 214,
+    "thinking_tokens": 2660,
+    "total_tokens": 3510
+  },
+  "latency_ms": 13717
+}

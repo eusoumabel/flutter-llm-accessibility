@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "INT_004_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P1",
+  "prompt_file": "prompts/v2/P1_guidelines.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:35:56.076568+00:00",
+  "request": {
+    "sample_id": "INT_004",
+    "variant": "accessible",
+    "category": "interaction",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing accessible label",
+        "affected_code": "Semantics(customSemanticsActions: {CustomSemanticsAction(label: liked ? 'Unlike' : 'Like'): onToggleLike,}, child: GestureDetector(onDoubleTap: onToggleLike, child: Image(image: photo, semanticLabel: 'Photo by $author', fit: BoxFit.cover,),),)",
+        "explanation": "O componente interativo (a área da imagem que responde ao toque duplo para curtir/descurtir) não possui um rótulo acessível que descreva seu propósito interativo principal. Embora a imagem tenha um rótulo semântico para seu conteúdo e uma ação personalizada para curtir/descurtir, o propósito de \"botão de curtir/descurtir\" não é comunicado diretamente ao usuário de tecnologia assistiva ao focar no elemento.",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 717,
+    "completion_tokens": 188,
+    "thinking_tokens": 3565,
+    "total_tokens": 4470
+  },
+  "latency_ms": 17256
+}

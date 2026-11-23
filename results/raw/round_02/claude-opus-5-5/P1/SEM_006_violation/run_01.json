@@ -1,0 +1,43 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_006_violation",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "parameters": {
+    "effort": "low",
+    "max_tokens": 16000
+  },
+  "round": "round_02",
+  "prompt": "P1",
+  "prompt_file": "prompts/v2/P1_guidelines.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:36:50.136065+00:00",
+  "request": {
+    "sample_id": "SEM_006",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Incorrect accessible label",
+        "affected_code": "tooltip: 'Previous image',\n          onPressed: onNext,",
+        "explanation": "O botão que avança para a próxima imagem (onNext, ícone chevron_right) usa o tooltip 'Previous image', que é anunciado por leitores de tela como rótulo. Isso comunica a ação oposta à real, e o usuário não consegue distinguir os dois botões. O rótulo deveria ser algo como 'Next image'.",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 1418,
+    "completion_tokens": 191,
+    "total_tokens": 1609
+  },
+  "latency_ms": 2761,
+  "request_id": "req_011ChJvZP2WTTrznCYy3H1S2"
+}

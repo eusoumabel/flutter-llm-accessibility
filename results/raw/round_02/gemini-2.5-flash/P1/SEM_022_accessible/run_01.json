@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_022_accessible",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P1",
+  "prompt_file": "prompts/v2/P1_guidelines.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T00:33:00.947974+00:00",
+  "request": {
+    "sample_id": "SEM_022",
+    "variant": "accessible",
+    "category": "semantics",
+    "source_file": "accessible.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Missing accessible label",
+        "affected_code": "Image(image: asset,width: 64,height: 64,excludeFromSemantics: true,)",
+        "explanation": "A imagem é excluída da árvore semântica (excludeFromSemantics: true), o que significa que usuários de tecnologias assistivas não terão acesso à informação visual que ela representa. Se a imagem for significativa para o conteúdo do cabeçalho da categoria, ela deve ter uma descrição semântica.",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 713,
+    "completion_tokens": 112,
+    "thinking_tokens": 1065,
+    "total_tokens": 1890
+  },
+  "latency_ms": 6212
+}

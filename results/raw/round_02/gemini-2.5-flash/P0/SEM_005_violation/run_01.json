@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP_ROUND_02",
+  "case_id": "SEM_005_violation",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "parameters": {
+    "temperature": 0.0
+  },
+  "round": "round_02",
+  "prompt": "P0",
+  "prompt_file": "prompts/v2/P0_zero_shot.md",
+  "response_schema": "prompts/v2/response_schema.json",
+  "run": 1,
+  "timestamp": "2026-11-23T01:13:21.024323+00:00",
+  "request": {
+    "sample_id": "SEM_005",
+    "variant": "violation",
+    "category": "semantics",
+    "source_file": "violation.dart"
+  },
+  "status": "ok",
+  "response": {
+    "violations": [
+      {
+        "type": "Informação de acessibilidade inconsistente",
+        "affected_code": "tooltip: 'Mute'",
+        "explanation": "O tooltip do IconButton é estático ('Mute') e não reflete o estado atual do áudio (mutado ou não mutado) nem a ação que será executada ao pressionar o botão. Para usuários de leitores de tela, isso pode ser confuso, pois a descrição da ação não muda com o estado visual do ícone. O tooltip deveria ser dinâmico, por exemplo, 'Desmutar' quando o áudio estiver mutado e 'Mutar' quando o áudio não estiver mutado.",
+        "confidence": "high",
+        "severity": "high"
+      }
+    ]
+  },
+  "valid_json": true,
+  "stop_reason": "FinishReason.STOP",
+  "usage": {
+    "prompt_tokens": 278,
+    "completion_tokens": 144,
+    "thinking_tokens": 1099,
+    "total_tokens": 1521
+  },
+  "latency_ms": 7161
+}
